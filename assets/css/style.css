@@ -1042,10 +1042,24 @@ section {
   color: #728394;
 }
 
+.phone {
+  cursor: pointer;
+  display: inline-block;
+  /*text-align: center;*/
+}
+.phone h4, .phone p {
+  margin: 0;
+}
+.phone-number {
+  display: none;
+  margin-top: 40px;
+}
+
+
 .contact .info .email,
 .contact .info .phone {
   margin-top: 40px;
-}
+} 
 
 .contact .info .email:hover i,
 .contact .info .address:hover i,
