@@ -3,6 +3,13 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #272829;
@@ -324,6 +331,8 @@ h6 {
 }
 
 #hero .social-links a:hover {
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
   color: #0563bb;
 }
 
@@ -471,39 +480,107 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Akills
+# Skills
 --------------------------------------------------------------*/
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
+/*--------------------------------------------------------------
+# Skills - Neumorphism
+--------------------------------------------------------------*/
+.skills .neu-skill-item {
+  background: #e0e5ec;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 8px #b8bec7, -4px -4px 8px #ffffff;
+  transition: all 0.3s ease;
 }
 
-.skills .progress .skill {
-  padding: 10px 0;
-  margin: 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
+.skills .neu-skill-item:hover {
+  box-shadow: 6px 6px 12px #b8bec7, -6px -6px 12px #ffffff;
+}
+
+.skills .neu-skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skills .neu-skill-name {
+  font-size: 14px;
+  font-weight: 700;
   color: #45505b;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
+.skills .neu-skill-level {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.skills .progress-bar-wrap {
-  background: #f2f3f5;
+.skills .neu-skill-level.beginner {
+  background: #fff3cd;
+  color: #856404;
 }
 
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: 0.9s;
-  background-color: #0563bb;
+.skills .neu-skill-level.intermediate {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.skills .neu-skill-level.advanced {
+  background: #d4edda;
+  color: #155724;
+}
+
+.skills .neu-skill-level.expert {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.skills .neu-track {
+  height: 8px;
+  background: #c8cdd5;
+  border-radius: 50px;
+  box-shadow: inset 2px 2px 4px #b0b5bc, inset -2px -2px 4px #f0f3f8;
+  overflow: hidden;
+}
+
+.skills .neu-fill {
+  height: 100%;
+  background: #0563bb;
+  border-radius: 50px;
+  width: 0%;
+  transition: width 1.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .skills .neu-skill-item {
+    padding: 12px 16px;
+    margin-bottom: 15px;
+  }
+
+  .skills .neu-skill-name {
+    font-size: 12px;
+  }
+
+  .skills .neu-skill-level {
+    font-size: 10px;
+    padding: 2px 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .skills .neu-skill-name {
+    font-size: 11px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1068,6 +1145,23 @@ section {
   color: #fff;
 }
 
+
+contact .info .address,
+.contact .info .email,
+.contact .info .phone {
+  transition: all 0.3s ease;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.contact .info .address:hover,
+.contact .info .email:hover,
+.contact .info .phone:hover {
+  background: #f0f7ff;
+}
+
+
+
 .contact .php-email-form {
   width: 100%;
   background: #fff;
@@ -1178,7 +1272,7 @@ section {
 }
 
 #footer p {
-  font-size: 15;
+  font-size: 15px;
   font-style: italic;
   padding: 0;
   margin: 0 0 40px 0;
@@ -1358,6 +1452,18 @@ section {
   color: #18d26e;
 }
 
+
+.freelancing .freelance-availability i {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
 .freelancing .freelance-cta {
   display: inline-block;
   background: #0563bb;
@@ -1375,7 +1481,15 @@ section {
   color: #fff;
 }
 
+.about img {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
 
+.about img:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
 
 
 
