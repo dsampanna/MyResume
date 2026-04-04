@@ -72,44 +72,95 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
+    <!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2><b>About</b></h2>
-          <p><b>Hey there! I'm Sampanna Raj Dhungel, a 23-year-old creative enthusiast hailing from Katunje -5, Suryabinayak, Bhaktapur. I thrive on handling multiple tasks with a creative flair for problem-solving. My boundless energy and eagerness to learn new skills define my sweet journey as a creative enthusiast. Let's embark on exciting adventures together! 🌟</b></p>
+    <div class="section-title">
+      <h2>About</h2>
+    </div>
+
+    <div class="row align-items-stretch">
+
+      <div class="col-lg-4" data-aos="fade-right">
+        <img src="assets/img/profile-img.jpg" class="img-fluid about-img" alt="Sampanna Raj Dhungel">
+      </div>
+
+      <div class="col-lg-8 pt-4 pt-lg-0">
+
+        <div class="glass-summary">
+          <div class="gs-top">
+            <div class="gs-avatar">SR</div>
+            <div class="gs-top-info">
+              <div class="gs-name">Sampanna Raj Dhungel</div>
+              <div class="gs-role">Digital Media Designer</div>
+              <div class="gs-location">
+                <i class="bi bi-geo-alt-fill"></i> Suryabinayak, Bhaktapur, Nepal
+              </div>
+            </div>
+          </div>
+
+          <div class="gs-tags">
+            <span class="gs-tag">UI/UX Design</span>
+            <span class="gs-tag">Animation</span>
+            <span class="gs-tag">Sound Design</span>
+            <span class="gs-tag">Video Editing</span>
+            <span class="gs-tag">Graphic Design</span>
+            <span class="gs-tag">3+ Yrs Experience</span>
+          </div>
+
+          <div class="gs-divider"></div>
+
+          <p class="gs-desc">Hey there! I'm Sampanna Raj Dhungel, a creative enthusiast hailing from Katunje-5, Suryabinayak, Bhaktapur. I specialize in Digital Media Design, UI/UX Design, Sound Design, Video Editing, and Animation. My passion lies in crafting captivating experiences that leave a lasting impact. I thrive on handling multiple tasks with a creative flair for problem-solving. Let's bring visions to life together! 🌟</p>
+
+          <div class="gs-divider"></div>
+
+          <div class="gs-info-grid">
+            <div class="gs-info-row">
+              <i class="bi bi-cake2-fill"></i>
+              <span>4 April 2000</span>
+            </div>
+            <div class="gs-info-row">
+              <i class="bi bi-person-fill"></i>
+              <span>Age: <span id="age"></span></span>
+            </div>
+            <div class="gs-info-row">
+              <i class="bi bi-envelope-fill"></i>
+              <span>sampannadhungel@gmail.com</span>
+            </div>
+            <div class="gs-info-row">
+              <i class="bi bi-telephone-fill"></i>
+              <span>+977 986 148 7026</span>
+            </div>
+            <div class="gs-info-row">
+              <i class="bi bi-mortarboard-fill"></i>
+              <span>BSc (Hons) Multimedia Technologies</span>
+            </div>
+            <div class="gs-info-row">
+              <i class="bi bi-globe"></i>
+              <span>www.sampannadhungel.com.np</span>
+            </div>
+            <div class="gs-info-row">
+              <i class="bi bi-translate"></i>
+              <span>Nepali, English, Hindi, German</span>
+            </div>
+            <div class="gs-info-row">
+              <i class="bi bi-controller"></i>
+              <span>Travel, Music, Gaming, Sports</span>
+            </div>
+          </div>
+
+          <div class="gs-available">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>Available for Freelance Projects</span>
+          </div>
+
         </div>
 
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Digital Media Designer.</h3>
-            <br>
-            <p class="fst-italic">
-             I specialize in Digital Media Design such as UI/UX Design, Sound Design, Video Editing, and Animation. My passion lies in crafting captivating experiences that leave a lasting impact. Let's bring visions to life together and make the digital world more engaging for everyone! 
-            </p>
-            <br>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><strong>• Birthday:</strong> <span>12 April 2000</span></li>
-                  <li><strong>• Website:</strong> <span>www.sampannadhungel.com.np</span></li>
-                  <li><strong>• Phone:</strong> <span>+977 986 148 7026</span></li>
-                  <li><strong>• City:</strong> <span>Suryabinayak-5 Bhaktapur, Nepal</span></li>
-                  <li><strong>• Hobbies:</strong> <span>Travel, Music, Gaming, Sports</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><strong>• Age:</strong> <span id="age"></span></li>
-                  <li><strong>• Degree:</strong> <span>Bachelor in Multimedia Technology</span></li>
-                  <li><strong>• Email:</strong> <span>sampannadhungel@gmail.com</span></li>
-                  <li><strong>• Freelance:</strong> <span>Available to work with flexible timing</span></li>
-                  <li><strong>• Language:</strong> <span>Nepali, English, Hindi, German</span></li>
-                </ul>
-                <script>
+      </div>
+
+    </div>
+<script>
                     const birthDate = new Date("2000-04-12");
                     const today = new Date();
                     let age = today.getFullYear() - birthDate.getFullYear();
@@ -119,20 +170,10 @@
                     }
                     document.getElementById("age").textContent = age;
                   </script>
-              </div>
-            </div>
-            <!--<p>
-              I am Sampanna Raj Dhungel, a creative and versatile individual from Katunje -5, Suryabinayak, Bhaktapur. I excel at multitasking and approach problem-solving with creativity. 
-              Fueled by boundless energy and enthusiasm, I continuously seek growth and learning opportunities. My journey is centered around the joy of creativity, and I invite others to join me in exploring a world full of possibilities. 🌟
-          </p>--> 
-          </div>
-        </div>
-
-      </div>
-
-
-      
-    </section><!-- End About Section -->
+  </div>
+</section>
+<!-- End About Section -->
+ <!-- End About Section -->
 
     <!-- ======= Facts Section ======= -->
     <section id="facts" class="facts">
@@ -310,107 +351,138 @@
 
     <!-- ======= Resume Section ======= -->
     
+<!-- ======= Resume Section ======= -->
+<!-- ======= Resume Section ======= -->
 <section id="resume" class="resume">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
       <h2>Experience</h2>
-      <p><b>My dedication to creativity drives me to deliver impactful visuals and captivating animations.<br>
-         Excited to continue my journey in the dynamic world of design and media.</b></p>
+      <p><b>My dedication to creativity drives me to deliver impactful visuals and captivating animations.
+        Excited to continue my journey in the dynamic world of design and media.</b></p>
     </div>
 
     <div class="row">
-      <div class="col-lg-6">
-        <h3 class="resume-title">Summary</h3>
-        <div class="resume-item pb-0">
-          <h4>Sampanna Raj Dhungel</h4>
-          <p><em>Innovative and deadline-driven Digital Media Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-          <ul>
-            <li>Suryabinayak-5 Bhaktapur, Bagmati, Nepal</li>
-            <li>+977 986 148 7026</li>
-            <li>sampannadhungel@gmail.com</li>
-          </ul>
-        </div>
 
+      <div class="col-lg-6">
         <h3 class="resume-title">Education</h3>
 
-        <div class="resume-item">
-          <h4>BSc (Hons) Multimedia Technologies</h4>
-          <h5>2020 - 2023</h5>
-          <p><em>Islington College, Kathmandu</em></p>
-          <p>Affiliated to London Metropolitan University, London</p>
-        </div>
+        <div class="tl-wrap">
 
-        <div class="resume-item">
-          <h4>Higher Secondary</h4>
-          <h5>2016 – 2018</h5>
-          <p><em>National Examination Board</em></p>
-          <p>Nepal Mega College, Babarmahal</p>
-        </div>
+          <div class="tl-item" data-aos="fade-right" data-aos-delay="100">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">BSc (Hons) Multimedia Technologies</div>
+                  <div class="tl-company">Islington College, Kathmandu</div>
+                  <div class="tl-sub">Affiliated to London Metropolitan University</div>
+                </div>
+                <span class="tl-date">2020 – 2023</span>
+              </div>
+            </div>
+          </div>
 
+          <div class="tl-item" data-aos="fade-right" data-aos-delay="150">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">Higher Secondary</div>
+                  <div class="tl-company">Nepal Mega College, Babarmahal</div>
+                  <div class="tl-sub">National Examination Board</div>
+                </div>
+                <span class="tl-date">2016 – 2018</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div class="col-lg-6">
         <h3 class="resume-title">Professional Experience</h3>
 
-        <div class="resume-item">
-          <h4>Marketing & Creative Director at Joon Nepal</h4>
-          <h5>2024 - 2025</h5>
-          <p><em>Bhaktapur, Nepal</em></p>
-          <ul>
-            <li>Innovative Marketing & Creative Director with expertise in leading marketing strategies and creative initiatives.</li>
-            <li>Oversee UI/UX design, graphic design, media management, animation, and visual arts to enhance brand identity and engagement.</li>
-            <li>Collaborate with teams to deliver impactful campaigns and elevate user experience, driving measurable results.</li>
-          </ul>
-        </div>
+        <div class="tl-wrap">
 
-        <div class="resume-item">
-          <h4>Chief Editor at Explorer Nepal</h4>
-          <h5>2022 - 2023</h5>
-          <p><em>Babarmahal, Kathmandu, Nepal</em></p>
-          <ul>
-            <li>Chief Video Editor for YouTube, Facebook and other social media platforms as well as Graphics Designer.</li>
-            <li>Developed numerous projects (Logos, Brochures, Infographics, Animation, and Advertisements).</li>
-            <li>Recommended and consulted with clients on the most appropriate projects.</li>
-            <li>Created various designs, presentations and proposals for clients.</li>
-          </ul>
-        </div>
+          <div class="tl-item" data-aos="fade-left" data-aos-delay="100">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">Marketing & Creative Director</div>
+                  <div class="tl-company">Joon Nepal · Bhaktapur</div>
+                </div>
+                <span class="tl-date">2024 – 2025</span>
+              </div>
+              <div class="tl-desc">Leading marketing strategies and creative initiatives. Overseeing UI/UX design, graphic design, media management, animation, and visual arts to enhance brand identity and engagement.</div>
+            </div>
+          </div>
 
-        <div class="resume-item">
-          <h4>Animator at Innovate Tech</h4>
-          <h5>2021 - 2022</h5>
-          <p><em>Baluwatar, Kathmandu, Nepal</em></p>
-          <ul>
-            <li>As a video animator intern for MySecondTeacher, crafted engaging educational animations, refining skills at the intersection of creativity and education in digital media.</li>
-          </ul>
-        </div>
+          <div class="tl-item" data-aos="fade-left" data-aos-delay="150">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">Chief Editor</div>
+                  <div class="tl-company">Explorer Nepal · Kathmandu</div>
+                </div>
+                <span class="tl-date">2022 – 2023</span>
+              </div>
+              <div class="tl-desc">Chief video editor for YouTube, Facebook and social media platforms. Developed logos, brochures, infographics, animations and advertisements for clients.</div>
+            </div>
+          </div>
 
-        <div class="resume-item">
-          <h4>Graphics Designer at Suvadin Media</h4>
-          <h5>2019 - 2020</h5>
-          <p><em>Anamnagar, Kathmandu, Nepal</em></p>
-          <ul>
-            <li>Specializing in child awareness and social initiatives, crafted impactful visuals to drive positive change through the power of design.</li>
-            <li>Graphics Designer for programs related to child awareness and woman empowerment.</li>
-            <li>Developed numerous projects (Logos, Brochures, Infographics etc).</li>
-          </ul>
-        </div>
+          <div class="tl-item" data-aos="fade-left" data-aos-delay="200">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">Animator</div>
+                  <div class="tl-company">Innovate Tech · Kathmandu</div>
+                </div>
+                <span class="tl-date">2021 – 2022</span>
+              </div>
+              <div class="tl-desc">Crafted engaging educational animations for MySecondTeacher, refining skills at the intersection of creativity and education in digital media.</div>
+            </div>
+          </div>
 
-        <div class="resume-item">
-          <h4>Graphics Designer at We Inspire Nepal</h4>
-          <h5>2018 - 2019</h5>
-          <p><em>Battisputali, Kathmandu, Nepal</em></p>
-          <ul>
-            <li>Contributed to significant projects like the US Youth Council 2019/20 and Women Related Program 2019/20, creating impactful visuals for youth and women empowerment.</li>
-            <li>Developed numerous projects (Logos, Brochures, Infographics, Books, Standee, Certificates etc).</li>
-          </ul>
-        </div>
+          <div class="tl-item" data-aos="fade-left" data-aos-delay="250">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">Graphics Designer</div>
+                  <div class="tl-company">Suvadin Media · Kathmandu</div>
+                </div>
+                <span class="tl-date">2019 – 2020</span>
+              </div>
+              <div class="tl-desc">Crafted impactful visuals for child awareness and woman empowerment programs. Developed logos, brochures and infographics driving positive social change.</div>
+            </div>
+          </div>
 
+          <div class="tl-item" data-aos="fade-left" data-aos-delay="300">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">Graphics Designer</div>
+                  <div class="tl-company">We Inspire Nepal · Kathmandu</div>
+                </div>
+                <span class="tl-date">2018 – 2019</span>
+              </div>
+              <div class="tl-desc">Chief graphics designer for US Embassy Youth Council 2019/20. Developed logos, brochures, books, standees and certificates for youth and women empowerment projects.</div>
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </div>
 
   </div>
 </section>
+<!-- End Resume Section -->
 <!-- End Resume Section -->
 
 
@@ -425,140 +497,143 @@
     </div>
 
     <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <h3 class="resume-title">Experience</h3>
 
-  <div class="col-lg-6">
-    <h3 class="resume-title">Experience</h3>
+        <div class="tl-wrap">
 
-    <div class="resume-item">
-      <h4>Graphic Designer & Animator at Chloroleaf Technologies Pvt. Ltd.</h4>
-      <h5>2024 - Current</h5>
-      <p><em>Bhaktapur, Nepal</em></p>
-      <ul>
-        <li>Graphic Designer, Animator, and Visual Artist for various digital platforms.</li>
-        <li>Developing visual assets and motion graphics for marketing campaigns.</li>
-        <li>Producing animations and visual art for client projects.</li>
-      </ul>
-    </div>
+          <div class="tl-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">Graphic Designer & Animator</div>
+                  <div class="tl-company">Chloroleaf Technologies · Bhaktapur</div>
+                </div>
+                <span class="tl-date">2024 – Now</span>
+              </div>
+              <div class="tl-desc">Graphic Designer, Animator and Visual Artist for various digital platforms. Developing visual assets and motion graphics for marketing campaigns.</div>
+            </div>
+          </div>
 
-    <div class="resume-item">
-      <h4>UI/UX Designer at Tangible Tech Studio</h4>
-      <h5>2024 - 2025</h5>
-      <p><em>Bhaktapur, Nepal</em></p>
-      <ul>
-        <li>Designing user interfaces and experiences for various digital products.</li>
-        <li>Conducting user research and creating wireframes, prototypes, and high-fidelity designs.</li>
-      </ul>
-    </div>
+          <div class="tl-item" data-aos="fade-up" data-aos-delay="150">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-title">UI/UX Designer</div>
+                  <div class="tl-company">Tangible Tech Studio · Bhaktapur</div>
+                </div>
+                <span class="tl-date">2024 – 2025</span>
+              </div>
+              <div class="tl-desc">Designing user interfaces and experiences for various digital products. Conducting user research and creating wireframes, prototypes and high-fidelity designs.</div>
+            </div>
+          </div>
 
-    <div class="mt-4">
-      <div class="freelance-availability">
-        <i class="bi bi-check-circle-fill"></i>
-        <span>Currently Available for Freelance Projects</span>
+        </div>
+
+        <div class="mt-4">
+          <div class="freelance-availability">
+            <i class="bi bi-check-circle-fill"></i>
+            <span>Currently Available for Freelance Projects</span>
+          </div>
+          <a href="#contact" class="freelance-cta scrollto">Let's Work Together</a>
+        </div>
+
       </div>
-      <a href="#contact" class="freelance-cta scrollto">Let's Work Together</a>
-    </div>
-
-  </div>
-
-</div>
-
     </div>
 
     <!-- Freelance Services Below -->
-<!-- Freelance Services Below -->
-<div class="row mt-5">
-
-  <div class="col-12 text-center">
-    <h3 class="resume-title">Freelance Services</h3>
-  </div>
-
-  <div class="row justify-content-center mt-3">
-
-    <!-- Row 1 -->
-    <div class="col-lg-2 col-md-4 col-6 mt-4">
-      <div class="freelance-box iconbox-blue">
-        <div class="icon">
-          <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
-          </svg>
-          <i class="bi bi-vector-pen"></i>
-        </div>
-        <h4>UI/UX Design</h4>
-        <p>Crafting intuitive and visually appealing user interfaces.</p>
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <h3 class="resume-title">Freelance Services</h3>
+        <p class="mb-4"><b>Specialized creative services tailored to bring your vision to life.</b></p>
       </div>
     </div>
 
-    <div class="col-lg-2 col-md-4 col-6 mt-4">
-      <div class="freelance-box iconbox-orange">
-        <div class="icon">
-          <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426"></path>
-          </svg>
-          <i class="bi bi-brush"></i>
-        </div>
-        <h4>Graphic Design</h4>
-        <p>Creating stunning visuals for your brand and marketing needs.</p>
-      </div>
-    </div>
+    <div class="row freelance-services-row">
 
-    <div class="col-lg-2 col-md-4 col-6 mt-4">
-      <div class="freelance-box iconbox-pink">
-        <div class="icon">
-          <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781"></path>
-          </svg>
-          <i class="bi bi-camera-video"></i>
+      <div class="freelance-service-col col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="freelance-box iconbox-blue">
+          <div class="icon">
+            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
+            </svg>
+            <i class="bi bi-vector-pen"></i>
+          </div>
+          <h4>UI/UX Design</h4>
+          <p>Crafting intuitive and visually appealing user interfaces.</p>
         </div>
-        <h4>Video Editing</h4>
-        <p>Professional video editing for social media, ads, and more.</p>
       </div>
-    </div>
 
-    <!-- Row 2 -->
-    <div class="w-100"></div>
-
-    <div class="col-lg-2 col-md-4 col-6 mt-4">
-      <div class="freelance-box iconbox-yellow">
-        <div class="icon">
-          <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"></path>
-          </svg>
-          <i class="bi bi-play-circle"></i>
+      <div class="freelance-service-col col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="freelance-box iconbox-orange">
+          <div class="icon">
+            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426"></path>
+            </svg>
+            <i class="bi bi-brush"></i>
+          </div>
+          <h4>Graphic Design</h4>
+          <p>Creating stunning visuals for your brand and marketing needs.</p>
         </div>
-        <h4>Animation</h4>
-        <p>Bringing ideas to life through captivating 2D and 3D animations.</p>
       </div>
-    </div>
 
-    <div class="col-lg-2 col-md-4 col-6 mt-4">
-      <div class="freelance-box iconbox-red">
-        <div class="icon">
-          <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
-          </svg>
-          <i class="bi bi-music-note-beamed"></i>
+      <div class="freelance-service-col col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="freelance-box iconbox-pink">
+          <div class="icon">
+            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781"></path>
+            </svg>
+            <i class="bi bi-camera-video"></i>
+          </div>
+          <h4>Video Editing</h4>
+          <p>Professional video editing for social media, ads, and more.</p>
         </div>
-        <h4>Sound Design</h4>
-        <p>Creating immersive audio experiences for your projects.</p>
       </div>
-    </div>
 
-    <div class="col-lg-2 col-md-4 col-6 mt-4">
-      <div class="freelance-box iconbox-teal">
-        <div class="icon">
-          <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
-          </svg>
-          <i class="bi bi-globe"></i>
+      <div class="freelance-service-col col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="freelance-box iconbox-yellow">
+          <div class="icon">
+            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"></path>
+            </svg>
+            <i class="bi bi-play-circle"></i>
+          </div>
+          <h4>Animation</h4>
+          <p>Bringing ideas to life through captivating 2D and 3D animations.</p>
         </div>
-        <h4>Web Design</h4>
-        <p>Designing responsive and modern websites for your business.</p>
       </div>
+
+      <div class="freelance-service-col col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="freelance-box iconbox-red">
+          <div class="icon">
+            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
+            </svg>
+            <i class="bi bi-music-note-beamed"></i>
+          </div>
+          <h4>Sound Design</h4>
+          <p>Creating immersive audio experiences for your projects.</p>
+        </div>
+      </div>
+
+      <div class="freelance-service-col col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="freelance-box iconbox-teal">
+          <div class="icon">
+            <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
+            </svg>
+            <i class="bi bi-globe"></i>
+          </div>
+          <h4>Web Design</h4>
+          <p>Designing responsive and modern websites for your business.</p>
+        </div>
+      </div>
+
     </div>
 
   </div>
-
-</div>
 </section>
 <!-- End Freelancing Section -->
 <!-- End Freelancing Section -->
