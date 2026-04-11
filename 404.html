@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>404 — Page Not Found | Sampanna Raj Dhungel</title>
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #0a0f1e;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.4); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .error-code {
+      font-size: clamp(100px, 20vw, 180px);
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, #0563bb, #4facfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+
+    .error-icon {
+      font-size: 48px;
+      margin: 10px 0;
+      display: block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    h2 {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 600;
+      margin: 16px 0 10px;
+      color: #fff;
+    }
+
+    p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      max-width: 400px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      background: linear-gradient(135deg, #0563bb, #034f96);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(5, 99, 187, 0.4);
+    }
+
+    .btn-home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(5, 99, 187, 0.6);
+      color: #fff;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      background: transparent;
+      color: #fff;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-contact:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+      transform: translateY(-3px);
+      color: #fff;
+    }
+
+    .signature {
+      margin-top: 50px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .signature span {
+      color: #0563bb;
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-home, .btn-contact {
+        width: 100%;
+        max-width: 260px;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Starfield background -->
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+    <div class="error-code">404</div>
+    <i class="bi bi-compass error-icon"></i>
+    <h2>Oops! Page Not Found</h2>
+    <p>The page you're looking for doesn't exist or may have been moved. Let's get you back on track.</p>
+    <div class="btn-group">
+      <a href="index.html" class="btn-home">
+        <i class="bi bi-house-fill"></i> Back to Home
+      </a>
+      <a href="index.html#contact" class="btn-contact">
+        <i class="bi bi-envelope-fill"></i> Contact Me
+      </a>
+    </div>
+    <div class="signature">Crafted by <span>Sampanna Raj Dhungel</span></div>
+  </div>
+
+  <script>
+    // Generate random stars
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDuration = (2 + Math.random() * 3) + 's';
+      star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+      starsContainer.appendChild(star);
+    }
+
+    // Auto redirect after 15 seconds
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 15000);
+  </script>
+
+</body>
+</html>
