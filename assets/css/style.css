@@ -2836,7 +2836,29 @@ section {
   font-weight: 700;
 }
 
-
+.resume-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #0563bb, #034f96);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(5, 99, 187, 0.35);
+}
+.resume-download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(5, 99, 187, 0.45);
+  color: #fff;
+}
+.resume-download-btn i {
+  font-size: 18px;
+}
 
 
 
