@@ -474,6 +474,89 @@
       animation: fadeUp 0.5s ease forwards;
     }
 
+
+    .topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+
+.topbar-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--blue);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.topbar-link {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568 !important;
+  text-decoration: none !important;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.2px;
+}
+
+.topbar-link:hover {
+  color: var(--blue) !important;
+  background: var(--tag-bg);
+  text-decoration: none !important;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: var(--blue);
+  color: #fff !important;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  font-family: 'Syne', sans-serif;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.btn-back:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+  color: #fff !important;
+}
+
+@media (max-width: 900px) {
+  .topbar { padding: 0 20px; }
+  .topbar-link { display: none; }
+}
+
+@media (max-width: 480px) {
+  .topbar-logo { font-size: 13px; }
+  .btn-back { padding: 8px 14px; font-size: 11px; }
+}
+
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
@@ -511,14 +594,21 @@
 <body>
 
   <!-- TOP BAR -->
-  <div class="topbar">
-    <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
-    <div class="topbar-nav">
-      <a href="index.html#portfolio" class="btn-back">
-        <i class="bi bi-arrow-left"></i> Back to Portfolio
-      </a>
-    </div>
+  <!-- Replace your entire topbar div with this -->
+<div class="topbar">
+  <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
+  <div class="topbar-nav">
+    <a href="index.html#about" class="topbar-link">About</a>
+    <a href="index.html#education" class="topbar-link">Education</a>
+    <a href="index.html#resume" class="topbar-link">Experience</a>
+    <a href="index.html#portfolio" class="topbar-link">Portfolio</a>
+    <a href="index.html#services" class="topbar-link">Services</a>
+    <a href="index.html#contact" class="topbar-link">Contact</a>
+    <a href="index.html#portfolio" class="btn-back">
+      <i class="bi bi-arrow-left"></i> Back to Portfolio
+    </a>
   </div>
+</div>
 
   <!-- DYNAMIC CONTENT -->
   <div id="page-content"></div>
