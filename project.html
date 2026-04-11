@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Project | Sampanna Raj Dhungel</title>
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #0563bb;
+      --blue-dark: #034f96;
+      --blue-deep: #023a75;
+      --bg: #f7f9fc;
+      --bg2: #eef3fa;
+      --card: #ffffff;
+      --text: #1a1f2e;
+      --text-muted: #6b7a99;
+      --border: #e0e8f5;
+      --tag-bg: #e8f0fd;
+      --tag-color: #0563bb;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--blue);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 20px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-back:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+      color: #fff;
+    }
+
+    /* ── HERO ── */
+    .project-hero {
+      margin-top: 64px;
+      position: relative;
+      background: linear-gradient(135deg, #0a1628 0%, #0e2040 50%, #0563bb22 100%);
+      padding: 70px 40px 50px;
+      overflow: hidden;
+    }
+
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(5,99,187,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .project-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 10%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(5,99,187,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: rgba(5,99,187,0.25);
+      border: 1px solid rgba(5,99,187,0.4);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #7eb8ff;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 20px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 6vw, 58px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .project-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 0;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .meta-item i {
+      color: #7eb8ff;
+      font-size: 14px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .project-body {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 36px;
+      align-items: start;
+    }
+
+    /* ── MEDIA ── */
+    .media-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0a1628;
+      box-shadow: 0 20px 60px rgba(5,99,187,0.18);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .media-wrap img,
+    .media-wrap video {
+      width: 100%;
+      display: block;
+      max-height: 520px;
+      object-fit: contain;
+      background: #0a1628;
+    }
+
+    .media-type-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── DESCRIPTION ── */
+    .project-description {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      margin-top: 24px;
+      box-shadow: 0 4px 20px rgba(5,99,187,0.06);
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .project-description p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #3a4560;
+      font-weight: 300;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(5,99,187,0.06);
+    }
+
+    .info-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .info-row i {
+      color: var(--blue);
+      font-size: 15px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .info-row-content {
+      flex: 1;
+    }
+
+    .info-row-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 2px;
+    }
+
+    .info-row-value {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .tool-tag {
+      padding: 4px 10px;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* ── NAVIGATION ── */
+    .project-nav {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+    }
+
+    .nav-btn:hover {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .nav-btn i { font-size: 16px; }
+    .nav-btn.disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* ── RELATED ── */
+    .related-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .related-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .related-title span {
+      color: var(--blue);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .related-card {
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(5,99,187,0.15);
+      border-color: var(--blue);
+    }
+
+    .related-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .related-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .related-card-info {
+      padding: 14px;
+    }
+
+    .related-card-cat {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .related-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      max-width: 1000px;
+      margin: 0 auto 32px;
+      padding: 0 24px;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── NOT FOUND ── */
+    .not-found {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .not-found i {
+      font-size: 64px;
+      color: var(--blue);
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .not-found h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .not-found p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in:nth-child(2) { animation-delay: 0.1s; }
+    .fade-in:nth-child(3) { animation-delay: 0.2s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .topbar { padding: 0 20px; }
+      .project-hero { padding: 50px 20px 36px; }
+
+      .project-body {
+        grid-template-columns: 1fr;
+        padding: 24px 16px 60px;
+        gap: 20px;
+      }
+
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .related-section { padding: 0 16px 60px; }
+      .section-divider { padding: 0 16px; }
+
+      .project-nav { flex-direction: row; }
+    }
+
+    @media (max-width: 480px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .topbar-logo { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
+    <div class="topbar-nav">
+      <a href="index.html#portfolio" class="btn-back">
+        <i class="bi bi-arrow-left"></i> Back to Portfolio
+      </a>
+    </div>
+  </div>
+
+  <!-- DYNAMIC CONTENT -->
+  <div id="page-content"></div>
+
+  <script>
+  // ── ALL PROJECT DATA ──
+  const projects = [
+    { id:"old-man-smoking", title:"Old Man Smoking", category:"3D Animation", year:"2022", tools:["Maya","Blender"], description:"A 3D character animation of an old man smoking, showcasing realistic character modeling, rigging and animation techniques.", image:"assets/img/portfolio/3D_Animation_2_thumbnail.png", media:"assets/img/portfolio/3D_Animation_2.mp4", type:"video" },
+    { id:"old-man-chilling", title:"Old Man Chilling", category:"3D Animation", year:"2022", tools:["Maya","Blender"], description:"A relaxed 3D character animation featuring an old man in a chilled, laid-back pose with smooth fluid motion.", image:"assets/img/portfolio/3D_Animation_1_thumbnail.jpg", media:"assets/img/portfolio/3D_Animation_1.mp4", type:"video" },
+    { id:"city-motion", title:"City Motion", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects","Adobe Illustrator"], description:"A motion graphics piece featuring a stylized animated city scene with fluid movement and vibrant teal colors.", image:"assets/img/portfolio/Motion_1_thumbnail.jpg", media:"assets/img/portfolio/Motion_1.mp4", type:"video" },
+    { id:"999-to-1000-subscribers", title:"999 to 1000 Subscribers", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A celebratory motion graphics countdown animation marking the milestone of reaching 1000 subscribers on a social media channel.", image:"assets/img/portfolio/Motion_2_thumbnail.jpg", media:"assets/img/portfolio/Motion_2.mp4", type:"video" },
+    { id:"pepsi-logo-reveal", title:"Pepsi Logo Reveal Demo", category:"Motion Graphics", year:"2023", tools:["Adobe After Effects","Adobe Illustrator"], description:"A dynamic logo reveal animation for Pepsi, created as a demo showcasing cinematic intro motion graphics and brand animation.", image:"assets/img/portfolio/Motion_13_thumbnail.png", media:"assets/img/portfolio/Motion_13.mp4", type:"video" },
+    { id:"instagram-username-reveal", title:"Instagram Username Reveal", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A clean animated reveal of an Instagram username, designed for social media branding, channel promotion and identity.", image:"assets/img/portfolio/Motion_3_thumbnail.jpg", media:"assets/img/portfolio/Motion_3.mp4", type:"video" },
+    { id:"instagram-story", title:"Instagram Story", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects","Adobe Illustrator"], description:"An animated Instagram story template with interactive feel, smooth motion design elements and a gesture callout.", image:"assets/img/portfolio/Motion_4_thumbnail.jpg", media:"assets/img/portfolio/Motion_4.mp4", type:"video" },
+    { id:"facebook-like", title:"Like Motion", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A fun animated Facebook like button motion graphic, perfect for social media engagement videos and call-to-action sequences.", image:"assets/img/portfolio/Motion_5_thumbnail.jpg", media:"assets/img/portfolio/Motion_5.mp4", type:"video" },
+    { id:"switch-on", title:"Switch On–Off", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A satisfying toggle switch animation demonstrating UI motion principles, clean graphic design and smooth easing transitions.", image:"assets/img/portfolio/Motion_6_thumbnail.jpg", media:"assets/img/portfolio/Motion_6.mp4", type:"video" },
+    { id:"timer", title:"Timer", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A bold and minimal animated countdown timer graphic with a striking circular golden design on a dark background.", image:"assets/img/portfolio/Motion_7_thumbnail.jpg", media:"assets/img/portfolio/Motion_7.mp4", type:"video" },
+    { id:"coming-soon", title:"Something Coming Soon", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A teaser motion graphic animation with a clean and minimal 'Coming Soon' reveal effect ideal for product launches.", image:"assets/img/portfolio/Motion_8_thumbnail.jpg", media:"assets/img/portfolio/Motion_8.mp4", type:"video" },
+    { id:"chatting", title:"Chatting", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"An animated chat bubble motion graphic illustrating a conversation flow in a lively and engaging visual style.", image:"assets/img/portfolio/Motion_9_thumbnail.jpg", media:"assets/img/portfolio/Motion_9.mp4", type:"video" },
+    { id:"intro-reveal", title:"Intro Reveal", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A cinematic intro reveal animation suitable for YouTube channels and brand identity videos with dramatic motion.", image:"assets/img/portfolio/Motion_10_thumbnail.jpg", media:"assets/img/portfolio/Motion_10.mp4", type:"video" },
+    { id:"loading", title:"Loading", category:"Motion Graphics", year:"2022", tools:["Adobe After Effects"], description:"A colorful animated loading indicator featuring four bouncing rounded shapes on a deep dark background.", image:"assets/img/portfolio/Motion_11_thumbnail.jpg", media:"assets/img/portfolio/Motion_11.mp4", type:"video" },
+    { id:"transform-with-sound-motion", title:"Transform With Sound", category:"Motion Graphics", year:"2023", tools:["Adobe After Effects","Adobe Audition"], description:"A motion graphics piece that reacts and transforms visually in sync with original sound design, blending audio and motion.", image:"assets/img/portfolio/Motion_12_thumbnail.jpg", media:"assets/img/portfolio/Motion_12.mp4", type:"video" },
+    { id:"transform-with-sound-audio", title:"Transform With Sound", category:"Sound Design", year:"2023", tools:["Adobe Audition","Reason Studios"], description:"An original sound design project exploring how audio transforms and shapes visual perception, created as a draft music production piece.", image:"assets/img/portfolio/Draft_Music_Design_1_thumbnail.jpg", media:"assets/img/portfolio/Draft_Music_Design_1.mp4", type:"video" },
+    { id:"affiliation-program", title:"Affiliation Program", category:"Social Media", year:"2022", tools:["Adobe Illustrator","Adobe Photoshop"], description:"A Facebook post design explaining how an affiliate program works for an e-commerce brand, using clear infographic-style visuals.", image:"assets/img/portfolio/portfolio-1.jpg", media:"assets/img/portfolio/portfolio-1.jpg", type:"image" },
+    { id:"water-purifier", title:"Water Purifier", category:"Social Media", year:"2022", tools:["Adobe Illustrator","Adobe Photoshop"], description:"A Facebook post for S.K. Trading promoting Blue Mount water purifiers targeted at Nepali consumers with payment options.", image:"assets/img/portfolio/portfolio-2.jpg", media:"assets/img/portfolio/portfolio-2.jpg", type:"image" },
+    { id:"graphics-design-bootcamp", title:"Graphics Design Bootcamp", category:"Social Media", year:"2021", tools:["Adobe Illustrator","Adobe Photoshop"], description:"A Facebook post for Bootcamp IT School promoting their 12-week graphic design bootcamp program.", image:"assets/img/portfolio/portfolio-3.jpg", media:"assets/img/portfolio/portfolio-3.jpg", type:"image" },
+    { id:"bijaya-dashami-wish", title:"Bijaya Dashami Wish", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A personal Dashain festival wishes post designed for social media with traditional Nepali aesthetics and motifs.", image:"assets/img/portfolio/portfolio-4.jpg", media:"assets/img/portfolio/portfolio-4.jpg", type:"image" },
+    { id:"admission-open", title:"Admission Open", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A Facebook promotional post for Kent College Nepal advertising BCA/BBS admissions with 100% scholarship offers.", image:"assets/img/portfolio/portfolio-5.jpg", media:"assets/img/portfolio/portfolio-5.jpg", type:"image" },
+    { id:"kent-water-purifier", title:"Kent Water Purifier", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"Social media design for Kent Water Purifier promoting their RO water purification products in Nepal.", image:"assets/img/portfolio/portfolio-6.jpg", media:"assets/img/portfolio/portfolio-6.jpg", type:"image" },
+    { id:"kent-water-purifier-2", title:"Kent Water Purifier 2", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A Women's Day social media post for S.K. Trading featuring Kent and Blue Mount water purifiers with a feminine design approach.", image:"assets/img/portfolio/portfolio-7.jpg", media:"assets/img/portfolio/portfolio-7.jpg", type:"image" },
+    { id:"tihar-wishes", title:"Tihar Wishes", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A festive Tihar (Festival of Lights) wishes post designed for Pathways Solutions Pvt. Ltd. with warm bokeh photography.", image:"assets/img/portfolio/portfolio-8.jpg", media:"assets/img/portfolio/portfolio-8.jpg", type:"image" },
+    { id:"bijaya-dashami-wishes", title:"Bijaya Dashami Wishes", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"Dashain festival wishes post for LacunaMart featuring traditional Nepali festival design elements and Nepali typography.", image:"assets/img/portfolio/portfolio-9.jpg", media:"assets/img/portfolio/portfolio-9.jpg", type:"image" },
+    { id:"abroad-study", title:"Abroad Study", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A promotional Facebook ad for Desire Educational Consultancy encouraging students to pursue higher education in the USA.", image:"assets/img/portfolio/portfolio-10.jpg", media:"assets/img/portfolio/portfolio-10.jpg", type:"image" },
+    { id:"bijaya-dashami-offer", title:"Bijaya Dashami Offer", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A Dashain sale offer post for LacunaMart featuring product promotions and festive kite motifs during the festival season.", image:"assets/img/portfolio/portfolio-11.jpg", media:"assets/img/portfolio/portfolio-11.jpg", type:"image" },
+    { id:"offer-voucher-code", title:"Offer / Voucher Code", category:"Social Media", year:"2022", tools:["Adobe Illustrator","Adobe Photoshop"], description:"A Dashain sale banner for LacunaMart offering up to 55% off with a voucher code — 100OFF — for online shoppers.", image:"assets/img/portfolio/portfolio-12.jpg", media:"assets/img/portfolio/portfolio-12.jpg", type:"image" },
+    { id:"tiktok-marketing-guide", title:"TikTok Marketing Guide", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A Facebook post for LacunaMart explaining how TikTok marketing can help grow a business, styled as a bold editorial graphic.", image:"assets/img/portfolio/portfolio-13.jpg", media:"assets/img/portfolio/portfolio-13.jpg", type:"image" },
+    { id:"bijaya-dashami-wish-2", title:"Bijaya Dashami Wish — P.K. Acharya", category:"Social Media", year:"2022", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A Dashain festival greetings post designed for P.K. Acharya and Associates with a bold red and gold color scheme.", image:"assets/img/portfolio/portfolio-14.jpg", media:"assets/img/portfolio/portfolio-14.jpg", type:"image" },
+    { id:"mens-collection-offer", title:"Men's Collection Offer", category:"Social Media", year:"2022", tools:["Adobe Illustrator","Adobe Photoshop"], description:"A Facebook banner for LacunaMart promoting their Men's Collection with up to 70% off during the Dashain festive season.", image:"assets/img/portfolio/portfolio-15.jpg", media:"assets/img/portfolio/portfolio-15.jpg", type:"image" },
+    { id:"revenue-breakdown", title:"Revenue Breakdown — Kent College", category:"Social Media", year:"2022", tools:["Adobe Illustrator","Adobe Photoshop"], description:"An infographic post for Kent College Nepal visualizing Microsoft's revenue breakdown across product lines for research and educational purposes.", image:"assets/img/portfolio/portfolio-16.jpg", media:"assets/img/portfolio/portfolio-16.jpg", type:"image" },
+    { id:"indreni-nursery", title:"Indreni Nursery Landing Page", category:"Web Design", year:"2023", tools:["Figma","HTML","CSS"], description:"A fully responsive UI/UX design for a plant nursery landing page — Indreni Nursery — created in Figma with a lush nature-inspired green aesthetic across all devices.", image:"assets/img/portfolio/portfolio-17.jpg", media:"assets/img/portfolio/portfolio-17.jpg", type:"image" },
+    { id:"visiting-card", title:"Visiting Card — Personal", category:"Other Designs", year:"2023", tools:["Adobe Illustrator"], description:"A sleek black and white personal visiting card design for Sampanna Raj Dhungel featuring a bold geometric chevron motif and clean typography.", image:"assets/img/portfolio/portfolio-18.jpg", media:"assets/img/portfolio/portfolio-18.jpg", type:"image" },
+    { id:"visiting-card-2", title:"Visiting Card 2", category:"Other Designs", year:"2022", tools:["Adobe Illustrator"], description:"A second visiting card design variant with a clean minimalist layout and professional branding elements.", image:"assets/img/portfolio/portfolio-19.jpg", media:"assets/img/portfolio/portfolio-19.jpg", type:"image" },
+    { id:"ozil-illustration", title:"Ozil Illustration", category:"Other Designs", year:"2021", tools:["Adobe Illustrator"], description:"A minimalist vector illustration of footballer Mesut Özil in his iconic jersey, created as a personal fan art and illustration project.", image:"assets/img/portfolio/portfolio-20.jpg", media:"assets/img/portfolio/portfolio-20.jpg", type:"image" },
+    { id:"voucher-card", title:"New Arrival Voucher Card", category:"Social Media", year:"2022", tools:["Adobe Illustrator","Adobe Photoshop"], description:"A new arrival offer banner for LacunaMart promoting up to 35% off with a voucher code — 800OFF — during the festive season.", image:"assets/img/portfolio/portfolio-21.jpg", media:"assets/img/portfolio/portfolio-21.jpg", type:"image" },
+    { id:"logo-sallaghari-burger", title:"Logo — Sallaghari Burger House", category:"Other Designs", year:"2022", tools:["Adobe Illustrator"], description:"A circular badge-style logo for Sallaghari Burger House located in Suryabinayak, Bhaktapur, featuring food icons and classic typography.", image:"assets/img/portfolio/portfolio-22.jpg", media:"assets/img/portfolio/portfolio-22.jpg", type:"image" },
+    { id:"logo-araniko-fc", title:"Logo — Araniko FC", category:"Other Designs", year:"2022", tools:["Adobe Illustrator"], description:"A shield-style football club badge for Araniko FC, a Nepali local club based in Brisbane, Australia, featuring the Nepal flag symbols.", image:"assets/img/portfolio/portfolio-23.png", media:"assets/img/portfolio/portfolio-23.png", type:"image" },
+    { id:"logo-wine-hub-nepal", title:"Logo — Wine Hub Nepal", category:"Other Designs", year:"2022", tools:["Adobe Illustrator"], description:"A vintage-style circular emblem logo for Wine Hub Nepal, established 2022, featuring a vineyard and wine bottle illustration.", image:"assets/img/portfolio/portfolio-24.jpg", media:"assets/img/portfolio/portfolio-24.jpg", type:"image" },
+    { id:"hoarding-board", title:"Hoarding Board — Chirag Emporium", category:"Other Designs", year:"2021", tools:["Adobe Illustrator","Adobe Photoshop"], description:"A large format hoarding board design for Chirag Emporium promoting local Nepali food products and household goods.", image:"assets/img/portfolio/portfolio-25.jpg", media:"assets/img/portfolio/portfolio-25.jpg", type:"image" },
+    { id:"banner-design", title:"Banner — Nepal Student Union", category:"Other Designs", year:"2021", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A help desk banner designed for Nepal Student Union (Nepal Bidyarthi Sangh), Bhaktapur District Committee.", image:"assets/img/portfolio/portfolio-26.jpg", media:"assets/img/portfolio/portfolio-26.jpg", type:"image" },
+    { id:"diary-cover", title:"Diary Cover — Wave Trophies", category:"Other Designs", year:"2021", tools:["Adobe Photoshop","Adobe Illustrator"], description:"A diary cover design for Wave Trophies, a trophy and medals supplier based in Bagbazar, Kathmandu, Nepal.", image:"assets/img/portfolio/portfolio-27.jpg", media:"assets/img/portfolio/portfolio-27.jpg", type:"image" }
+  ];
+
+  // ── CATEGORY ICONS ──
+  const catIcon = {
+    "3D Animation": "bi-badge-3d",
+    "Motion Graphics": "bi-play-circle",
+    "Social Media": "bi-share",
+    "Sound Design": "bi-music-note-beamed",
+    "Web Design": "bi-globe",
+    "Other Designs": "bi-palette"
+  };
+
+  // ── GET ID FROM URL ──
+  function getProjectId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('id');
+  }
+
+  // ── GET RELATED PROJECTS ──
+  function getRelated(project, currentIndex) {
+    return projects
+      .filter((p, i) => i !== currentIndex && p.category === project.category)
+      .slice(0, 3);
+  }
+
+  // ── RENDER PROJECT ──
+  function render() {
+    const id = getProjectId();
+    const index = projects.findIndex(p => p.id === id);
+    const content = document.getElementById('page-content');
+
+    if (index === -1) {
+      content.innerHTML = `
+        <div class="not-found fade-in">
+          <i class="bi bi-compass"></i>
+          <h2>Project Not Found</h2>
+          <p>This project doesn't exist or may have been removed.</p>
+          <a href="index.html#portfolio" class="btn-back">
+            <i class="bi bi-arrow-left"></i> Back to Portfolio
+          </a>
+        </div>`;
+      return;
+    }
+
+    const p = projects[index];
+    const prev = index > 0 ? projects[index - 1] : null;
+    const next = index < projects.length - 1 ? projects[index + 1] : null;
+    const related = getRelated(p, index);
+
+    document.title = `${p.title} | Sampanna Raj Dhungel`;
+
+    const mediaHTML = p.type === 'video'
+      ? `<video controls playsinline poster="${p.image}"><source src="${p.media}" type="video/mp4">Your browser does not support video.</video><div class="media-type-badge"><i class="bi bi-play-fill"></i> Video</div>`
+      : `<img src="${p.media}" alt="${p.title}"><div class="media-type-badge"><i class="bi bi-image"></i> Design</div>`;
+
+    const toolsHTML = p.tools.map(t => `<span class="tool-tag">${t}</span>`).join('');
+
+    const relatedHTML = related.length > 0 ? `
+      <hr class="section-divider">
+      <div class="related-section fade-in">
+        <div class="related-title">More <span>${p.category}</span> Projects</div>
+        <div class="related-grid">
+          ${related.map(r => `
+            <a href="project.html?id=${r.id}" class="related-card">
+              <img src="${r.image}" alt="${r.title}" loading="lazy">
+              <div class="related-card-info">
+                <div class="related-card-cat">${r.category}</div>
+                <div class="related-card-title">${r.title}</div>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      </div>` : '';
+
+    content.innerHTML = `
+      <!-- HERO -->
+      <div class="project-hero fade-in">
+        <div class="hero-inner">
+          <div class="project-category-badge">
+            <i class="bi ${catIcon[p.category] || 'bi-folder'}"></i>
+            ${p.category}
+          </div>
+          <h1 class="project-title">${p.title}</h1>
+          <div class="project-meta-row">
+            <div class="meta-item"><i class="bi bi-calendar3"></i> ${p.year}</div>
+            <div class="meta-item"><i class="bi bi-tools"></i> ${p.tools.join(', ')}</div>
+            <div class="meta-item"><i class="bi bi-layers"></i> ${index + 1} of ${projects.length}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="project-body">
+
+        <!-- LEFT: MEDIA + DESC -->
+        <div>
+          <div class="media-wrap fade-in">${mediaHTML}</div>
+          <div class="project-description fade-in">
+            <div class="section-label">About this project</div>
+            <p>${p.description}</p>
+          </div>
+        </div>
+
+        <!-- RIGHT: SIDEBAR -->
+        <div class="sidebar fade-in">
+
+          <!-- Project Info -->
+          <div class="info-card">
+            <h4>Project Details</h4>
+            <div class="info-row">
+              <i class="bi bi-folder2"></i>
+              <div class="info-row-content">
+                <div class="info-row-label">Category</div>
+                <div class="info-row-value">${p.category}</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-calendar3"></i>
+              <div class="info-row-content">
+                <div class="info-row-label">Year</div>
+                <div class="info-row-value">${p.year}</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-tools"></i>
+              <div class="info-row-content">
+                <div class="info-row-label">Tools Used</div>
+                <div class="tools-list">${toolsHTML}</div>
+              </div>
+            </div>
+            <div class="info-row">
+              <i class="bi bi-person-fill"></i>
+              <div class="info-row-content">
+                <div class="info-row-label">Designer</div>
+                <div class="info-row-value">Sampanna Raj Dhungel</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="info-card">
+            <h4>Navigate Projects</h4>
+            <div class="project-nav">
+              <a href="${prev ? 'project.html?id=' + prev.id : '#'}" class="nav-btn ${!prev ? 'disabled' : ''}">
+                <i class="bi bi-chevron-left"></i> Prev
+              </a>
+              <a href="${next ? 'project.html?id=' + next.id : '#'}" class="nav-btn ${!next ? 'disabled' : ''}">
+                Next <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact CTA -->
+          <div class="info-card" style="background: linear-gradient(135deg, #0563bb, #034f96); border-color: #0563bb;">
+            <h4 style="color: rgba(255,255,255,0.7);">Like this work?</h4>
+            <p style="font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6; margin-bottom:14px;">Let's collaborate on your next project.</p>
+            <a href="index.html#contact" style="display:inline-flex; align-items:center; gap:7px; padding:10px 18px; background:#fff; color:#0563bb; border-radius:50px; font-size:13px; font-weight:600; text-decoration:none; font-family:'Syne',sans-serif;">
+              <i class="bi bi-envelope-fill"></i> Get in Touch
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      ${relatedHTML}
+    `;
+  }
+
+  render();
+  </script>
+
+</body>
+</html>
