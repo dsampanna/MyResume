@@ -1863,6 +1863,7 @@ section {
   margin: 0;
 }
 
+
 /* Responsive */
 @media (max-width: 767px) {
   .srv-glass-card {
@@ -2382,7 +2383,8 @@ section {
 #footer .copyright {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.7);
-  margin: 0;
+  
+  position: right;
 }
 
 #footer .last-updated {
@@ -3041,6 +3043,45 @@ section {
   border-color: #1ebe5d;
 }
 
+
+.freelance-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2ecc71;
+  padding: 10px 18px;
+  border: 1.5px solid #2ecc71;
+  border-radius: 50px;
+  background: rgba(46, 204, 113, 0.06);
+}
+
+.freelance-availability i {
+  font-size: 15px;
+  color: #2ecc71;
+}
+
+.freelance-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 28px;
+  background: #0563bb;
+  color: #fff !important;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(5, 99, 187, 0.35);
+}
+
+.freelance-cta:hover {
+  background: #034f96;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(5, 99, 187, 0.45);
+  color: #fff !important;
+}
 
 /* Responsive */
 @media (max-width: 991px) {
