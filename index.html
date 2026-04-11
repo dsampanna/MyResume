@@ -1717,11 +1717,12 @@
         </div>
 
         <div class="contact-socials">
-          <a href="https://twitter.com/dsampanna"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.facebook.com/dsampanna"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.instagram.com/__sampannaad/"><i class="bx bxl-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/dsampanna/"><i class="bx bxl-linkedin"></i></a>
-        </div>
+              <a href="https://twitter.com/dsampanna"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/dsampanna"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.instagram.com/__sampannaad/"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/dsampanna/"><i class="bx bxl-linkedin"></i></a>
+              <a href="https://wa.me/9779861487026" target="_blank" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+      </div>
       </div>
 
       <div class="contact-glass-form" data-aos="fade-left">
@@ -2007,11 +2008,42 @@
 </script>
 
 
-<!-- Footer copyright year dynamic -->
+<script>
+  const backToTop = document.querySelector('.back-to-top');
+
+  backToTop.addEventListener('click', function () {
+    // Add clicked animation
+    this.classList.add('clicked');
+
+    // Remove after animation completes
+    setTimeout(() => {
+      this.classList.remove('clicked');
+    }, 300);
+
+    // Smooth scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
 
  
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/9779861487026" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+  <i class="bx bxl-whatsapp"></i>
+</a>
 
-
+<script>
+  window.addEventListener('scroll', function () {
+    const whatsappBtn = document.querySelector('.whatsapp-float');
+    if (window.scrollY > 100) {
+      whatsappBtn.classList.add('active');
+    } else {
+      whatsappBtn.classList.remove('active');
+    }
+  });
+</script>
 </body>
 
 </html>
