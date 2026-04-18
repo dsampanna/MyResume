@@ -49,7 +49,23 @@
 </head>
 
 <body>
+<!-- Dark Mode Toggle -->
+<div class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+  <i class="bi bi-moon-fill" id="themeIcon"></i>
+</div>
 
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Branded Preloader -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-logo">SR</div>
+    <div class="preloader-bar"><div class="preloader-fill"></div></div>
+    <div class="preloader-text">Loading Portfolio...</div>
+  </div>
+</div>
   <!-- ======= Mobile nav toggle button ======= -->
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
@@ -1653,7 +1669,85 @@
   }
 </script>
 <!-- End Contact Section -->
-    
+    <script>
+  // ── PRELOADER ──
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      document.getElementById('preloader').classList.add('hidden');
+    }, 2200);
+  });
+
+  // ── DARK MODE ──
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  const body = document.body;
+
+  // Load saved preference
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    icon.className = 'bi bi-sun-fill';
+  }
+
+  toggle.addEventListener('click', function () {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+      icon.className = 'bi bi-sun-fill';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      icon.className = 'bi bi-moon-fill';
+      localStorage.setItem('theme', 'light');
+    }
+  });
+
+  // ── CUSTOM CURSOR ──
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', function (e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  // Smooth ring follow
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover effect on interactive elements
+  const hoverTargets = document.querySelectorAll(
+    'a, button, .portfolio-wrap, .ga-card, .srv-glass-card, .nav-menu a, .theme-toggle'
+  );
+
+  hoverTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+  });
+
+  // Click effect
+  document.addEventListener('mousedown', () => dot.classList.add('clicking'));
+  document.addEventListener('mouseup', () => dot.classList.remove('clicking'));
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+</script>
     
     
     <!-- <section id="contact" class="contact">
