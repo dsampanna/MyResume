@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelancing as a Designer in Nepal — Sampanna Raj Dhungel</title>
+  <meta name="description" content="What it's actually like trying to build a freelance design career in Nepal. The challenges, opportunities and lessons after 5 years. By Sampanna Raj Dhungel.">
+  <link rel="canonical" href="https://www.sampannadhungel.com.np/blog-freelancing-nepal.html">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #0563bb;
+      --blue-dark: #034f96;
+      --green: #2D5016;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1a1f2e;
+      --text-muted: #6b7a99;
+      --border: #e0e8f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+
+    .topbar-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; color: var(--blue); text-decoration: none; }
+    .topbar-nav { display: flex; align-items: center; gap: 4px; }
+    .topbar-link { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: #4a5568 !important; text-decoration: none !important; padding: 6px 10px; border-radius: 6px; transition: all 0.2s ease; }
+    .topbar-link:hover { color: var(--blue) !important; background: #eef3fa; }
+    .btn-back { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; background: var(--blue); color: #fff !important; border-radius: 50px; font-size: 12px; font-weight: 600; text-decoration: none !important; transition: all 0.25s ease; font-family: 'Syne', sans-serif; margin-left: 8px; }
+    .btn-back:hover { background: var(--blue-dark); color: #fff !important; }
+
+    @media (max-width: 900px) { .topbar { padding: 0 20px; } .topbar-link { display: none; } }
+
+    .article-hero {
+      margin-top: 64px;
+      background: linear-gradient(135deg, #2D5016 0%, #1a3009 100%);
+      padding: 80px 40px 60px;
+      text-align: center;
+    }
+
+    .article-tag { display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 50px; font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; font-family: 'Syne', sans-serif; }
+    .article-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 5vw, 52px); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -1px; max-width: 720px; margin: 0 auto 24px; }
+    .article-meta { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,0.7); }
+    .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+    .article-body { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+    .article-body p { font-size: 17px; line-height: 1.85; color: #3a4560; font-weight: 300; margin-bottom: 24px; }
+    .article-body h2 { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; margin: 48px 0 16px; line-height: 1.2; }
+    .article-body h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body ul, .article-body ol { margin: 16px 0 24px 20px; }
+    .article-body li { font-size: 17px; line-height: 1.8; color: #3a4560; font-weight: 300; margin-bottom: 8px; }
+
+    .pull-quote { border-left: 4px solid #2D5016; padding: 20px 28px; background: #e8f0dc; border-radius: 0 12px 12px 0; margin: 32px 0; font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: #2D5016; line-height: 1.6; }
+
+    .highlight-box { background: var(--card); border-radius: 16px; padding: 24px 28px; border: 1px solid var(--border); border-left: 4px solid var(--blue); margin: 32px 0; }
+    .highlight-box p { margin: 0; font-size: 15px; }
+
+    .author-box { background: linear-gradient(135deg, #2D5016, #1a3009); border-radius: 20px; padding: 32px; display: flex; gap: 20px; align-items: center; margin-top: 60px; }
+    .author-avatar { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .author-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .author-bio { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; font-weight: 300; }
+    .author-bio a { color: #a8d5a2; text-decoration: none; }
+
+    .more-articles { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .more-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 20px; }
+    .more-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .more-card { background: var(--card); border-radius: 14px; padding: 20px; border: 1px solid var(--border); text-decoration: none; transition: all 0.3s ease; display: block; }
+    .more-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(5,99,187,0.1); }
+    .more-card-tag { font-size: 10px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-family: 'Syne', sans-serif; }
+    .more-card-title { font-size: 14px; font-weight: 700; color: var(--text); font-family: 'Syne', sans-serif; line-height: 1.4; }
+
+    @media (max-width: 768px) { .article-hero { padding: 60px 20px 40px; } .article-body { padding: 40px 16px 80px; } .author-box { flex-direction: column; text-align: center; } .more-grid { grid-template-columns: 1fr; } }
+
+    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.5s ease forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
+    <div class="topbar-nav">
+      <a href="blog.html" class="topbar-link">← All Articles</a>
+      <a href="index.html#portfolio" class="topbar-link">Portfolio</a>
+      <a href="index.html#contact" class="topbar-link">Contact</a>
+      <a href="blog.html" class="btn-back"><i class="bi bi-arrow-left"></i> Blog</a>
+    </div>
+  </div>
+
+  <div class="article-hero fade-in">
+    <div class="article-tag">🏔️ Freelancing</div>
+    <h1 class="article-title">Freelancing as a Designer in Nepal — The Real Story</h1>
+    <div class="article-meta">
+      <span><i class="bi bi-person-fill"></i> Sampanna Raj Dhungel</span>
+      <span><i class="bi bi-calendar3"></i> April 2026</span>
+      <span><i class="bi bi-clock"></i> 7 min read</span>
+      <span><i class="bi bi-geo-alt-fill"></i> Bhaktapur, Nepal</span>
+    </div>
+  </div>
+
+  <div class="article-body fade-in">
+
+    <p>Nobody tells you the honest truth about freelancing as a designer in Nepal. Most of what you read online is written for designers in the US or UK — markets with completely different realities. So let me tell you what it's actually like here, from someone who has been doing it for 5 years.</p>
+
+    <h2>The Good News First</h2>
+
+    <p>Nepal's creative economy is growing fast. More businesses — from Kathmandu startups to Terai-based SMEs — are beginning to understand the value of professional design. Social media has made visual content non-negotiable for any business that wants to exist online. And the internet has made it possible to work with clients anywhere in the world from a room in Bhaktapur.</p>
+
+    <p>These are real opportunities. Five years ago, finding a client willing to pay fairly for design work in Nepal was genuinely difficult. Today, the conversation is different — not easy, but genuinely better.</p>
+
+    <div class="pull-quote">
+      "The market doesn't owe you anything. But it does respond to quality, consistency and persistence."
+    </div>
+
+    <h2>The Real Challenges</h2>
+
+    <h3>Pricing is the Hardest Thing</h3>
+
+    <p>The most consistent challenge I've faced — and that every Nepali freelance designer I know faces — is pricing. There's enormous downward pressure on rates here. Clients compare your prices to what they can get on Fiverr for $5, or to a design student who will do anything for Rs 500. Explaining why quality work costs what it costs is an ongoing education.</p>
+
+    <p>My approach: <strong>never compete on price, always compete on value</strong>. Show clients what professional design actually delivers — more customers, stronger brand recognition, better first impressions. When you frame it in terms of business outcomes rather than hours worked, the conversation changes.</p>
+
+    <h3>Payment is Inconsistent</h3>
+
+    <p>Late payments, partial payments, clients who disappear after receiving work — these are not rare edge cases in Nepal. They are common enough that you have to build systems to protect yourself. I always take a 50% deposit before starting any project. Always. No exceptions. This single rule has saved me more times than I can count.</p>
+
+    <h3>The International Gap</h3>
+
+    <p>Working with international clients from Nepal has its own friction — payment platforms, time zone management, communication styles and contracts. But it's absolutely worth working through. International clients generally pay more, respect your time better and are more familiar with professional design processes. Getting your first international client changes your perspective on what's possible.</p>
+
+    <h2>What Has Actually Worked For Me</h2>
+
+    <ul>
+      <li><strong>Specialising rather than generalising</strong> — I do UI/UX, motion graphics, branding and video. That's a focused set of skills. Designers who say they do everything often end up doing nothing particularly well.</li>
+      <li><strong>Building a proper portfolio</strong> — Not just showing finished work, but documenting process, thinking and outcomes. This is what separates you from the hundreds of designers with an Instagram account full of social media posts.</li>
+      <li><strong>Being easy to work with</strong> — Responding quickly, communicating clearly, delivering on time. These sound basic but they are genuinely rare and clients remember them.</li>
+      <li><strong>Asking for referrals</strong> — Every happy client knows other business owners. A simple "do you know anyone who might need design work?" after a successful project has brought me some of my best clients.</li>
+      <li><strong>Investing in skills constantly</strong> — The designers who stagnate are the ones who stop learning. The market rewards people who keep growing.</li>
+    </ul>
+
+    <h2>The Money Reality</h2>
+
+    <p>Let me be honest about the financial reality. Freelancing in Nepal can provide a very good income — but it takes time to build. The first year is almost always difficult. The second is better. By the third year, if you've been consistent and strategic, you can earn significantly more than most salaried design jobs in Kathmandu.</p>
+
+    <div class="highlight-box">
+      <p><strong>A rough framework that works for me:</strong> Price your services based on the value delivered to the client, not the hours you spend. A logo that helps a business attract customers for the next 5 years is worth far more than the 20 hours it took to design.</p>
+    </div>
+
+    <h2>Advice for Designers Starting Out in Nepal</h2>
+
+    <ul>
+      <li>Build your portfolio before you need clients — work on self-initiated projects, do passion projects, design for fictional brands if you have to</li>
+      <li>Get your first 3-5 clients through your personal network — friends, family, local businesses you know — then use those as case studies</li>
+      <li>Learn to write about your work in English — this opens the international market dramatically</li>
+      <li>Always have a contract, always take a deposit — protect yourself from the start</li>
+      <li>Don't compete on price — compete on quality, process and communication</li>
+      <li>Invest in your tools — a good laptop, legitimate software, fast internet — these are not luxuries, they are the cost of doing business professionally</li>
+    </ul>
+
+    <h2>Where Nepal's Design Industry Is Heading</h2>
+
+    <p>I'm genuinely optimistic about the future. More Nepali businesses are investing in professional design. More young designers are building serious skills. The remote work era has opened global opportunities that simply didn't exist before. And Nepali designers — when they build proper portfolios and communication skills — are absolutely competitive in international markets.</p>
+
+    <p>The opportunity is real. The work is hard. But it's worth it.</p>
+
+    <div class="author-box">
+      <div class="author-avatar">SR</div>
+      <div>
+        <div class="author-name">Sampanna Raj Dhungel</div>
+        <div class="author-bio">Creative Director & Digital Media Designer based in Bhaktapur, Nepal. 5 years of freelance experience working with local and international clients. Currently available for new projects. <a href="index.html#contact">Get in touch →</a></div>
+      </div>
+    </div>
+
+    <div class="more-articles">
+      <div class="more-title">More Articles</div>
+      <div class="more-grid">
+        <a href="blog-brand-identity.html" class="more-card">
+          <div class="more-card-tag">Branding</div>
+          <div class="more-card-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</div>
+        </a>
+        <a href="blog-sound-design.html" class="more-card">
+          <div class="more-card-tag">Sound Design</div>
+          <div class="more-card-title">Sound Design for Video — A Beginner's Guide</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

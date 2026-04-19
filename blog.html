@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Sampanna Raj Dhungel</title>
+  <meta name="description" content="Design insights, freelancing tips and creative industry thoughts from Sampanna Raj Dhungel — Digital Media Designer based in Nepal.">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #0563bb;
+      --blue-dark: #034f96;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1a1f2e;
+      --text-muted: #6b7a99;
+      --border: #e0e8f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+
+    .topbar-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .topbar-nav { display: flex; align-items: center; gap: 4px; }
+
+    .topbar-link {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4a5568 !important;
+      text-decoration: none !important;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .topbar-link:hover { color: var(--blue) !important; background: #eef3fa; }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      background: var(--blue);
+      color: #fff !important;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: all 0.25s ease;
+      font-family: 'Syne', sans-serif;
+      margin-left: 8px;
+    }
+
+    .btn-back:hover { background: var(--blue-dark); transform: translateY(-1px); color: #fff !important; }
+
+    @media (max-width: 900px) {
+      .topbar { padding: 0 20px; }
+      .topbar-link { display: none; }
+    }
+
+    /* ── HERO ── */
+    .blog-hero {
+      margin-top: 64px;
+      background: linear-gradient(135deg, #0a1628 0%, #0e2040 60%, #0563bb22 100%);
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero::before {
+      content: '✍️';
+      position: absolute;
+      font-size: 300px;
+      right: -20px;
+      top: -60px;
+      opacity: 0.04;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .blog-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      background: rgba(5,99,187,0.2);
+      border: 1px solid rgba(5,99,187,0.4);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #7eb8ff;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .blog-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .blog-title span { color: #7eb8ff; }
+
+    .blog-subtitle {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── BLOG GRID ── */
+    .blog-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .blog-card {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+      color: var(--text);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(5,99,187,0.12);
+      border-color: var(--blue);
+      color: var(--text);
+    }
+
+    .blog-card-thumb {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb-1 { background: linear-gradient(135deg, #0563bb, #034f96); }
+    .thumb-2 { background: linear-gradient(135deg, #2D5016, #3d6b1e); }
+    .thumb-3 { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+
+    .blog-card-info {
+      padding: 24px;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .blog-tag {
+      padding: 3px 10px;
+      background: #eef3fa;
+      color: var(--blue);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Syne', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .blog-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .blog-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+
+    .blog-card-excerpt {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .blog-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      font-family: 'Syne', sans-serif;
+      transition: gap 0.2s ease;
+    }
+
+    .blog-card:hover .blog-read-more { gap: 10px; }
+
+    /* Featured card — full width */
+    .blog-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .blog-card.featured .blog-card-thumb {
+      height: 100%;
+      min-height: 240px;
+      font-size: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-card.featured { grid-template-columns: 1fr; }
+      .blog-card.featured .blog-card-thumb { height: 200px; }
+      .blog-hero { padding: 60px 20px 40px; }
+      .blog-body { padding: 40px 16px 80px; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
+    <div class="topbar-nav">
+      <a href="index.html#about" class="topbar-link">About</a>
+      <a href="index.html#portfolio" class="topbar-link">Portfolio</a>
+      <a href="index.html#services" class="topbar-link">Services</a>
+      <a href="index.html#contact" class="topbar-link">Contact</a>
+      <a href="index.html" class="btn-back"><i class="bi bi-arrow-left"></i> Back Home</a>
+    </div>
+  </div>
+
+  <div class="blog-hero fade-in">
+    <div class="hero-inner">
+      <div class="blog-badge">✍️ Blog</div>
+      <h1 class="blog-title">Thoughts on<br><span>Design & Craft</span></h1>
+      <p class="blog-subtitle">Design insights, freelancing tips and creative industry stories from a designer based in Nepal.</p>
+    </div>
+  </div>
+
+  <div class="blog-body">
+    <div class="blog-grid">
+
+      <!-- Article 1 - Featured -->
+      <a href="blog-brand-identity.html" class="blog-card featured fade-in">
+        <div class="blog-card-thumb thumb-1">🎨</div>
+        <div class="blog-card-info">
+          <div class="blog-meta">
+            <span class="blog-tag">Branding</span>
+            <span class="blog-date">April 2026</span>
+          </div>
+          <div class="blog-card-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</div>
+          <div class="blog-card-excerpt">Brand identity is more than a logo. It's the complete visual and emotional language of a business. Here's exactly how I approach building one from zero — from the first client conversation to final delivery.</div>
+          <div class="blog-read-more">Read Article <i class="bi bi-arrow-right"></i></div>
+        </div>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="blog-freelancing-nepal.html" class="blog-card fade-in">
+        <div class="blog-card-thumb thumb-2">🏔️</div>
+        <div class="blog-card-info">
+          <div class="blog-meta">
+            <span class="blog-tag">Freelancing</span>
+            <span class="blog-date">April 2026</span>
+          </div>
+          <div class="blog-card-title">Freelancing as a Designer in Nepal — The Real Story</div>
+          <div class="blog-card-excerpt">What it's actually like trying to build a freelance design career in Nepal. The challenges, the opportunities, and what I've learned after 5 years of doing it.</div>
+          <div class="blog-read-more">Read Article <i class="bi bi-arrow-right"></i></div>
+        </div>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="blog-sound-design.html" class="blog-card fade-in">
+        <div class="blog-card-thumb thumb-3">🎧</div>
+        <div class="blog-card-info">
+          <div class="blog-meta">
+            <span class="blog-tag">Sound Design</span>
+            <span class="blog-date">April 2026</span>
+          </div>
+          <div class="blog-card-title">Sound Design for Video — A Beginner's Guide</div>
+          <div class="blog-card-excerpt">Most designers ignore sound completely. That's a mistake. Great audio can make a mediocre video feel premium. Here's how to get started with sound design even if you have no music background.</div>
+          <div class="blog-read-more">Read Article <i class="bi bi-arrow-right"></i></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</body>
+</html>

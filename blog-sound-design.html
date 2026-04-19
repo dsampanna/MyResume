@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sound Design for Video — A Beginner's Guide | Sampanna Raj Dhungel</title>
+  <meta name="description" content="How to get started with sound design for video even with no music background. A practical beginner's guide by Sampanna Raj Dhungel, Digital Media Designer, Nepal.">
+  <link rel="canonical" href="https://www.sampannadhungel.com.np/blog-sound-design.html">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #0563bb;
+      --blue-dark: #034f96;
+      --dark: #1a1a2e;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1a1f2e;
+      --text-muted: #6b7a99;
+      --border: #e0e8f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: rgba(255,255,255,0.95); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); gap: 16px; }
+    .topbar-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; color: var(--blue); text-decoration: none; }
+    .topbar-nav { display: flex; align-items: center; gap: 4px; }
+    .topbar-link { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: #4a5568 !important; text-decoration: none !important; padding: 6px 10px; border-radius: 6px; transition: all 0.2s ease; }
+    .topbar-link:hover { color: var(--blue) !important; background: #eef3fa; }
+    .btn-back { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; background: var(--blue); color: #fff !important; border-radius: 50px; font-size: 12px; font-weight: 600; text-decoration: none !important; transition: all 0.25s ease; font-family: 'Syne', sans-serif; margin-left: 8px; }
+    .btn-back:hover { background: var(--blue-dark); color: #fff !important; }
+    @media (max-width: 900px) { .topbar { padding: 0 20px; } .topbar-link { display: none; } }
+
+    .article-hero { margin-top: 64px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%); padding: 80px 40px 60px; text-align: center; }
+    .article-tag { display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; font-family: 'Syne', sans-serif; }
+    .article-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 5vw, 52px); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -1px; max-width: 720px; margin: 0 auto 24px; }
+    .article-meta { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,0.6); }
+    .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+    .article-body { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+    .article-body p { font-size: 17px; line-height: 1.85; color: #3a4560; font-weight: 300; margin-bottom: 24px; }
+    .article-body h2 { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; margin: 48px 0 16px; line-height: 1.2; }
+    .article-body h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin: 32px 0 12px; }
+    .article-body strong { color: var(--text); font-weight: 600; }
+    .article-body ul, .article-body ol { margin: 16px 0 24px 20px; }
+    .article-body li { font-size: 17px; line-height: 1.8; color: #3a4560; font-weight: 300; margin-bottom: 8px; }
+
+    .pull-quote { border-left: 4px solid #0f3460; padding: 20px 28px; background: #e8eaf6; border-radius: 0 12px 12px 0; margin: 32px 0; font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: #0f3460; line-height: 1.6; }
+
+    /* Sound layer cards */
+    .sound-layer {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      margin-bottom: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .sound-layer-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .sound-layer-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .sound-layer-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* Tool cards */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .tool-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .tool-level {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 50px;
+      font-size: 10px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .level-free { background: #dcf5e7; color: #1a6b3c; }
+    .level-paid { background: #fef3c7; color: #92400e; }
+
+    .tool-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+    .author-box { background: linear-gradient(135deg, #1a1a2e, #16213e); border-radius: 20px; padding: 32px; display: flex; gap: 20px; align-items: center; margin-top: 60px; }
+    .author-avatar { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .author-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .author-bio { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; font-weight: 300; }
+    .author-bio a { color: #7eb8ff; text-decoration: none; }
+
+    .more-articles { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .more-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 20px; }
+    .more-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .more-card { background: var(--card); border-radius: 14px; padding: 20px; border: 1px solid var(--border); text-decoration: none; transition: all 0.3s ease; display: block; }
+    .more-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(5,99,187,0.1); }
+    .more-card-tag { font-size: 10px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-family: 'Syne', sans-serif; }
+    .more-card-title { font-size: 14px; font-weight: 700; color: var(--text); font-family: 'Syne', sans-serif; line-height: 1.4; }
+
+    @media (max-width: 768px) { .article-hero { padding: 60px 20px 40px; } .article-body { padding: 40px 16px 80px; } .author-box { flex-direction: column; text-align: center; } .more-grid { grid-template-columns: 1fr; } .tools-grid { grid-template-columns: 1fr; } }
+
+    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.5s ease forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
+    <div class="topbar-nav">
+      <a href="blog.html" class="topbar-link">← All Articles</a>
+      <a href="index.html#portfolio" class="topbar-link">Portfolio</a>
+      <a href="index.html#contact" class="topbar-link">Contact</a>
+      <a href="blog.html" class="btn-back"><i class="bi bi-arrow-left"></i> Blog</a>
+    </div>
+  </div>
+
+  <div class="article-hero fade-in">
+    <div class="article-tag">🎧 Sound Design</div>
+    <h1 class="article-title">Sound Design for Video — A Beginner's Guide</h1>
+    <div class="article-meta">
+      <span><i class="bi bi-person-fill"></i> Sampanna Raj Dhungel</span>
+      <span><i class="bi bi-calendar3"></i> April 2026</span>
+      <span><i class="bi bi-clock"></i> 6 min read</span>
+      <span><i class="bi bi-geo-alt-fill"></i> Bhaktapur, Nepal</span>
+    </div>
+  </div>
+
+  <div class="article-body fade-in">
+
+    <p>Most video editors and motion graphics designers treat sound as an afterthought. They finish the visuals, slap a royalty-free track underneath, and call it done. This is a massive mistake — and one that instantly reveals the difference between amateur and professional work.</p>
+
+    <p>Sound is not decoration. <strong>Sound is half the experience.</strong> Watch any scene from a great film with the audio off and you'll feel the difference immediately. The same is true for motion graphics, brand videos, social media content and anything else you create.</p>
+
+    <p>Here's how to get started with sound design — even if you have no music background and have never touched audio software before.</p>
+
+    <div class="pull-quote">
+      "Sound is 50% of the motion picture experience." — George Lucas
+    </div>
+
+    <h2>Understanding the Layers of Sound</h2>
+
+    <p>Professional sound design for video typically involves several distinct layers working together. Understanding these layers is the first step to thinking like a sound designer.</p>
+
+    <div class="sound-layer">
+      <div class="sound-layer-icon">🎵</div>
+      <div>
+        <div class="sound-layer-title">Music / Score</div>
+        <div class="sound-layer-text">The emotional backbone of your video. Music sets the mood, pace and emotional tone. It should support the visual story, not overpower it. Choose music that fits the energy of the content — not just music you personally like.</div>
+      </div>
+    </div>
+
+    <div class="sound-layer">
+      <div class="sound-layer-icon">💬</div>
+      <div>
+        <div class="sound-layer-title">Dialogue / Voiceover</div>
+        <div class="sound-layer-text">If your video has people speaking, this is the most important audio layer. Dialogue must be clear above everything else. All other audio elements should be mixed around it, never competing with it.</div>
+      </div>
+    </div>
+
+    <div class="sound-layer">
+      <div class="sound-layer-icon">🔊</div>
+      <div>
+        <div class="sound-layer-title">Sound Effects (SFX)</div>
+        <div class="sound-layer-text">Sounds that accompany visual actions — a click, a whoosh, a notification sound, a door closing. For motion graphics specifically, these are crucial — they make animations feel physical and satisfying. A button that makes no sound when it appears feels incomplete.</div>
+      </div>
+    </div>
+
+    <div class="sound-layer">
+      <div class="sound-layer-icon">🌿</div>
+      <div>
+        <div class="sound-layer-title">Ambient Sound / Atmosphere</div>
+        <div class="sound-layer-text">Background sound that creates a sense of place and space. Even a subtle room tone or environmental sound makes a video feel more immersive and real. Silence — complete silence — often feels wrong to our ears.</div>
+      </div>
+    </div>
+
+    <h2>The Tools You Need</h2>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-name">Adobe Audition</div>
+        <span class="tool-level level-paid">Paid</span>
+        <div class="tool-desc">The industry standard for audio editing in video workflows. Integrates perfectly with Premiere Pro. Excellent for cleaning up dialogue, mixing and mastering.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Audacity</div>
+        <span class="tool-level level-free">Free</span>
+        <div class="tool-desc">The best free audio editor. Not as powerful as Audition but more than enough to get started with sound editing, noise reduction and basic mixing.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Adobe Premiere Pro</div>
+        <span class="tool-level level-paid">Paid</span>
+        <div class="tool-desc">Handles basic audio mixing well within your video editing workflow. Essential Audio panel makes basic sound work accessible without needing a separate DAW.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Reason Studios</div>
+        <span class="tool-level level-paid">Paid</span>
+        <div class="tool-desc">A full music production environment. Great for creating original sound effects and musical elements. More complex but extremely powerful for original sound creation.</div>
+      </div>
+    </div>
+
+    <h2>Where to Find Sound Effects and Music</h2>
+
+    <p>You don't need to create every sound from scratch — especially when you're starting out. Here are the best sources:</p>
+
+    <ul>
+      <li><strong>Freesound.org</strong> — Massive free library of sound effects uploaded by a global community. Quality varies but there are gems everywhere.</li>
+      <li><strong>Epidemic Sound</strong> — Subscription-based. Excellent quality music and SFX, all properly licensed for commercial use.</li>
+      <li><strong>Artlist</strong> — Similar to Epidemic Sound. Annual subscription with unlimited downloads and full commercial licensing.</li>
+      <li><strong>Mixkit</strong> — Free sound effects and music tracks. Quality is surprisingly good for a free resource.</li>
+      <li><strong>YouTube Audio Library</strong> — Free music and sound effects from Google. Good for projects where budget is tight.</li>
+      <li><strong>Zapsplat</strong> — Free account gives access to thousands of professional sound effects.</li>
+    </ul>
+
+    <h2>The Most Important Principle — Less is More</h2>
+
+    <p>The beginner's instinct is to add more sound — more effects, louder music, more layers. The professional instinct is to subtract. <strong>Every sound in your mix should earn its place.</strong> If removing a sound makes the piece feel the same or better, remove it.</p>
+
+    <p>The goal of sound design is not to fill silence. It's to make the audience feel what you want them to feel without them noticing the audio at all. When sound design is working perfectly, viewers don't think about the audio — they just feel the emotion.</p>
+
+    <h2>A Simple Practice Exercise</h2>
+
+    <p>Take any short motion graphics piece you've already made — even just 15-30 seconds. Mute all the audio and watch it. Now add just three things: background music, two or three sound effects for key animation moments, and a short reverb tail at the end. Export it and compare it to the original.</p>
+
+    <p>You will immediately hear — and feel — the difference. That exercise alone teaches you more about sound design than any amount of reading theory.</p>
+
+    <h2>Getting Better Over Time</h2>
+
+    <p>Like all creative skills, sound design improves with practice and attention. Start actively listening to the audio design in commercials, films and videos you watch — not just the music but the sound effects, the room tones, the way audio transitions between scenes. This kind of critical listening is how your ear develops.</p>
+
+    <p>Sound is a skill worth investing in seriously. In a world where most designers ignore it entirely, even basic competence in audio will make your work stand out significantly.</p>
+
+    <div class="author-box">
+      <div class="author-avatar">SR</div>
+      <div>
+        <div class="author-name">Sampanna Raj Dhungel</div>
+        <div class="author-bio">Creative Director & Digital Media Designer based in Bhaktapur, Nepal. Specializing in motion graphics, sound design, branding and UI/UX design. Available for remote projects worldwide. <a href="index.html#contact">Get in touch →</a></div>
+      </div>
+    </div>
+
+    <div class="more-articles">
+      <div class="more-title">More Articles</div>
+      <div class="more-grid">
+        <a href="blog-brand-identity.html" class="more-card">
+          <div class="more-card-tag">Branding</div>
+          <div class="more-card-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</div>
+        </a>
+        <a href="blog-freelancing-nepal.html" class="more-card">
+          <div class="more-card-tag">Freelancing</div>
+          <div class="more-card-title">Freelancing as a Designer in Nepal — The Real Story</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
