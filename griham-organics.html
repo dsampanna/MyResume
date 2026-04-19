@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Griham Organics — Artisan Pickles from Nepal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D5016;
+      --green-light: #3d6b1e;
+      --green-pale: #e8f0dc;
+      --orange: #E8651A;
+      --orange-light: #f5874a;
+      --cream: #FBF7F0;
+      --cream-dark: #F2EBE0;
+      --brown: #2C1810;
+      --brown-light: #5C3D2E;
+      --text: #2C1810;
+      --text-muted: #7a5c4a;
+      --border: #e8ddd0;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 72px;
+      background: rgba(251,247,240,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--green);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--brown-light);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--green);
+      color: var(--white) !important;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--green-light) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 50%, rgba(45,80,22,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(232,101,26,0.06) 0%, transparent 50%);
+    }
+
+    /* Decorative leaves */
+    .hero-bg::before {
+      content: '🌿';
+      position: absolute;
+      font-size: 200px;
+      top: -40px;
+      right: -20px;
+      opacity: 0.06;
+      transform: rotate(30deg);
+    }
+
+    .hero-bg::after {
+      content: '🌿';
+      position: absolute;
+      font-size: 150px;
+      bottom: 40px;
+      left: -30px;
+      opacity: 0.05;
+      transform: rotate(-20deg);
+    }
+
+    .hero-left {
+      padding: 80px 60px 80px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--green-pale);
+      border: 1px solid rgba(45,80,22,0.2);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(45,80,22,0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(45,80,22,0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 28px;
+      background: transparent;
+      color: var(--green);
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid var(--green);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+    }
+
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-right {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 60px;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .hero-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 40%, #5a8c2a 100%);
+      border-radius: 40px 40px 120px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(45,80,22,0.25);
+    }
+
+    .hero-img-main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+    }
+
+    .hero-img-emoji {
+      font-size: 100px;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
+
+    /* Floating cards */
+    .float-card {
+      position: absolute;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 10px 40px rgba(44,24,16,0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .float-card-1 {
+      top: 60px;
+      left: -30px;
+      animation: float1 4s ease-in-out infinite;
+    }
+
+    .float-card-2 {
+      bottom: 100px;
+      right: -20px;
+      animation: float2 5s ease-in-out infinite;
+    }
+
+    .float-card-3 {
+      bottom: 40px;
+      left: 20px;
+      animation: float1 3.5s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    .float-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--green-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .float-text-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .float-text-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--green);
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .trust-item span:first-child {
+      font-size: 20px;
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      padding: 100px 80px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 560px;
+    }
+
+    /* ── PRODUCTS ── */
+    .products {
+      background: var(--cream-dark);
+    }
+
+    .products-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .products-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .filter-btn.active {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .filter-btn:not(.active) {
+      background: var(--white);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .filter-btn:not(.active):hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(44,24,16,0.12);
+      border-color: transparent;
+    }
+
+    .product-img {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img-1 { background: linear-gradient(135deg, #f0e68c, #daa520); }
+    .product-img-2 { background: linear-gradient(135deg, #ff6b6b, #c0392b); }
+    .product-img-3 { background: linear-gradient(135deg, #90EE90, #2d8a2d); }
+    .product-img-4 { background: linear-gradient(135deg, #ffd700, #ff8c00); }
+    .product-img-5 { background: linear-gradient(135deg, #deb887, #8b4513); }
+    .product-img-6 { background: linear-gradient(135deg, #98fb98, #228b22); }
+
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 10px;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .product-badge.organic {
+      background: var(--green);
+    }
+
+    .product-info {
+      padding: 20px 22px 24px;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .product-price span {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+    }
+
+    .add-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .add-btn:hover {
+      background: var(--orange);
+      transform: scale(1.1);
+    }
+
+    /* ── STORY ── */
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      background: var(--cream);
+    }
+
+    .story-img-wrap {
+      position: relative;
+    }
+
+    .story-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #3d6b1e 0%, #2D5016 60%, #1a3009 100%);
+      border-radius: 80px 30px 80px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      box-shadow: 0 30px 60px rgba(45,80,22,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-img-main::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+    }
+
+    .story-img-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 160px;
+      height: 160px;
+      background: var(--orange);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      box-shadow: 0 20px 40px rgba(232,101,26,0.3);
+    }
+
+    .story-content {
+      padding-right: 20px;
+    }
+
+    .story-list {
+      list-style: none;
+      margin: 32px 0;
+    }
+
+    .story-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .story-list li:last-child { border-bottom: none; }
+
+    .story-check {
+      width: 24px;
+      height: 24px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-size: 12px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .process .section-title {
+      color: var(--white);
+    }
+
+    .process .section-desc {
+      color: rgba(255,255,255,0.75);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .process-header .section-label {
+      color: var(--orange-light);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .process-step {
+      background: rgba(255,255,255,0.05);
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .process-step:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .process-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .process-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .process-step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .process-step-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--cream-dark);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .testimonials-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(44,24,16,0.1);
+    }
+
+    .testimonial-stars {
+      color: var(--orange);
+      font-size: 16px;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .avatar-green { background: var(--green); }
+    .avatar-orange { background: var(--orange); }
+    .avatar-brown { background: var(--brown-light); }
+
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .testimonial-location {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── ORDER CTA ── */
+    .order-cta {
+      background: var(--cream);
+      text-align: center;
+      padding: 100px 80px;
+    }
+
+    .order-cta .section-title {
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .order-cta .section-desc {
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .order-options {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .order-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .order-option:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(45,80,22,0.1);
+    }
+
+    .order-option-icon { font-size: 24px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.8);
+      padding: 70px 80px 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .footer-brand-name span { color: var(--orange); }
+
+    .footer-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-social {
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .footer-social:hover {
+      background: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-weight: 300;
+    }
+
+    .footer-links a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+
+      section { padding: 70px 24px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 72px;
+      }
+
+      .hero-left { padding: 60px 24px 40px; }
+      .hero-right { padding: 0 24px 60px; }
+      .hero-stats { gap: 24px; }
+
+      .trust-bar { padding: 20px 24px; gap: 20px; }
+
+      .products-header { flex-direction: column; align-items: flex-start; }
+      .products-grid { grid-template-columns: 1fr; }
+
+      .story { grid-template-columns: 1fr; gap: 40px; }
+      .story-content { padding-right: 0; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .order-cta { padding: 70px 24px; }
+
+      footer { padding: 60px 24px 30px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge { animation: fadeUp 0.6s ease forwards; }
+    .hero-title { animation: fadeUp 0.6s ease 0.1s both; }
+    .hero-desc { animation: fadeUp 0.6s ease 0.2s both; }
+    .hero-actions { animation: fadeUp 0.6s ease 0.3s both; }
+    .hero-stats { animation: fadeUp 0.6s ease 0.4s both; }
+    .hero-img-wrap { animation: fadeUp 0.8s ease 0.2s both; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Griham<span>.</span>Organics</a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#order" class="nav-cta">Order Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+
+    <div class="hero-left">
+      <div class="hero-badge">100% Organic · Handcrafted in Nepal</div>
+      <h1 class="hero-title">
+        Taste the<br>
+        <em>Authentic</em><br>
+        Flavours of<br>
+        Nepal
+      </h1>
+      <p class="hero-desc">
+        Griham Organics brings you handcrafted artisan pickles made from organically grown ingredients sourced directly from the hills of Budanilkantha, Nepal.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">
+          🛒 Shop Now
+        </a>
+        <a href="#story" class="btn-secondary">
+          Our Story →
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Organic</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Varieties</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-label">Preservatives</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <div class="hero-img-main">
+          <span class="hero-img-emoji">🫙</span>
+        </div>
+
+        <div class="float-card float-card-1">
+          <div class="float-icon">🌿</div>
+          <div>
+            <div class="float-text-label">Certified</div>
+            <div class="float-text-value">Organic Farm</div>
+          </div>
+        </div>
+
+        <div class="float-card float-card-2">
+          <div class="float-icon">⭐</div>
+          <div>
+            <div class="float-text-label">Rating</div>
+            <div class="float-text-value">4.9 / 5.0</div>
+          </div>
+        </div>
+
+        <div class="float-card float-card-3">
+          <div class="float-icon">🚚</div>
+          <div>
+            <div class="float-text-label">Delivery</div>
+            <div class="float-text-value">All Nepal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span>🌱</span><span>No Artificial Preservatives</span></div>
+    <div class="trust-item"><span>🏔️</span><span>Sourced from Nepali Farms</span></div>
+    <div class="trust-item"><span>🤝</span><span>Women Farmer Partnerships</span></div>
+    <div class="trust-item"><span>♻️</span><span>Eco-Friendly Packaging</span></div>
+    <div class="trust-item"><span>🚚</span><span>Delivery Across Nepal</span></div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="products-header">
+      <div>
+        <div class="section-label">Our Collection</div>
+        <h2 class="section-title">Handcrafted<br>Pickle Varieties</h2>
+      </div>
+      <div class="products-filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Mild</button>
+        <button class="filter-btn">Spicy</button>
+        <button class="filter-btn">Sweet</button>
+        <button class="filter-btn">Premium</button>
+      </div>
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-img product-img-1">
+          <div class="product-badge organic">Bestseller</div>
+          🥭
+        </div>
+        <div class="product-info">
+          <div class="product-name">Aamp ko Achar</div>
+          <div class="product-desc">Sweet and tangy raw mango pickle with traditional Nepali spices. A household favourite.</div>
+          <div class="product-footer">
+            <div class="product-price">Rs 220 <span>/ 200g</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img product-img-2">
+          <div class="product-badge">Spicy 🌶️</div>
+          🌶️
+        </div>
+        <div class="product-info">
+          <div class="product-name">Dalle Khursani Achar</div>
+          <div class="product-desc">Fiery Dalle pepper pickle — only for the brave. Authentic hill-style recipe.</div>
+          <div class="product-footer">
+            <div class="product-price">Rs 280 <span>/ 200g</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img product-img-3">
+          <div class="product-badge organic">Organic</div>
+          🥬
+        </div>
+        <div class="product-info">
+          <div class="product-name">Gundruk Achar</div>
+          <div class="product-desc">Fermented leafy greens pickle — a classic Nepali comfort food with bold umami flavour.</div>
+          <div class="product-footer">
+            <div class="product-price">Rs 180 <span>/ 200g</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img product-img-4">
+          <div class="product-badge">New</div>
+          🍋
+        </div>
+        <div class="product-info">
+          <div class="product-name">Kagati ko Achar</div>
+          <div class="product-desc">Zesty lemon pickle with mustard and fenugreek seeds. Great for digestion.</div>
+          <div class="product-footer">
+            <div class="product-price">Rs 160 <span>/ 200g</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img product-img-5">
+          <div class="product-badge organic">Organic</div>
+          🧄
+        </div>
+        <div class="product-info">
+          <div class="product-name">Lasun ko Achar</div>
+          <div class="product-desc">Bold garlic pickle marinated with mustard oil and hand-ground spices.</div>
+          <div class="product-footer">
+            <div class="product-price">Rs 200 <span>/ 200g</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img product-img-6">
+          <div class="product-badge">Premium</div>
+          🫚
+        </div>
+        <div class="product-info">
+          <div class="product-name">Timur ko Achar</div>
+          <div class="product-desc">Rare Himalayan Sichuan pepper pickle with a distinctive numbing citrus flavour.</div>
+          <div class="product-footer">
+            <div class="product-price">Rs 320 <span>/ 200g</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="story-img-wrap">
+      <div class="story-img-main">🏔️</div>
+      <div class="story-img-accent">🌿</div>
+    </div>
+    <div class="story-content">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">From the Hills of Budanilkantha</h2>
+      <p class="section-desc">
+        Griham Organics was born from a simple belief — that the best food comes from the earth, made by hand, with love. Our pickles follow recipes passed down through generations, using ingredients grown in the clean mountain air of Budanilkantha.
+      </p>
+      <ul class="story-list">
+        <li>
+          <div class="story-check">✓</div>
+          <span>All ingredients sourced directly from certified organic farms in and around Budanilkantha, ensuring freshness and purity in every jar.</span>
+        </li>
+        <li>
+          <div class="story-check">✓</div>
+          <span>We partner with local women farmers, providing fair wages and supporting sustainable livelihoods in rural Nepal.</span>
+        </li>
+        <li>
+          <div class="story-check">✓</div>
+          <span>Zero artificial preservatives, colours or additives. Just real food made the way your grandmother would recognise.</span>
+        </li>
+        <li>
+          <div class="story-check">✓</div>
+          <span>Packaged in eco-friendly glass jars that preserve flavour and reduce plastic waste in our communities.</span>
+        </li>
+      </ul>
+      <a href="#products" class="btn-primary" style="display:inline-flex; margin-top:8px;">
+        Explore Our Pickles →
+      </a>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-header">
+      <div class="section-label">How It's Made</div>
+      <h2 class="section-title">From Farm to Your Table</h2>
+      <p class="section-desc" style="margin: 0 auto; color: rgba(255,255,255,0.7);">Every jar of Griham Organics goes through a careful 4-step process to ensure the highest quality and most authentic flavour.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <span class="process-icon">🌱</span>
+        <div class="process-step-title">Organic Farming</div>
+        <div class="process-step-desc">Ingredients grown using traditional organic methods in Budanilkantha's fertile hillside farms.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <span class="process-icon">🧺</span>
+        <div class="process-step-title">Hand Harvesting</div>
+        <div class="process-step-desc">Carefully hand-picked at peak ripeness by our partner women farmers for maximum flavour.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <span class="process-icon">🥄</span>
+        <div class="process-step-title">Artisan Crafting</div>
+        <div class="process-step-desc">Prepared in small batches using traditional family recipes and hand-ground spices.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <span class="process-icon">🫙</span>
+        <div class="process-step-title">Glass Jar Sealing</div>
+        <div class="process-step-desc">Sealed in eco-friendly glass jars to preserve freshness with zero plastic waste.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-header">
+      <div class="section-label">Customer Love</div>
+      <h2 class="section-title">What People Are Saying</h2>
+      <p class="section-desc">Real reviews from real pickle lovers across Nepal and beyond.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The Dalle Achar is unbelievably good — exactly like what my grandmother used to make. I order every month now. Nothing in Kathmandu comes close."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar avatar-green">S</div>
+          <div>
+            <div class="testimonial-name">Sughosh Dhungel</div>
+            <div class="testimonial-location">Kathmandu, Nepal</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Finally a brand that takes organic seriously. I love knowing exactly where my food comes from. The Gundruk Achar is my family's favourite with dal bhat."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar avatar-orange">M</div>
+          <div>
+            <div class="testimonial-name">Manish Thapa</div>
+            <div class="testimonial-location">Lalitpur, Nepal</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I sent three jars to my family in London and they absolutely loved it. Authentic taste of Nepal in every bite. Will order again for sure!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar avatar-brown">P</div>
+          <div>
+            <div class="testimonial-name">Priya Shrestha</div>
+            <div class="testimonial-location">London, UK (originally Bhaktapur)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER CTA -->
+  <section class="order-cta" id="order">
+    <div class="section-label">Ready to Order?</div>
+    <h2 class="section-title">Bring Nepal's Flavours<br>to Your Table</h2>
+    <p class="section-desc">Order directly or find us on your favourite delivery platform. Available across Nepal with fast delivery.</p>
+    <div class="order-options">
+      <a class="order-option">
+        <span class="order-option-icon">📱</span>
+        <div>
+          <div style="font-size:11px; color:#7a5c4a; text-transform:uppercase; letter-spacing:0.5px;">Call / WhatsApp</div>
+          <div>+977 98XXXXXXXX</div>
+        </div>
+      </a>
+      <a class="order-option">
+        <span class="order-option-icon">📦</span>
+        <div>
+          <div style="font-size:11px; color:#7a5c4a; text-transform:uppercase; letter-spacing:0.5px;">Order via</div>
+          <div>Daraz Nepal</div>
+        </div>
+      </a>
+      <a class="order-option">
+        <span class="order-option-icon">📸</span>
+        <div>
+          <div style="font-size:11px; color:#7a5c4a; text-transform:uppercase; letter-spacing:0.5px;">Follow & Order</div>
+          <div>Instagram DM</div>
+        </div>
+      </a>
+      <a class="order-option">
+        <span class="order-option-icon">🏪</span>
+        <div>
+          <div style="font-size:11px; color:#7a5c4a; text-transform:uppercase; letter-spacing:0.5px;">Visit Us</div>
+          <div>Budanilkantha, KTM</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Griham<span>.</span>Organics</div>
+        <p class="footer-desc">Handcrafted artisan pickles from the organic farms of Budanilkantha, Nepal. Made with love, tradition and zero compromises.</p>
+        <div class="footer-socials">
+          <a class="footer-social">📘</a>
+          <a class="footer-social">📸</a>
+          <a class="footer-social">🐦</a>
+          <a class="footer-social">▶️</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Products</div>
+        <ul class="footer-links">
+          <li><a href="#">Mango Achar</a></li>
+          <li><a href="#">Dalle Achar</a></li>
+          <li><a href="#">Gundruk Achar</a></li>
+          <li><a href="#">Lasun Achar</a></li>
+          <li><a href="#">Timur Achar</a></li>
+          <li><a href="#">Gift Sets</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Sourcing</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">Budanilkantha, Kathmandu</a></li>
+          <li><a href="#">grihamorganics@gmail.com</a></li>
+          <li><a href="#">+977 98XXXXXXXX</a></li>
+          <li><a href="#">WhatsApp Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Griham Organics. All rights reserved.</span>
+      <span>Designed by Sampanna Raj Dhungel</span>
+    </div>
+  </footer>
+
+  <script>
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Add to cart feedback
+    document.querySelectorAll('.add-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.textContent = '✓';
+        this.style.background = 'var(--orange)';
+        setTimeout(() => {
+          this.textContent = '+';
+          this.style.background = 'var(--green)';
+        }, 1000);
+      });
+    });
+  </script>
+
+</body>
+</html>
