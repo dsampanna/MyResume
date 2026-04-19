@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Griham Organic — UI/UX Case Study | Sampanna Raj Dhungel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #0563bb;
+      --green: #2D5016;
+      --orange: #E8651A;
+      --cream: #FBF7F0;
+      --brown: #2C1810;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1a1f2e;
+      --text-muted: #6b7a99;
+      --border: #e0e8f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+
+    .topbar-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .topbar-link {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4a5568 !important;
+      text-decoration: none !important;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .topbar-link:hover {
+      color: var(--blue) !important;
+      background: #eef3fa;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      background: var(--blue);
+      color: #fff !important;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: all 0.25s ease;
+      font-family: 'Syne', sans-serif;
+      margin-left: 8px;
+    }
+
+    .btn-back:hover {
+      background: #034f96;
+      transform: translateY(-1px);
+      color: #fff !important;
+    }
+
+    @media (max-width: 900px) {
+      .topbar { padding: 0 20px; }
+      .topbar-link { display: none; }
+    }
+
+    /* ── HERO ── */
+    .case-hero {
+      margin-top: 64px;
+      background: linear-gradient(135deg, #0a1628 0%, #0e2040 60%, #1a3520 100%);
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-hero::before {
+      content: '🫙';
+      position: absolute;
+      font-size: 300px;
+      right: -40px;
+      top: -40px;
+      opacity: 0.05;
+    }
+
+    .case-hero::after {
+      content: '🌿';
+      position: absolute;
+      font-size: 200px;
+      left: -20px;
+      bottom: -40px;
+      opacity: 0.04;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      background: rgba(232,101,26,0.2);
+      border: 1px solid rgba(232,101,26,0.4);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #f5874a;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .case-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .case-title span { color: #f5874a; }
+
+    .case-subtitle {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .case-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .case-meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .case-meta-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .case-meta-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.15);
+      align-self: stretch;
+    }
+
+    /* ── PREVIEW ── */
+    .preview-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .preview-frame {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px rgba(5,99,187,0.12);
+    }
+
+    .preview-bar {
+      background: #f0f4f8;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preview-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .preview-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #28ca41; }
+
+    .preview-url {
+      flex: 1;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #6b7a99;
+      border: 1px solid var(--border);
+    }
+
+    .preview-content {
+      padding: 0;
+      background: #FBF7F0;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-placeholder {
+      text-align: center;
+      padding: 60px;
+    }
+
+    .preview-placeholder-emoji {
+      font-size: 80px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .preview-placeholder h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .preview-placeholder p {
+      color: #7a5c4a;
+      font-size: 14px;
+    }
+
+    .preview-placeholder .preview-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .preview-link:hover {
+      background: #3d6b1e;
+      transform: translateY(-2px);
+    }
+
+    /* ── BODY ── */
+    .case-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── SECTION ── */
+    .cs-section {
+      margin-bottom: 80px;
+    }
+
+    .cs-section-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .cs-section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .cs-section-title span { color: var(--blue); }
+
+    .cs-text {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #3a4560;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    /* ── CARDS ── */
+    .cs-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(5,99,187,0.06);
+      margin-bottom: 16px;
+    }
+
+    .cs-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .cs-card p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #3a4560;
+      font-weight: 300;
+    }
+
+    /* ── PROBLEM ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .problem-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--orange);
+    }
+
+    .problem-card-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .problem-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .problem-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── COMPETITOR TABLE ── */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-top: 28px;
+    }
+
+    .comp-table th {
+      background: #0a1628;
+      color: rgba(255,255,255,0.9);
+      padding: 14px 20px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      text-align: left;
+    }
+
+    .comp-table td {
+      padding: 14px 20px;
+      font-size: 13px;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table tr:nth-child(even) td { background: #f7f9fc; }
+
+    .comp-table tr:hover td { background: #eef3fa; }
+
+    .badge-good {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #dcf5e7;
+      color: #1a6b3c;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-bad {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #fde8e8;
+      color: #9b1c1c;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-mid {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #fef3c7;
+      color: #92400e;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ── PERSONAS ── */
+    .personas-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .persona-card {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(5,99,187,0.06);
+    }
+
+    .persona-header {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .persona-header-1 { background: linear-gradient(135deg, #2D5016, #3d6b1e); }
+    .persona-header-2 { background: linear-gradient(135deg, #0563bb, #034f96); }
+
+    .persona-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      flex-shrink: 0;
+    }
+
+    .persona-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .persona-role {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      margin-top: 2px;
+    }
+
+    .persona-body {
+      padding: 24px;
+    }
+
+    .persona-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+
+    .persona-row-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      min-width: 80px;
+      margin-top: 2px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .persona-row-value {
+      font-size: 13px;
+      color: #3a4560;
+      line-height: 1.65;
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .persona-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .persona-tag {
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #eef3fa;
+      color: var(--blue);
+    }
+
+    /* ── INSIGHTS ── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .insight-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .insight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(5,99,187,0.1);
+      border-color: var(--blue);
+    }
+
+    .insight-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .insight-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .insight-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── DESIGN DECISIONS ── */
+    .decisions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .decision-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .decision-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .decision-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .decision-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── COLOR PALETTE ── */
+    .palette {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .swatch-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .swatch-hex {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .type-showcase {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      margin-top: 28px;
+    }
+
+    .type-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .type-item:last-child { border-bottom: none; }
+
+    .type-meta {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    /* ── LEARNINGS ── */
+    .learnings-list {
+      list-style: none;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .learnings-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--card);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      font-size: 15px;
+      color: #3a4560;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .learning-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--blue);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── NEXT STEPS ── */
+    .next-steps {
+      background: linear-gradient(135deg, #0a1628, #0e2040);
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .next-steps h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .next-steps p {
+      color: rgba(255,255,255,0.65);
+      font-size: 15px;
+      margin-bottom: 32px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .next-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .next-step-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: left;
+    }
+
+    .next-step-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+
+    .next-step-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .next-step-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .btn-view-design {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-family: 'Syne', sans-serif;
+      box-shadow: 0 8px 30px rgba(232,101,26,0.4);
+    }
+
+    .btn-view-design:hover {
+      background: #f5874a;
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    /* ── DIVIDER ── */
+    .cs-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 60px 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .case-hero { padding: 50px 20px 40px; }
+      .case-body { padding: 0 16px 60px; }
+      .preview-section { padding: 40px 16px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .personas-grid { grid-template-columns: 1fr; }
+      .insights-grid { grid-template-columns: repeat(2, 1fr); }
+      .decisions-grid { grid-template-columns: 1fr; }
+      .next-steps-grid { grid-template-columns: 1fr; }
+      .next-steps { padding: 32px 24px; }
+      .case-meta { gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .insights-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
+    <div class="topbar-nav">
+      <a href="index.html#about" class="topbar-link">About</a>
+      <a href="index.html#education" class="topbar-link">Education</a>
+      <a href="index.html#resume" class="topbar-link">Experience</a>
+      <a href="index.html#portfolio" class="topbar-link">Portfolio</a>
+      <a href="index.html#services" class="topbar-link">Services</a>
+      <a href="index.html#contact" class="topbar-link">Contact</a>
+      <a href="index.html#portfolio" class="btn-back">
+        <i class="bi bi-arrow-left"></i> Back to Portfolio
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="case-hero fade-in">
+    <div class="hero-inner">
+      <div class="case-type">✦ UI/UX Case Study</div>
+      <h1 class="case-title">Griham<br><span>Organic</span></h1>
+      <p class="case-subtitle">Taste of Home 🏡 — Designing a digital-first e-commerce experience for an authentic Achar, Fresh Masala & Shuddha Gheu startup from Budanilkantha, Nepal — connecting local producers to customers across Nepal and beyond.</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Project Type</div>
+          <div class="case-meta-value">Self-Initiated UI/UX</div>
+        </div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Role</div>
+          <div class="case-meta-value">UI/UX Designer</div>
+        </div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Tools</div>
+          <div class="case-meta-value">Figma · HTML · CSS</div>
+        </div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Timeline</div>
+          <div class="case-meta-value">March 2026 · 6 Months</div>
+        </div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Industry</div>
+          <div class="case-meta-value">Food & E-Commerce</div>
+        </div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Products</div>
+          <div class="case-meta-value">Achar 🌶 · Masala · Gheu 🐄</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGN PREVIEW -->
+  <div class="preview-section fade-in">
+    <div class="preview-frame">
+      <div class="preview-bar">
+        <div class="preview-dots">
+          <div class="preview-dot dot-red"></div>
+          <div class="preview-dot dot-yellow"></div>
+          <div class="preview-dot dot-green"></div>
+        </div>
+        <div class="preview-url">grihamorganics.com.np</div>
+      </div>
+      <div class="preview-content">
+        <div class="preview-placeholder">
+          <span class="preview-placeholder-emoji">🫙</span>
+          <h3>Griham Organic — Website Design</h3>
+          <p>Authentic Achar 🌶 · Fresh Masala 🌿 · Shuddha Gheu 🐄 · Budanilkantha, Nepal</p>
+          <a href="griham-organics.html" target="_blank" class="preview-link">
+            🔗 View Full Design
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="case-body">
+
+    <!-- 01 OVERVIEW -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">01 — Overview</div>
+      <h2 class="cs-section-title">The <span>Challenge</span></h2>
+      <p class="cs-text">Griham Organic — <em>Taste of Home</em> — is a homegrown food startup based in Budanilkantha, Kathmandu. They produce three core product lines: authentic handcrafted <strong>Achar</strong> (pickles) 🌶, freshly ground <strong>Masala</strong> (spice blends), and pure <strong>Shuddha Gheu</strong> 🐄 (clarified butter) — all made using traditional Nepali recipes and organically sourced ingredients. Despite having exceptional products, they had <strong>no digital presence whatsoever</strong> — no website, no online ordering, and no way to reach customers beyond their immediate neighbourhood.</p>
+      <p class="cs-text">In a market where consumers increasingly discover and purchase food products online — especially health-conscious and organic food buyers — this was a significant missed opportunity. I took this on as a self-initiated design project over 6 months starting March 2026, to build them a complete digital brand experience from the ground up.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-card-icon">🌐</div>
+          <h4>No Website</h4>
+          <p>Zero digital presence meant customers couldn't find them online, limiting reach to word-of-mouth only.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-card-icon">🛒</div>
+          <h4>No Online Ordering</h4>
+          <p>All orders were handled manually via phone or in-person, creating friction and limiting scalability.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-card-icon">🏔️</div>
+          <h4>Geographic Limitation</h4>
+          <p>Without a digital channel, reaching customers in other districts or international Nepali diaspora was impossible.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-card-icon">🤝</div>
+          <h4>No Trust Signals</h4>
+          <p>No platform to communicate their organic credentials, sourcing story, or customer reviews to build buyer confidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 02 COMPETITOR ANALYSIS -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">02 — Research</div>
+      <h2 class="cs-section-title">Competitor <span>Analysis</span></h2>
+      <p class="cs-text">I researched three key competitors in the Nepali online pickle market to understand the landscape, identify gaps, and find opportunities for Griham Organics to differentiate.</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Criteria</th>
+            <th>Nepal Achar</th>
+            <th>Aama Ko Achar</th>
+            <th>Achaar Ghar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Website Quality</strong></td>
+            <td><span class="badge-good">Clean & Modern</span></td>
+            <td><span class="badge-mid">Basic</span></td>
+            <td><span class="badge-mid">Restaurant-focused</span></td>
+          </tr>
+          <tr>
+            <td><strong>Direct Online Shop</strong></td>
+            <td><span class="badge-bad">Via Daraz only</span></td>
+            <td><span class="badge-good">Yes, direct cart</span></td>
+            <td><span class="badge-bad">Third-party only</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mobile Experience</strong></td>
+            <td><span class="badge-good">Good</span></td>
+            <td><span class="badge-mid">Average</span></td>
+            <td><span class="badge-bad">Poor</span></td>
+          </tr>
+          <tr>
+            <td><strong>Brand Story</strong></td>
+            <td><span class="badge-mid">Weak</span></td>
+            <td><span class="badge-good">Strong</span></td>
+            <td><span class="badge-good">Strong</span></td>
+          </tr>
+          <tr>
+            <td><strong>Organic Credentials</strong></td>
+            <td><span class="badge-good">Mentioned</span></td>
+            <td><span class="badge-mid">Partially</span></td>
+            <td><span class="badge-bad">Not prominent</span></td>
+          </tr>
+          <tr>
+            <td><strong>Checkout Process</strong></td>
+            <td><span class="badge-bad">Redirect to Daraz</span></td>
+            <td><span class="badge-mid">Cluttered</span></td>
+            <td><span class="badge-bad">No direct order</span></td>
+          </tr>
+          <tr>
+            <td><strong>Customer Reviews</strong></td>
+            <td><span class="badge-bad">None visible</span></td>
+            <td><span class="badge-bad">None visible</span></td>
+            <td><span class="badge-good">Yes, displayed</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cs-card" style="margin-top:20px; border-left: 4px solid var(--blue);">
+        <h4>Key Opportunity Identified</h4>
+        <p>No competitor has a truly clean, mobile-first organic food experience that covers <strong>multiple product lines</strong> — Achar, Masala and Gheu together. None prominently feature their organic credentials on the homepage. This is the gap Griham Organic can own — a <strong>premium, organic-first, mobile-first</strong> brand experience with a frictionless multi-product ordering flow.</p>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 03 USER PERSONAS -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">03 — User Research</div>
+      <h2 class="cs-section-title">User <span>Personas</span></h2>
+      <p class="cs-text">Based on the target market for organic artisan food products in Nepal, I defined two primary user personas to guide design decisions throughout the project.</p>
+
+      <div class="personas-grid">
+
+        <div class="persona-card">
+          <div class="persona-header persona-header-1">
+            <div class="persona-avatar">SD</div>
+            <div>
+              <div class="persona-name">Sughosh Dhungel</div>
+              <div class="persona-role">28 · Young Professional · Kathmandu</div>
+            </div>
+          </div>
+          <div class="persona-body">
+            <div class="persona-row">
+              <div class="persona-row-label">Goals</div>
+              <div class="persona-row-value">Find authentic, organic Nepali food online. Wants quick, trustworthy ordering without hassle.</div>
+            </div>
+            <div class="persona-row">
+              <div class="persona-row-label">Frustrations</div>
+              <div class="persona-row-value">Complicated checkout processes, unclear ingredient sourcing, websites that don't work on mobile.</div>
+            </div>
+            <div class="persona-row">
+              <div class="persona-row-label">Behaviour</div>
+              <div class="persona-row-value">Discovers products through Instagram. Reads reviews before buying. Values clean design as a trust signal.</div>
+            </div>
+            <div class="persona-tags">
+              <span class="persona-tag">Health-conscious</span>
+              <span class="persona-tag">Mobile-first</span>
+              <span class="persona-tag">Instagram user</span>
+              <span class="persona-tag">Organic buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header persona-header-2">
+            <div class="persona-avatar">MT</div>
+            <div>
+              <div class="persona-name">Manish Thapa</div>
+              <div class="persona-role">35 · Father of Two · Lalitpur</div>
+            </div>
+          </div>
+          <div class="persona-body">
+            <div class="persona-row">
+              <div class="persona-row-label">Goals</div>
+              <div class="persona-row-value">Buy safe, preservative-free food for his family. Wants to know exactly where ingredients come from.</div>
+            </div>
+            <div class="persona-row">
+              <div class="persona-row-label">Frustrations</div>
+              <div class="persona-row-value">Websites with no sourcing information, brands that don't explain what's in their product, no delivery options.</div>
+            </div>
+            <div class="persona-row">
+              <div class="persona-row-label">Behaviour</div>
+              <div class="persona-row-value">Uses mobile for most browsing. Reads ingredient lists carefully. Willing to pay more for quality organic products.</div>
+            </div>
+            <div class="persona-tags">
+              <span class="persona-tag">Family-focused</span>
+              <span class="persona-tag">Quality-driven</span>
+              <span class="persona-tag">Researches before buying</span>
+              <span class="persona-tag">Premium buyer</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 04 INSIGHTS -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">04 — Design Insights</div>
+      <h2 class="cs-section-title">What the Research <span>Told Me</span></h2>
+      <p class="cs-text">From the competitor analysis and user persona work, six clear design principles emerged that shaped every decision in the Griham Organics website design.</p>
+
+      <div class="insights-grid">
+        <div class="insight-card">
+          <span class="insight-icon">📱</span>
+          <div class="insight-title">Mobile-First Always</div>
+          <div class="insight-text">Both personas primarily browse on mobile. Every layout decision starts from the smallest screen up.</div>
+        </div>
+        <div class="insight-card">
+          <span class="insight-icon">🌿</span>
+          <div class="insight-title">Lead with Organic</div>
+          <div class="insight-text">Organic credentials must be the first thing users see — not buried in an About page.</div>
+        </div>
+        <div class="insight-card">
+          <span class="insight-icon">🛒</span>
+          <div class="insight-title">Frictionless Ordering</div>
+          <div class="insight-text">Competitors make ordering complicated. Griham needed the simplest possible path to purchase.</div>
+        </div>
+        <div class="insight-card">
+          <span class="insight-icon">📖</span>
+          <div class="insight-title">Tell the Story</div>
+          <div class="insight-text">Buyers of artisan food want to know who made it and how. Brand story builds trust and justifies price.</div>
+        </div>
+        <div class="insight-card">
+          <span class="insight-icon">⭐</span>
+          <div class="insight-title">Social Proof First</div>
+          <div class="insight-text">Reviews and testimonials are critical for first-time food buyers. Make them visible and prominent.</div>
+        </div>
+        <div class="insight-card">
+          <span class="insight-icon">🎨</span>
+          <div class="insight-title">Earthy Visual Identity</div>
+          <div class="insight-text">The design language must feel organic, natural and artisan — not corporate or mass-produced.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 05 DESIGN DECISIONS -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">05 — Design System</div>
+      <h2 class="cs-section-title">Colour <span>Palette</span></h2>
+      <p class="cs-text">The colour system was built around the organic, earthy identity of the brand. Deep forest green as the primary communicates nature and quality. Warm orange as the accent adds warmth and appetite appeal. Cream backgrounds feel artisan and premium without being cold.</p>
+
+      <div class="palette">
+        <div class="color-swatch">
+          <div class="swatch" style="background:#2D5016;"></div>
+          <div class="swatch-label">Forest Green</div>
+          <div class="swatch-hex">#2D5016</div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#3d6b1e;"></div>
+          <div class="swatch-label">Green Light</div>
+          <div class="swatch-hex">#3d6b1e</div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#E8651A;"></div>
+          <div class="swatch-label">Warm Orange</div>
+          <div class="swatch-hex">#E8651A</div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#FBF7F0; border:1px solid #e8ddd0;"></div>
+          <div class="swatch-label">Cream</div>
+          <div class="swatch-hex">#FBF7F0</div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#F2EBE0; border:1px solid #e8ddd0;"></div>
+          <div class="swatch-label">Cream Dark</div>
+          <div class="swatch-hex">#F2EBE0</div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#2C1810;"></div>
+          <div class="swatch-label">Dark Brown</div>
+          <div class="swatch-hex">#2C1810</div>
+        </div>
+      </div>
+
+      <div class="type-showcase">
+        <div class="type-item">
+          <div class="type-meta">Display / Headings — Playfair Display</div>
+          <div style="font-family:'Georgia',serif; font-size:32px; font-weight:700; color:#2D5016; letter-spacing:-0.5px;">Taste the Authentic Flavours of Nepal</div>
+        </div>
+        <div class="type-item">
+          <div class="type-meta">Body / UI — DM Sans</div>
+          <div style="font-size:16px; color:#5C3D2E; line-height:1.8; font-weight:300;">Griham Organics brings you handcrafted artisan pickles made from organically grown ingredients sourced directly from the hills of Budanilkantha.</div>
+        </div>
+        <div class="type-item">
+          <div class="type-meta">Labels / Tags — DM Sans Bold</div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#E8651A;">100% Organic · Handcrafted in Nepal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 06 KEY DECISIONS -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">06 — Key Design Decisions</div>
+      <h2 class="cs-section-title">Why I Designed It <span>This Way</span></h2>
+      <p class="cs-text">Every major design decision was backed by the research findings and user persona needs. Here are the six most important choices and the reasoning behind each.</p>
+
+      <div class="decisions-grid">
+        <div class="decision-card">
+          <div class="decision-num">01</div>
+          <div>
+            <div class="decision-title">Trust Bar Below Hero</div>
+            <div class="decision-text">Added a green trust bar immediately after the hero communicating organic, no-preservatives, women-farmer sourcing and eco-packaging — addressing Manish's key concern about ingredient transparency before he even scrolls.</div>
+          </div>
+        </div>
+        <div class="decision-card">
+          <div class="decision-num">02</div>
+          <div>
+            <div class="decision-title">Floating Info Cards on Hero</div>
+            <div class="decision-text">Three animated floating cards showing Organic Certified, 4.9 Rating and All Nepal Delivery give instant credibility to first-time visitors without requiring them to scroll down.</div>
+          </div>
+        </div>
+        <div class="decision-card">
+          <div class="decision-num">03</div>
+          <div>
+            <div class="decision-title">Product Filters</div>
+            <div class="decision-text">Added Mild, Spicy, Sweet and Premium filters to the product grid — allowing Sughosh to quickly find what he wants without browsing through everything. Reduces cognitive load.</div>
+          </div>
+        </div>
+        <div class="decision-card">
+          <div class="decision-num">04</div>
+          <div>
+            <div class="decision-title">4-Step Process Section</div>
+            <div class="decision-text">The Farm to Table process section directly addresses Manish's need to know exactly how food is made and where it comes from — building the trust needed to convert a first-time buyer.</div>
+          </div>
+        </div>
+        <div class="decision-card">
+          <div class="decision-num">05</div>
+          <div>
+            <div class="decision-title">Multiple Order Channels</div>
+            <div class="decision-text">Rather than forcing one ordering method, the CTA section offers WhatsApp, Daraz, Instagram DM and walk-in — meeting customers where they already are, especially important for a Nepali startup audience.</div>
+          </div>
+        </div>
+        <div class="decision-card">
+          <div class="decision-num">06</div>
+          <div>
+            <div class="decision-title">Earthy Rounded Design Language</div>
+            <div class="decision-text">Rounded cards, organic shapes on the hero image, warm cream backgrounds and Playfair Display headings all communicate handcrafted artisan quality — exactly the opposite of mass-produced corporate food brands.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 07 LEARNINGS -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">07 — Reflections</div>
+      <h2 class="cs-section-title">What I <span>Learned</span></h2>
+      <p class="cs-text">This project taught me several important lessons about designing for small Nepali businesses and the local e-commerce landscape.</p>
+
+      <ul class="learnings-list">
+        <li>
+          <div class="learning-num">01</div>
+          <span>Nepali food startups need <strong>multiple ordering channels</strong> — WhatsApp and phone are still dominant in Nepal, and a website that only offers a cart checkout will lose a large portion of potential customers.</span>
+        </li>
+        <li>
+          <div class="learning-num">02</div>
+          <span><strong>Organic credentials must be visible immediately</strong> — health-conscious buyers make trust decisions in the first 3 seconds. If your organic story isn't in the hero, you've already lost them.</span>
+        </li>
+        <li>
+          <div class="learning-num">03</div>
+          <span>For artisan food brands, <strong>brand story is a product feature</strong> — knowing who made it, how, and with what ingredients is part of what customers are paying for. It must be given its own prominent section.</span>
+        </li>
+        <li>
+          <div class="learning-num">04</div>
+          <span><strong>Competitor analysis reveals opportunity</strong> — none of the three competitors had a clean mobile-first organic experience. That gap is exactly where Griham Organics can own the market.</span>
+        </li>
+        <li>
+          <div class="learning-num">05</div>
+          <span>Designing a <strong>self-initiated project requires discipline</strong> — without a client brief, you must generate your own constraints through research. The competitor analysis and personas were essential to avoid designing without direction.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="next-steps fade-in">
+      <h3>If This Goes Live — Next Steps</h3>
+      <p>This design is ready to be developed and launched. Here's what would come next if Griham Organics decided to move forward with this website.</p>
+      <div class="next-steps-grid">
+        <div class="next-step-item">
+          <span class="next-step-icon">🧪</span>
+          <div class="next-step-title">User Testing</div>
+          <div class="next-step-text">Test the design with 5 real users matching the personas to validate ordering flow and navigation assumptions.</div>
+        </div>
+        <div class="next-step-item">
+          <span class="next-step-icon">💻</span>
+          <div class="next-step-title">Development</div>
+          <div class="next-step-text">Build on a lightweight CMS like WordPress WooCommerce or a custom HTML/CSS site for easy content management.</div>
+        </div>
+        <div class="next-step-item">
+          <span class="next-step-icon">📊</span>
+          <div class="next-step-title">Analytics & Iteration</div>
+          <div class="next-step-text">Track conversion rates, most-viewed products and drop-off points to continuously improve the design after launch.</div>
+        </div>
+      </div>
+      <a href="griham-organics.html" target="_blank" class="btn-view-design">
+        🫙 View Full Website Design
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
