@@ -387,7 +387,7 @@ stage.addEventListener('wheel',function(e){
     btn.textContent = light ? '🌙' : '☀';
     btn.title = light ? 'Switch to dark mode' : 'Switch to light mode';
   }
-  applyTheme(localStorage.getItem('theme') !== 'dark');
+  applyTheme(localStorage.getItem('theme') === 'light');
   btn.addEventListener('click', function(){
     var isLight = !document.body.classList.contains('light-mode');
     applyTheme(isLight);
