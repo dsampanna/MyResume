@@ -378,22 +378,6 @@ stage.addEventListener('wheel',function(e){
   obs.observe(container);
 })();
 
-/* ── THEME TOGGLE ── */
-(function(){
-  var btn  = document.getElementById('themeToggle');
-  if(!btn) return;
-  function applyTheme(light){
-    document.body.classList.toggle('light-mode', light);
-    btn.textContent = light ? '🌙' : '☀';
-    btn.title = light ? 'Switch to dark mode' : 'Switch to light mode';
-  }
-  applyTheme(localStorage.getItem('theme') === 'light');
-  btn.addEventListener('click', function(){
-    var isLight = !document.body.classList.contains('light-mode');
-    applyTheme(isLight);
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
-})();
 
 /* ── NEWSLETTER FORM ── */
 (function(){

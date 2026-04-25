@@ -18,8 +18,6 @@ a{text-decoration:none;color:inherit}
 .nav-cta:hover{background:var(--teal);color:var(--bg)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--teal);transition:all 0.3s}
-.theme-toggle{background:none;border:1px solid var(--border2);color:var(--muted);font-size:0.85rem;width:32px;height:32px;cursor:pointer;transition:border-color 0.2s,color 0.2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.theme-toggle:hover{border-color:var(--teal);color:var(--teal)}
 @media(max-width:900px){
   .nav{padding:1rem 1.5rem}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:rgba(8,12,16,0.98);border-bottom:1px solid var(--border2);z-index:99}
@@ -375,9 +373,6 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
   .hero-actions{flex-direction:column;align-items:center;gap:0.5rem;width:100%;max-width:280px;margin-left:auto;margin-right:auto}
   .btn-teal,.btn-outline{width:100%;text-align:center;padding:0.7rem 1.25rem}
 
-  /* Theme toggle visible on mobile — smaller size */
-  .theme-toggle{width:30px;height:30px;font-size:0.8rem}
-
   /* Blog stays 2-col on tablet-mobile */
   .blog-grid{grid-template-columns:repeat(2,1fr)}
 
@@ -505,19 +500,6 @@ footer{position:relative}
   .newsletter-btn{width:100%;border-top:none}
 }
 
-/* ── LIGHT MODE ── */
-body.light-mode{
-  --bg:#f5f7fa;--bg2:#eef1f6;--bg3:#e4e9f2;
-  --text:#0f172a;--muted:#475569;--muted2:#334155;
-  --border:rgba(14,181,160,0.18);--border2:rgba(0,0,0,0.09);
-  --glow:rgba(14,181,160,0.08);
-}
-body.light-mode .hero-photo{opacity:0.15}
-body.light-mode .hero-overlay{background:linear-gradient(to bottom,rgba(245,247,250,0.2) 0%,rgba(245,247,250,0.5) 50%,rgba(245,247,250,0.97) 100%)}
-body.light-mode .nav{background:rgba(245,247,250,0.97)}
-body.light-mode .preloader{background:var(--bg)}
-body.light-mode .btt{background:rgba(245,247,250,0.9)}
-body.light-mode .cursor-dot{background:#0f172a}
 
 /* ══════════════════════════════════════════════════
    SCROLL PROGRESS BAR
@@ -572,12 +554,6 @@ body.light-mode .cursor-dot{background:#0f172a}
   100%{clip-path:none;transform:none}
 }
 
-/* ══════════════════════════════════════════════════
-   LIGHT MODE — noise reduce opacity
-   ══════════════════════════════════════════════════ */
-body.light-mode .hero::after{opacity:0.02}
-body.light-mode .edu-col-title{color:var(--text)}
-body.light-mode .exp-item-role{color:var(--text)}
 
 /* ══════════════════════════════════════════════════
    1. NEPAL TIME CLOCK — removed
@@ -635,9 +611,6 @@ body.light-mode .exp-item-role{color:var(--text)}
   .hero-actions{margin-bottom:1.75rem}
 }
 
-/* Keep light-mode photo readable too */
-body.light-mode .hero-photo{opacity:0.15}
-@media(max-width:768px){body.light-mode .hero-photo{opacity:0.2}}
 
 /* ── Small phone: ≤ 480 px ── */
 @media(max-width:480px){

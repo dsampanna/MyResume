@@ -115,15 +115,6 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border2);display:flex;just
 .f-links a{color:var(--muted2);transition:color 0.2s}
 .f-links a:hover{color:var(--teal)}
 
-/* THEME TOGGLE */
-.theme-toggle{background:none;border:1px solid var(--border2);color:var(--muted);font-size:0.85rem;width:32px;height:32px;cursor:pointer;transition:border-color 0.2s,color 0.2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.theme-toggle:hover{border-color:var(--teal);color:var(--teal)}
-
-/* LIGHT MODE */
-body.light-mode{--bg:#f5f7fa;--bg2:#eef1f6;--bg3:#e4e9f2;--text:#0f172a;--muted:#475569;--muted2:#334155;--border:rgba(14,181,160,0.18);--border2:rgba(0,0,0,0.09)}
-body.light-mode .nav{background:rgba(245,247,250,0.97)}
-body.light-mode .cursor-dot{background:#0f172a}
-body.light-mode .page-hero::before{background:radial-gradient(circle,rgba(14,181,160,0.05) 0%,transparent 65%)}
 
 /* CURSOR */
 @media(pointer:fine){body{cursor:none}a,button,[role="button"]{cursor:none}}
@@ -150,7 +141,6 @@ body.light-mode .page-hero::before{background:radial-gradient(circle,rgba(14,181
 </style>
 </head>
 <body>
-<script>if(localStorage.getItem('theme')==='light')document.body.classList.add('light-mode');</script>
 
 <nav class="nav">
   <a class="nav-logo" href="index.html">SAMPANNA RAJ DHUNGEL</a>
@@ -162,7 +152,6 @@ body.light-mode .page-hero::before{background:radial-gradient(circle,rgba(14,181
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch to dark mode">🌙</button>
     <a href="index.html#contact" class="nav-cta">Hire me</a>
   </div>
 </nav>
@@ -421,22 +410,6 @@ body.light-mode .page-hero::before{background:radial-gradient(circle,rgba(14,181
 <script>
 document.getElementById('footerYear').textContent = new Date().getFullYear();
 
-/* Theme toggle */
-(function(){
-  var btn = document.getElementById('themeToggle');
-  if(!btn) return;
-  function applyTheme(light){
-    document.body.classList.toggle('light-mode', light);
-    btn.textContent = light ? '🌙' : '☀';
-    btn.title = light ? 'Switch to dark mode' : 'Switch to light mode';
-  }
-  applyTheme(localStorage.getItem('theme') !== 'dark');
-  btn.addEventListener('click', function(){
-    var isLight = !document.body.classList.contains('light-mode');
-    applyTheme(isLight);
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
-})();
 
 /* FAQ accordion */
 document.querySelectorAll('.faq-q').forEach(function(q){
