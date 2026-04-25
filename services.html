@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Services — Sampanna Raj Dhungel | Creative Director & Designer</title>
+<meta name="description" content="UI/UX design, brand identity, motion graphics, 3D animation, video production and sound design services by Sampanna Raj Dhungel — based in Nepal, available worldwide.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Services — Sampanna Raj Dhungel">
+<meta property="og:description" content="UI/UX, branding, motion graphics, 3D animation, video production and sound design. Based in Nepal, available worldwide.">
+<meta property="og:url" content="https://www.sampannadhungel.com.np/services.html">
+<meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.sampannadhungel.com.np/services.html">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="shortcut icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080c10;--bg2:#0d1117;--bg3:#111820;--teal:#0EB5A0;--cyan:#06b6d4;--blue:#2563EB;--border:rgba(14,181,160,0.15);--border2:rgba(255,255,255,0.07);--text:#f0f4f8;--muted:#6b7c8f;--muted2:#8a9eb0;--display:'Syne',sans-serif;--body:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);gap:1rem}
+.nav-logo{font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:0.75rem;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s}
+.nav-links a:hover,a.nav-active{color:var(--text)}
+.nav-links a.nav-active{color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-cta{font-size:0.72rem;font-weight:500;letter-spacing:0.04em;border:1px solid var(--teal);color:var(--teal);padding:0.45rem 1.1rem;background:none;cursor:pointer;transition:background 0.2s,color 0.2s;white-space:nowrap}
+.nav-cta:hover{background:var(--teal);color:var(--bg)}
+@media(max-width:768px){
+  .nav{padding:1rem 1.25rem}
+  .nav-links{display:none}
+}
+
+/* PAGE HERO */
+.page-hero{padding:5rem 2.5rem 4rem;background:var(--bg2);border-bottom:1px solid var(--border2);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.07) 0%,transparent 65%);pointer-events:none}
+.page-hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.page-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border);padding:0.3rem 0.85rem;margin-bottom:1.5rem;background:rgba(14,181,160,0.06)}
+.page-title{font-family:var(--display);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1.0;color:var(--text);margin-bottom:1.25rem}
+.page-title span{background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-subtitle{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.8;font-weight:300}
+
+/* TRUST BAR */
+.trust-bar{display:flex;gap:0;border-bottom:1px solid var(--border2);overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.trust-bar::-webkit-scrollbar{display:none}
+.trust-item{display:flex;align-items:center;gap:0.6rem;padding:1rem 2rem;border-right:1px solid var(--border2);font-size:0.72rem;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.trust-item span{color:var(--teal);font-size:0.9rem}
+
+/* SERVICES GRID */
+.services-wrap{max-width:1100px;margin:0 auto;padding:4rem 2.5rem}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2)}
+.svc-card{background:var(--bg);padding:2.5rem;transition:background 0.25s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--cyan));transition:width 0.4s ease}
+.svc-card:hover{background:var(--bg2)}
+.svc-card:hover::before{width:100%}
+.svc-num{font-family:var(--display);font-size:0.65rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
+.svc-icon{font-size:2rem;margin-bottom:1rem;display:block;line-height:1}
+.svc-name{font-family:var(--display);font-size:1.35rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:0.75rem;line-height:1.2}
+.svc-desc{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-weight:300}
+.svc-deliverables{list-style:none;margin-bottom:1.75rem;display:flex;flex-direction:column;gap:0.45rem}
+.svc-deliverables li{font-size:0.78rem;color:var(--muted2);display:flex;align-items:baseline;gap:0.55rem}
+.svc-deliverables li::before{content:'—';color:var(--teal);font-size:0.65rem;flex-shrink:0;opacity:0.7}
+.svc-pricing{display:flex;align-items:baseline;gap:0.5rem;padding-top:1.25rem;border-top:1px solid var(--border2)}
+.svc-price{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--text)}
+.svc-price-note{font-size:0.7rem;color:var(--muted)}
+
+/* CTA BAND */
+.cta-band{background:var(--bg2);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:4rem 2.5rem;text-align:center}
+.cta-band-inner{max-width:640px;margin:0 auto}
+.cta-band h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;color:var(--text);margin-bottom:0.75rem;line-height:1.15}
+.cta-band p{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-group{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.btn-teal{font-size:0.8rem;font-weight:600;background:var(--teal);color:var(--bg);padding:0.8rem 2rem;letter-spacing:0.04em;transition:background 0.2s,transform 0.15s;display:inline-block;cursor:pointer;border:none}
+.btn-teal:hover{background:#0cc9b2;transform:translateY(-1px)}
+.btn-outline{font-size:0.8rem;background:transparent;color:var(--text);border:1px solid var(--border2);padding:0.8rem 2rem;letter-spacing:0.03em;transition:border-color 0.2s,color 0.2s;display:inline-block}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+
+/* PROCESS SECTION */
+.process-wrap{max-width:860px;margin:0 auto;padding:4rem 2.5rem}
+.section-head{margin-bottom:2.5rem}
+.sec-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
+.sec-label::before{content:'';display:block;width:20px;height:1.5px;background:var(--teal)}
+.section-title{font-family:var(--display);font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.15}
+.process-steps{display:flex;flex-direction:column;gap:0}
+.process-step{display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid var(--border2);align-items:flex-start}
+.process-step:last-child{border-bottom:none}
+.ps-num{font-family:var(--display);font-size:2.5rem;font-weight:800;color:var(--border2);line-height:1;flex-shrink:0;width:56px;text-align:right}
+.ps-body{}
+.ps-title{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
+.ps-desc{font-size:0.85rem;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* FAQ */
+.faq-wrap{max-width:860px;margin:0 auto;padding:2rem 2.5rem 5rem}
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border2)}
+.faq-q{font-family:var(--display);font-size:0.95rem;font-weight:700;color:var(--text);padding:1.25rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
+.faq-q::after{content:'+';color:var(--teal);font-size:1.2rem;font-weight:400;flex-shrink:0;transition:transform 0.3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:0.85rem;color:var(--muted);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;font-weight:300}
+.faq-item.open .faq-a{max-height:400px;padding-bottom:1.25rem}
+
+/* FOOTER */
+footer{padding:2rem 2.5rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:var(--muted2);flex-wrap:wrap;gap:1rem}
+.f-links{display:flex;gap:1.5rem}
+.f-links a{color:var(--muted2);transition:color 0.2s}
+.f-links a:hover{color:var(--teal)}
+
+/* THEME TOGGLE */
+.theme-toggle{background:none;border:1px solid var(--border2);color:var(--muted);font-size:0.85rem;width:32px;height:32px;cursor:pointer;transition:border-color 0.2s,color 0.2s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--teal);color:var(--teal)}
+
+/* LIGHT MODE */
+body.light-mode{--bg:#f5f7fa;--bg2:#eef1f6;--bg3:#e4e9f2;--text:#0f172a;--muted:#475569;--muted2:#334155;--border:rgba(14,181,160,0.18);--border2:rgba(0,0,0,0.09)}
+body.light-mode .nav{background:rgba(245,247,250,0.97)}
+body.light-mode .cursor-dot{background:#0f172a}
+body.light-mode .page-hero::before{background:radial-gradient(circle,rgba(14,181,160,0.05) 0%,transparent 65%)}
+
+/* CURSOR */
+@media(pointer:fine){body{cursor:none}a,button,[role="button"]{cursor:none}}
+.cursor-dot{position:fixed;top:0;left:0;width:4px;height:4px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:background 0.15s;will-change:transform}
+.cursor-ring{position:fixed;top:0;left:0;width:30px;height:30px;border:1.5px solid rgba(14,181,160,0.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s,background 0.2s,opacity 0.2s;will-change:transform}
+.cursor-dot.is-hover{background:var(--teal)}
+.cursor-ring.is-hover{width:44px;height:44px;border-color:var(--teal);background:rgba(14,181,160,0.08)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .services-grid{grid-template-columns:1fr}
+  .page-hero{padding:3.5rem 1.5rem 3rem}
+  .services-wrap,.process-wrap,.faq-wrap{padding-left:1.25rem;padding-right:1.25rem}
+  .cta-band{padding:3rem 1.25rem}
+}
+@media(max-width:600px){
+  .process-step{flex-direction:column;gap:0.75rem}
+  .ps-num{width:auto;text-align:left;font-size:1.8rem}
+  .trust-item{padding:0.75rem 1.25rem}
+}
+
+.fade-in{opacity:0;transform:translateY(16px);animation:fadeUp 0.5s ease forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('theme')!=='dark')document.body.classList.add('light-mode');</script>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">SAMPANNA RAJ DHUNGEL</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="services.html" class="nav-active">Services</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch to dark mode">🌙</button>
+    <a href="index.html#contact" class="nav-cta">Hire me</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero fade-in">
+  <div class="page-hero-inner">
+    <div class="page-label">✦ What I offer</div>
+    <h1 class="page-title">Services &amp;<br><span>Pricing</span></h1>
+    <p class="page-subtitle">From a single logo to a full brand system, from a UI prototype to a shipped product — I work across the full spectrum of visual design and digital media. Based in Bhaktapur, Nepal. Available worldwide.</p>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✓</span> 30+ clients globally</div>
+  <div class="trust-item"><span>✓</span> 46+ completed projects</div>
+  <div class="trust-item"><span>✓</span> 5+ years experience</div>
+  <div class="trust-item"><span>✓</span> Remote-friendly</div>
+  <div class="trust-item"><span>✓</span> 24-hr first response</div>
+  <div class="trust-item"><span>✓</span> Source files included</div>
+</div>
+
+<!-- SERVICES -->
+<div class="services-wrap">
+  <div class="services-grid">
+
+    <!-- 01 Brand Identity -->
+    <div class="svc-card fade-in">
+      <div class="svc-num">01 — Brand Identity</div>
+      <span class="svc-icon">🎨</span>
+      <div class="svc-name">Brand Identity Design</div>
+      <p class="svc-desc">A complete visual identity that makes your business instantly recognisable — from the first sketch to a full brand guidelines document. Every element is designed to work together across every medium.</p>
+      <ul class="svc-deliverables">
+        <li>Logo design (primary + alternate variants)</li>
+        <li>Colour system with usage rules</li>
+        <li>Typography selection and pairing</li>
+        <li>Brand guidelines PDF</li>
+        <li>Business card &amp; letterhead layout</li>
+        <li>Social media profile assets</li>
+        <li>All source files (AI, PDF, SVG, PNG)</li>
+      </ul>
+      <div class="svc-pricing">
+        <div class="svc-price">NPR 25,000 – 80,000</div>
+        <div class="svc-price-note">/ project · based on scope</div>
+      </div>
+    </div>
+
+    <!-- 02 UI/UX -->
+    <div class="svc-card fade-in">
+      <div class="svc-num">02 — UI/UX & Web Design</div>
+      <span class="svc-icon">🖥️</span>
+      <div class="svc-name">UI/UX &amp; Web Design</div>
+      <p class="svc-desc">Interfaces and websites that feel effortless to use and beautiful to look at. I design with real users in mind — from the first wireframe through to a handoff-ready Figma file or a coded HTML/CSS build.</p>
+      <ul class="svc-deliverables">
+        <li>UX research &amp; user personas</li>
+        <li>Wireframes &amp; information architecture</li>
+        <li>High-fidelity Figma design</li>
+        <li>Interactive prototype</li>
+        <li>Responsive layouts (mobile, tablet, desktop)</li>
+        <li>Developer handoff or HTML/CSS build</li>
+        <li>Component library &amp; design system</li>
+      </ul>
+      <div class="svc-pricing">
+        <div class="svc-price">NPR 30,000 – 1,20,000</div>
+        <div class="svc-price-note">/ project · based on pages &amp; scope</div>
+      </div>
+    </div>
+
+    <!-- 03 Motion Graphics -->
+    <div class="svc-card fade-in">
+      <div class="svc-num">03 — Motion Graphics</div>
+      <span class="svc-icon">▶</span>
+      <div class="svc-name">Motion Graphics &amp; Video</div>
+      <p class="svc-desc">Motion that stops the scroll — logo animations, social media reels, explainer videos, YouTube intros and full video production. Crafted in After Effects, Premiere Pro and DaVinci Resolve.</p>
+      <ul class="svc-deliverables">
+        <li>Logo reveal animation</li>
+        <li>Social media motion posts &amp; stories</li>
+        <li>YouTube intro / channel branding</li>
+        <li>Explainer video (script to final)</li>
+        <li>Event highlight reel</li>
+        <li>Exported in multiple formats &amp; sizes</li>
+      </ul>
+      <div class="svc-pricing">
+        <div class="svc-price">NPR 8,000 – 60,000</div>
+        <div class="svc-price-note">/ video · based on length &amp; complexity</div>
+      </div>
+    </div>
+
+    <!-- 04 3D Animation -->
+    <div class="svc-card fade-in">
+      <div class="svc-num">04 — 3D Animation</div>
+      <span class="svc-icon">🎬</span>
+      <div class="svc-name">3D Animation &amp; Visualisation</div>
+      <p class="svc-desc">From product renders to character animation — photorealistic 3D visuals built in Blender and Maya. Ideal for product launches, architectural walkthroughs, and next-level brand content.</p>
+      <ul class="svc-deliverables">
+        <li>3D modelling &amp; texturing</li>
+        <li>Product visualisation &amp; turntable</li>
+        <li>Character design &amp; rigging</li>
+        <li>Architectural walkthrough</li>
+        <li>Full animation with compositing</li>
+        <li>High-res render output (4K available)</li>
+      </ul>
+      <div class="svc-pricing">
+        <div class="svc-price">NPR 20,000 – 1,50,000</div>
+        <div class="svc-price-note">/ project · based on complexity</div>
+      </div>
+    </div>
+
+    <!-- 05 Social Media -->
+    <div class="svc-card fade-in">
+      <div class="svc-num">05 — Visual Marketing</div>
+      <span class="svc-icon">📱</span>
+      <div class="svc-name">Social Media &amp; Visual Marketing</div>
+      <p class="svc-desc">Scroll-stopping social content and marketing graphics built for the platforms where your audience actually is — Instagram, Facebook, TikTok and LinkedIn. Consistent, on-brand and on time.</p>
+      <ul class="svc-deliverables">
+        <li>Monthly social media pack (12–30 posts)</li>
+        <li>Story &amp; reel templates</li>
+        <li>Campaign graphics (festive, launch, offer)</li>
+        <li>Infographics &amp; data visualisation</li>
+        <li>Editable Canva / Figma templates</li>
+        <li>Caption &amp; hashtag guide</li>
+      </ul>
+      <div class="svc-pricing">
+        <div class="svc-price">NPR 8,000 – 35,000</div>
+        <div class="svc-price-note">/ month · retainer or one-off</div>
+      </div>
+    </div>
+
+    <!-- 06 Sound Design -->
+    <div class="svc-card fade-in">
+      <div class="svc-num">06 — Sound Design</div>
+      <span class="svc-icon">🎧</span>
+      <div class="svc-name">Sound Design &amp; Audio Branding</div>
+      <p class="svc-desc">Sound that elevates everything it touches. Original audio composition, SFX for motion graphics, podcast editing, and full audio branding packages. Produced in Adobe Audition and Logic Pro.</p>
+      <ul class="svc-deliverables">
+        <li>Original music composition</li>
+        <li>SFX &amp; foley for video / motion</li>
+        <li>Audio logo / sonic branding</li>
+        <li>Podcast editing &amp; mastering</li>
+        <li>Voice-over direction &amp; mixing</li>
+        <li>WAV &amp; MP3 deliverables</li>
+      </ul>
+      <div class="svc-pricing">
+        <div class="svc-price">NPR 6,000 – 40,000</div>
+        <div class="svc-price-note">/ project · based on length &amp; scope</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Not sure which service you need?</h2>
+    <p>Most projects need a mix. Let's talk through your brief and I'll tell you exactly what will move the needle for your business.</p>
+    <div class="cta-group">
+      <a href="index.html#contact" class="btn-teal">Start a conversation →</a>
+      <a href="portfolio.html" class="btn-outline">See my work first</a>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="process-wrap">
+  <div class="section-head" data-reveal>
+    <div class="sec-label" data-reveal>How I work</div>
+    <h2 class="section-title">The process — from first call to final files</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step fade-in">
+      <div class="ps-num">01</div>
+      <div class="ps-body">
+        <div class="ps-title">Discovery Call</div>
+        <div class="ps-desc">We start with a free 30-minute call. I'll ask about your business, goals, audience and timeline. You'll leave with a clear understanding of what's possible and what it will cost — no surprises later.</div>
+      </div>
+    </div>
+    <div class="process-step fade-in">
+      <div class="ps-num">02</div>
+      <div class="ps-body">
+        <div class="ps-title">Proposal &amp; Agreement</div>
+        <div class="ps-desc">I'll send a detailed written proposal outlining the scope, deliverables, timeline and pricing. Once agreed, a 50% deposit secures your spot in my schedule. Everything is in writing — always.</div>
+      </div>
+    </div>
+    <div class="process-step fade-in">
+      <div class="ps-num">03</div>
+      <div class="ps-body">
+        <div class="ps-title">Research &amp; Concepts</div>
+        <div class="ps-desc">I dig deep into your industry, competitors and audience before putting pen to paper. You'll receive 2–3 distinct concepts with clear rationale behind each direction — not just pretty pictures.</div>
+      </div>
+    </div>
+    <div class="process-step fade-in">
+      <div class="ps-num">04</div>
+      <div class="ps-body">
+        <div class="ps-title">Refinement</div>
+        <div class="ps-desc">You choose a direction and we refine together. Two rounds of revisions are included in every project. I'll incorporate your feedback clearly and quickly — typically within 24–48 hours.</div>
+      </div>
+    </div>
+    <div class="process-step fade-in">
+      <div class="ps-num">05</div>
+      <div class="ps-body">
+        <div class="ps-title">Final Delivery</div>
+        <div class="ps-desc">Once approved, the remaining 50% is due and I deliver all final files — source files, exports, and a handoff document explaining everything. Most projects deliver within the agreed timeline, often ahead of it.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-wrap">
+  <div class="section-head" data-reveal>
+    <div class="sec-label" data-reveal>Common questions</div>
+    <h2 class="section-title">FAQ</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Do you work with international clients?</div>
+      <div class="faq-a">Yes — all the time. I've worked with clients from Australia, the USA, the UK and across Asia. Everything happens remotely via email, Figma and video call. Time zone differences are manageable and I always keep communication clear and consistent.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's your payment process?</div>
+      <div class="faq-a">50% deposit before work starts, 50% on final delivery. For ongoing retainer work (e.g. monthly social media), payment is monthly in advance. I accept bank transfer, eSewa, and international payments via Wise.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many revisions do I get?</div>
+      <div class="faq-a">Every project includes 2 rounds of revisions after the initial concept presentation. If you need more, additional revisions are billed at a small hourly rate. I've found that 2 rounds is almost always enough when the brief is clear from the start.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I need multiple services together?</div>
+      <div class="faq-a">Most projects combine services — for example, brand identity + social media templates, or UI/UX + motion graphics for a product launch. Bundled projects are often more cost-effective than booking each service separately. Just ask.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does a project take?</div>
+      <div class="faq-a">It depends on scope. A logo design typically takes 1–2 weeks. A full brand identity is 2–4 weeks. UI/UX for a website is 3–6 weeks. 3D animation projects vary most. I'll give you a clear timeline in the proposal so you can plan around it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I own the final design files?</div>
+      <div class="faq-a">Yes — full ownership transfers to you on receipt of final payment. You get all source files (Figma, Illustrator, Blender, etc.) and can use them however you want. I retain the right to display the work in my portfolio unless you request otherwise.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="display:flex;flex-direction:column;gap:0.2rem">
+    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+  </div>
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+/* Theme toggle */
+(function(){
+  var btn = document.getElementById('themeToggle');
+  if(!btn) return;
+  function applyTheme(light){
+    document.body.classList.toggle('light-mode', light);
+    btn.textContent = light ? '🌙' : '☀';
+    btn.title = light ? 'Switch to dark mode' : 'Switch to light mode';
+  }
+  applyTheme(localStorage.getItem('theme') !== 'dark');
+  btn.addEventListener('click', function(){
+    var isLight = !document.body.classList.contains('light-mode');
+    applyTheme(isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+})();
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click', function(){
+    var item = q.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+/* Fade-in on scroll */
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target); }
+    });
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
+})();
+
+/* Custom cursor */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+  var dot=document.createElement('div');dot.className='cursor-dot';
+  var ring=document.createElement('div');ring.className='cursor-ring';
+  document.body.appendChild(dot);document.body.appendChild(ring);
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('pointermove',function(e){
+    mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';
+    if(e.target.closest('a,button,[role="button"]')){dot.classList.add('is-hover');ring.classList.add('is-hover');}
+    else{dot.classList.remove('is-hover');ring.classList.remove('is-hover');}
+  });
+  (function tick(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+})();
+</script>
+<script src="assets/js/cursor-trail.js"></script>
+<script src="assets/js/scramble.js"></script>
+<script src="assets/js/scroll-reveal.js"></script>
+</body>
+</html>

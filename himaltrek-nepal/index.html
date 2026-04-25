@@ -1,0 +1,539 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>HimalTrek Nepal — Trek with confidence & care</title>
+<meta name="description" content="Nepal's trusted trekking guide. Expert routes, permits, teahouse bookings, emergency SOS."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<!-- Favicon as inline SVG data URI -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a2332'/%3E%3Cpolygon points='16,4 28,28 4,28' fill='%23E9B84A'/%3E%3C/svg%3E"/>
+<link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a2332'/%3E%3Cpolygon points='16,4 28,28 4,28' fill='%23E9B84A'/%3E%3C/svg%3E"/>
+</head>
+<body>
+<div id="toast"></div>
+<div id="modal-root"></div>
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="container"><div class="nav__inner">
+  <div class="nav__logo" onclick="showPage('home')">
+    <div class="nav__logo-mark">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 15H1L8 1Z" fill="#1a2332"/></svg>
+    </div>
+    <div><div class="nav__logo-name">HimalTrek</div><div class="nav__logo-tagline">Nepal's trusted trek guide</div></div>
+  </div>
+  <div class="nav__links">
+    <div class="nav__link active" id="nl-home"    onclick="showPage('home')">Explore treks</div>
+    <div class="nav__link"       id="nl-permits"  onclick="showPage('permits')">Permits</div>
+    <div class="nav__link"       id="nl-guides"   onclick="showPage('guides')">Guides</div>
+    <div class="nav__link"       id="nl-blog"     onclick="showPage('blog')">Blog</div>
+    <div class="nav__link"       id="nl-about"    onclick="showPage('about')">About</div>
+    <div class="nav__link"       id="nl-wishlist" onclick="showPage('wishlist')">Wishlist <span class="wishlist-badge" id="wishlist-badge" style="display:none;">0</span></div>
+  </div>
+  <div class="nav__actions">
+    <button class="nav__btn" onclick="showPage('signin')">Sign in</button>
+    <button class="nav__btn nav__btn--gold" onclick="showPage('plan')">Plan your trek</button>
+  </div>
+</div></div>
+</nav>
+
+
+<!-- ══ HOME ══ -->
+<div id="page-home">
+<section class="hero">
+  <svg class="hero__mountains" viewBox="0 0 1200 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:140px;">
+    <path d="M0 140 L160 55 L280 100 L420 18 L560 80 L700 30 L820 75 L960 10 L1080 55 L1200 25 L1200 140Z" fill="#162030" opacity="0.7"/>
+    <path d="M0 140 L120 95 L240 115 L380 65 L520 100 L660 60 L780 95 L920 50 L1060 80 L1200 60 L1200 140Z" fill="#111a28" opacity="0.95"/>
+  </svg>
+  <div class="container"><div class="hero__content fade-up">
+    <div class="hero__badge"><svg width="10" height="10" viewBox="0 0 10 10" fill="#E9B84A"><path d="M5 1L6.5 3.8L10 4.4L7.5 6.8L8.1 10L5 8.4L1.9 10L2.5 6.8L0 4.4L3.5 3.8Z"/></svg> Nepal's #1 trekking platform · Est. 2019</div>
+    <h1 class="hero__h1">Trek Nepal with<br><em>confidence &amp; care</em></h1>
+    <p class="hero__sub">Expert-guided routes across the Himalayas. Permits, teahouse bookings, real-time weather and emergency SOS — all in one place.</p>
+    <div class="hero__btns fade-up fade-up--d1">
+      <button class="btn btn--primary" onclick="document.getElementById('routes-section').scrollIntoView({behavior:'smooth'})">Browse all 24 routes</button>
+      <button class="btn btn--outline" onclick="openModal('app-download')">Download the app</button>
+    </div>
+    <div class="hero__stats fade-up fade-up--d2">
+      <div><div class="hero__stat-val">24+</div><div class="hero__stat-lbl">Curated routes</div></div>
+      <div><div class="hero__stat-val">12,400+</div><div class="hero__stat-lbl">Trekkers guided</div></div>
+      <div><div class="hero__stat-val">★ 4.9</div><div class="hero__stat-lbl">Avg rating</div></div>
+      <div><div class="hero__stat-val">100%</div><div class="hero__stat-lbl">Permit success</div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- Search Bar -->
+<div class="search-wrap"><div class="container">
+  <div class="search-inner">
+    <div class="search-field" id="sf-dest" onclick="toggleDD('dest',this)">
+      <div class="search-field__label">Destination</div>
+      <div class="search-field__val ph" id="sf-dest-val">Search any of 24 treks in Nepal</div>
+    </div>
+    <div class="search-field" id="sf-dates" onclick="toggleDD('dates',this)">
+      <div class="search-field__label">Trek dates</div>
+      <div class="search-field__val ph" id="sf-dates-val">Choose start &amp; end dates</div>
+    </div>
+    <div class="search-field" id="sf-diff" onclick="toggleDD('diff',this)">
+      <div class="search-field__label">Difficulty</div>
+      <div class="search-field__val ph" id="sf-diff-val">All levels</div>
+    </div>
+    <div class="search-btn-wrap"><button class="search-btn" onclick="runSearch()">Search routes</button></div>
+  </div>
+</div></div>
+
+<!-- Season strip -->
+<div class="season-strip"><div class="container" style="padding:0;"><div class="season-strip__inner">
+  <div class="season-item"><div class="season-item__month">Jan</div><div class="season-bar season-bar--ok" style="width:24px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#633806;">Ok</div></div>
+  <div class="season-item"><div class="season-item__month">Feb</div><div class="season-bar season-bar--ok" style="width:28px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#633806;">Ok</div></div>
+  <div class="season-item"><div class="season-item__month">Mar</div><div class="season-bar season-bar--good" style="width:34px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#3B6D11;">Good</div></div>
+  <div class="season-item season-item--peak"><div class="season-item__month">Apr ★</div><div class="season-bar season-bar--peak" style="width:40px;margin:0 auto;"></div><div class="season-item__lbl">Peak</div></div>
+  <div class="season-item season-item--peak"><div class="season-item__month">May ★</div><div class="season-bar season-bar--peak" style="width:40px;margin:0 auto;"></div><div class="season-item__lbl">Peak</div></div>
+  <div class="season-item"><div class="season-item__month">Jun</div><div class="season-bar season-bar--poor" style="width:12px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#bbb;">Monsoon</div></div>
+  <div class="season-item"><div class="season-item__month">Jul</div><div class="season-bar season-bar--poor" style="width:10px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#bbb;">Monsoon</div></div>
+  <div class="season-item"><div class="season-item__month">Aug</div><div class="season-bar season-bar--poor" style="width:10px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#bbb;">Monsoon</div></div>
+  <div class="season-item"><div class="season-item__month">Sep</div><div class="season-bar season-bar--ok" style="width:24px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#633806;">Ok</div></div>
+  <div class="season-item season-item--peak"><div class="season-item__month">Oct ★</div><div class="season-bar season-bar--peak" style="width:40px;margin:0 auto;"></div><div class="season-item__lbl">Peak</div></div>
+  <div class="season-item"><div class="season-item__month">Nov</div><div class="season-bar season-bar--good" style="width:34px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#3B6D11;">Good</div></div>
+  <div class="season-item"><div class="season-item__month">Dec</div><div class="season-bar season-bar--ok" style="width:22px;margin:0 auto;"></div><div class="season-item__lbl" style="color:#633806;">Ok</div></div>
+</div></div></div>
+
+<!-- All 24 Trek Routes -->
+<section class="section" id="routes-section"><div class="container">
+  <div class="sec-hdr">
+    <div><h2 class="sec-hdr__title">All 24 trek routes</h2><p class="sec-hdr__sub">Every major route in Nepal — from quick escapes to epic expeditions</p></div>
+  </div>
+  <div class="grid-3" id="trek-grid"></div>
+</div></section>
+
+<!-- Why -->
+<section class="section section--cream"><div class="container">
+  <div class="sec-hdr"><div><h2 class="sec-hdr__title">Why trek with HimalTrek?</h2><p class="sec-hdr__sub">Everything you need for a safe, memorable journey</p></div></div>
+  <div class="grid-4">
+    <div class="why-card" onclick="openModal('app-download')"><div class="why-card__icon" style="background:#EAF3DE;"><svg width="20" height="20" viewBox="0 0 20 20" fill="#3B6D11"><path d="M10 1C6.69 1 4 3.69 4 7c0 5 6 12 6 12s6-7 6-12c0-3.31-2.69-6-6-6zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg></div><div class="why-card__title">Offline trail maps</div><div class="why-card__sub">Download full GPS maps before you lose signal above 4,000m. Works completely offline.</div></div>
+    <div class="why-card" onclick="showPage('permits')"><div class="why-card__icon" style="background:#E6F1FB;"><svg width="20" height="20" viewBox="0 0 20 20" fill="#185FA5"><path d="M10 1a9 9 0 1 0 0 18A9 9 0 0 0 10 1zm1 13H9V9h2v5zm0-7H9V5h2v2z"/></svg></div><div class="why-card__title">Permit management</div><div class="why-card__sub">Apply for TIMS, national park, and restricted area permits from your phone.</div></div>
+    <div class="why-card" onclick="openModal('app-download')"><div class="why-card__icon" style="background:#FAEEDA;"><svg width="20" height="20" viewBox="0 0 20 20" fill="#633806"><path d="M10 2v16M4 8l6-6 6 6M4 14l6 6 6-6" stroke="#633806" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="why-card__title">AMS altitude checker</div><div class="why-card__sub">Daily symptom log with real-time altitude data and personalised acclimatisation advice.</div></div>
+    <div class="why-card" onclick="openModal('app-download')"><div class="why-card__icon" style="background:#FCEBEB;"><svg width="20" height="20" viewBox="0 0 20 20" fill="#A32D2D"><path d="M10 2v10" stroke="#A32D2D" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="16" r="2" fill="#A32D2D"/></svg></div><div class="why-card__title">Emergency SOS</div><div class="why-card__sub">One-tap SOS alerts your guide, emergency contacts and Nepal Police with GPS coordinates.</div></div>
+  </div>
+</div></section>
+
+<!-- Testimonials -->
+<section class="section"><div class="container">
+  <div class="sec-hdr"><div><h2 class="sec-hdr__title">What trekkers say</h2><p class="sec-hdr__sub">From 1,240 verified reviews</p></div></div>
+  <div class="grid-3">
+    <div class="testi"><div class="testi__stars">★★★★★</div><p class="testi__text">"Permit system made everything stress-free. TIMS and park entries sorted before we even landed in Kathmandu."</p><div class="testi__author"><div class="testi__avatar" style="background:#B5D4F4;color:#0C447C;">JM</div><div><div class="testi__name">James Mitchell</div><div class="testi__country">Australia · EBC, Apr 2026</div></div></div></div>
+    <div class="testi"><div class="testi__stars">★★★★★</div><p class="testi__text">"Altitude checker flagged my symptoms on day 3. We rested in Namche and had zero AMS issues the rest of the circuit."</p><div class="testi__author"><div class="testi__avatar" style="background:#C0DD97;color:#27500A;">SL</div><div><div class="testi__name">Sara Lindqvist</div><div class="testi__country">Sweden · Annapurna, Mar 2026</div></div></div></div>
+    <div class="testi"><div class="testi__stars">★★★★★</div><p class="testi__text">"Teahouse booking seamless. Confirmed beds the entire Langtang route even in peak season. Incredible service."</p><div class="testi__author"><div class="testi__avatar" style="background:#FAC775;color:#412402;">RK</div><div><div class="testi__name">Ravi Kumar</div><div class="testi__country">India · Langtang, Oct 2025</div></div></div></div>
+  </div>
+  <div style="text-align:center;margin-top:22px;"><button class="btn btn--ghost" onclick="openModal('write-review')">Write a review</button></div>
+</div></section>
+
+<section class="cta-section"><div class="container"><div class="cta-section__inner">
+  <div>
+    <div class="cta-title">Ready for your<br><em style="color:var(--gold);font-style:normal;">Himalayan adventure?</em></div>
+    <p class="cta-sub">Join 12,400+ trekkers who've trusted HimalTrek.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+      <button class="btn btn--primary" onclick="document.getElementById('routes-section').scrollIntoView({behavior:'smooth'})">Browse routes</button>
+      <button class="btn btn--outline" onclick="showPage('permits')">Get permits</button>
+      <button class="btn btn--outline" onclick="openModal('contact-guide')">Talk to a guide</button>
+    </div>
+    <div class="app-badges">
+      <div class="app-badge" onclick="openModal('app-download')"><svg width="18" height="18" viewBox="0 0 18 18" fill="rgba(255,255,255,0.6)"><path d="M13 2H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM9 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg><div><div class="app-badge__lbl">Download on the</div><div class="app-badge__store">App Store</div></div></div>
+      <div class="app-badge" onclick="openModal('app-download')"><svg width="18" height="18" viewBox="0 0 18 18" fill="rgba(255,255,255,0.6)"><path d="M3 3l12 6-12 6V3z"/></svg><div><div class="app-badge__lbl">Get it on</div><div class="app-badge__store">Google Play</div></div></div>
+    </div>
+  </div>
+</div></div></section>
+</div><!-- /home -->
+
+
+<!-- ══ TREK DETAIL ══ -->
+<div id="page-detail" style="display:none;">
+<div style="padding:10px 0;border-bottom:1px solid var(--border);"><div class="container"><div class="back-link" onclick="showPage('home')"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 2L4 6L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Back to all routes</div></div></div>
+<div class="trek-detail-hero" id="detail-hero" style="background:#2d4055;">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0 300 L140 100 L240 180 L380 40 L520 140 L660 60 L800 130 L960 20 L1200 45 L1200 300Z" fill="rgba(0,0,0,0.35)"/></svg>
+  <div class="trek-detail-hero__overlay"></div>
+  <button class="trek-card__heart" id="detail-heart" onclick="toggleWishlist(currentTrek.id,this)" style="top:16px;right:16px;position:absolute;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 14s-6-4.35-6-8a4 4 0 0 1 6-3.46A4 4 0 0 1 14 6c0 3.65-6 8-6 8z" stroke="white" stroke-width="1.4" fill="none"/></svg></button>
+  <div class="trek-detail-hero__content">
+    <div style="display:inline-block;background:rgba(233,184,74,0.2);border:1px solid rgba(233,184,74,0.35);border-radius:20px;padding:4px 12px;font-size:11px;color:#E9B84A;margin-bottom:8px;" id="detail-badge">Khumbu Region</div>
+    <h1 style="font-family:'DM Serif Display',serif;color:#fff;margin-bottom:7px;" id="detail-title">Everest Base Camp</h1>
+    <p style="font-size:13px;color:rgba(255,255,255,0.75);" id="detail-meta">★ 4.9 · Strenuous · 14 days · 5,364m</p>
+  </div>
+</div>
+<div class="trek-tabs">
+  <div class="trek-tab active" onclick="selectTab(this,'itinerary')">Itinerary</div>
+  <div class="trek-tab" onclick="selectTab(this,'map')">Map</div>
+  <div class="trek-tab" onclick="selectTab(this,'gear')">Gear list</div>
+  <div class="trek-tab" onclick="selectTab(this,'reviews')">Reviews</div>
+  <div class="trek-tab" onclick="selectTab(this,'faq')">FAQs</div>
+</div>
+<div class="trek-detail-body">
+  <div class="trek-detail-main">
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-box__val" id="d-days">14</div><div class="stat-box__lbl">Days</div></div>
+      <div class="stat-box"><div class="stat-box__val" id="d-alt">5,364m</div><div class="stat-box__lbl">Max altitude</div></div>
+      <div class="stat-box"><div class="stat-box__val" id="d-best">Apr–May</div><div class="stat-box__lbl">Best season</div></div>
+      <div class="stat-box"><div class="stat-box__val" id="d-start">Lukla</div><div class="stat-box__lbl">Starting point</div></div>
+    </div>
+    <div id="tab-content-area"></div>
+    <div id="itinerary-container"></div>
+    <button id="toggle-days-btn" onclick="toggleDays()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:12px;cursor:pointer;margin-top:8px;">Show all 14 days ↓</button>
+    <div id="sidebar-reviews" style="margin-top:22px;padding-top:20px;border-top:1px solid var(--border);"></div>
+  </div>
+  <div class="trek-detail-sidebar">
+    <div class="book-card">
+      <div class="book-card__price" id="d-price">$980</div>
+      <div class="book-card__per">per person · all inclusive</div>
+      <div class="book-row"><div class="book-row__lbl">Duration</div><div class="book-row__val" id="d-dur">14 days</div></div>
+      <div class="book-row"><div class="book-row__lbl">Guide</div><div class="book-row__val">TAAN certified</div></div>
+      <div class="book-row"><div class="book-row__lbl">Teahouses</div><div class="book-row__val">All pre-booked</div></div>
+      <div class="book-row"><div class="book-row__lbl">Permits</div><div class="book-row__val">Included</div></div>
+      <div style="margin:12px 0 10px;"><div class="form-label" style="margin-bottom:5px;">Start date</div><input type="date" class="form-input" id="booking-date" min="2026-04-20"/></div>
+      <div style="margin-bottom:14px;">
+        <div class="form-label" style="margin-bottom:5px;">Trekkers</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button onclick="changeTrekkers(-1)" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:#fff;font-size:16px;cursor:pointer;">−</button>
+          <span id="trekker-count" style="font-size:15px;font-weight:500;min-width:18px;text-align:center;">1</span>
+          <button onclick="changeTrekkers(1)" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:#fff;font-size:16px;cursor:pointer;">+</button>
+        </div>
+      </div>
+      <div style="background:var(--cream);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:12px;">
+        <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Subtotal (<span id="tc-display">1</span>× $<span id="d-price-each">980</span>)</span><span id="booking-subtotal">$980</span></div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;"><span style="color:var(--muted);">Service fee (5%)</span><span id="booking-fee">$49</span></div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-weight:500;"><span>Total</span><span id="booking-total">$1,029</span></div>
+      </div>
+      <button class="btn btn--dark btn--full" onclick="bookTrek()">Book this trek</button>
+      <button class="btn btn--ghost btn--full" style="margin-top:8px;" onclick="showPage('permits')">Apply for permits only →</button>
+      <button class="btn btn--ghost btn--full" style="margin-top:8px;" onclick="openModal('contact-guide')">Ask a guide a question</button>
+    </div>
+    <div style="margin-top:18px;">
+      <h3 style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;margin-bottom:10px;">What's included</h3>
+      <div class="included-item"><div class="included-check"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/></svg></div>TIMS card &amp; national park permits</div>
+      <div class="included-item"><div class="included-check"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/></svg></div>All teahouse accommodation</div>
+      <div class="included-item"><div class="included-check"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/></svg></div>Breakfast &amp; dinner daily</div>
+      <div class="included-item"><div class="included-check"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/></svg></div>TAAN certified English guide</div>
+      <div class="included-item"><div class="included-check"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/></svg></div>Lukla return flights (where applicable)</div>
+      <div class="included-item"><div class="included-check"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/></svg></div>Emergency SOS app access</div>
+      <div class="included-item"><div class="included-check"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4L3.5 6L6.5 2" stroke="#3B6D11" stroke-width="1.3" stroke-linecap="round"/></svg></div>Offline trail maps</div>
+    </div>
+  </div>
+</div>
+</div><!-- /detail -->
+
+
+<!-- ══ PERMITS ══ -->
+<div id="page-permits" style="display:none;">
+<div class="page-hero"><svg class="page-hero__mtn" viewBox="0 0 1200 80" preserveAspectRatio="none" style="height:80px;"><path d="M0 80 L200 20 L400 50 L600 5 L800 35 L1000 10 L1200 30 L1200 80Z" fill="#162030" opacity="0.6"/></svg>
+<div class="container"><h1>Permits &amp; TIMS card</h1><p>Apply online — issued digitally within 2 hours. No queuing at government offices.</p></div></div>
+<section style="padding:36px 0;"><div class="container" style="max-width:800px;">
+  <div class="steps-bar">
+    <div class="step-wrap"><div class="step-dot step-dot--active" id="sd1" onclick="goStep(1)">1</div><div class="step-lbl step-lbl--active" id="sl1">Permit type</div></div>
+    <div class="step-connector" id="sc1"></div>
+    <div class="step-wrap"><div class="step-dot step-dot--idle" id="sd2" onclick="goStep(2)">2</div><div class="step-lbl step-lbl--idle" id="sl2">Your details</div></div>
+    <div class="step-connector" id="sc2"></div>
+    <div class="step-wrap"><div class="step-dot step-dot--idle" id="sd3" onclick="goStep(3)">3</div><div class="step-lbl step-lbl--idle" id="sl3">Trek details</div></div>
+    <div class="step-connector" id="sc3"></div>
+    <div class="step-wrap"><div class="step-dot step-dot--idle" id="sd4" onclick="goStep(4)">4</div><div class="step-lbl step-lbl--idle" id="sl4">Payment</div></div>
+    <div class="step-connector" id="sc4"></div>
+    <div class="step-wrap"><div class="step-dot step-dot--idle" id="sd5">5</div><div class="step-lbl step-lbl--idle" id="sl5">Confirmed</div></div>
+  </div>
+  <div id="step-content"></div>
+</div></section>
+</div><!-- /permits -->
+
+<!-- ══ GUIDES ══ -->
+<div id="page-guides" style="display:none;">
+<div class="page-hero"><svg class="page-hero__mtn" viewBox="0 0 1200 80" preserveAspectRatio="none" style="height:80px;"><path d="M0 80 L200 20 L400 50 L600 5 L800 35 L1000 10 L1200 30 L1200 80Z" fill="#162030" opacity="0.6"/></svg>
+<div class="container"><h1>Our certified guides</h1><p>TAAN certified, first-aid trained, emergency comms on every trek. Over 1,000 combined trips led.</p></div></div>
+<section class="section"><div class="container">
+  <div class="highlight-bar">Every guide holds a valid TAAN certification and has completed Himalayan Rescue Association first-aid training.</div>
+  <div class="grid-4" id="guides-grid"></div>
+  <div style="margin-top:36px;background:var(--cream);border-radius:14px;padding:28px;text-align:center;">
+    <h3 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:8px;">Can't find the right guide?</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Tell us your experience level, preferred trek and dates — we'll match you within 2 hours.</p>
+    <button class="btn btn--dark" onclick="openModal('contact-guide')">Request a guide match</button>
+  </div>
+</div></section>
+</div><!-- /guides -->
+
+<!-- ══ BLOG ══ -->
+<div id="page-blog" style="display:none;">
+<div class="page-hero"><svg class="page-hero__mtn" viewBox="0 0 1200 80" preserveAspectRatio="none" style="height:80px;"><path d="M0 80 L200 20 L400 50 L600 5 L800 35 L1000 10 L1200 30 L1200 80Z" fill="#162030" opacity="0.6"/></svg>
+<div class="container"><h1>Trek journal</h1><p>Stories, tips, safety guides and insider knowledge — written by our guides and experienced trekkers.</p></div></div>
+<section class="section"><div class="container">
+  <div class="grid-3" id="blog-grid"></div>
+</div></section>
+</div><!-- /blog -->
+
+<!-- ══ ABOUT ══ -->
+<div id="page-about" style="display:none;">
+<div class="page-hero"><svg class="page-hero__mtn" viewBox="0 0 1200 80" preserveAspectRatio="none" style="height:80px;"><path d="M0 80 L200 20 L400 50 L600 5 L800 35 L1000 10 L1200 30 L1200 80Z" fill="#162030" opacity="0.6"/></svg>
+<div class="container"><h1>About HimalTrek</h1><p>Nepal's most trusted trekking platform — connecting responsible adventurers with the world's greatest mountain landscapes since 2019.</p></div></div>
+<section class="section"><div class="container">
+  <div class="grid-2" style="gap:44px;align-items:start;">
+    <div>
+      <h2 style="margin-bottom:16px;">Our story</h2>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:12px;">HimalTrek was founded in 2019 by a team of Kathmandu-based trekking professionals and technology experts who saw a gap: trekkers were struggling with fragmented information, complex permit processes, and unreliable safety tools.</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:12px;">We built HimalTrek to be the single platform that handles everything — from the moment you start dreaming about Nepal to the day you return home safely.</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;">Today we've guided 12,400+ trekkers, processed 18,000+ permits, and partnered with 120 TAAN-certified guides across every region of Nepal.</p>
+    </div>
+    <div class="grid-2" style="gap:12px;">
+      <div class="stat-box" style="padding:20px;"><div class="stat-box__val" style="font-size:26px;color:var(--gold);">12,400+</div><div class="stat-box__lbl">Trekkers guided</div></div>
+      <div class="stat-box" style="padding:20px;"><div class="stat-box__val" style="font-size:26px;color:var(--gold);">24</div><div class="stat-box__lbl">Curated routes</div></div>
+      <div class="stat-box" style="padding:20px;"><div class="stat-box__val" style="font-size:26px;color:var(--gold);">120+</div><div class="stat-box__lbl">Certified guides</div></div>
+      <div class="stat-box" style="padding:20px;"><div class="stat-box__val" style="font-size:26px;color:var(--gold);">★ 4.9</div><div class="stat-box__lbl">Average rating</div></div>
+    </div>
+  </div>
+</div></section>
+<section class="section section--cream"><div class="container">
+  <h2 style="margin-bottom:22px;">Our values</h2>
+  <div class="grid-2">
+    <div class="value-card"><div class="value-card__title">Safety first, always</div><div class="value-card__sub">Every guide carries first aid certification, emergency communication, and detailed AMS protocols. Safety is never compromised for pace.</div></div>
+    <div class="value-card"><div class="value-card__title">Responsible trekking</div><div class="value-card__sub">We follow Leave No Trace principles, support local teahouse communities, and partner only with guides who respect mountain ecosystems.</div></div>
+    <div class="value-card"><div class="value-card__title">Transparent pricing</div><div class="value-card__sub">No hidden fees. All permit costs, guide fees, teahouse bookings and flights are clearly itemised before you book.</div></div>
+    <div class="value-card"><div class="value-card__title">Community impact</div><div class="value-card__sub">5% of every booking goes to the HimalTrek Foundation supporting trail maintenance, porter welfare and local school infrastructure.</div></div>
+  </div>
+</div></section>
+<section class="section"><div class="container">
+  <h2 style="margin-bottom:22px;">The team</h2>
+  <div class="grid-4">
+    <div class="team-card"><div class="team-avatar" style="background:#B5D4F4;color:#0C447C;">AR</div><div style="font-size:14px;font-weight:500;margin-bottom:3px;">Arun Rai</div><div style="font-size:11px;color:var(--muted);">Co-founder &amp; CEO</div></div>
+    <div class="team-card"><div class="team-avatar" style="background:#C0DD97;color:#27500A;">SM</div><div style="font-size:14px;font-weight:500;margin-bottom:3px;">Sita Maharjan</div><div style="font-size:11px;color:var(--muted);">Co-founder &amp; CTO</div></div>
+    <div class="team-card"><div class="team-avatar" style="background:#FAC775;color:#412402;">DP</div><div style="font-size:14px;font-weight:500;margin-bottom:3px;">Deepak Pradhan</div><div style="font-size:11px;color:var(--muted);">Head of Guides</div></div>
+    <div class="team-card"><div class="team-avatar" style="background:#AFA9EC;color:#3C3489;">PL</div><div style="font-size:14px;font-weight:500;margin-bottom:3px;">Priya Lama</div><div style="font-size:11px;color:var(--muted);">Head of Permits</div></div>
+  </div>
+</div></section>
+</div><!-- /about -->
+
+<!-- ══ WISHLIST ══ -->
+<div id="page-wishlist" style="display:none;">
+<div class="page-hero"><svg class="page-hero__mtn" viewBox="0 0 1200 80" preserveAspectRatio="none" style="height:80px;"><path d="M0 80 L200 20 L400 50 L600 5 L800 35 L1000 10 L1200 30 L1200 80Z" fill="#162030" opacity="0.6"/></svg>
+<div class="container"><h1>Your wishlist</h1><p>Treks you've saved for later.</p></div></div>
+<section class="section"><div class="container">
+  <div class="grid-3" id="wishlist-grid"></div>
+  <div id="wishlist-empty" style="text-align:center;padding:60px;display:none;">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin:0 auto 16px;"><path d="M24 42s-18-13-18-24a12 12 0 0 1 18-10.38A12 12 0 0 1 42 18c0 11-18 24-18 24z" stroke="#e0d8cc" stroke-width="2.5" fill="none"/></svg>
+    <h3 style="font-family:'DM Serif Display',serif;margin-bottom:10px;">No treks saved yet</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">Tap the heart on any trek to save it here</p>
+    <button class="btn btn--dark" onclick="showPage('home')">Explore routes</button>
+  </div>
+</div></section>
+</div><!-- /wishlist -->
+
+<!-- ══ SIGN IN ══ -->
+<div id="page-signin" style="display:none;">
+<div class="auth-page">
+  <div class="auth-card">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 19H1L10 1Z" fill="#E9B84A"/></svg></div>
+      <h2 style="font-family:'DM Serif Display',serif;">Welcome back</h2>
+    </div>
+    <div class="auth-tabs">
+      <div class="auth-tab active" id="tab-signin" onclick="switchAuthTab('signin')">Sign in</div>
+      <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</div>
+    </div>
+    <div id="auth-form-signin">
+      <div class="form-group" style="margin-bottom:12px;"><label class="form-label">Email address</label><input class="form-input" type="email" placeholder="you@email.com"/></div>
+      <div class="form-group" style="margin-bottom:18px;"><label class="form-label">Password</label><input class="form-input" type="password" placeholder="••••••••"/></div>
+      <button class="btn btn--dark btn--full" onclick="toast('Signed in! Welcome back.');showPage('home')">Sign in</button>
+      <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:12px;cursor:pointer;" onclick="toast('Password reset link sent!')">Forgot password?</p>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);text-align:center;">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Or continue with</p>
+        <div style="display:flex;gap:10px;justify-content:center;">
+          <button class="btn btn--ghost btn--sm" onclick="toast('Google sign-in — coming soon')">Google</button>
+          <button class="btn btn--ghost btn--sm" onclick="toast('Facebook sign-in — coming soon')">Facebook</button>
+        </div>
+      </div>
+    </div>
+    <div id="auth-form-register" style="display:none;">
+      <div class="form-grid" style="margin-bottom:12px;">
+        <div class="form-group"><label class="form-label">First name</label><input class="form-input" placeholder="James"/></div>
+        <div class="form-group"><label class="form-label">Last name</label><input class="form-input" placeholder="Mitchell"/></div>
+      </div>
+      <div class="form-group" style="margin-bottom:12px;"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@email.com"/></div>
+      <div class="form-group" style="margin-bottom:12px;"><label class="form-label">Nationality</label><input class="form-input" placeholder="Australian"/></div>
+      <div class="form-group" style="margin-bottom:18px;"><label class="form-label">Password</label><input class="form-input" type="password" placeholder="Min 8 characters"/></div>
+      <button class="btn btn--dark btn--full" onclick="toast('Account created! Check your email.');showPage('home')">Create account</button>
+    </div>
+  </div>
+</div>
+</div><!-- /signin -->
+
+<!-- ══ PLAN YOUR TREK ══ -->
+<div id="page-plan" style="display:none;">
+<div class="page-hero"><svg class="page-hero__mtn" viewBox="0 0 1200 80" preserveAspectRatio="none" style="height:80px;"><path d="M0 80 L200 20 L400 50 L600 5 L800 35 L1000 10 L1200 30 L1200 80Z" fill="#162030" opacity="0.6"/></svg>
+<div class="container"><h1>Plan your trek</h1><p>Tell us about your experience, fitness and goals — we'll build the perfect Nepal itinerary for you.</p></div></div>
+<section class="section"><div class="container" style="max-width:760px;">
+  <div class="card" style="margin-bottom:18px;">
+    <h3 style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;margin-bottom:16px;">Step 1 — About you</h3>
+    <div class="form-grid">
+      <div class="form-group"><label class="form-label">Your name</label><input class="form-input" placeholder="James Mitchell"/></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@email.com"/></div>
+      <div class="form-group"><label class="form-label">Nationality</label><input class="form-input" placeholder="Australian"/></div>
+      <div class="form-group"><label class="form-label">Trekking experience</label>
+        <select class="form-select"><option>First time trekker</option><option>Some hiking experience</option><option>Experienced (14+ days)</option><option>Expert / high-altitude</option></select></div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px;">
+    <h3 style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;margin-bottom:16px;">Step 2 — Preferences</h3>
+    <div class="form-grid">
+      <div class="form-group"><label class="form-label">Preferred difficulty</label>
+        <select class="form-select"><option>Easy — relaxed pace</option><option>Moderate — some challenge</option><option>Strenuous — push my limits</option></select></div>
+      <div class="form-group"><label class="form-label">Trip duration</label>
+        <select class="form-select"><option>5–7 days</option><option>8–12 days</option><option>13–18 days</option><option>18+ days</option></select></div>
+      <div class="form-group"><label class="form-label">Preferred start date</label><input class="form-input" type="date" min="2026-04-20"/></div>
+      <div class="form-group"><label class="form-label">Group size</label>
+        <select class="form-select"><option>Solo</option><option>Pair</option><option>Small group (3–6)</option><option>Large group (7+)</option></select></div>
+      <div class="form-group form-group--full"><label class="form-label">Budget per person (USD)</label>
+        <select class="form-select"><option>Under $400</option><option>$400–$800</option><option>$800–$1,400</option><option>$1,400+</option></select></div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:20px;">
+    <h3 style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;margin-bottom:14px;">Step 3 — What matters most?</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;"><input type="checkbox" checked/> Mountain views</label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;"><input type="checkbox"/> Cultural experience</label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;"><input type="checkbox"/> Wildlife &amp; nature</label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;"><input type="checkbox"/> Peak climbing</label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;"><input type="checkbox" checked/> Off-the-beaten-path</label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;"><input type="checkbox"/> Photography</label>
+    </div>
+    <div class="form-group"><label class="form-label">Anything else?</label><textarea class="form-textarea" rows="3" placeholder="Health conditions, dietary requirements, previous injuries..."></textarea></div>
+  </div>
+  <button class="btn btn--dark btn--full" style="font-size:14px;" onclick="submitPlan()">Get my personalised trek plan →</button>
+</div></section>
+</div><!-- /plan -->
+
+<!-- ══ PRIVACY ══ -->
+<div id="page-privacy" style="display:none;">
+<div class="page-hero"><div class="container"><h1>Privacy policy</h1><p>Last updated: April 20, 2026</p></div></div>
+<section class="section"><div class="container" style="max-width:740px;"><div class="legal-content">
+  <h3>1. Information we collect</h3><p>When you use HimalTrek we collect: personal information you provide (name, email, passport number, nationality, emergency contact); booking and permit data; payment information processed securely via eSewa, Khalti or Stripe — we never store card numbers; device and usage data.</p>
+  <h3>2. How we use your information</h3><ul><li>To process trek bookings and permit applications</li><li>To communicate with you about your trek (confirmations, guide assignment, weather alerts)</li><li>To submit permit applications to the Nepal Government (TAAN, Department of Immigration)</li><li>To improve our services and personalise your experience</li><li>To send optional marketing emails (opt out any time)</li></ul>
+  <h3>3. Data sharing</h3><p>We share your data only with: TAAN-certified agencies managing your trek; Nepal Government bodies for permit processing; payment processors; emergency services if you activate SOS. We never sell your personal data to third parties.</p>
+  <h3>4. Data security</h3><p>All data is encrypted in transit (TLS 1.3) and at rest (AES-256). Passport and payment data is processed through PCI-DSS compliant systems. We perform annual security audits.</p>
+  <h3>5. Your rights</h3><p>You have the right to access, correct or delete your personal data. Email <strong>privacy@himaltrek.com</strong> — we respond within 30 days.</p>
+  <h3>6. Cookies</h3><p>We use essential cookies for authentication and analytics cookies (Google Analytics) to understand usage. You can control cookie settings in your browser.</p>
+  <h3>7. Contact</h3><p>privacy@himaltrek.com · HimalTrek Nepal Pvt. Ltd., Thamel, Kathmandu, Nepal</p>
+  <div style="margin-top:22px;"><button class="btn btn--ghost" onclick="showPage('home')">← Back to home</button></div>
+</div></div></section>
+</div>
+
+<!-- ══ TERMS ══ -->
+<div id="page-terms" style="display:none;">
+<div class="page-hero"><div class="container"><h1>Terms of service</h1><p>Last updated: April 20, 2026</p></div></div>
+<section class="section"><div class="container" style="max-width:740px;"><div class="legal-content">
+  <h3>1. Booking policy</h3><ul><li>Confirmed once payment received in full</li><li>Cancellation 72+ hrs before: full refund minus 5% processing fee</li><li>Cancellation 24–72 hrs before: 50% refund</li><li>Cancellation under 24 hrs: no refund</li><li>Force majeure (weather, political, natural disaster): full credit for future booking</li></ul>
+  <h3>2. Permits</h3><p>Nepal Government permits are non-refundable once issued. HimalTrek processes applications as an agent and is not responsible for permit denials.</p>
+  <h3>3. Safety &amp; liability</h3><p>Trekking in Nepal involves inherent risks. Clients must hold valid travel insurance including helicopter evacuation cover. HimalTrek and its guides are not liable for accidents, illness or natural disasters on trail.</p>
+  <h3>4. Health requirements</h3><p>Clients with pre-existing heart or respiratory conditions must obtain medical clearance. HimalTrek reserves the right to cancel a trek if a client is deemed medically unfit by the guide.</p>
+  <h3>5. Governing law</h3><p>These terms are governed by the laws of Nepal. Disputes shall be resolved in the courts of Kathmandu.</p>
+  <div style="margin-top:22px;"><button class="btn btn--ghost" onclick="showPage('home')">← Back to home</button></div>
+</div></div></section>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div id="page-contact" style="display:none;">
+<div class="page-hero"><div class="container"><h1>Contact us</h1><p>Kathmandu-based team. Every enquiry answered within 2 hours (6am–8pm NPT).</p></div></div>
+<section class="section"><div class="container">
+  <div class="contact-grid" style="margin-bottom:28px;">
+    <div class="info-card"><div class="info-card__icon">📍</div><div class="info-card__title">Office</div><div class="info-card__val">HimalTrek Nepal Pvt. Ltd.<br/>Thamel Marg, Kathmandu 44600<br/>Nepal</div></div>
+    <div class="info-card"><div class="info-card__icon">📞</div><div class="info-card__title">Phone &amp; WhatsApp</div><div class="info-card__val">+977 1 4701234<br/>+977 9801234567 (WhatsApp)<br/>Available 6am–8pm NPT</div></div>
+    <div class="info-card"><div class="info-card__icon">✉️</div><div class="info-card__title">Email</div><div class="info-card__val">info@himaltrek.com<br/>permits@himaltrek.com<br/>guides@himaltrek.com</div></div>
+    <div class="info-card"><div class="info-card__icon">🆘</div><div class="info-card__title">Emergency (24/7)</div><div class="info-card__val">+977 9801234999<br/>emergency@himaltrek.com<br/>HRA: +977-1-4440292</div></div>
+  </div>
+  <div class="card" style="max-width:580px;">
+    <h3 style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;margin-bottom:16px;">Send us a message</h3>
+    <div class="form-grid">
+      <div class="form-group"><label class="form-label">Name</label><input class="form-input" placeholder="Your name"/></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@email.com"/></div>
+      <div class="form-group form-group--full"><label class="form-label">Subject</label>
+        <select class="form-select"><option>General enquiry</option><option>Trek booking</option><option>Permit application</option><option>Guide request</option><option>Emergency / safety</option><option>Complaint / feedback</option></select></div>
+      <div class="form-group form-group--full"><label class="form-label">Message</label><textarea class="form-textarea" rows="5" placeholder="Tell us how we can help..."></textarea></div>
+    </div>
+    <button class="btn btn--dark btn--full" style="margin-top:14px;" onclick="toast('Message sent! We will respond within 2 hours.')">Send message</button>
+  </div>
+</div></section>
+</div>
+
+<!-- ══ CAREERS ══ -->
+<div id="page-careers" style="display:none;">
+<div class="page-hero"><div class="container"><h1>Careers at HimalTrek</h1><p>Remote-first team of 34 across Nepal, India, Germany and Australia. All roles include a free annual trek.</p></div></div>
+<section class="section"><div class="container">
+  <div class="highlight-bar">We are a remote-first company with a Kathmandu hub. All roles include travel benefits and a complimentary annual trek anywhere in our catalogue.</div>
+  <div class="grid-2" style="margin-bottom:28px;gap:12px;">
+    <div class="career-card"><div class="career-card__title">Senior Full-Stack Engineer</div><div class="career-card__meta"><span class="pill pill--blue">Engineering</span><span>Remote</span><span>Full-time</span></div><p style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;">Build the platform serving 12,000+ trekkers annually. React, Node.js, PostgreSQL. 4+ years required.</p><button class="btn btn--ghost btn--sm" onclick="toast('Opening application form…')">Apply now →</button></div>
+    <div class="career-card"><div class="career-card__title">Trek Operations Manager</div><div class="career-card__meta"><span class="pill pill--green">Operations</span><span>Kathmandu</span><span>Full-time</span></div><p style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;">Coordinate guide assignments, teahouse bookings and permit logistics. 3+ years in Nepal trekking industry.</p><button class="btn btn--ghost btn--sm" onclick="toast('Opening application form…')">Apply now →</button></div>
+    <div class="career-card"><div class="career-card__title">Content &amp; SEO Specialist</div><div class="career-card__meta"><span class="pill pill--amber">Marketing</span><span>Remote</span><span>Full-time</span></div><p style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;">Create trek guides, blog posts and route descriptions. Passion for Nepal and Himalayan travel essential.</p><button class="btn btn--ghost btn--sm" onclick="toast('Opening application form…')">Apply now →</button></div>
+    <div class="career-card"><div class="career-card__title">Customer Success Manager</div><div class="career-card__meta"><span class="pill pill--blue">Customer</span><span>Remote</span><span>Full-time</span></div><p style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;">Support trekkers from booking to safe return. Fluency in English + Nepali required.</p><button class="btn btn--ghost btn--sm" onclick="toast('Opening application form…')">Apply now →</button></div>
+  </div>
+  <div style="background:var(--cream);border-radius:14px;padding:28px;text-align:center;">
+    <h3 style="font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:8px;">Don't see a perfect fit?</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Send your CV and cover letter — we're always interested in people who love Nepal.</p>
+    <button class="btn btn--dark" onclick="toast('Opening general application…')">Send open application</button>
+  </div>
+</div></section>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" id="site-footer">
+<div class="container">
+  <div class="footer__grid">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <div style="width:26px;height:26px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L11 11H1L6 1Z" fill="#1a2332"/></svg></div>
+        <div class="footer__brand-name">HimalTrek Nepal</div>
+      </div>
+      <div class="footer__brand-sub">Nepal's most trusted trekking guide platform. Expert routes, permits, teahouse bookings and emergency SOS — all in one place.</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.3);">TAAN Registered · NTB Partner · Kathmandu, Nepal</div>
+    </div>
+    <div>
+      <div class="footer__col-title">Explore</div>
+      <div class="footer__link" onclick="showPage('home')">All 24 trek routes</div>
+      <div class="footer__link" onclick="showPage('guides')">Our guides</div>
+      <div class="footer__link" onclick="showPage('blog')">Trek journal</div>
+      <div class="footer__link" onclick="showPage('about')">About us</div>
+      <div class="footer__link" onclick="showPage('plan')">Plan your trek</div>
+    </div>
+    <div>
+      <div class="footer__col-title">Services</div>
+      <div class="footer__link" onclick="showPage('permits')">Permits &amp; TIMS</div>
+      <div class="footer__link" onclick="openModal('app-download')">Download the app</div>
+      <div class="footer__link" onclick="openModal('contact-guide')">Talk to a guide</div>
+      <div class="footer__link" onclick="openModal('write-review')">Write a review</div>
+      <div class="footer__link" onclick="showPage('wishlist')">My wishlist</div>
+    </div>
+    <div>
+      <div class="footer__col-title">Company</div>
+      <div class="footer__link" onclick="showPage('privacy')">Privacy policy</div>
+      <div class="footer__link" onclick="showPage('terms')">Terms of service</div>
+      <div class="footer__link" onclick="showPage('contact')">Contact us</div>
+      <div class="footer__link" onclick="showPage('careers')">Careers</div>
+      <div class="footer__link" onclick="showPage('signin')">Sign in</div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__copy">© 2026 HimalTrek Nepal Pvt. Ltd. All rights reserved.</div>
+    <div class="footer__badges"><span class="footer__badge">TAAN</span><span class="footer__badge">NTB</span><span class="footer__badge">HRA Partner</span></div>
+  </div>
+</div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+function switchAuthTab(tab){
+  document.getElementById('tab-signin').classList.toggle('active',tab==='signin');
+  document.getElementById('tab-register').classList.toggle('active',tab==='register');
+  document.getElementById('auth-form-signin').style.display=tab==='signin'?'block':'none';
+  document.getElementById('auth-form-register').style.display=tab==='register'?'block':'none';
+}
+function submitPlan(){
+  const b=event.target; b.innerHTML='<span class="spinner"></span>Building your plan…'; b.disabled=true;
+  setTimeout(()=>{ b.innerHTML='Get my personalised trek plan →'; b.disabled=false; toast('Plan sent! Check your email for personalised recommendations.'); },2000);
+}
+</script>
+<script src="../assets/js/cursor-trail.js"></script>
+<script src="../assets/js/scramble.js"></script>
+</body>
+</html>

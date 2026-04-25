@@ -1,2123 +1,483 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Sampanna Raj Dhungel</title>
-  <meta content="Sampanna Raj Dhungel - Digital Media Designer, UI/UX Designer, Sound Designer" name="description">
-<meta content="Digital Media Designer, UI/UX Designer, Sound Designer, Video Editor, Animator, Nepal" name="keywords">
-<!-- Open Graph / Facebook -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sampanna Raj Dhungel — Creative Director & Digital Media Designer</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="shortcut icon" href="assets/img/favicon.svg">
+<meta name="description" content="Sampanna Raj Dhungel - Digital Media Designer, UI/UX Designer, Sound Designer, Creative Director based in Bhaktapur, Nepal.">
+<meta property="og:title" content="Sampanna Raj Dhungel — Creative Director & Digital Media Designer">
+<meta property="og:description" content="Creative Director and Digital Media Designer based in Bhaktapur, Nepal. UI/UX, branding, motion graphics, video production and animation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.sampannadhungel.com.np/">
-<meta property="og:title" content="Sampanna Raj Dhungel — Digital Media Designer & Creative Director">
-<meta property="og:description" content="Versatile digital media designer from Nepal specializing in UI/UX, animation, sound design, video editing and graphic design. Available for freelance.">
-<meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/profile-img.jpg">
+<meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Sampanna Raj Dhungel">
-
-<!-- LinkedIn / Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://www.sampannadhungel.com.np/">
-<meta name="twitter:site" content="@dsampanna">
-<meta name="twitter:creator" content="@dsampanna">
-<meta name="twitter:title" content="Sampanna Raj Dhungel — Digital Media Designer & Creative Director">
-<meta name="twitter:description" content="Versatile digital media designer from Nepal specializing in UI/UX, animation, sound design, video editing and graphic design. Available for freelance.">
-<meta name="twitter:image" content="https://www.sampannadhungel.com.np/assets/img/profile-img.jpg">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
+<meta name="twitter:title" content="Sampanna Raj Dhungel — Creative Director & Digital Media Designer">
+<meta name="twitter:description" content="Creative Director and Digital Media Designer based in Bhaktapur, Nepal.">
+<meta name="twitter:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<link rel="canonical" href="https://www.sampannadhungel.com.np/">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<!-- Preload hero image so it renders without delay -->
+<link rel="preload" as="image" href="assets/img/hero-bg.JPG">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sampanna Raj Dhungel",
+  "jobTitle": "Creative Director & Digital Media Designer",
+  "url": "https://www.sampannadhungel.com.np/",
+  "email": "sampannadhungel@gmail.com",
+  "areaServed": "Worldwide",
+  "address": {"@type": "PostalAddress", "addressLocality": "Bhaktapur", "addressCountry": "NP"},
+  "sameAs": ["https://www.linkedin.com/in/dsampanna/", "https://www.instagram.com/__sampannaad/", "https://www.facebook.com/dsampanna"]
+}
+</script>
 </head>
-
 <body>
-<!-- Dark Mode Toggle -->
-<div class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
-  <i class="bi bi-moon-fill" id="themeIcon"></i>
-</div>
-
-<!-- Custom Cursor -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- Branded Preloader -->
-<div id="preloader">
+<script>if(localStorage.getItem('theme')!=='dark')document.body.classList.add('light-mode');</script>
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
   <div class="preloader-inner">
-    <div class="preloader-logo">SR</div>
+    <div class="preloader-logo">Sampanna Raj Dhungel</div>
     <div class="preloader-bar"><div class="preloader-fill"></div></div>
-    <div class="preloader-text">Loading Portfolio...</div>
   </div>
 </div>
-  <!-- ======= Mobile nav toggle button ======= -->
-  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex flex-column justify-content-center">
+<!-- BACK TO TOP -->
+<button class="btt" id="btt" aria-label="Back to top">↑</button>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav id="navbar" class="navbar nav-menu">
-    <ul>
-      <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-      <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-      <li><a href="#education" class="nav-link scrollto"><i class="bx bx-book"></i> <span>Education</span></a></li>
-      <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-briefcase"></i> <span>Experience</span></a></li>
-      <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-      <li><a href="#blog" class="nav-link scrollto"><i class="bx bx-edit"></i> <span>Blog</span></a></li>
-      <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-      <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-          </ul>
-    </nav>
-    
-    <!-- .nav-menu -->
-
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  
-  <!-- ======= Hero Section ======= -->
-<section id="hero">
-
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
-    <div class="hero-bottom">
-      <div class="hero-left">
-        <h1>Sampanna Raj Dhungel</h1>
-        <p>I'm <span class="typed" data-typed-items="Digital Media Designer, UI/UX Designer, Sound Designer, Video Editor, Animator"></span></p>
-      </div>
-      <div class="hero-right">
-        <div class="hero-available">
-          <i class="bi bi-circle-fill"></i>
-          <span>Available for Freelance</span>
-        </div>
-        <div class="social-links">
-          <a href="https://twitter.com/dsampanna" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.facebook.com/dsampanna" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.instagram.com/__sampannaad/" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/dsampanna/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
+<!-- HIRE ME MODAL -->
+<div class="modal-overlay" id="hireModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close dialog">✕</button>
+    <h3 id="modalTitle">Let's work together</h3>
+    <p>Choose how you'd like to get in touch. I respond within 24 hours.</p>
+    <div class="modal-options">
+      <a href="mailto:sampannadhungel@gmail.com" class="modal-opt">
+        <span class="modal-opt-icon">✉️</span>
+        <div><span class="modal-opt-lbl">Email me directly</span><span class="modal-opt-sub">sampannadhungel@gmail.com</span></div>
+      </a>
+      <a href="https://wa.me/9779861487026" target="_blank" class="modal-opt">
+        <span class="modal-opt-icon">💬</span>
+        <div><span class="modal-opt-lbl">WhatsApp</span><span class="modal-opt-sub">+977 9861487026 — quick response</span></div>
+      </a>
+      <a href="https://www.linkedin.com/in/dsampanna/" target="_blank" class="modal-opt">
+        <span class="modal-opt-icon">🔗</span>
+        <div><span class="modal-opt-lbl">Connect on LinkedIn</span><span class="modal-opt-sub">linkedin.com/in/dsampanna</span></div>
+      </a>
+      <a href="#contact" class="modal-opt" id="modalContactLink">
+        <span class="modal-opt-icon">📋</span>
+        <div><span class="modal-opt-lbl">Fill out the contact form</span><span class="modal-opt-sub">Tell me about your project in detail</span></div>
+      </a>
     </div>
   </div>
-
-</section>
-<!-- End Hero --><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <!-- ======= About Section ======= -->
-<section id="about" class="about">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>About</h2>
-    </div>
-
-    <div class="row align-items-stretch">
-
-      
-
-      <div class="col-lg-4" data-aos="fade-right">
-        <div class="about-img-wrap">
-          <img src="assets/img/profile-img.png" class="img-fluid about-img" alt="Sampanna Raj Dhungel">
-          </div>
-        </div>
-
-      <div class="col-lg-8 pt-4 pt-lg-0">
-
-        <div class="glass-summary">
-          <div class="gs-top">
-            <div class="gs-avatar">SR</div>
-            <div class="gs-top-info">
-              <div class="gs-name">Sampanna Raj Dhungel</div>
-              <div class="gs-role">Digital Media Designer</div>
-              <div class="gs-location">
-                <i class="bi bi-geo-alt-fill"></i> Suryabinayak, Bhaktapur, Nepal
-              </div>
-            </div>
-          </div>
-
-          <div class="gs-tags">
-            <span class="gs-tag">UI/UX Design</span>
-            <span class="gs-tag">Animation</span>
-            <span class="gs-tag">Sound Design</span>
-            <span class="gs-tag">Video Editing</span>
-            <span class="gs-tag">Graphic Design</span>
-            <span class="gs-tag">5+ Yrs Experience</span>
-          </div>
-
-          <div class="gs-divider"></div>
-
-          <p class="gs-desc">Hey, I'm Sampanna — a creative director and digital media designer based in Bhaktapur, Nepal. Over the past 5 years I've helped startups find their visual voice, guided established brands through creative transformations, and built motion-driven experiences that keep audiences engaged. My work spans UI/UX design, branding, motion graphics, video production and 2D/3D animation. Whether you're a local business in Kathmandu or a startup on the other side of the world, I bring the same energy, precision and creative passion to every collaboration. Open to remote work globally. 🌟</p>
-          <div class="gs-divider"></div>
-
-          <div class="gs-info-grid">
-            <div class="gs-info-row">
-              <i class="bi bi-cake2-fill"></i>
-              <span>12 April 2000</span>
-            </div>
-            <div class="gs-info-row">
-              <i class="bi bi-person-fill"></i>
-              <span>Age: <span id="age"></span></span>
-            </div>
-            <div class="gs-info-row">
-              <i class="bi bi-envelope-fill"></i>
-              <span>sampannadhungel@gmail.com</span>
-            </div>
-            <div class="gs-info-row">
-              <i class="bi bi-telephone-fill"></i>
-              <span>+977 9860329506 / 9861487026</span>
-            </div>
-            <div class="gs-info-row">
-              <i class="bi bi-mortarboard-fill"></i>
-              <span>BSc (Hons) Multimedia Technologies</span>
-            </div>
-            <div class="gs-info-row">
-              <i class="bi bi-globe"></i>
-              <span>www.sampannadhungel.com.np</span>
-            </div>
-            <div class="gs-info-row">
-              <i class="bi bi-translate"></i>
-              <span>Nepali, English, Hindi, German</span>
-            </div>
-            <div class="gs-info-row">
-              <i class="bi bi-controller"></i>
-              <span>Travel, Music, Gaming, Sports</span>
-            </div>
-          </div>
-
-          <div class="gs-available">
-            <i class="bi bi-check-circle-fill"></i>
-            <span>Available for Freelance Projects</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-<script>
-                    const birthDate = new Date("2000-04-12");
-                    const today = new Date();
-                    let age = today.getFullYear() - birthDate.getFullYear();
-                    const monthDiff = today.getMonth() - birthDate.getMonth();
-                    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                      age--;
-                    }
-                    document.getElementById("age").textContent = age;
-                    document.getElementById("copyright-year").textContent = new Date().getFullYear();
-                  </script>
-  </div>
-</section>
-<!-- End About Section -->
- <!-- End About Section -->
- 
-
-    <!-- ======= Facts Section ======= -->
-    <!-- ======= Achievement Section ======= -->
-<section id="facts" class="facts">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Achievement</h2>
-      <p>I have achieved significant milestones in my creative journey. These achievements inspire me to keep pushing boundaries and creating impactful work.</p>
-    </div>
-
-    <div class="glass-achieve-wrap">
-
-      <div class="ga-card" data-aos="zoom-in" data-aos-delay="100">
-        <div class="ga-icon-wrap">
-          <i class="bi bi-emoji-smile"></i>
-        </div>
-        <div class="ga-num purecounter" data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="1">30</div>
-        <div class="ga-label">Total Clients Worked With</div>
-      </div>
-
-      <div class="ga-card" data-aos="zoom-in" data-aos-delay="200">
-        <div class="ga-icon-wrap">
-          <i class="bi bi-journal-richtext"></i>
-        </div>
-        <div class="ga-num purecounter" data-purecounter-start="0" data-purecounter-end="75" data-purecounter-duration="1">75</div>
-        <div class="ga-label">Total Projects Done</div>
-      </div>
-
-      <div class="ga-card" data-aos="zoom-in" data-aos-delay="300">
-        <div class="ga-icon-wrap">
-          <i class="bi bi-headset"></i>
-        </div>
-        <div class="ga-num purecounter" data-purecounter-start="0" data-purecounter-end="175" data-purecounter-duration="1">175</div>
-        <div class="ga-label">Hours of Support</div>
-      </div>
-
-      <div class="ga-card" data-aos="zoom-in" data-aos-delay="400">
-        <div class="ga-icon-wrap">
-          <i class="bi bi-award"></i>
-        </div>
-        <div class="ga-num ga-soon">SOON</div>
-        <div class="ga-label">Awards</div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- End Achievement Section --><!-- End Facts Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <!-- ======= Skills Section ======= -->
-<section id="skills" class="skills section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Skills</h2>
-      <p><b>My skills encompass digital media design, UI/UX design, sound design, video editing, and animation. I thrive on creative problem-solving and excel in project management, ensuring timely and successful delivery.</b></p>
-    </div>
-
-    <div class="row skills-content justify-content-center">
-
-      <div class="col-lg-6">
-
-        <div class="neu-skill-item" data-aos="fade-right" data-aos-delay="100">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Figma / Adobe XD</span>
-            <span class="neu-skill-level expert">Expert</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 75%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-right" data-aos-delay="150">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Adobe Illustrator</span>
-            <span class="neu-skill-level expert">Expert</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 80%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-right" data-aos-delay="200">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Adobe Photoshop</span>
-            <span class="neu-skill-level advanced">Advanced</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 65%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-right" data-aos-delay="250">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Adobe Audition / Cubase</span>
-            <span class="neu-skill-level intermediate">Intermediate</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 40%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-right" data-aos-delay="300">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Maya / Blender</span>
-            <span class="neu-skill-level intermediate">Intermediate</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 40%"></div>
-          </div>
-        </div>
-
-         <div class="neu-skill-item" data-aos="fade-left" data-aos-delay="300">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Social Media Strategy</span>
-            <span class="neu-skill-level intermediate">Intermediate</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 40%"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="col-lg-6">
-
-        <div class="neu-skill-item" data-aos="fade-left" data-aos-delay="100">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Reason Studios</span>
-            <span class="neu-skill-level beginner">Beginner</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 25%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-left" data-aos-delay="150">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">HTML / CSS / JavaScript</span>
-            <span class="neu-skill-level intermediate">Intermediate</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 45%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-left" data-aos-delay="200">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Adobe After Effects</span>
-            <span class="neu-skill-level intermediate">Intermediate</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 50%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-left" data-aos-delay="250">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Premiere Pro / Final Cut Pro / DaVinci</span>
-            <span class="neu-skill-level intermediate">Intermediate</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 50%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-left" data-aos-delay="300">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Adobe InDesign</span>
-            <span class="neu-skill-level intermediate">Intermediate</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 50%"></div>
-          </div>
-        </div>
-
-        <div class="neu-skill-item" data-aos="fade-left" data-aos-delay="300">
-          <div class="neu-skill-header">
-            <span class="neu-skill-name">Toon Boom / Procreate</span>
-            <span class="neu-skill-level beginner">Beginner</span>
-          </div>
-          <div class="neu-track">
-            <div class="neu-fill" style="width: 25%"></div>
-          </div>
-        </div>
-
-       
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- End Skills Section --><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    
-<!-- ======= Resume Section ======= -->
-<!-- ======= Education Section ======= -->
-<section id="education" class="resume section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Education</h2>
-      <p><b>My academic journey has equipped me with a strong foundation in multimedia technologies, design and creative problem-solving.</b></p>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-
-        <div class="tl-wrap">
-
-          <div class="tl-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">BSc (Hons) Multimedia Technologies</div>
-                  <div class="tl-company">Islington College, Kathmandu</div>
-                  <div class="tl-sub">Affiliated to London Metropolitan University</div>
-                </div>
-                <span class="tl-date">Mar 2020 – Sep 2023</span>
-              </div>
-              <div class="tl-desc">Studied a comprehensive range of multimedia disciplines including UI/UX design, 3D animation, sound design, video production, motion graphics and web development.</div>
-            </div>
-          </div>
-
-          <div class="tl-item" data-aos="fade-up" data-aos-delay="150">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">Higher Secondary</div>
-                  <div class="tl-company">Nepal Mega College, Babarmahal</div>
-                  <div class="tl-sub">National Examination Board</div>
-                </div>
-                <span class="tl-date">2016 – 2018</span>
-              </div>
-              <div class="tl-desc">Completed higher secondary education with a focus on science and mathematics, building analytical thinking and problem-solving skills.</div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- End Education Section -->
-
-<!-- ======= Experience Section ======= -->
-<section id="resume" class="resume">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Experience</h2>
-      <p><b>My dedication to creativity drives me to deliver impactful visuals and captivating animations.
-        Excited to continue my journey in the dynamic world of design and media.</b></p>
-    </div>
-
-    <div class="row">
-
-      <!-- COLUMN 1: PROFESSIONAL EXPERIENCE -->
-      <div class="col-lg-6">
-        <h3 class="resume-title">Professional Experience</h3>
-
-        <div class="tl-wrap">
-
-          <div class="tl-item" data-aos="fade-right" data-aos-delay="100">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">Marketing &amp; Creative Director</div>
-                  <div class="tl-company">Joon Nepal · Bhaktapur</div>
-                </div>
-                <span class="tl-date">Jan 2024 – Feb 2025</span>
-              </div>
-              <div class="tl-desc">Innovative Marketing &amp; Creative Director with expertise in leading marketing strategies and creative initiatives. Overseeing UI/UX design, graphic design, media management, animation, and visual arts to enhance brand identity and engagement.</div>
-            </div>
-          </div>
-
-          <div class="tl-item" data-aos="fade-right" data-aos-delay="150">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">Video Editor / Graphics Designer</div>
-                  <div class="tl-company">Explorer Nepal · Kathmandu</div>
-                </div>
-                <span class="tl-date">Oct 2022 – Feb 2023</span>
-              </div>
-              <div class="tl-desc">Led design team, crafted striking graphics, developed innovative marketing concepts, and mentored designers for effective collaboration.</div>
-            </div>
-          </div>
-
-          <div class="tl-item" data-aos="fade-right" data-aos-delay="200">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">Animator</div>
-                  <div class="tl-company">Innovate Tech · Kathmandu</div>
-                </div>
-                <span class="tl-date">Mar 2022 – Jul 2022</span>
-              </div>
-              <div class="tl-desc">Crafted engaging educational animations for MySecondTeacher, refining skills at the intersection of creativity and education in digital media.</div>
-            </div>
-          </div>
-
-          <div class="tl-item" data-aos="fade-right" data-aos-delay="250">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">Graphics Designer</div>
-                  <div class="tl-company">Suvadin Media · Kathmandu</div>
-                </div>
-                <span class="tl-date">Aug 2020 – Jan 2021</span>
-              </div>
-              <div class="tl-desc">Crafted impactful visuals for child awareness and social initiatives. Developed logos, brochures and infographics driving positive social change.</div>
-            </div>
-          </div>
-
-          <div class="tl-item" data-aos="fade-right" data-aos-delay="300">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">Graphics Designer</div>
-                  <div class="tl-company">We Inspire Nepal · Kathmandu</div>
-                </div>
-                <span class="tl-date">Oct 2019 – Feb 2020</span>
-              </div>
-              <div class="tl-desc">Contributed to the US Youth Council 2019/20 and Women Related Program 2019/20. Developed logos, brochures, books, standees and certificates.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- COLUMN 2: FREELANCING EXPERIENCE -->
-      <div class="col-lg-6">
-        <h3 class="resume-title">Freelancing Experience</h3>
-
-        <div class="tl-wrap">
-
-          <div class="tl-item" data-aos="fade-left" data-aos-delay="100">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">Graphic Designer &amp; Animator</div>
-                  <div class="tl-company">Chloroleaf Technologies · Lalitpur</div>
-                </div>
-                <span class="tl-date">Dec 2024 – Jul 2025</span>
-              </div>
-              <div class="tl-desc">Graphic Designer, Animator and Visual Artist for various digital platforms. Developing visual assets and motion graphics for marketing campaigns.</div>
-            </div>
-          </div>
-
-          <div class="tl-item" data-aos="fade-left" data-aos-delay="150">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <div class="tl-title">UI/UX Designer</div>
-                  <div class="tl-company">Tangible Tech Studio · Kathmandu</div>
-                </div>
-                <span class="tl-date">May 2023 – Dec 2023</span>
-              </div>
-              <div class="tl-desc">Designing user interfaces and experiences for various digital products. Conducting user research and creating wireframes, prototypes and high-fidelity designs.</div>
-            </div>
-          </div>
-
-        </div>
-
-       
-   
-<div class="mt-4 d-flex align-items-center gap-3 flex-wrap">
-  <div class="freelance-availability">
-    <i class="bi bi-check-circle-fill"></i>
-    <span>Currently Available for Freelance Projects</span>
-  </div>
-  <a href="#contact" class="freelance-cta scrollto">Let's Work Together</a>
 </div>
-      </div>
-      <div>
-        <div class="row mt-5">
-      <div class="col-12 text-center">
-        <a href="assets/files/SampannaRajDhungel_Résumé.pdf" class="resume-download-btn" download>
-          <i class="bi bi-file-earmark-arrow-down-fill"></i> Download Resume
-        </a>
-      </div>
-    </div>
-  </div>
-    </div>
 
-  </div>
-</section>
-<!-- End Experience Section -->
-<!-- End Experience Section -->
-<!-- End Resume Section -->
-
-
-<!-- ======= Freelancing Section ======= -->
-<!-- ======= Freelancing Section ======= -->
-<!-- Freelance Services Below -->
-<!-- End Freelancing Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Portfolio</h2>
-      <p>We love what we do, check out some of our latest works.</p>
-    </div>
-
-    <!-- Filters -->
-    <div class="mag-filters" data-aos="fade-up" data-aos-delay="100">
-      <ul id="portfolio-flters">
-        <li data-filter="*" class="filter-active">All</li>
-        <li data-filter=".filter-socialmediadesign">Social Media</li>
-        <li data-filter=".filter-motiongraphics">Motion Graphics</li>
-        <li data-filter=".filter-3ddesigns">3D Designs</li>
-        <li data-filter=".filter-sounddesigns">Sound</li>
-        <li data-filter=".filter-webdesigns">Web</li>
-        <li data-filter=".filter-otherdesigns">Other</li>
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <button class="nav-logo">SAMPANNA RAJ DHUNGEL</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#work">Work</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+        <li class="nav-dropdown">
+      <a href="#skills" class="nav-dropdown-toggle">Background ▾</a>
+      <ul class="nav-sub">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
       </ul>
+    </li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch to dark mode">🌙</button>
+    <button class="nav-cta" id="hireBtn">Hire me</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero" tabindex="-1">
+<span id="main-content"></span>
+  <div class="hero-bg"></div>
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge" id="availBadge"><div class="hero-pulse" id="availPulse"></div><span id="availText">Available for new projects</span></div>
+    <h1 class="hero-name">Sampanna<br><span class="hero-name-accent">Raj Dhungel</span></h1>
+    <p class="hero-role"><span id="typedRole">Creative Director</span><span class="typed-cursor" aria-hidden="true">|</span></p>
+    <p class="hero-desc">Based in Bhaktapur, Nepal — building visual experiences across UI/UX, branding, motion graphics, video production and animation for clients worldwide.</p>
+    <div class="hero-actions">
+      <a href="portfolio.html" class="btn-teal">View portfolio →</a>
+      <a href="assets/files/SampannaRajDhungel_Résumé.pdf" download class="btn-outline">Download resume</a>
     </div>
-
-    <!-- Portfolio Grid -->
-    <div class="row portfolio-container mag-grid" data-aos="fade-up" data-aos-delay="200">
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-3ddesigns mag-featured">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/3D_Animation_2_thumbnail.png" class="img-fluid" alt="Old Man Smoking">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">3D Animation</span>
-              <h4>Old Man Smoking</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=old-man-smoking" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-4 portfolio-item filter-3ddesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/3D_Animation_1_thumbnail.jpg" class="img-fluid" alt="Old Man Chilling">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">3D Animation</span>
-              <h4>Old Man Chilling</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=old-man-chilling" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-4 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_1_thumbnail.jpg" class="img-fluid" alt="City">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>City</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=city-motion" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-4 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-11.jpg" class="img-fluid" alt="Bijaya Dashami Offer">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Bijaya Dashami Offer</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=bijaya-dashami-offer" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-4 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_2_thumbnail.jpg" class="img-fluid" alt="999 to 1000 Subscribers">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>999 to 1000 Subscribers</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=999-to-1000-subscribers" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-8 col-md-8 portfolio-item filter-motiongraphics mag-featured">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_13_thumbnail.png" class="img-fluid" alt="Pepsi Logo Reveal Demo">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Pepsi Logo Reveal Demo</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=pepsi-logo-reveal" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-4 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_3_thumbnail.jpg" class="img-fluid" alt="Instagram Username Reveal">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Instagram Username Reveal</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=instagram-username-reveal" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="Kent Water Purifier">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Kent Water Purifier</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=kent-water-purifier" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="Kent Water Purifier 2">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Kent Water Purifier 2</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=kent-water-purifier-2" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="Bijaya Dashami Wishes">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Bijaya Dashami Wishes</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=bijaya-dashami-wishes" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_4_thumbnail.jpg" class="img-fluid" alt="Instagram Story">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Instagram Story</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=instagram-story" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_5_thumbnail.jpg" class="img-fluid" alt="Facebook Like">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Facebook Like</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=facebook-like" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_6_thumbnail.jpg" class="img-fluid" alt="Switch On">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Switch On</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=switch-on" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_7_thumbnail.jpg" class="img-fluid" alt="Timer">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Timer</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=timer" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="Tihar Wishes">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Tihar Wishes</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=tihar-wishes" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_8_thumbnail.jpg" class="img-fluid" alt="Coming Soon">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Coming Soon</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=coming-soon" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_9_thumbnail.jpg" class="img-fluid" alt="Chatting">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Chatting</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=chatting" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_10_thumbnail.jpg" class="img-fluid" alt="Intro Reveal">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Intro Reveal</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=intro-reveal" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_11_thumbnail.jpg" class="img-fluid" alt="Loading">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Loading</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=loading" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-motiongraphics mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Motion_12_thumbnail.jpg" class="img-fluid" alt="Transform With Sound">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Motion Graphics</span>
-              <h4>Transform With Sound</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=transform-with-sound-motion" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="Affiliation Program">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Affiliation Program</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=affiliation-program" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="Water Purifier">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Water Purifier</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=water-purifier" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="Graphics Design Bootcamp">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Graphics Design Bootcamp</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=graphics-design-bootcamp" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="Bijaya Dashami Wish">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Bijaya Dashami Wish</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=bijaya-dashami-wish" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="Admission Open">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Admission Open</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=admission-open" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-10.jpg" class="img-fluid" alt="Abroad Study">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Abroad Study</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=abroad-study" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-12.jpg" class="img-fluid" alt="Offer Voucher Code">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Offer/Voucher Code</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=offer-voucher-code" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-13.jpg" class="img-fluid" alt="Tiktok Marketing Guide">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Tiktok Marketing Guide</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=tiktok-marketing-guide" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-14.jpg" class="img-fluid" alt="Bijaya Dashami Wish">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Bijaya Dashami Wish</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=bijaya-dashami-wish-2" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-15.jpg" class="img-fluid" alt="Mens Collection Offer">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Men's Collection Offer</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=mens-collection-offer" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-16.jpg" class="img-fluid" alt="Revenue Breakdown">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Revenue Breakdown Kent College</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=revenue-breakdown" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-webdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-17.jpg" class="img-fluid" alt="Indreni Nursery">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Web Design</span>
-              <h4>Indreni Nursery Landing Page</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=indreni-nursery" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-18.jpg" class="img-fluid" alt="Visiting Card">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Visiting Card</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=visiting-card" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-19.jpg" class="img-fluid" alt="Visiting Card">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Visiting Card</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=visiting-card-2" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-20.jpg" class="img-fluid" alt="Illustration">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Illustration</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=ozil-illustration" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-socialmediadesign mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-21.jpg" class="img-fluid" alt="Voucher Card">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Social Media</span>
-              <h4>Voucher Card</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=voucher-card" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-22.jpg" class="img-fluid" alt="Logo Design">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Logo Design</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=logo-sallaghari-burger" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-23.png" class="img-fluid" alt="Logo Design Araniko FC">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Logo Design — Araniko FC</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=logo-araniko-fc" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-24.jpg" class="img-fluid" alt="Logo Design Wine Hub">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Logo Design — Wine Hub Nepal</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=logo-wine-hub-nepal" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-25.jpg" class="img-fluid" alt="Hoarding Board">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Hoarding Board Design</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=hoarding-board" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-26.jpg" class="img-fluid" alt="Banner Design">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Banner Design</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=banner-design" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-otherdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-27.jpg" class="img-fluid" alt="Diary Cover Design">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Other Designs</span>
-              <h4>Diary Cover Design</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=diary-cover" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-sounddesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/Draft_Music_Design_1_thumbnail.jpg" class="img-fluid" alt="Transform With Sound">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Sound Design</span>
-              <h4>Transform With Sound</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=transform-with-sound-audio" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-webdesigns mag-small">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/griham-organic-thumbnail.jpg" class="img-fluid" alt="Griham Organic — Taste of Home">
-          <div class="portfolio-info">
-            <div class="mag-info-content">
-              <span class="mag-category">Web Design</span>
-              <h4>Griham Organic — Taste of Home</h4>
-            </div>
-            <div class="portfolio-links">
-              <a href="project.html?id=griham-organic" title="View Project"><i class="bx bx-link-external"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-      <div class="col-lg-4 col-md-6 portfolio-item filter-webdesigns mag-small">
-  <div class="portfolio-wrap">
-    <img src="assets/img/portfolio/griham-organic-thumbnail.jpg" class="img-fluid" alt="Griham Organic Case Study">
-    <div class="portfolio-info">
-      <div class="mag-info-content">
-        <span class="mag-category">UI/UX Case Study</span>
-        <h4>Griham Organic — Case Study</h4>
-      </div>
-      <div class="portfolio-links">
-        <a href="griham-case-study.html" title="View Case Study"><i class="bx bx-link-external"></i></a>
-      </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n" data-count="30" data-suffix="+">30+</div><div class="hstat-l">Clients</div></div>
+      <div class="hstat"><div class="hstat-n" data-count="46" data-suffix="+">46+</div><div class="hstat-l">Projects</div></div>
+      <div class="hstat"><div class="hstat-n" data-count="5" data-suffix="+">5+</div><div class="hstat-l">Years</div></div>
+      <div class="hstat"><div class="hstat-n" data-count="175" data-suffix="">175</div><div class="hstat-l">Support hrs</div></div>
     </div>
   </div>
 </div>
 
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mi">UI/UX Design <span class="md">◆</span></span><span class="mi">Brand Identity <span class="md">◆</span></span><span class="mi">Motion Graphics <span class="md">◆</span></span><span class="mi">3D Animation <span class="md">◆</span></span><span class="mi">Video Production <span class="md">◆</span></span><span class="mi">Sound Design <span class="md">◆</span></span><span class="mi">Art Direction <span class="md">◆</span></span><span class="mi">Creative Direction <span class="md">◆</span></span><span class="mi">UI/UX Design <span class="md">◆</span></span><span class="mi">Brand Identity <span class="md">◆</span></span><span class="mi">Motion Graphics <span class="md">◆</span></span><span class="mi">3D Animation <span class="md">◆</span></span><span class="mi">Video Production <span class="md">◆</span></span><span class="mi">Sound Design <span class="md">◆</span></span><span class="mi">Art Direction <span class="md">◆</span></span><span class="mi">Creative Direction <span class="md">◆</span></span>
+  </div>
+</div>
 
+<!-- FEATURED WORK — 3D Carousel -->
+<section class="pcarousel-section" data-reveal id="work">
+  <div class="pcarousel-header">
+    <div>
+      <div class="pcarousel-label">Featured Work</div>
+      <h2 class="pcarousel-heading">Built with <em>purpose</em></h2>
+    </div>
+    <div class="pcarousel-counter"><strong id="pcCurrentNum">1</strong> / <span id="pcTotalNum">8</span></div>
+  </div>
+  <div class="pcarousel-stage" id="pcStage">
+    <div class="pcarousel-track" id="pcTrack"></div>
+  </div>
+  <div class="pcarousel-controls">
+    <button class="pc-btn" id="pcPrev">&#8592;</button>
+    <div class="pc-dots" id="pcDots"></div>
+    <button class="pc-btn" id="pcNext">&#8594;</button>
+  </div>
+  <div class="pcarousel-footer">
+    <span class="pcarousel-footer-text">45+ projects across branding, UI/UX, motion, 3D &amp; more</span>
+    <a href="portfolio.html" class="pcarousel-all">View all projects →</a>
   </div>
 </section>
-<!-- End Portfolio Section --><!-- End Portfolio Section -->
 
-<!-- ======= Blog Section ======= -->
-<section id="blog" class="blog section-bg">
-  <div class="container" data-aos="fade-up">
 
-    <div class="section-title">
-      <h2>Blog</h2>
-      <p>Thoughts on design, freelancing and the creative industry.</p>
+<!-- SKILLS -->
+<section class="skills-section" data-reveal id="skills">
+  <div class="sec-label">Skills</div>
+  <div class="skills-grid">
+    <div class="sk-col">
+      <span class="sk-title">Design Tools</span>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Figma / Adobe XD</span><span class="sk-pct">75%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:75%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Adobe Illustrator</span><span class="sk-pct">80%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:80%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Adobe Photoshop</span><span class="sk-pct">65%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:65%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Adobe InDesign</span><span class="sk-pct">50%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:50%"></div></div></div>
     </div>
-
-    <div class="row">
-
-      <!-- Featured Article -->
-      <div class="col-lg-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-        <a href="blog-brand-identity.html" class="blog-card blog-card-featured">
-          <div class="blog-card-thumb blog-thumb-1">🎨</div>
-          <div class="blog-card-body">
-            <div class="blog-card-meta">
-              <span class="blog-tag">Branding</span>
-              <span class="blog-read-time"><i class="bi bi-clock"></i> 8 min read</span>
-            </div>
-            <h4 class="blog-card-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</h4>
-            <p class="blog-card-excerpt">Brand identity is more than a logo. Here's exactly how I approach building one from zero — from the first client conversation to final delivery.</p>
-            <div class="blog-card-link">Read Article <i class="bi bi-arrow-right"></i></div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Right column - 2 stacked -->
-      <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-
-        <a href="blog-freelancing-nepal.html" class="blog-card blog-card-small mb-4">
-          <div class="blog-card-thumb-sm blog-thumb-2">🏔️</div>
-          <div class="blog-card-body">
-            <div class="blog-card-meta">
-              <span class="blog-tag">Freelancing</span>
-              <span class="blog-read-time"><i class="bi bi-clock"></i> 7 min read</span>
-            </div>
-            <h4 class="blog-card-title">Freelancing as a Designer in Nepal — The Real Story</h4>
-            <p class="blog-card-excerpt">What it's actually like trying to build a freelance design career in Nepal after 5 years of doing it.</p>
-            <div class="blog-card-link">Read Article <i class="bi bi-arrow-right"></i></div>
-          </div>
-        </a>
-
-        <a href="blog-sound-design.html" class="blog-card blog-card-small">
-          <div class="blog-card-thumb-sm blog-thumb-3">🎧</div>
-          <div class="blog-card-body">
-            <div class="blog-card-meta">
-              <span class="blog-tag">Sound Design</span>
-              <span class="blog-read-time"><i class="bi bi-clock"></i> 6 min read</span>
-            </div>
-            <h4 class="blog-card-title">Sound Design for Video — A Beginner's Guide</h4>
-            <p class="blog-card-excerpt">Most designers ignore sound completely. Here's how to get started with sound design even with no music background.</p>
-            <div class="blog-card-link">Read Article <i class="bi bi-arrow-right"></i></div>
-          </div>
-        </a>
-
-      </div>
-
+    <div class="sk-col">
+      <span class="sk-title">Motion &amp; 3D</span>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Adobe After Effects</span><span class="sk-pct">50%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:50%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Maya / Blender</span><span class="sk-pct">40%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:40%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Premiere / DaVinci / Final Cut</span><span class="sk-pct">50%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:50%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Toon Boom / Procreate</span><span class="sk-pct">25%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:25%"></div></div></div>
     </div>
-
-  </div>
-</section>
-<!-- End Blog Section -->
-    <!-- ======= Services Section ======= -->
-    <!-- ======= Services Section ======= -->
-<section id="services" class="services">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Services</h2>
-      <p><b>We've got everything you need to launch and grow your business.</b></p>
-    </div>
-
-    <div class="row">
-
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-        <div class="srv-glass-card">
-          <div class="srv-icon"><i class="bx bxl-dribbble"></i></div>
-          <h4>Brand Identity</h4>
-          <p>I create brand identities that stand out and resonate. I craft logos, colors, typography, and messaging to help clients build a strong and recognizable brand presence.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-        <div class="srv-glass-card">
-          <div class="srv-icon"><i class="bx bx-file"></i></div>
-          <h4>Illustration</h4>
-          <p>I specialize in creating captivating illustrations for marketing purposes. My expert team crafts visually appealing illustrations that effectively convey your brand's message and boost your marketing efforts.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-        <div class="srv-glass-card">
-          <div class="srv-icon"><i class="bx bx-tachometer"></i></div>
-          <h4>Product Marketing</h4>
-          <p>I excel in product marketing, providing expert assistance to promote your products effectively. My services encompass strategic planning, market analysis, and creative campaigns to reach your target audience.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="srv-glass-card">
-          <div class="srv-icon"><i class="bx bx-layer"></i></div>
-          <h4>Web Design and Development</h4>
-          <p>I offer top-notch web design and development services. My skilled team creates stunning websites tailored to your brand's needs, ensuring a seamless user experience and responsive design.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="srv-glass-card">
-          <div class="srv-icon"><i class="bx bx-slideshow"></i></div>
-          <h4>Visual Marketing</h4>
-          <p>I specialize in visual marketing solutions to elevate your brand's impact. My expert team crafts captivating visuals, including graphics, videos, and infographics, that resonate with your audience.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-        <div class="srv-glass-card">
-          <div class="srv-icon"><i class="bx bx-arch"></i></div>
-          <h4>Video Production</h4>
-          <p>I excel in video production services. My skilled team creates high-quality videos tailored to your needs, from brand promotion to storytelling and product demonstrations.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- End Services Section --><!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <!-- ======= Testimonials Section ======= -->
-<section id="testimonials" class="testimonials section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Our Inspirations</h2>
-      <p>Words that fuel creativity and drive passion every day.</p>
-    </div>
-
-    <div class="row">
-
-      <div class="col-lg-4 col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="quote-card">
-          <div class="quote-top">
-            <img src="assets/img/testimonials/testimonials-1.jpg" class="quote-img" alt="Gautam Buddha">
-            <div>
-              <div class="quote-name">Gautam Buddha</div>
-              <div class="quote-role">Founder of Buddhism</div>
-            </div>
-          </div>
-          <div class="quote-mark">"</div>
-          <p class="quote-text">Do not dwell in the past; do not dream of the future; concentrate the mind on the present moment.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mt-4" data-aos="fade-up" data-aos-delay="150">
-        <div class="quote-card">
-          <div class="quote-top">
-            <img src="assets/img/testimonials/testimonials-2.jpg" class="quote-img" alt="Steve Jobs">
-            <div>
-              <div class="quote-name">Steve Jobs</div>
-              <div class="quote-role">Founder of Apple</div>
-            </div>
-          </div>
-          <div class="quote-mark">"</div>
-          <p class="quote-text">The only way to do great work is to love what you do.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mt-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="quote-card">
-          <div class="quote-top">
-            <img src="assets/img/testimonials/testimonials-3.jpg" class="quote-img" alt="Tony Robbins">
-            <div>
-              <div class="quote-name">Tony Robbins</div>
-              <div class="quote-role">American Writer</div>
-            </div>
-          </div>
-          <div class="quote-mark">"</div>
-          <p class="quote-text">Success is not about the destination; it's about the journey and the person you become along the way.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mt-4" data-aos="fade-up" data-aos-delay="250">
-        <div class="quote-card">
-          <div class="quote-top">
-            <img src="assets/img/testimonials/testimonials-4.jpg" class="quote-img" alt="Eleanor Roosevelt">
-            <div>
-              <div class="quote-name">Eleanor Roosevelt</div>
-              <div class="quote-role">Former First Lady of the US</div>
-            </div>
-          </div>
-          <div class="quote-mark">"</div>
-          <p class="quote-text">The future belongs to those who believe in the beauty of their dreams.</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mt-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="quote-card">
-          <div class="quote-top">
-            <img src="assets/img/testimonials/testimonials-5.jpg" class="quote-img" alt="Roy T. Bennett">
-            <div>
-              <div class="quote-name">Roy T. Bennett</div>
-              <div class="quote-role">Author</div>
-            </div>
-          </div>
-          <div class="quote-mark">"</div>
-          <p class="quote-text">You are capable of more than you can imagine; trust in your potential.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- End Testimonials Section --><!-- End Testimonials Section -->
-    
-
-    <!-- ======= Contact Section ======= -->
-
-
-
-    
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-        }
-        .container {
-          max-width: 1200px;
-          margin: auto;
-          padding: 20px;
-        }
-        .section-title h2 {
-          font-size: 2.5em;
-          text-align: center;
-          margin-bottom: 20px;
-        }
-        .row {
-          display: flex;
-          flex-wrap: wrap;
-          margin: -10px;
-        }
-        .col-lg-4, .col-lg-8 {
-          padding: 10px;
-          box-sizing: border-box;
-        }
-        .col-lg-4 {
-          flex: 0 0 33.3333%;
-          max-width: 33.3333%;
-        }
-        .col-lg-8 {
-          flex: 0 0 66.6667%;
-          max-width: 66.6667%;
-        }
-        .info {
-          background: #f7f7f7;
-          padding: 20px;
-          border-radius: 5px;
-        }
-        .info div {
-          margin-bottom: 20px;
-        }
-        .info i {
-          font-size: 1.5em;
-          color: #333;
-          margin-right: 10px;
-        }
-        .form-group {
-          margin-bottom: 15px;
-        }
-        .form-control {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-        .text-center {
-          text-align: center;
-        }
-        .text-center button {
-          background: #333;
-          color: #fff;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-        .text-center button:hover {
-          background: #555;
-        }
-        .loading, .error-message, .sent-message {
-          display: none;
-          margin-top: 10px;
-          text-align: center;
-        }
-        .loading {
-          color: #f39c12;
-        }
-        .error-message {
-          color: #e74c3c;
-        }
-        .sent-message {
-          color: #2ecc71;
-        }
-    
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-          .col-lg-4, .col-lg-8 {
-            flex: 0 0 100%;
-            max-width: 100%;
-          }
-        }
-      </style>
-    </head>
-    <body>
-    
-    <!-- ======= Contact Section ======= -->
-<!-- ======= Contact Section ======= -->
-<section id="contact" class="contact">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Contact</h2>
-      <p>Have a project in mind or just want to say hello? Feel free to reach out — I'd love to hear from you!</p>
-    </div>
-
-    <div class="contact-glass-wrap">
-
-      <div class="contact-glass-info" data-aos="fade-right">
-        <h3>Get In Touch</h3>
-
-        <div class="contact-info-item">
-          <div class="contact-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
-          <div>
-            <div class="contact-info-label">Location</div>
-            <div class="contact-info-value">Suryabinayak-5, Bhaktapur, Bagmati, Nepal 44800</div>
-          </div>
-        </div>
-
-        <div class="contact-info-item">
-          <div class="contact-info-icon"><i class="bi bi-envelope-fill"></i></div>
-          <div>
-            <div class="contact-info-label">Email</div>
-            <div class="contact-info-value">sampannadhungel@gmail.com</div>
-          </div>
-        </div>
-
-        <div class="contact-info-item" onclick="togglePhoneNumber()" style="cursor:pointer;">
-          <div class="contact-info-icon"><i class="bi bi-telephone-fill"></i></div>
-          <div>
-            <div class="contact-info-label">Call</div>
-            <div class="contact-info-value phone-number" style="display:none;">+977 9860329506 / 9861487026</div>
-            <div class="contact-info-value phone-placeholder">Click to reveal number</div>
-          </div>
-        </div>
-
-        <div class="contact-socials">
-              <a href="https://twitter.com/dsampanna"><i class="bx bxl-twitter"></i></a>
-              <a href="https://www.facebook.com/dsampanna"><i class="bx bxl-facebook"></i></a>
-              <a href="https://www.instagram.com/__sampannaad/"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/dsampanna/"><i class="bx bxl-linkedin"></i></a>
-              <a href="https://wa.me/9779861487026" target="_blank" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
-      </div>
-      </div>
-
-      <div class="contact-glass-form" data-aos="fade-left">
-        <form id="contactForm" class="php-email-form">
-          <div class="row">
-            <div class="col-md-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-            </div>
-            <div class="col-md-6 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-          </div>
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading" id="loading" style="display:none;">Sending...</div>
-            <div class="error-message" id="error-message"></div>
-            <div class="sent-message" id="sent-message">Your message has been sent. Thank you!</div>
-          </div>
-          <div class="text-center">
-            <button type="submit">Send Message</button>
-          </div>
-        </form>
-      </div>
-
+    <div class="sk-col">
+      <span class="sk-title">Other</span>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">HTML / CSS / JavaScript</span><span class="sk-pct">45%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:45%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Adobe Audition / Cubase</span><span class="sk-pct">40%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:40%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Social Media Strategy</span><span class="sk-pct">40%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:40%"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-name">Reason Studios</span><span class="sk-pct">25%</span></div><div class="sk-bg"><div class="sk-fill" style="--w:25%"></div></div></div>
     </div>
 
   </div>
 </section>
 
-<script>
-  function togglePhoneNumber() {
-    const phoneNumber = document.querySelector('.phone-number');
-    const placeholder = document.querySelector('.phone-placeholder');
-    if (phoneNumber.style.display === 'block') {
-      phoneNumber.style.display = 'none';
-      placeholder.style.display = 'block';
-    } else {
-      phoneNumber.style.display = 'block';
-      placeholder.style.display = 'none';
-    }
-  }
-</script>
-<!-- End Contact Section -->
-    <script>
-  // ── PRELOADER ──
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      document.getElementById('preloader').classList.add('hidden');
-    }, 2200);
-  });
-
-  // ── DARK MODE ──
-  const toggle = document.getElementById('themeToggle');
-  const icon = document.getElementById('themeIcon');
-  const body = document.body;
-
-  // Load saved preference
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-    icon.className = 'bi bi-sun-fill';
-  }
-
-  toggle.addEventListener('click', function () {
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-      icon.className = 'bi bi-sun-fill';
-      localStorage.setItem('theme', 'dark');
-    } else {
-      icon.className = 'bi bi-moon-fill';
-      localStorage.setItem('theme', 'light');
-    }
-  });
-
-  // ── CUSTOM CURSOR ──
-  const dot = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
-
-  document.addEventListener('mousemove', function (e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top = mouseY + 'px';
-  });
-
-  // Smooth ring follow
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    ring.style.left = ringX + 'px';
-    ring.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  // Hover effect on interactive elements
-  const hoverTargets = document.querySelectorAll(
-    'a, button, .portfolio-wrap, .ga-card, .srv-glass-card, .nav-menu a, .theme-toggle'
-  );
-
-  hoverTargets.forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
-  });
-
-  // Click effect
-  document.addEventListener('mousedown', () => dot.classList.add('clicking'));
-  document.addEventListener('mouseup', () => dot.classList.remove('clicking'));
-
-  // Hide cursor when leaving window
-  document.addEventListener('mouseleave', () => {
-    dot.style.opacity = '0';
-    ring.style.opacity = '0';
-  });
-
-  document.addEventListener('mouseenter', () => {
-    dot.style.opacity = '1';
-    ring.style.opacity = '1';
-  });
-</script>
-    
-    
-    <!-- <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-
-        <div class="row mt-1">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Suryabinayak-5 Bhaktapur, Bagmati, Nepal</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>sampannadhungel@gmail.com</p>
-              </div>
-
-              # <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+977 986 148 7026</p>
-              </div> 
-
-              <div class="phone" onclick="togglePhoneNumber()">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p class="phone-number">+977 986 148 7026</p>
-              </div>
-              
-              <script>
-                function togglePhoneNumber() {
-                  const phoneNumber = document.querySelector('.phone-number');
-                  if (phoneNumber.style.display === 'block' || phoneNumber.style.display === '') {
-                    phoneNumber.style.display = 'none';
-                  } else {
-                    phoneNumber.style.display = 'block';
-                  }
-                }
-              </script>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-  --><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->  
-  <!-- ======= Footer ======= -->
-<footer id="footer">
-  <div class="container">
-
-    <div class="footer-glass-wrap">
-
-      <div class="footer-glass-left">
-        <h3>Sampanna Raj Dhungel</h3>
-        <p>Creative Director & Digital Media Designer based in Bhaktapur, Nepal. Helping startups and established businesses worldwide through UI/UX design, branding, motion graphics, video production and animation. Open to remote and international collaborations. 🌟</p>
-        <div class="footer-socials">
-          <a href="https://twitter.com/dsampanna"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.facebook.com/dsampanna"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.instagram.com/__sampannaad/"><i class="bx bxl-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/dsampanna/"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
-
-      <div class="footer-glass-right">
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-           
-              <li><a href="#hero"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="#about"><i class="bi bi-chevron-right"></i> About</a></li>
-              <li><a href="#education"><i class="bi bi-chevron-right"></i> Education</a></li>
-              <li><a href="#resume"><i class="bi bi-chevron-right"></i> Experience</a></li>
-              <li><a href="#portfolio"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
-              <li><a href="#services"><i class="bi bi-chevron-right"></i> Services</a></li>
-              <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
-              <li><a href="#blog"><i class="bi bi-chevron-right"></i> Blog</a></li>
-             
-             </ul>
-        </div>
-      </div>
-
+    <!-- ABOUT -->
+<section id="about" data-reveal style="padding:4rem 2.8rem;border-bottom:1px solid var(--border2);background:var(--bg2);display:grid;grid-template-columns:600px 1fr;gap:4rem;align-items:stretch;width:100%;box-sizing:border-box">
+  <div class="about-img-wrap">
+    <div class="about-img">
+      <img src="assets/img/profile-img.png" alt="Sampanna Raj Dhungel — Creative Director and Digital Media Designer" loading="lazy" decoding="async">
     </div>
-
-    <div class="footer-glass-bottom">
-      <div class="copyright">
-       &copy; Copyright <span id="copyright-year"></span> <strong><span>SampannaRajDhungel</span></strong>. All Rights Reserved
+    <div class="about-badge-img">Creative Director &amp; Digital Media Designer</div>
+  </div>
+  <div class="about-content">
+    <div class="sec-label">About</div>
+    <h2 class="about-heading">Designing with <em>purpose</em>,<br>building with craft</h2>
+    <p class="about-text">I'm Sampanna Raj Dhungel — a Creative Director and Digital Media Designer based in Bhaktapur, Nepal. With 5+ years of hands-on experience, I work at the intersection of branding, UI/UX, motion graphics, 3D animation, and sound design.</p>
+    <p class="about-text">From the first sketch to the final pixel, I care deeply about work that is intentional, clear, and built to last. I've had the privilege of working with 30+ clients locally and internationally — from startups finding their identity to established brands refreshing theirs.</p>
+    <p class="about-text">When I'm not designing, I'm usually exploring new tools, writing about the craft, or listening to music that is way too loud.</p>
+    <div class="about-meta">
+      <div class="am"><span class="am-lbl">Based in</span>Bhaktapur, Nepal</div>
+      <div class="am"><span class="am-lbl">Availability</span>Open to freelance</div>
+      <div class="am"><span class="am-lbl">Experience</span>5+ years</div>
+      <div class="am"><span class="am-lbl">Languages</span>Nepali, English</div>
+      <div class="am"><span class="am-lbl">Education</span>BSc Multimedia Tech</div>
+      <div class="am"><span class="am-lbl">Remote</span>Worldwide</div>
+    </div>
+  </div>
+</section>
+<!-- EDUCATION (separate section, before experience) -->
+<section class="edu-section" data-reveal id="education">
+  <div class="edu-col-title">Education</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-top">
+        <div class="edu-degree">BSc (Hons) Multimedia Technologies</div>
+        <div class="edu-date">Mar 2020 – Sep 2023</div>
       </div>
-      <div class="last-updated">
-        <i class="bi bi-clock-history"></i>
-        Last Updated: <b>April 11, 2024</b> <span id="last-updated-date"></span>
+      <div class="edu-school">Islington College, Kathmandu</div>
+      <div class="edu-affil">Affiliated to London Metropolitan University</div>
+      <div class="edu-desc">Studied a comprehensive range of multimedia disciplines including UI/UX design, 3D animation, sound design, video production, motion graphics and web development.</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-top">
+        <div class="edu-degree">Higher Secondary Education</div>
+        <div class="edu-date">2016 – 2018</div>
+      </div>
+      <div class="edu-school">Nepal Mega College, Babarmahal</div>
+      <div class="edu-affil">National Examination Board</div>
+      <div class="edu-desc">Completed higher secondary education with a focus on science and mathematics, building analytical thinking and problem-solving skills.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE (professional + freelance — no education here) -->
+<section class="exp-section" data-reveal id="experience">
+  <div>
+    <div class="exp-col-title">Professional Experience</div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Marketing &amp; Creative Director</div>
+        <div class="exp-date">Jan 2024 – Feb 2025</div>
+      </div>
+      <div class="exp-org">Joon Nepal · Bhaktapur</div>
+      <div class="exp-desc">Led marketing strategies and creative initiatives. Overseeing UI/UX design, graphic design, media management, animation and visual arts to enhance brand identity and engagement.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Video Editor / Graphics Designer</div>
+        <div class="exp-date">Oct 2022 – Feb 2023</div>
+      </div>
+      <div class="exp-org">Explorer Nepal · Kathmandu</div>
+      <div class="exp-desc">Led design team, crafted striking graphics, developed innovative marketing concepts, and mentored designers for effective collaboration.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Animator</div>
+        <div class="exp-date">Mar 2022 – Jul 2022</div>
+      </div>
+      <div class="exp-org">Innovate Tech · Kathmandu</div>
+      <div class="exp-desc">Crafted engaging educational animations for MySecondTeacher, refining skills at the intersection of creativity and education in digital media.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Graphics Designer</div>
+        <div class="exp-date">Aug 2020 – Jan 2021</div>
+      </div>
+      <div class="exp-org">Suvadin Media · Kathmandu</div>
+      <div class="exp-desc">Crafted impactful visuals for child awareness and social initiatives. Developed logos, brochures and infographics driving positive social change.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Graphics Designer</div>
+        <div class="exp-date">Oct 2019 – Feb 2020</div>
+      </div>
+      <div class="exp-org">We Inspire Nepal · Kathmandu</div>
+      <div class="exp-desc">Contributed to the US Youth Council 2019/20 and Women Related Program 2019/20. Developed logos, brochures, books, standees and certificates.</div>
+    </div>
+  </div>
+  <div>
+    <div class="exp-col-title">Freelance Experience</div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">Graphic Designer &amp; Animator</div>
+        <div class="exp-date">Dec 2024 – Present</div>
+      </div>
+      <div class="exp-org">Chloroleaf Technologies · Lalitpur</div>
+      <div class="exp-desc">Graphic Designer, Animator and Visual Artist for various digital platforms. Developing visual assets and motion graphics for marketing campaigns.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div class="exp-role">UI/UX Designer</div>
+        <div class="exp-date">May 2023 – Dec 2023</div>
+      </div>
+      <div class="exp-org">Tangible Tech Studio · Kathmandu</div>
+      <div class="exp-desc">Designing user interfaces and experiences for various digital products. Conducting user research and creating wireframes, prototypes and high-fidelity designs.</div>
+    </div>
+    <div class="available-box">
+      <div class="available-box-label">Currently Available</div>
+      <div style="display:flex;gap:0.75rem;align-items:stretch">
+        <a href="assets/files/SampannaRajDhungel_Résumé.pdf" download class="resume-dl-btn" style="margin-bottom:0;white-space:nowrap" aria-label="Download Resume PDF">⬇ Download Resume</a>
+        <div style="flex:1;display:inline-flex;align-items:center;font-size:0.72rem;font-weight:600;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--border2);padding:0.5rem 1rem">Open to freelance worldwide — local &amp; remote</div>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- BLOG -->
+<section class="blog-section" data-reveal id="blog">
+  <div class="sec-label">Blog</div>
+  <div class="blog-grid">
+    <a href="blog-brand-identity.html" class="blog-card">
+      <div class="blog-thumb">🎨</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-tag">Branding</span><span class="blog-read">8 min read</span></div>
+        <div class="blog-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</div>
+        <div class="blog-excerpt">Brand identity is more than a logo. Here's exactly how I approach building one from zero — from the first client conversation to final delivery.</div>
+        <div class="blog-link">Read Article →</div>
+      </div>
+    </a>
+    <a href="blog-freelancing-nepal.html" class="blog-card">
+      <div class="blog-thumb">🏔️</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-tag">Freelancing</span><span class="blog-read">7 min read</span></div>
+        <div class="blog-title">Freelancing as a Designer in Nepal — The Real Story</div>
+        <div class="blog-excerpt">What it's actually like trying to build a freelance design career in Nepal after 5 years of doing it.</div>
+        <div class="blog-link">Read Article →</div>
+      </div>
+    </a>
+    <a href="blog-sound-design.html" class="blog-card">
+      <div class="blog-thumb">🎧</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-tag">Sound Design</span><span class="blog-read">6 min read</span></div>
+        <div class="blog-title">Sound Design for Video — A Beginner's Guide</div>
+        <div class="blog-excerpt">Most designers ignore sound completely. Here's how to get started with sound design even with no music background.</div>
+        <div class="blog-link">Read Article →</div>
+      </div>
+    </a>
+    <a href="blog-ux-process.html" class="blog-card">
+      <div class="blog-thumb">🖥️</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-tag">UI/UX</span><span class="blog-read">9 min read</span></div>
+        <div class="blog-title">My UI/UX Design Process — From Brief to Final Prototype</div>
+        <div class="blog-excerpt">A behind-the-scenes look at how I take a client brief and turn it into a polished, user-tested digital product — every step, every tool.</div>
+        <div class="blog-link">Read Article →</div>
+      </div>
+    </a>
+    <a href="blog-pricing.html" class="blog-card">
+      <div class="blog-thumb">💰</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-tag">Freelancing</span><span class="blog-read">8 min read</span></div>
+        <div class="blog-title">How to Price Your Design Work — A Guide for Nepali Freelancers</div>
+        <div class="blog-excerpt">Stop undercharging. A frank guide to pricing design services in Nepal — how to set rates, talk money with clients, and get paid what you're worth.</div>
+        <div class="blog-link">Read Article →</div>
+      </div>
+    </a>
+    <a href="blog-3d-animation.html" class="blog-card">
+      <div class="blog-thumb">🎬</div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-tag">3D Animation</span><span class="blog-read">10 min read</span></div>
+        <div class="blog-title">3D Animation Workflow — From Concept to Final Render</div>
+        <div class="blog-excerpt">My complete 3D animation pipeline — the tools, the process, the mistakes I made so you don't have to. From initial concept all the way through to final composite.</div>
+        <div class="blog-link">Read Article →</div>
+      </div>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a href="blog.html" class="btn-outline" style="display:inline-block">View all articles →</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc-section" data-reveal id="services">
+  <div class="sec-label">Services</div>
+  <div class="svc-grid">
+    <div class="svc-item"><div class="svc-num">01</div><div class="svc-title">Brand Identity</div><p class="svc-desc">Logos, colour systems, typography and guidelines that build a lasting, recognisable brand across every touchpoint.</p></div>
+    <div class="svc-item"><div class="svc-num">02</div><div class="svc-title">UI/UX &amp; Web Design</div><p class="svc-desc">Interfaces, prototypes and full websites — intuitive, beautiful, and built around your users' real needs.</p></div>
+    <div class="svc-item"><div class="svc-num">03</div><div class="svc-title">Motion &amp; Video</div><p class="svc-desc">Motion graphics, 2D/3D animation, video production and sound design that keep audiences genuinely engaged.</p></div>
+    <div class="svc-item"><div class="svc-num">04</div><div class="svc-title">Illustration</div><p class="svc-desc">Original illustrations for marketing, campaigns and brand storytelling — expressive and on-brand.</p></div>
+    <div class="svc-item"><div class="svc-num">05</div><div class="svc-title">Visual Marketing</div><p class="svc-desc">Social media graphics, infographics and campaign assets crafted to drive engagement and reach.</p></div>
+    <div class="svc-item"><div class="svc-num">06</div><div class="svc-title">Product Marketing</div><p class="svc-desc">Strategy, creative direction and execution to launch and grow your products in the right markets.</p></div>
+  </div>
+</section>
+
+<!-- CURRENTLY WORKING ON -->
+<section class="now-section" data-reveal id="now">
+  <div class="sec-label">Currently Working On</div>
+  <div class="now-grid">
+    <div class="now-card">
+      <div class="now-status"><span class="now-dot"></span>Active</div>
+      <div class="now-title">Chloroleaf Technologies</div>
+      <div class="now-role">Graphic Designer &amp; Animator</div>
+      <div class="now-desc">Developing visual assets, motion graphics and brand materials for digital marketing campaigns across multiple platforms.</div>
+      <div class="now-tags"><span class="now-tag">Motion Graphics</span><span class="now-tag">Brand Design</span><span class="now-tag">Animation</span></div>
+    </div>
+    <div class="now-card">
+      <div class="now-status"><span class="now-dot"></span>Open</div>
+      <div class="now-title">Available for New Projects</div>
+      <div class="now-role">Freelance — Worldwide</div>
+      <div class="now-desc">Taking on new branding, UI/UX and motion graphics projects. Local and remote. Response within 24 hours.</div>
+      <div class="now-tags"><span class="now-tag">UI/UX</span><span class="now-tag">Branding</span><span class="now-tag">Motion</span><span class="now-tag">3D</span></div>
+    </div>
+    <div class="now-card">
+      <div class="now-status now-status--learning"><span class="now-dot now-dot--blue"></span>Learning</div>
+      <div class="now-title">Advanced 3D &amp; VFX</div>
+      <div class="now-role">Self-directed — Blender &amp; Maya</div>
+      <div class="now-desc">Deepening skills in photorealistic rendering, VFX compositing and advanced character rigging for high-end animation projects.</div>
+      <div class="now-tags"><span class="now-tag">Blender</span><span class="now-tag">Maya</span><span class="now-tag">VFX</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" data-reveal id="contact">
+  <div>
+    <div class="sec-label">Get in touch</div>
+    <h2 class="contact-heading">Let's build something <em>great</em> together</h2>
+    <p class="contact-sub">Available for new projects worldwide. Reach out and I'll respond within 24 hours.</p>
+    <a href="https://maps.google.com/?q=Suryabinayak,Bhaktapur,Nepal" target="_blank" class="cd"><span class="cd-lbl">Location</span>Suryabinayak-5, Bhaktapur, Nepal</a>
+    <a href="mailto:sampannadhungel@gmail.com" class="cd"><span class="cd-lbl">Email</span>sampannadhungel@gmail.com</a>
+    <a href="https://wa.me/9779861487026" target="_blank" class="cd"><span class="cd-lbl">WhatsApp</span>+977 9861487026</a>
+    <div class="cd"><span class="cd-lbl">Remote</span>Open to work globally</div>
+  </div>
+  <form id="contactForm">
+    <div class="f-2">
+      <div><label class="form-lbl" for="cf-name">Name *</label><input class="form-inp" id="cf-name" type="text" placeholder="Jane Smith" required aria-required="true"></div>
+      <div><label class="form-lbl" for="cf-email">Email *</label><input class="form-inp" id="cf-email" type="email" placeholder="jane@studio.com" required aria-required="true"></div>
+    </div>
+    <div class="f-row"><label class="form-lbl" for="cf-subject">Subject</label><input class="form-inp" id="cf-subject" type="text" placeholder="Brand identity project"></div>
+    <div class="f-row"><label class="form-lbl" for="cf-message">Message *</label><textarea class="form-ta" id="cf-message" placeholder="Tell me about your project…" required aria-required="true"></textarea></div>
+    <button class="form-submit" type="submit">Send message →</button>
+    <div class="form-msg" id="formMsg"></div>
+  </form>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section" data-reveal id="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-text">
+      <div class="sec-label">Stay in the loop</div>
+      <h2 class="newsletter-heading">Design tips &amp; articles — straight to your inbox.</h2>
+      <p class="newsletter-sub">No spam. No fluff. Unsubscribe any time.</p>
+    </div>
+    <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/xojyyovg" method="POST">
+      <input type="hidden" name="_subject" value="Newsletter Subscription — Sampanna Raj Dhungel">
+      <div class="newsletter-field">
+        <input type="email" name="email" placeholder="your@email.com" required class="newsletter-input" autocomplete="email">
+        <button type="submit" class="newsletter-btn">Subscribe →</button>
+      </div>
+      <div class="newsletter-msg" id="newsletterMsg"></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-copy">© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+  <span class="f-updated">Last updated: <strong>April 2026</strong></span>
+  <div class="f-links">
+    <a href="https://www.instagram.com/__sampannaad/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/dsampanna/" target="_blank">LinkedIn</a>
+    <a href="https://www.facebook.com/dsampanna" target="_blank">Facebook</a>
+    <a href="https://www.sampannadhungel.com.np/assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download>Resume ↓</a>
   </div>
 </footer>
-<!-- End Footer --><!-- End Footer -->
-
-
-  
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  
-
-  <!-- Template Main JS File -->
- <<script src="assets/js/main.js"></script>
-  <script src="assets/js/features.js"></script>  
-
-<script>
-  document.getElementById("copyright-year").textContent = new Date().getFullYear();
-</script>
-
-
-  <!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-<script>
-  emailjs.init("ovo0ZpRhJoSF0pa9Y");
-
-  document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const loading = document.getElementById("loading");
-    const errorMsg = document.getElementById("error-message");
-    const sentMsg = document.getElementById("sent-message");
-
-    loading.style.display = "block";
-    errorMsg.style.display = "none";
-    sentMsg.style.display = "none";
-
-    const templateParams = {
-      from_name: document.getElementById("name").value,
-      from_email: document.getElementById("email").value,
-      subject: document.getElementById("subject").value,
-      message: document.getElementById("message").value,
-    };
-
-    emailjs.send("service_2dd2zg7", "template_qmacxr7", templateParams)
-      .then(function() {
-        loading.style.display = "none";
-        sentMsg.style.display = "block";
-        document.getElementById("contactForm").reset();
-      }, function(error) {
-        loading.style.display = "none";
-        errorMsg.textContent = "Something went wrong. Please try again.";
-        errorMsg.style.display = "block";
-        console.error("EmailJS error:", error);
-      });
-  });
-
- 
-</script>
-
-<!-- Skills Neumorphism Animation -->
-<script>
-  const neuObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        document.querySelectorAll('.neu-fill').forEach(function(bar) {
-          bar.style.width = bar.style.width;
-        });
-        neuObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  const skillsSec = document.querySelector('#skills');
-  if (skillsSec) neuObserver.observe(skillsSec);
-</script>
-
-<script>
-  function togglePhoneNumber() {
-    const phoneNumber = document.querySelector('.phone-number');
-    const placeholder = document.querySelector('.phone-placeholder');
-    if (phoneNumber.style.display === 'block') {
-      phoneNumber.style.display = 'none';
-      placeholder.style.display = 'block';
-    } else {
-      phoneNumber.style.display = 'block';
-      placeholder.style.display = 'none';
-    }
-  }
-</script>
-
-
-<script>
-  const backToTop = document.querySelector('.back-to-top');
-
-  backToTop.addEventListener('click', function () {
-    // Add clicked animation
-    this.classList.add('clicked');
-
-    // Remove after animation completes
-    setTimeout(() => {
-      this.classList.remove('clicked');
-    }, 300);
-
-    // Smooth scroll to top
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-</script>
-
- 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/9779861487026" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-  <i class="bx bxl-whatsapp"></i>
-</a>
-
-<script>
-  window.addEventListener('scroll', function () {
-    const whatsappBtn = document.querySelector('.whatsapp-float');
-    if (window.scrollY > 100) {
-      whatsappBtn.classList.add('active');
-    } else {
-      whatsappBtn.classList.remove('active');
-    }
-  });
-</script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/cursor-trail.js"></script>
+  <script src="assets/js/scramble.js"></script>
+<script src="assets/js/scroll-reveal.js"></script>
 </body>
-
 </html>

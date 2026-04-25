@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My 3D Animation Workflow — From Concept to Final Render | Sampanna Raj Dhungel</title>
+<meta name="description" content="A complete walkthrough of my 3D animation process — from the initial concept sketch to the final rendered output. Tools, tips and lessons from real projects.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D Animation Workflow — From Concept to Final Render | Sampanna Raj Dhungel">
+<meta property="og:description" content="My complete 3D animation pipeline — the tools, the process, the mistakes I made so you don't have to. From concept all the way to final composite.">
+<meta property="og:url" content="https://www.sampannadhungel.com.np/blog-3d-animation.html">
+<meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<meta property="article:author" content="Sampanna Raj Dhungel">
+<meta property="article:published_time" content="2026-04-24">
+<meta property="article:tag" content="3D Animation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="3D Animation Workflow — From Concept to Final Render | Sampanna Raj Dhungel">
+<meta name="twitter:description" content="My complete 3D animation pipeline — the tools, the process, the mistakes I made so you don't have to. From concept all the way to final composite.">
+<meta name="twitter:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<link rel="canonical" href="https://www.sampannadhungel.com.np/blog-3d-animation.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"3D Animation Workflow — From Concept to Final Render","description":"My complete 3D animation pipeline — the tools, the process, the mistakes I made so you don't have to. From concept all the way to final composite.","author":{"@type":"Person","name":"Sampanna Raj Dhungel","url":"https://www.sampannadhungel.com.np/"},"publisher":{"@type":"Person","name":"Sampanna Raj Dhungel"},"datePublished":"2026-04-24","url":"https://www.sampannadhungel.com.np/blog-3d-animation.html","image":"https://www.sampannadhungel.com.np/assets/img/og-cover.jpg","keywords":["3D animation","Blender","motion graphics","animation workflow","Nepal","render"]}
+</script>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080c10;--bg2:#0d1117;--bg3:#111820;--teal:#0EB5A0;--cyan:#06b6d4;--blue:#2563EB;--border:rgba(14,181,160,0.15);--border2:rgba(255,255,255,0.07);--text:#f0f4f8;--muted:#6b7c8f;--muted2:#8a9eb0;--display:'Syne',sans-serif;--body:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);gap:1rem}
+.nav-logo{font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-home{font-size:0.75rem;color:var(--muted);transition:color 0.2s}
+.nav-home:hover{color:var(--text)}
+.nav-blog{font-size:0.75rem;color:var(--muted);transition:color 0.2s}
+.nav-blog:hover{color:var(--text)}
+.nav-hire{font-size:0.72rem;font-weight:600;letter-spacing:0.04em;border:1px solid var(--teal);color:var(--teal);padding:0.45rem 1.1rem;transition:background 0.2s,color 0.2s;white-space:nowrap}
+.nav-hire:hover{background:var(--teal);color:var(--bg)}
+@media(max-width:768px){.nav{padding:1rem 1.25rem}.nav-blog{display:none}}
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--teal);z-index:9999;width:0%;transition:width 0.1s}
+.article-hero{padding:5rem 2.5rem 4rem;background:var(--bg2);border-bottom:1px solid var(--border2);position:relative;overflow:hidden;text-align:center}
+.article-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.08) 0%,transparent 70%);pointer-events:none}
+.article-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border);padding:0.3rem 0.85rem;margin-bottom:1.5rem;background:rgba(14,181,160,0.06);position:relative;z-index:1}
+.article-title{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;color:var(--text);max-width:760px;margin:0 auto 1.5rem;position:relative;z-index:1}
+.article-meta{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:0.78rem;color:var(--muted);position:relative;z-index:1}
+.article-body{max-width:720px;margin:0 auto;padding:4rem 2rem 5rem}
+.article-body p{font-size:1rem;line-height:1.85;color:var(--muted2);margin-bottom:1.5rem}
+.article-body h2{font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin:3rem 0 1rem;line-height:1.2}
+.article-body h3{font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem}
+.article-body strong{color:var(--text);font-weight:600}
+.article-body ul,.article-body ol{margin:1rem 0 1.5rem 1.25rem}
+.article-body li{font-size:1rem;line-height:1.8;color:var(--muted2);margin-bottom:0.5rem}
+.pull-quote{border-left:3px solid var(--teal);padding:1.25rem 1.75rem;background:rgba(14,181,160,0.05);margin:2rem 0;font-family:var(--display);font-size:1.1rem;font-style:italic;color:var(--text);line-height:1.6}
+.step-card{background:var(--bg3);border:1px solid var(--border2);padding:1.5rem;margin-bottom:1rem;display:flex;gap:1.25rem;align-items:flex-start;transition:border-color 0.2s}
+.step-card:hover{border-color:rgba(14,181,160,0.3)}
+.step-num{font-family:var(--display);font-size:2rem;font-weight:800;color:rgba(14,181,160,0.25);line-height:1;flex-shrink:0;width:44px}
+.step-title{font-family:var(--display);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
+.step-text{font-size:0.84rem;color:var(--muted);line-height:1.7}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);margin:1.5rem 0}
+.tool-item{background:var(--bg3);padding:1.25rem;text-align:center}
+.tool-icon{font-size:1.5rem;margin-bottom:0.5rem}
+.tool-name{font-family:var(--display);font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:0.2rem}
+.tool-use{font-size:0.72rem;color:var(--muted)}
+.tip-box{background:rgba(14,181,160,0.05);border:1px solid var(--border);padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:0.88rem;color:var(--muted2);line-height:1.75}
+.tip-box strong{color:var(--teal)}
+.author-box{background:var(--bg3);border:1px solid var(--border);padding:2rem;display:flex;gap:1.25rem;align-items:center;margin-top:3.5rem}
+.author-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1rem;font-weight:800;color:var(--bg);flex-shrink:0}
+.author-name{font-family:var(--display);font-size:1rem;font-weight:800;color:var(--text);margin-bottom:0.35rem}
+.author-bio{font-size:0.82rem;color:var(--muted);line-height:1.65}
+.author-bio a{color:var(--teal)}
+.more-articles{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border2)}
+.more-title{font-family:var(--display);font-size:1rem;font-weight:800;color:var(--text);margin-bottom:1.25rem}
+.more-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.more-card{background:var(--bg3);border:1px solid var(--border2);padding:1.25rem;display:block;transition:border-color 0.25s,transform 0.25s}
+.more-card:hover{border-color:rgba(14,181,160,0.35);transform:translateY(-2px)}
+.more-card-tag{font-size:0.58rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem}
+.more-card-title{font-size:0.85rem;font-weight:700;color:var(--text);font-family:var(--display);line-height:1.4}
+footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
+.f-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+.f-links a{color:var(--muted);transition:color 0.2s}
+.f-links a:hover{color:var(--teal)}
+.btt{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:40px;height:40px;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;visibility:hidden;transition:all 0.3s;cursor:pointer;border:none}
+.btt.show{opacity:1;visibility:visible}
+.btt:hover{background:var(--cyan)}
+@media(pointer:fine){body{cursor:none}a,button{cursor:none}}
+.cursor-dot{position:fixed;top:0;left:0;width:4px;height:4px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:background 0.15s;will-change:transform}
+.cursor-ring{position:fixed;top:0;left:0;width:30px;height:30px;border:1.5px solid rgba(14,181,160,0.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s,background 0.2s,opacity 0.2s;will-change:transform}
+.cursor-dot.is-hover{background:var(--teal)}
+.cursor-ring.is-hover{width:44px;height:44px;border-color:var(--teal);background:rgba(14,181,160,0.08)}
+.cursor-dot.is-hidden,.cursor-ring.is-hidden{opacity:0}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.fade-in{opacity:0;transform:translateY(16px);animation:fadeUp 0.5s ease forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.article-hero{padding:3rem 1.25rem 2.5rem}.article-body{padding:2.5rem 1.25rem 4rem}.more-grid{grid-template-columns:1fr}.author-box{flex-direction:column}.step-card{flex-direction:column;gap:0.75rem}.tools-grid{grid-template-columns:1fr 1fr}footer{padding:1.25rem}}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('theme')!=='dark')document.body.classList.add('light-mode');</script>
+<div class="progress-bar" id="progressBar"></div>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">SAMPANNA RAJ DHUNGEL</a>
+  <div class="nav-right">
+    <a href="blog.html" class="nav-blog">← Blog</a>
+    <a href="index.html" class="nav-home">Home</a>
+    <a href="index.html#contact" class="nav-hire">Hire me</a>
+  </div>
+</nav>
+
+<div class="article-hero fade-in">
+  <div class="article-tag">🎬 3D Animation</div>
+  <h1 class="article-title">My 3D Animation Workflow — From Concept to Final Render</h1>
+  <div class="article-meta">
+    <span>👤 Sampanna Raj Dhungel</span>
+    <span>📅 April 2026</span>
+    <span>⏱ 10 min read</span>
+    <span>📍 Bhaktapur, Nepal</span>
+  </div>
+</div>
+
+<div class="article-body fade-in">
+
+  <p>3D animation looks like magic from the outside. A still, lifeless model suddenly moves, breathes, reacts — and audiences feel something. But behind every finished animation is a process that is methodical, iterative and at times deeply frustrating. This is my full workflow, from the first blank scene to the final render file — built from real project experience.</p>
+
+  <p>Whether you're just getting into 3D or trying to understand how a professional approaches a project, this should give you a clear and honest picture.</p>
+
+  <div class="pull-quote">"Good 3D animation is 10% software skill and 90% understanding how things actually move in the real world."</div>
+
+  <h2>The Tools I Use</h2>
+
+  <div class="tools-grid">
+    <div class="tool-item">
+      <div class="tool-icon">🧊</div>
+      <div class="tool-name">Blender</div>
+      <div class="tool-use">Modelling, rigging, rendering</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-icon">🎭</div>
+      <div class="tool-name">Maya</div>
+      <div class="tool-use">Character animation, dynamics</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-icon">✨</div>
+      <div class="tool-name">After Effects</div>
+      <div class="tool-use">Compositing, VFX, colour grade</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-icon">🎨</div>
+      <div class="tool-name">Substance Painter</div>
+      <div class="tool-use">Texturing and material creation</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-icon">🎬</div>
+      <div class="tool-name">DaVinci Resolve</div>
+      <div class="tool-use">Final colour grading and edit</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-icon">🖊️</div>
+      <div class="tool-name">Procreate</div>
+      <div class="tool-use">Concept sketches and storyboards</div>
+    </div>
+  </div>
+
+  <h2>My 7-Stage Workflow</h2>
+
+  <div class="step-card">
+    <div class="step-num">01</div>
+    <div>
+      <div class="step-title">Concept & Reference Gathering</div>
+      <div class="step-text">Before opening any 3D software, I start on paper — or Procreate. I sketch out the core idea: what is this animation about? What emotion should it create? What's the key moment? I then build a reference folder: real-world footage of the movement I'm trying to recreate, colour references, lighting studies from photography, and style references from animations I admire. The reference folder is the most important file in any 3D project.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">02</div>
+    <div>
+      <div class="step-title">Storyboard & Animatic</div>
+      <div class="step-text">For anything beyond a simple loop, I storyboard the sequence — rough panels showing the key poses, camera angles, and timing. Then I put these together in a quick animatic (a timed slideshow of the storyboard panels) to check if the pacing works before committing to full 3D. This step saves enormous time. A bad camera angle caught at storyboard stage costs nothing to fix. The same problem discovered after a 6-hour render is painful.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">03</div>
+    <div>
+      <div class="step-title">Modelling</div>
+      <div class="step-text">I build or source the 3D models. For character work I model from scratch in Blender or Maya, starting from a base mesh and sculpting outward. For product animation, I often work from reference dimensions or client-provided CAD files. Topology matters enormously at this stage — clean edge loops in the right places determine whether a model deforms beautifully or breaks when animated. Time invested here pays back throughout the entire project.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">04</div>
+    <div>
+      <div class="step-title">Rigging & Skinning</div>
+      <div class="step-text">Rigging is building the skeleton that drives the model's movement. For characters, this involves creating a joint hierarchy, setting up controls (the handles animators use), and skinning — teaching the software how the mesh should deform as joints move. Good rigging is invisible. Bad rigging shows up as strange pinching, collapsing or tearing in the mesh. I test rigs by posing them into extreme positions before any animation begins.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">05</div>
+    <div>
+      <div class="step-title">Animation</div>
+      <div class="step-text">This is the core creative stage. I work in passes: first blocking (rough key poses at major timing points), then spline (smooth interpolation between keys), then polish (overlapping action, follow-through, secondary motion, weight). The 12 Principles of Animation guide every decision — squash and stretch, anticipation, ease in and ease out, arcs. I study my reference footage constantly throughout this stage, asking: does this feel real? Does it feel alive?</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">06</div>
+    <div>
+      <div class="step-title">Texturing, Lighting & Rendering</div>
+      <div class="step-text">With animation locked, I build the visual world — materials, textures, lighting and cameras. I use Substance Painter for complex texture work and set up physically-based materials in Blender's Cycles or Eevee renderer. Lighting is storytelling: where the light comes from shapes mood entirely. I render in passes (beauty, shadow, ambient occlusion, depth) so I have flexibility in compositing. Render times vary hugely — from minutes for stylised work to hours per frame for photorealistic shots.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">07</div>
+    <div>
+      <div class="step-title">Compositing & Final Output</div>
+      <div class="step-text">Rendered sequences come into After Effects for compositing — combining render passes, adding VFX elements, colour grading, motion blur, depth of field, and any 2D effects. Then DaVinci Resolve for final colour grading and export. I always deliver in the format the client needs: MP4 for web/social, ProRes for broadcast, image sequences for anything that needs further editing.</div>
+    </div>
+  </div>
+
+  <h2>The Mistakes Beginners Make</h2>
+
+  <ul>
+    <li><strong>Skipping reference.</strong> Every experienced animator has a reference folder open while they work. Animating from memory produces stiff, unconvincing movement.</li>
+    <li><strong>Jumping straight to spline.</strong> Always block first. Spline interpolation between unrefined keys creates unpredictable, floaty motion that's hard to fix.</li>
+    <li><strong>Ignoring the graph editor.</strong> The animation graph editor is where you actually control timing and spacing. Learn it early — it's the difference between mechanical and organic movement.</li>
+    <li><strong>Bad topology at the modelling stage.</strong> Trying to animate a model with poor edge flow is like trying to run in a badly fitted suit. Fix the mesh first.</li>
+    <li><strong>Rendering too early.</strong> Rendering before animation is truly locked is a trap. Small animation changes after a render mean re-rendering everything.</li>
+  </ul>
+
+  <div class="tip-box"><strong>💡 Most important tip:</strong> Study real-world movement obsessively. Film yourself walking, a cloth blowing in wind, water pouring into a glass. 3D animation is the art of convincing an audience that something digital is real — and you can only do that if you deeply understand how real things actually move.</div>
+
+  <h2>How Long Does a 3D Animation Project Take?</h2>
+
+  <p>It depends enormously on complexity. A simple 15-second product animation can be done in 3–5 days. A 30-second character animation with lip sync and complex environments can take 3–6 weeks. Render time alone for a photorealistic scene can be 2–8 hours per frame.</p>
+
+  <p>This is why clear scope and realistic timelines matter so much on 3D projects. I always build in buffer time for technical problems — because they will happen.</p>
+
+  <h2>What I'm Still Learning</h2>
+
+  <p>Photorealistic rendering, advanced VFX compositing and character rigging for film-quality animation are areas I'm actively deepening. 3D is a craft with no ceiling — there is always something more complex, more realistic, more expressive to chase. That's what makes it endlessly fascinating.</p>
+
+  <div class="author-box">
+    <div class="author-avatar">SR</div>
+    <div>
+      <div class="author-name">Sampanna Raj Dhungel</div>
+      <div class="author-bio">Creative Director & Digital Media Designer based in Bhaktapur, Nepal. Specializing in 3D animation, motion graphics, brand identity and UI/UX design. <a href="index.html#contact">Get in touch →</a></div>
+    </div>
+  </div>
+
+  <div class="more-articles">
+    <div class="more-title">More Articles</div>
+    <div class="more-grid">
+      <a href="blog-sound-design.html" class="more-card">
+        <div class="more-card-tag">Sound Design</div>
+        <div class="more-card-title">Sound Design for Video — A Beginner's Guide</div>
+      </a>
+      <a href="blog-ux-process.html" class="more-card">
+        <div class="more-card-tag">UI/UX</div>
+        <div class="more-card-title">My UI/UX Design Process — From Brief to Final Prototype</div>
+      </a>
+      <a href="blog-pricing.html" class="more-card">
+        <div class="more-card-tag">Freelancing</div>
+        <div class="more-card-title">How I Price My Freelance Design Projects</div>
+      </a>
+      <a href="blog-brand-identity.html" class="more-card">
+        <div class="more-card-tag">Branding</div>
+        <div class="more-card-title">Building a Brand Identity from Scratch</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div style="display:flex;flex-direction:column;gap:0.2rem">
+    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
+  </div>
+  <div class="f-links">
+    <a href="https://www.instagram.com/__sampannaad/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/dsampanna/" target="_blank">LinkedIn</a>
+    <a href="https://www.facebook.com/dsampanna" target="_blank">Facebook</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+<button class="btt" id="btt">↑</button>
+<script>
+document.getElementById('footerYear').textContent=new Date().getFullYear();
+window.addEventListener('scroll',function(){
+  document.getElementById('btt').classList.toggle('show',window.scrollY>200);
+  document.getElementById('progressBar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+document.getElementById('btt').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  var dot=document.createElement('div');dot.className='cursor-dot';
+  var ring=document.createElement('div');ring.className='cursor-ring';
+  document.body.appendChild(dot);document.body.appendChild(ring);
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';if(e.target.closest('a,button,[role="button"]')){dot.classList.add('is-hover');ring.classList.add('is-hover');}else{dot.classList.remove('is-hover');ring.classList.remove('is-hover');}});
+  (function tick(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  document.addEventListener('mouseleave',function(){dot.classList.add('is-hidden');ring.classList.add('is-hidden');});
+  document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
+})();
+</script>
+<script src="assets/js/cursor-trail.js"></script>
+<script src="assets/js/scramble.js"></script>
+<script src="assets/js/scroll-reveal.js"></script>
+</body>
+</html>

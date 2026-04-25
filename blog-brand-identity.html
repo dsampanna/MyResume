@@ -1,276 +1,309 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Building a Brand Identity from Scratch — Sampanna Raj Dhungel</title>
-  <meta name="description" content="A complete guide to building brand identity from scratch — from the first client conversation to final delivery. By Sampanna Raj Dhungel, Digital Media Designer, Nepal.">
-  <link rel="canonical" href="https://www.sampannadhungel.com.np/blog-brand-identity.html">
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <style>
-    :root { --blue:#0563bb; --blue-dark:#034f96; --bg:#f7f9fc; --card:#ffffff; --text:#1a1f2e; --text-muted:#6b7a99; --border:#e0e8f5; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
-    .topbar { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 40px; height:64px; background:rgba(255,255,255,0.95); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); gap:16px; }
-    .topbar-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:17px; color:var(--blue); text-decoration:none; }
-    .topbar-nav { display:flex; align-items:center; gap:4px; }
-    .topbar-link { font-family:'Syne',sans-serif; font-size:12px; font-weight:600; color:#4a5568 !important; text-decoration:none !important; padding:6px 10px; border-radius:6px; transition:all 0.2s ease; }
-    .topbar-link:hover { color:var(--blue) !important; background:#eef3fa; }
-    .btn-back { display:inline-flex; align-items:center; gap:7px; padding:9px 18px; background:var(--blue); color:#fff !important; border-radius:50px; font-size:12px; font-weight:600; text-decoration:none !important; transition:all 0.25s ease; font-family:'Syne',sans-serif; margin-left:8px; }
-    .btn-back:hover { background:var(--blue-dark); color:#fff !important; }
-    @media(max-width:900px) { .topbar{padding:0 20px;} .topbar-link{display:none;} }
-    .article-hero { margin-top:64px; background:linear-gradient(135deg,#0563bb 0%,#034f96 100%); padding:80px 40px 60px; text-align:center; }
-    .article-tag { display:inline-block; padding:4px 14px; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); border-radius:50px; font-size:11px; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:20px; font-family:'Syne',sans-serif; }
-    .article-title { font-family:'Syne',sans-serif; font-size:clamp(28px,5vw,52px); font-weight:800; color:#fff; line-height:1.15; letter-spacing:-1px; max-width:720px; margin:0 auto 24px; }
-    .article-meta { display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; font-size:13px; color:rgba(255,255,255,0.7); }
-    .article-meta span { display:flex; align-items:center; gap:6px; }
-    .article-body { max-width:720px; margin:0 auto; padding:60px 24px 80px; }
-    .article-body p { font-size:17px; line-height:1.85; color:#3a4560; font-weight:300; margin-bottom:24px; }
-    .article-body h2 { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; color:var(--text); letter-spacing:-0.5px; margin:48px 0 16px; line-height:1.2; }
-    .article-body h3 { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:var(--text); margin:32px 0 12px; }
-    .article-body strong { color:var(--text); font-weight:600; }
-    .article-body ul,.article-body ol { margin:16px 0 24px 20px; }
-    .article-body li { font-size:17px; line-height:1.8; color:#3a4560; font-weight:300; margin-bottom:8px; }
-    .pull-quote { border-left:4px solid var(--blue); padding:20px 28px; background:#eef3fa; border-radius:0 12px 12px 0; margin:32px 0; font-family:'Playfair Display',serif; font-size:20px; font-style:italic; color:var(--blue-dark); line-height:1.6; }
-    .step-card { background:var(--card); border-radius:16px; padding:24px; border:1px solid var(--border); margin-bottom:16px; display:flex; gap:20px; align-items:flex-start; }
-    .step-num { font-family:'Syne',sans-serif; font-size:32px; font-weight:800; color:#e0e8f5; line-height:1; flex-shrink:0; width:44px; }
-    .step-title { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--text); margin-bottom:6px; }
-    .step-text { font-size:14px; color:var(--text-muted); line-height:1.7; font-weight:300; }
-    .author-box { background:linear-gradient(135deg,#0563bb,#034f96); border-radius:20px; padding:32px; display:flex; gap:20px; align-items:center; margin-top:60px; }
-    .author-avatar { width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#fff; flex-shrink:0; }
-    .author-name { font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#fff; margin-bottom:4px; }
-    .author-bio { font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6; font-weight:300; }
-    .author-bio a { color:#7eb8ff; text-decoration:none; }
-    .more-articles { margin-top:60px; padding-top:40px; border-top:1px solid var(--border); }
-    .more-title { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:var(--text); margin-bottom:20px; }
-    .more-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-    .more-card { background:var(--card); border-radius:14px; padding:20px; border:1px solid var(--border); text-decoration:none; transition:all 0.3s ease; display:block; }
-    .more-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 20px rgba(5,99,187,0.1); }
-    .more-card-tag { font-size:10px; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; font-family:'Syne',sans-serif; }
-    .more-card-title { font-size:14px; font-weight:700; color:var(--text); font-family:'Syne',sans-serif; line-height:1.4; }
-    @media(max-width:768px) { .article-hero{padding:60px 20px 40px;} .article-body{padding:40px 16px 80px;} .author-box{flex-direction:column;text-align:center;} .more-grid{grid-template-columns:1fr;} .step-card{flex-direction:column;gap:10px;} }
-    .fade-in { opacity:0; transform:translateY(20px); animation:fadeUp 0.5s ease forwards; }
-    @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
-    /* SHARED */
-    .sh-footer{background:linear-gradient(135deg,#023e7d,#012a56);color:#fff;padding:50px 0 20px;margin-top:80px;overflow:hidden;}
-    .sh-footer-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:flex;gap:40px;flex-wrap:wrap;margin-bottom:30px;}
-    .sh-footer-left{flex:2;min-width:240px;} .sh-footer-right{flex:1;min-width:160px;}
-    .sh-footer-brand{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;font-family:'Syne',sans-serif;}
-    .sh-footer-desc{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:20px;font-weight:300;}
-    .sh-footer-socials{display:flex;gap:10px;}
-    .sh-footer-socials a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;text-decoration:none;transition:all .3s;}
-    .sh-footer-socials a:hover{background:rgba(255,255,255,0.25);transform:translateY(-3px);}
-    .sh-footer-links-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.15);font-family:'Syne',sans-serif;}
-    .sh-footer-links{list-style:none;padding:0;margin:0;} .sh-footer-links li{margin-bottom:8px;}
-    .sh-footer-links li a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;display:flex;align-items:center;gap:6px;transition:all .25s;font-weight:300;}
-    .sh-footer-links li a:hover{color:#fff;padding-left:4px;}
-    .sh-footer-links li a i{font-size:10px;color:rgba(255,255,255,0.35);}
-    .sh-footer-bottom{max-width:1100px;margin:0 auto;padding:18px 40px 0;border-top:1px solid rgba(255,255,255,0.1);font-size:12px;color:rgba(255,255,255,0.5);}
-    @media(max-width:768px){.sh-footer-inner{flex-direction:column;gap:24px;padding:0 20px;}.sh-footer-bottom{padding:18px 20px 0;}}
-    .sh-btt{position:fixed;right:15px;bottom:15px;z-index:996;width:40px;height:40px;background:#0563bb;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;line-height:0;text-decoration:none;visibility:hidden;opacity:0;transition:all .3s;}
-    .sh-btt.active{visibility:visible;opacity:1;} .sh-btt:hover{background:#034f96;transform:translateY(-3px);color:#fff;} .sh-btt.clicked{transform:scale(.85);background:#023a75;}
-    .sh-wa{position:fixed;right:15px;bottom:65px;z-index:996;width:40px;height:40px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;line-height:0;text-decoration:none;visibility:hidden;opacity:0;transition:all .3s;box-shadow:0 4px 15px rgba(37,211,102,.4);}
-    .sh-wa.active{visibility:visible;opacity:1;} .sh-wa:hover{background:#1ebe5d;transform:translateY(-3px);}
-    .sh-theme{position:fixed;top:12px;right:20px;z-index:9999;width:40px;height:40px;background:rgba(5,99,187,.12);border:1px solid rgba(5,99,187,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;}
-    .sh-theme:hover{background:#0563bb;border-color:#0563bb;transform:rotate(20deg);}
-    .sh-theme i{font-size:15px;color:#0563bb;transition:all .3s;} .sh-theme:hover i{color:#fff;}
-    body.dark-mode{background:#0d1117!important;color:#e6edf3!important;}
-    body.dark-mode .topbar{background:rgba(13,17,23,.96)!important;border-bottom-color:#30363d!important;}
-    body.dark-mode .topbar-logo{color:#7eb8ff!important;} body.dark-mode .topbar-link{color:#8b949e!important;}
-    body.dark-mode .topbar-link:hover{color:#e6edf3!important;background:#1c2128!important;}
-    body.dark-mode .sh-theme i{color:#7eb8ff;}
-    body.dark-mode .article-body p,body.dark-mode .article-body li{color:#8b949e!important;}
-    body.dark-mode .article-body h2,body.dark-mode .article-body h3,body.dark-mode .more-card-title,body.dark-mode .step-title{color:#e6edf3!important;}
-    body.dark-mode .step-card,body.dark-mode .more-card{background:#1c2128!important;border-color:#30363d!important;}
-    body.dark-mode .pull-quote{background:#1c2128!important;color:#7eb8ff!important;border-left-color:#1f6feb!important;}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Building a Brand Identity from Scratch — Sampanna Raj Dhungel</title>
+<meta name="description" content="A complete guide to building brand identity from scratch — from the first client conversation to final delivery. By Sampanna Raj Dhungel, Digital Media Designer, Nepal.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Brand Identity from Scratch — Sampanna Raj Dhungel">
+<meta property="og:description" content="A complete guide to building brand identity from scratch — from the first client conversation to final delivery. By Sampanna Raj Dhungel.">
+<meta property="og:url" content="https://www.sampannadhungel.com.np/blog-brand-identity.html">
+<meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<meta property="article:author" content="Sampanna Raj Dhungel">
+<meta property="article:published_time" content="2026-04-24">
+<meta property="article:tag" content="Branding">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Brand Identity from Scratch — Sampanna Raj Dhungel">
+<meta name="twitter:description" content="A complete guide to building brand identity from scratch — from the first client conversation to final delivery.">
+<meta name="twitter:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<link rel="canonical" href="https://www.sampannadhungel.com.np/blog-brand-identity.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Building a Brand Identity from Scratch — A Designer's Complete Guide","description":"A complete guide to building brand identity from scratch — from the first client conversation to final delivery.","author":{"@type":"Person","name":"Sampanna Raj Dhungel","url":"https://www.sampannadhungel.com.np/"},"publisher":{"@type":"Person","name":"Sampanna Raj Dhungel"},"datePublished":"2026-04-24","url":"https://www.sampannadhungel.com.np/blog-brand-identity.html","image":"https://www.sampannadhungel.com.np/assets/img/og-cover.jpg","keywords":["brand identity","branding","logo design","Nepal","graphic design"]}
+</script>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080c10;--bg2:#0d1117;--bg3:#111820;--teal:#0EB5A0;--cyan:#06b6d4;--blue:#2563EB;--border:rgba(14,181,160,0.15);--border2:rgba(255,255,255,0.07);--text:#f0f4f8;--muted:#6b7c8f;--muted2:#8a9eb0;--display:'Syne',sans-serif;--body:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);gap:1rem}
+.nav-logo{font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-home{font-size:0.75rem;color:var(--muted);transition:color 0.2s;letter-spacing:0.02em}
+.nav-home:hover{color:var(--text)}
+.nav-blog{font-size:0.75rem;color:var(--muted);transition:color 0.2s;letter-spacing:0.02em}
+.nav-blog:hover{color:var(--text)}
+.nav-hire{font-size:0.72rem;font-weight:600;letter-spacing:0.04em;border:1px solid var(--teal);color:var(--teal);padding:0.45rem 1.1rem;transition:background 0.2s,color 0.2s;white-space:nowrap}
+.nav-hire:hover{background:var(--teal);color:var(--bg)}
+@media(max-width:768px){.nav{padding:1rem 1.25rem}.nav-blog{display:none}}
+
+/* ARTICLE HERO */
+.article-hero{padding:5rem 2.5rem 4rem;background:var(--bg2);border-bottom:1px solid var(--border2);position:relative;overflow:hidden;text-align:center}
+.article-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.08) 0%,transparent 70%);pointer-events:none}
+.article-hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.06) 0%,transparent 70%);pointer-events:none}
+.article-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border);padding:0.3rem 0.85rem;margin-bottom:1.5rem;background:rgba(14,181,160,0.06);position:relative;z-index:1}
+.article-title{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;color:var(--text);max-width:760px;margin:0 auto 1.5rem;position:relative;z-index:1}
+.article-meta{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:0.78rem;color:var(--muted);position:relative;z-index:1}
+.article-meta span{display:flex;align-items:center;gap:0.4rem}
+
+/* READING PROGRESS */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--teal);z-index:9999;width:0%;transition:width 0.1s}
+
+/* ARTICLE BODY */
+.article-body{max-width:720px;margin:0 auto;padding:4rem 2rem 5rem}
+.article-body p{font-size:1rem;line-height:1.85;color:var(--muted2);margin-bottom:1.5rem}
+.article-body h2{font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin:3rem 0 1rem;line-height:1.2}
+.article-body h3{font-family:var(--display);font-size:1.2rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem}
+.article-body strong{color:var(--text);font-weight:600}
+.article-body ul,.article-body ol{margin:1rem 0 1.5rem 1.25rem}
+.article-body li{font-size:1rem;line-height:1.8;color:var(--muted2);margin-bottom:0.5rem}
+
+/* PULL QUOTE */
+.pull-quote{border-left:3px solid var(--teal);padding:1.25rem 1.75rem;background:rgba(14,181,160,0.05);margin:2rem 0;font-family:var(--display);font-size:1.1rem;font-style:italic;color:var(--text);line-height:1.6}
+
+/* STEP CARDS */
+.step-card{background:var(--bg3);border:1px solid var(--border2);padding:1.5rem;margin-bottom:1rem;display:flex;gap:1.25rem;align-items:flex-start;transition:border-color 0.2s}
+.step-card:hover{border-color:rgba(14,181,160,0.3)}
+.step-num{font-family:var(--display);font-size:2rem;font-weight:800;color:rgba(14,181,160,0.25);line-height:1;flex-shrink:0;width:44px}
+.step-title{font-family:var(--display);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
+.step-text{font-size:0.84rem;color:var(--muted);line-height:1.7}
+
+/* AUTHOR BOX */
+.author-box{background:var(--bg3);border:1px solid var(--border);padding:2rem;display:flex;gap:1.25rem;align-items:center;margin-top:3.5rem}
+.author-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1rem;font-weight:800;color:var(--bg);flex-shrink:0}
+.author-name{font-family:var(--display);font-size:1rem;font-weight:800;color:var(--text);margin-bottom:0.35rem}
+.author-bio{font-size:0.82rem;color:var(--muted);line-height:1.65}
+.author-bio a{color:var(--teal)}
+.author-bio a:hover{text-decoration:underline}
+
+/* MORE ARTICLES */
+.more-articles{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border2)}
+.more-title{font-family:var(--display);font-size:1rem;font-weight:800;color:var(--text);margin-bottom:1.25rem;letter-spacing:-0.01em}
+.more-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.more-card{background:var(--bg3);border:1px solid var(--border2);padding:1.25rem;display:block;transition:border-color 0.25s,transform 0.25s}
+.more-card:hover{border-color:rgba(14,181,160,0.35);transform:translateY(-2px)}
+.more-card-tag{font-size:0.58rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem}
+.more-card-title{font-size:0.85rem;font-weight:700;color:var(--text);font-family:var(--display);line-height:1.4}
+
+/* FOOTER */
+footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
+.f-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+.f-links a{color:var(--muted);transition:color 0.2s}
+.f-links a:hover{color:var(--teal)}
+
+/* BACK TO TOP */
+.btt{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:40px;height:40px;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;visibility:hidden;transition:all 0.3s;cursor:pointer;border:none}
+.btt.show{opacity:1;visibility:visible}
+.btt:hover{background:var(--cyan)}
+
+/* CUSTOM CURSOR */
+@media(pointer:fine){body{cursor:none}a,button{cursor:none}}
+.cursor-dot{position:fixed;top:0;left:0;width:4px;height:4px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:background 0.15s;will-change:transform}
+.cursor-ring{position:fixed;top:0;left:0;width:30px;height:30px;border:1.5px solid rgba(14,181,160,0.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s,background 0.2s,opacity 0.2s;will-change:transform}
+.cursor-dot.is-hover{background:var(--teal)}
+.cursor-ring.is-hover{width:44px;height:44px;border-color:var(--teal);background:rgba(14,181,160,0.08)}
+.cursor-dot.is-hidden,.cursor-ring.is-hidden{opacity:0}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(16px);animation:fadeUp 0.5s ease forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+  .article-hero{padding:3rem 1.25rem 2.5rem}
+  .article-body{padding:2.5rem 1.25rem 4rem}
+  .more-grid{grid-template-columns:1fr}
+  .author-box{flex-direction:column}
+  .step-card{flex-direction:column;gap:0.75rem}
+  footer{padding:1.25rem}
+}
+</style>
 </head>
 <body>
+<script>if(localStorage.getItem('theme')!=='dark')document.body.classList.add('light-mode');</script>
+<div class="progress-bar" id="progressBar"></div>
 
-  <div class="topbar">
-    <a href="index.html" class="topbar-logo">Sampanna Raj Dhungel</a>
-    <div class="topbar-nav">
-      <a href="index.html#about" class="topbar-link">About</a>
-      <a href="index.html#education" class="topbar-link">Education</a>
-      <a href="index.html#resume" class="topbar-link">Experience</a>
-      <a href="index.html#portfolio" class="topbar-link">Portfolio</a>
-      <a href="index.html#blog" class="topbar-link">Blog</a>
-      <a href="index.html#services" class="topbar-link">Services</a>
-      <a href="index.html#contact" class="topbar-link">Contact</a>
-      <a href="index.html#blog" class="btn-back"><i class="bi bi-arrow-left"></i> Back to Blog</a>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">SAMPANNA RAJ DHUNGEL</a>
+  <div class="nav-right">
+    <a href="blog.html" class="nav-blog">← Blog</a>
+    <a href="index.html" class="nav-home">Home</a>
+    <a href="index.html#contact" class="nav-hire">Hire me</a>
+  </div>
+</nav>
+
+<div class="article-hero fade-in">
+  <div class="article-tag">🎨 Branding</div>
+  <h1 class="article-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</h1>
+  <div class="article-meta">
+    <span>👤 Sampanna Raj Dhungel</span>
+    <span>📅 April 2026</span>
+    <span>⏱ 8 min read</span>
+    <span>📍 Bhaktapur, Nepal</span>
+  </div>
+</div>
+
+<div class="article-body fade-in">
+
+  <p>Every business needs an identity. Not just a logo — a complete visual and emotional language that tells the world who they are, what they stand for, and why they matter. After 5 years of designing brand identities for businesses across Nepal and beyond, I've developed a process that consistently delivers strong, meaningful results.</p>
+
+  <p>This is that process — from the very first conversation with a client to handing over the final files.</p>
+
+  <div class="pull-quote">"A brand is not what you say it is. It's what they say it is." — Marty Neumeier</div>
+
+  <h2>What Brand Identity Actually Means</h2>
+
+  <p>Most clients come to me asking for a logo. What they actually need is much more. <strong>Brand identity</strong> is the complete visual system that represents a business — including the logo, colours, typography, photography style, tone of voice, and the way all of these elements work together across every touchpoint.</p>
+
+  <p>Think of it this way: your logo is your face. Your brand identity is your entire personality — how you dress, how you speak, how you make people feel when they interact with you.</p>
+
+  <h2>My 6-Step Process</h2>
+
+  <div class="step-card">
+    <div class="step-num">01</div>
+    <div>
+      <div class="step-title">Discovery — Understanding the Business</div>
+      <div class="step-text">Before touching any design tool, I spend time understanding the business deeply. Who are their customers? What problem do they solve? What do they want people to feel when they interact with the brand? What are their competitors doing? I ask a lot of questions and listen carefully. This phase usually takes 1-2 sessions with the client and produces a brand brief that guides everything that follows.</div>
     </div>
   </div>
 
-  <div class="article-hero fade-in">
-    <div class="article-tag">🎨 Branding</div>
-    <h1 class="article-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</h1>
-    <div class="article-meta">
-      <span><i class="bi bi-person-fill"></i> Sampanna Raj Dhungel</span>
-      <span><i class="bi bi-calendar3"></i> April 2026</span>
-      <span><i class="bi bi-clock"></i> 8 min read</span>
-      <span><i class="bi bi-geo-alt-fill"></i> Bhaktapur, Nepal</span>
+  <div class="step-card">
+    <div class="step-num">02</div>
+    <div>
+      <div class="step-title">Research — Competitor & Market Analysis</div>
+      <div class="step-text">I look at what competitors are doing visually — not to copy them, but to find the gaps. What visual territory is unclaimed in this market? Where can this brand stand out? I also research the target audience — what visual styles resonate with them, what brands they already trust and why.</div>
     </div>
   </div>
 
-  <div class="article-body fade-in">
-
-    <p>Every business needs an identity. Not just a logo — a complete visual and emotional language that tells the world who they are, what they stand for, and why they matter. After 5 years of designing brand identities for businesses across Nepal and beyond, I've developed a process that consistently delivers strong, meaningful results.</p>
-
-    <p>This is that process — from the very first conversation with a client to handing over the final files.</p>
-
-    <div class="pull-quote">"A brand is not what you say it is. It's what they say it is." — Marty Neumeier</div>
-
-    <h2>What Brand Identity Actually Means</h2>
-
-    <p>Most clients come to me asking for a logo. What they actually need is much more. <strong>Brand identity</strong> is the complete visual system that represents a business — including the logo, colours, typography, photography style, tone of voice, and the way all of these elements work together across every touchpoint.</p>
-
-    <p>Think of it this way: your logo is your face. Your brand identity is your entire personality — how you dress, how you speak, how you make people feel when they interact with you.</p>
-
-    <h2>My 6-Step Process</h2>
-
-    <div class="step-card">
-      <div class="step-num">01</div>
-      <div>
-        <div class="step-title">Discovery — Understanding the Business</div>
-        <div class="step-text">Before touching any design tool, I spend time understanding the business deeply. Who are their customers? What problem do they solve? What do they want people to feel when they interact with the brand? What are their competitors doing? I ask a lot of questions and listen carefully. This phase usually takes 1-2 sessions with the client and produces a brand brief that guides everything that follows.</div>
-      </div>
+  <div class="step-card">
+    <div class="step-num">03</div>
+    <div>
+      <div class="step-title">Moodboarding — Finding the Visual Direction</div>
+      <div class="step-text">I create 2-3 distinct visual directions presented as moodboards — collections of imagery, colour palettes, typography and references that communicate different possible brand personalities. The client chooses a direction, and we refine from there. This step saves enormous time by aligning on visual language before any actual design begins.</div>
     </div>
-
-    <div class="step-card">
-      <div class="step-num">02</div>
-      <div>
-        <div class="step-title">Research — Competitor & Market Analysis</div>
-        <div class="step-text">I look at what competitors are doing visually — not to copy them, but to find the gaps. What visual territory is unclaimed in this market? Where can this brand stand out? I also research the target audience — what visual styles resonate with them, what brands they already trust and why.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">03</div>
-      <div>
-        <div class="step-title">Moodboarding — Finding the Visual Direction</div>
-        <div class="step-text">I create 2-3 distinct visual directions presented as moodboards — collections of imagery, colour palettes, typography and references that communicate different possible brand personalities. The client chooses a direction, and we refine from there. This step saves enormous time by aligning on visual language before any actual design begins.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">04</div>
-      <div>
-        <div class="step-title">Logo Design — The Core Mark</div>
-        <div class="step-text">With a clear direction established, I design the logo — usually presenting 3 concepts. The logo must work at every size, in colour and in black and white, on dark and light backgrounds. I test it on real mockups immediately — packaging, business cards, websites — because a logo that looks great in isolation often fails in context.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">05</div>
-      <div>
-        <div class="step-title">Building the Full System</div>
-        <div class="step-text">Once the logo is approved, I build the complete brand system — primary and secondary colour palettes, typography hierarchy (display, body, accent), icon style, photography guidelines, pattern or texture elements, and usage rules. Everything is documented clearly so anyone in the business can apply the brand consistently.</div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">06</div>
-      <div>
-        <div class="step-title">Delivery — Brand Guidelines Document</div>
-        <div class="step-text">The final deliverable is a complete Brand Guidelines document — a PDF that covers every aspect of the brand identity with clear rules for use. I also deliver all files in every format the client needs: AI, EPS, SVG, PNG, PDF — in both colour and black and white versions.</div>
-      </div>
-    </div>
-
-    <h2>The Mistakes Most Designers Make</h2>
-
-    <p>After years of doing this work I've seen — and made — many mistakes. Here are the most common ones:</p>
-
-    <ul>
-      <li><strong>Starting with the logo</strong> — Jumping straight into logo design without understanding the business first produces generic, meaningless marks.</li>
-      <li><strong>Ignoring context</strong> — A logo designed only on a white screen will look wrong on a product, a storefront or a social media post. Always design in context.</li>
-      <li><strong>Too many fonts</strong> — Two typefaces is usually enough. Three is the maximum. More than that creates visual noise not richness.</li>
-      <li><strong>Colours without meaning</strong> — Every colour choice should be intentional and grounded in what the business stands for, not just what looks pretty.</li>
-      <li><strong>No guidelines document</strong> — Without documentation, even a great brand identity falls apart quickly when other people start applying it.</li>
-    </ul>
-
-    <h2>What Makes a Brand Identity Great</h2>
-
-    <p>The best brand identities share a few qualities. They are <strong>distinctive</strong> — immediately recognisable and different from competitors. They are <strong>flexible</strong> — working across every medium from a tiny favicon to a giant billboard. They are <strong>appropriate</strong> — visually aligned with the business's values and audience. And they are <strong>durable</strong> — built to last years, not just follow current trends.</p>
-
-    <div class="pull-quote">"Design is not just what it looks like and feels like. Design is how it works." — Steve Jobs</div>
-
-    <h2>Working with Clients in Nepal</h2>
-
-    <p>One thing I've learned from doing brand identity work in Nepal specifically — many clients here are experiencing professional branding for the first time. This means education is a big part of my job. I spend time helping clients understand why certain decisions matter, what makes a strong brand and how to protect and use their identity correctly.</p>
-
-    <p>This isn't a burden — it's actually one of the most rewarding parts of the work. Watching a small business owner see their brand come to life for the first time and understand its potential is genuinely one of the best feelings in this industry.</p>
-
-    <h2>Ready to Build Your Brand?</h2>
-
-    <p>If you're a startup or established business looking to build or refresh your brand identity, I'd love to talk. Whether you're based in Nepal or anywhere else in the world — I work remotely and bring the same level of care and strategy to every project.</p>
-
-    <div class="author-box">
-      <div class="author-avatar">SR</div>
-      <div>
-        <div class="author-name">Sampanna Raj Dhungel</div>
-        <div class="author-bio">Creative Director & Digital Media Designer based in Bhaktapur, Nepal. Specializing in brand identity, UI/UX design, motion graphics and visual storytelling. Available for remote and international projects. <a href="index.html#contact">Get in touch →</a></div>
-      </div>
-    </div>
-
-    <div class="more-articles">
-      <div class="more-title">More Articles</div>
-      <div class="more-grid">
-        <a href="blog-freelancing-nepal.html" class="more-card">
-          <div class="more-card-tag">Freelancing</div>
-          <div class="more-card-title">Freelancing as a Designer in Nepal — The Real Story</div>
-        </a>
-        <a href="blog-sound-design.html" class="more-card">
-          <div class="more-card-tag">Sound Design</div>
-          <div class="more-card-title">Sound Design for Video — A Beginner's Guide</div>
-        </a>
-      </div>
-    </div>
-
   </div>
 
-  <footer class="sh-footer">
-    <div class="sh-footer-inner">
-      <div class="sh-footer-left">
-        <div class="sh-footer-brand">Sampanna Raj Dhungel</div>
-        <p class="sh-footer-desc">Creative Director & Digital Media Designer based in Bhaktapur, Nepal. Available for remote and international projects worldwide. 🌟</p>
-        <div class="sh-footer-socials">
-          <a href="https://twitter.com/dsampanna" target="_blank"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.facebook.com/dsampanna" target="_blank"><i class="bx bxl-facebook"></i></a>
-          <a href="https://www.instagram.com/__sampannaad/" target="_blank"><i class="bx bxl-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/dsampanna/" target="_blank"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
-      <div class="sh-footer-right">
-        <div class="sh-footer-links-title">Quick Links</div>
-        <ul class="sh-footer-links">
-          <li><a href="index.html#hero"><i class="bi bi-chevron-right"></i> Home</a></li>
-          <li><a href="index.html#about"><i class="bi bi-chevron-right"></i> About</a></li>
-          <li><a href="index.html#portfolio"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
-          <li><a href="index.html#blog"><i class="bi bi-chevron-right"></i> Blog</a></li>
-          <li><a href="index.html#services"><i class="bi bi-chevron-right"></i> Services</a></li>
-          <li><a href="index.html#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
-        </ul>
-      </div>
+  <div class="step-card">
+    <div class="step-num">04</div>
+    <div>
+      <div class="step-title">Logo Design — The Core Mark</div>
+      <div class="step-text">With a clear direction established, I design the logo — usually presenting 3 concepts. The logo must work at every size, in colour and in black and white, on dark and light backgrounds. I test it on real mockups immediately — packaging, business cards, websites — because a logo that looks great in isolation often fails in context.</div>
     </div>
-    <div class="sh-footer-bottom">&copy; <span id="sh-year"></span> SampannaRajDhungel. All Rights Reserved.</div>
-  </footer>
+  </div>
 
-  <a href="#" class="sh-btt" id="shBtt"><i class="bi bi-arrow-up-short"></i></a>
-  <a href="https://wa.me/9779861487026" class="sh-wa" id="shWa" target="_blank"><i class="bx bxl-whatsapp"></i></a>
-  <div class="sh-theme" id="shTheme"><i class="bi bi-moon-fill" id="shIcon"></i></div>
+  <div class="step-card">
+    <div class="step-num">05</div>
+    <div>
+      <div class="step-title">Building the Full System</div>
+      <div class="step-text">Once the logo is approved, I build the complete brand system — primary and secondary colour palettes, typography hierarchy (display, body, accent), icon style, photography guidelines, pattern or texture elements, and usage rules. Everything is documented clearly so anyone in the business can apply the brand consistently.</div>
+    </div>
+  </div>
 
-  <script>
-    document.getElementById('sh-year').textContent=new Date().getFullYear();
-    const btt=document.getElementById('shBtt'),wa=document.getElementById('shWa'),theme=document.getElementById('shTheme'),icon=document.getElementById('shIcon');
-    window.addEventListener('scroll',()=>{if(window.scrollY>100){btt.classList.add('active');wa.classList.add('active');}else{btt.classList.remove('active');wa.classList.remove('active');}});
-    btt.addEventListener('click',e=>{e.preventDefault();btt.classList.add('clicked');setTimeout(()=>btt.classList.remove('clicked'),300);window.scrollTo({top:0,behavior:'smooth'});});
-    if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark-mode');icon.className='bi bi-sun-fill';}
-    theme.addEventListener('click',()=>{document.body.classList.toggle('dark-mode');if(document.body.classList.contains('dark-mode')){icon.className='bi bi-sun-fill';localStorage.setItem('theme','dark');}else{icon.className='bi bi-moon-fill';localStorage.setItem('theme','light');}});
-  </script>
-<script src="assets/js/reading_progress.js"></script>
+  <div class="step-card">
+    <div class="step-num">06</div>
+    <div>
+      <div class="step-title">Delivery — Brand Guidelines Document</div>
+      <div class="step-text">The final deliverable is a complete Brand Guidelines document — a PDF that covers every aspect of the brand identity with clear rules for use. I also deliver all files in every format the client needs: AI, EPS, SVG, PNG, PDF — in both colour and black and white versions.</div>
+    </div>
+  </div>
+
+  <h2>The Mistakes Most Designers Make</h2>
+
+  <p>After years of doing this work I've seen — and made — many mistakes. Here are the most common ones:</p>
+
+  <ul>
+    <li><strong>Starting with the logo</strong> — Jumping straight into logo design without understanding the business first produces generic, meaningless marks.</li>
+    <li><strong>Ignoring context</strong> — A logo designed only on a white screen will look wrong on a product, a storefront or a social media post. Always design in context.</li>
+    <li><strong>Too many fonts</strong> — Two typefaces is usually enough. Three is the maximum. More than that creates visual noise not richness.</li>
+    <li><strong>Colours without meaning</strong> — Every colour choice should be intentional and grounded in what the business stands for, not just what looks pretty.</li>
+    <li><strong>No guidelines document</strong> — Without documentation, even a great brand identity falls apart quickly when other people start applying it.</li>
+  </ul>
+
+  <h2>What Makes a Brand Identity Great</h2>
+
+  <p>The best brand identities share a few qualities. They are <strong>distinctive</strong> — immediately recognisable and different from competitors. They are <strong>flexible</strong> — working across every medium from a tiny favicon to a giant billboard. They are <strong>appropriate</strong> — visually aligned with the business's values and audience. And they are <strong>durable</strong> — built to last years, not just follow current trends.</p>
+
+  <div class="pull-quote">"Design is not just what it looks like and feels like. Design is how it works." — Steve Jobs</div>
+
+  <h2>Working with Clients in Nepal</h2>
+
+  <p>One thing I've learned from doing brand identity work in Nepal specifically — many clients here are experiencing professional branding for the first time. This means education is a big part of my job. I spend time helping clients understand why certain decisions matter, what makes a strong brand and how to protect and use their identity correctly.</p>
+
+  <p>This isn't a burden — it's actually one of the most rewarding parts of the work. Watching a small business owner see their brand come to life for the first time and understand its potential is genuinely one of the best feelings in this industry.</p>
+
+  <h2>Ready to Build Your Brand?</h2>
+
+  <p>If you're a startup or established business looking to build or refresh your brand identity, I'd love to talk. Whether you're based in Nepal or anywhere else in the world — I work remotely and bring the same level of care and strategy to every project.</p>
+
+  <div class="author-box">
+    <div class="author-avatar">SR</div>
+    <div>
+      <div class="author-name">Sampanna Raj Dhungel</div>
+      <div class="author-bio">Creative Director & Digital Media Designer based in Bhaktapur, Nepal. Specializing in brand identity, UI/UX design, motion graphics and visual storytelling. Available for remote and international projects. <a href="index.html#contact">Get in touch →</a></div>
+    </div>
+  </div>
+
+  <div class="more-articles">
+    <div class="more-title">More Articles</div>
+    <div class="more-grid">
+      <a href="blog-freelancing-nepal.html" class="more-card">
+        <div class="more-card-tag">Freelancing</div>
+        <div class="more-card-title">Freelancing as a Designer in Nepal — The Real Story</div>
+      </a>
+      <a href="blog-sound-design.html" class="more-card">
+        <div class="more-card-tag">Sound Design</div>
+        <div class="more-card-title">Sound Design for Video — A Beginner's Guide</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div style="display:flex;flex-direction:column;gap:0.2rem">
+    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
+  </div>
+  <div class="f-links">
+    <a href="https://www.instagram.com/__sampannaad/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/dsampanna/" target="_blank">LinkedIn</a>
+    <a href="https://www.facebook.com/dsampanna" target="_blank">Facebook</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+<button class="btt" id="btt">↑</button>
+<script>
+document.getElementById('footerYear').textContent=new Date().getFullYear();
+window.addEventListener('scroll',function(){
+  var btt=document.getElementById('btt');
+  btt.classList.toggle('show',window.scrollY>200);
+  document.getElementById('progressBar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+document.getElementById('btt').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  var dot=document.createElement('div');dot.className='cursor-dot';
+  var ring=document.createElement('div');ring.className='cursor-ring';
+  document.body.appendChild(dot);document.body.appendChild(ring);
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';if(e.target.closest('a,button,[role="button"]')){dot.classList.add('is-hover');ring.classList.add('is-hover');}else{dot.classList.remove('is-hover');ring.classList.remove('is-hover');}});
+  (function tick(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  document.addEventListener('mouseleave',function(){dot.classList.add('is-hidden');ring.classList.add('is-hidden');});
+  document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
+})();
+</script>
+<script src="assets/js/cursor-trail.js"></script>
+<script src="assets/js/scramble.js"></script>
+<script src="assets/js/scroll-reveal.js"></script>
 </body>
 </html>

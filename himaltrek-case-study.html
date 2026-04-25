@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HimalTrek Nepal — UI/UX Case Study | Sampanna Raj Dhungel</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <meta name="description" content="A full UI/UX case study for HimalTrek Nepal — a trekking platform with 24 routes, permit management, booking flow, guides directory and emergency SOS. Designed by Sampanna Raj Dhungel.">
+  <link rel="canonical" href="https://www.sampannadhungel.com.np/himaltrek-case-study.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#080c10;--bg2:#0d1117;--bg3:#111827;
+      --text:#e5e7eb;--muted:#9ca3af;--muted2:#6b7280;
+      --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);
+      --teal:#0EB5A0;--teal2:#06b6d4;
+      --gold:#E9B84A;--gold2:#f5d47a;--navy:#1a2332;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+    /* ── NAV ── */
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:62px;background:rgba(8,12,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2);gap:1rem;}
+    .topbar-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:var(--teal);text-decoration:none;letter-spacing:0.06em;}
+    .topbar-nav{display:flex;align-items:center;gap:0.25rem;}
+    .topbar-link{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 9px;letter-spacing:0.05em;transition:color 0.2s;}
+    .topbar-link:hover{color:var(--text);}
+    .btn-back{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border2);color:var(--muted);font-size:11px;font-weight:600;text-decoration:none;transition:all 0.25s;font-family:'Syne',sans-serif;margin-left:0.5rem;letter-spacing:0.05em;}
+    .btn-back:hover{border-color:var(--teal);color:var(--teal);}
+    @media(max-width:900px){.topbar{padding:0 1.25rem;}.topbar-link{display:none;}}
+
+    /* ── HERO ── */
+    .case-hero{margin-top:62px;background:linear-gradient(135deg,#080c10 0%,#0c1520 55%,#0d1a2a 100%);padding:80px 2.5rem 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--border2);}
+    .case-hero::before{content:'🏔️';position:absolute;font-size:260px;right:-30px;top:-20px;opacity:0.025;pointer-events:none;}
+    .case-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to bottom,transparent,var(--bg));}
+    .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+    .case-type{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;background:rgba(233,184,74,0.08);border:1px solid rgba(233,184,74,0.2);font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:1.5rem;font-family:'Syne',sans-serif;}
+    .case-title{font-family:'Syne',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:800;color:var(--text);line-height:1.0;letter-spacing:-0.04em;margin-bottom:1.25rem;}
+    .case-title span{color:var(--gold);}
+    .case-subtitle{font-size:15px;color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:3rem;font-weight:300;}
+    .case-meta{display:flex;flex-wrap:wrap;gap:0;}
+    .case-meta-item{display:flex;flex-direction:column;gap:5px;padding-right:28px;}
+    .case-meta-label{font-size:9px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.14em;}
+    .case-meta-value{font-size:13px;font-weight:500;color:var(--text);}
+    .case-meta-divider{width:1px;background:var(--border2);align-self:stretch;margin-right:28px;}
+    @media(max-width:768px){.case-hero{padding:50px 1.25rem 40px;}.case-meta{gap:1rem;}.case-meta-divider{display:none;}}
+
+    /* ── PREVIEW ── */
+    .preview-section{max-width:960px;margin:0 auto;padding:56px 1.5rem 40px;}
+    .preview-frame{background:var(--bg2);border:1px solid var(--border2);overflow:hidden;}
+    .preview-bar{background:var(--bg3);padding:11px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+    .preview-dots{display:flex;gap:6px;}
+    .preview-dot{width:11px;height:11px;border-radius:50%;}
+    .dot-red{background:#ff5f57;}.dot-yellow{background:#ffbd2e;}.dot-green{background:#28ca41;}
+    .preview-url{flex:1;background:var(--bg);border:1px solid var(--border);padding:5px 12px;font-size:11px;color:var(--muted2);font-family:monospace;}
+    .preview-content{background:var(--navy);min-height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center;padding:48px 24px;position:relative;overflow:hidden;}
+    .preview-content::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(233,184,74,0.07) 0%,transparent 60%);}
+    .preview-mountain-svg{position:absolute;bottom:0;left:0;right:0;opacity:0.25;}
+    .preview-logo{display:flex;align-items:center;gap:10px;position:relative;z-index:1;}
+    .preview-logo-mark{width:38px;height:38px;background:var(--gold);display:flex;align-items:center;justify-content:center;}
+    .preview-logo-name{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;}
+    .preview-tagline{font-size:12px;color:rgba(255,255,255,0.45);position:relative;z-index:1;}
+    .preview-stats{display:flex;gap:28px;position:relative;z-index:1;}
+    .preview-stat-val{font-size:20px;font-weight:500;color:#fff;}
+    .preview-stat-lbl{font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.06em;}
+    .preview-link{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:12px;font-weight:700;text-decoration:none;transition:all 0.25s;font-family:'Syne',sans-serif;position:relative;z-index:1;letter-spacing:0.06em;}
+    .preview-link:hover{background:var(--gold);color:var(--navy);}
+
+    /* ── BODY ── */
+    .case-body{max-width:860px;margin:0 auto;padding:0 1.5rem 80px;}
+    .cs-section{margin-bottom:72px;}
+    .cs-num{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:8px;}
+    .cs-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin-bottom:16px;line-height:1.15;}
+    .cs-title span{color:var(--teal);}
+    .cs-text{font-size:15px;line-height:1.85;color:var(--muted);font-weight:300;margin-bottom:14px;}
+    .cs-text strong{color:var(--text);font-weight:500;}
+    .cs-divider{height:1px;background:var(--border);margin:56px 0;}
+
+    /* ── CHALLENGE GRID ── */
+    .challenge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px;}
+    .challenge-card{background:var(--bg2);border:1px solid var(--border2);border-left:3px solid var(--gold);padding:18px 20px;}
+    .challenge-icon{font-size:22px;margin-bottom:8px;}
+    .challenge-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .challenge-text{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;}
+
+    /* ── STATS ── */
+    .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px;}
+    .stat-card{background:var(--bg2);border:1px solid var(--border2);padding:20px;text-align:center;}
+    .stat-val{font-family:'DM Serif Display',serif;font-size:28px;color:var(--gold);font-weight:400;margin-bottom:4px;}
+    .stat-lbl{font-size:11px;color:var(--muted);font-weight:500;}
+
+    /* ── PAGES GRID ── */
+    .pages-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px;}
+    .page-item{background:var(--bg2);border:1px solid var(--border2);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
+    .page-num{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:rgba(255,255,255,0.06);line-height:1;flex-shrink:0;}
+    .page-num--gold{color:rgba(233,184,74,0.4);}
+    .page-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;}
+    .page-desc{font-size:12px;color:var(--muted);line-height:1.6;font-weight:300;}
+
+    /* ── FEATURES GRID ── */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;}
+    .feature-card{background:var(--bg2);border:1px solid var(--border2);padding:20px;text-align:center;transition:border-color 0.25s,transform 0.25s;}
+    .feature-card:hover{border-color:rgba(233,184,74,0.2);transform:translateY(-2px);}
+    .feature-icon{font-size:26px;margin-bottom:8px;display:block;}
+    .feature-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .feature-text{font-size:11px;color:var(--muted);line-height:1.65;font-weight:300;}
+
+    /* ── PALETTE ── */
+    .palette{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+    .swatch-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;}
+    .swatch{width:68px;height:68px;border:1px solid var(--border2);}
+    .swatch-name{font-size:10px;font-weight:600;color:var(--muted);text-align:center;}
+    .swatch-hex{font-size:9px;color:var(--muted2);font-family:monospace;}
+
+    /* ── TYPE SHOWCASE ── */
+    .type-showcase{background:var(--bg2);border:1px solid var(--border2);padding:24px;margin-top:20px;}
+    .type-row{padding:16px 0;border-bottom:1px solid var(--border);}
+    .type-row:last-child{border-bottom:none;}
+    .type-label{font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:8px;font-family:'Syne',sans-serif;}
+
+    /* ── LEARNINGS ── */
+    .learning-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+    .learning-list li{display:flex;gap:14px;align-items:flex-start;background:var(--bg2);border:1px solid var(--border2);padding:16px 18px;font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;}
+    .l-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;color:var(--teal);flex-shrink:0;margin-top:2px;}
+
+    /* ── NEXT STEPS ── */
+    .next-steps{background:var(--bg2);border:1px solid var(--border2);padding:48px;text-align:center;margin-top:20px;}
+    .next-steps h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-0.03em;}
+    .next-steps p{color:var(--muted);font-size:14px;margin-bottom:28px;font-weight:300;line-height:1.7;}
+    .ns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px;}
+    .ns-item{background:var(--bg3);border:1px solid var(--border2);padding:20px;text-align:left;}
+    .ns-icon{font-size:22px;margin-bottom:8px;display:block;}
+    .ns-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:5px;}
+    .ns-text{font-size:11px;color:var(--muted);line-height:1.6;font-weight:300;}
+    .btn-view{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:12px;font-weight:700;text-decoration:none;transition:all 0.3s;font-family:'Syne',sans-serif;letter-spacing:0.06em;}
+    .btn-view:hover{background:var(--gold);color:var(--navy);}
+
+    /* ── FOOTER ── */
+    footer{padding:2rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:var(--muted2);flex-wrap:wrap;gap:1rem;}
+    .footer-links{display:flex;gap:1.5rem;}
+    .footer-links a{color:var(--muted2);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--teal);}
+
+    /* ── BACK TO TOP ── */
+    .btt{position:fixed;right:1.5rem;bottom:1.5rem;z-index:999;width:40px;height:40px;background:var(--teal);color:#080c10;border:none;cursor:pointer;font-size:18px;font-weight:700;display:none;align-items:center;justify-content:center;transition:transform 0.2s;}
+    .btt:hover{transform:translateY(-3px);}
+    .btt.visible{display:flex;}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      .case-body{padding:0 1rem 60px;}.preview-section{padding:36px 1rem 28px;}
+      .challenge-grid{grid-template-columns:1fr;}.stat-row{grid-template-columns:repeat(2,1fr);}
+      .pages-grid{grid-template-columns:1fr;}.features-grid{grid-template-columns:repeat(2,1fr);}
+      .ns-grid{grid-template-columns:1fr;}.next-steps{padding:28px 20px;}
+    }
+    @media(max-width:480px){.features-grid{grid-template-columns:1fr;}}
+
+    .fade-in{opacity:0;transform:translateY(18px);animation:fadeUp 0.5s ease forwards;}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+  </style>
+</head>
+<body>
+
+  <button class="btt" id="btt" aria-label="Back to top">↑</button>
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">SAMPANNA RAJ DHUNGEL</a>
+    <div class="topbar-nav">
+      <a href="index.html#about" class="topbar-link">About</a>
+      <a href="index.html#education" class="topbar-link">Education</a>
+      <a href="index.html#resume" class="topbar-link">Experience</a>
+      <a href="portfolio.html" class="topbar-link">Portfolio</a>
+      <a href="blog.html" class="topbar-link">Blog</a>
+      <a href="index.html#services" class="topbar-link">Services</a>
+      <a href="index.html#contact" class="topbar-link">Contact</a>
+      <a href="portfolio.html" class="btn-back"><i class="bi bi-arrow-left"></i> Portfolio</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="case-hero fade-in">
+    <div class="hero-inner">
+      <div class="case-type">✦ UI/UX Case Study</div>
+      <h1 class="case-title">HimalTrek<br><span>Nepal</span></h1>
+      <p class="case-subtitle">Trek with confidence & care — a full-stack trekking platform for Nepal covering 24 routes, permit management, teahouse booking, certified guides, emergency SOS and a mobile app — built entirely in HTML, CSS & JavaScript.</p>
+      <div class="case-meta">
+        <div class="case-meta-item"><div class="case-meta-label">Project Type</div><div class="case-meta-value">Self-Initiated UI/UX</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-value">UI/UX Designer & Developer</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Tools</div><div class="case-meta-value">Figma · HTML · CSS · JS</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Year</div><div class="case-meta-value">2026</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Industry</div><div class="case-meta-value">Travel & Tourism · Nepal</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Routes</div><div class="case-meta-value">24 Trek Routes</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="preview-section fade-in">
+    <div class="preview-frame">
+      <div class="preview-bar">
+        <div class="preview-dots">
+          <div class="preview-dot dot-red"></div>
+          <div class="preview-dot dot-yellow"></div>
+          <div class="preview-dot dot-green"></div>
+        </div>
+        <div class="preview-url">himaltrek.com.np</div>
+      </div>
+      <div class="preview-content">
+        <svg class="preview-mountain-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0 120 L160 40 L280 80 L420 10 L560 60 L700 20 L820 55 L960 5 L1080 40 L1200 18 L1200 120Z" fill="#0d1a2a" opacity="0.7"/>
+        </svg>
+        <div class="preview-logo">
+          <div class="preview-logo-mark">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2L18 18H2L10 2Z" fill="#1a2332"/></svg>
+          </div>
+          <div class="preview-logo-name">HimalTrek Nepal</div>
+        </div>
+        <div class="preview-tagline">Nepal's trusted trekking guide · 24 routes · Est. 2019</div>
+        <div class="preview-stats">
+          <div style="text-align:center;"><div class="preview-stat-val">24+</div><div class="preview-stat-lbl">Routes</div></div>
+          <div style="text-align:center;"><div class="preview-stat-val">12,400+</div><div class="preview-stat-lbl">Trekkers</div></div>
+          <div style="text-align:center;"><div class="preview-stat-val">★ 4.9</div><div class="preview-stat-lbl">Rating</div></div>
+          <div style="text-align:center;"><div class="preview-stat-val">100%</div><div class="preview-stat-lbl">Permits</div></div>
+        </div>
+        <a href="himaltrek-nepal/index.html" target="_blank" class="preview-link">
+          <i class="bi bi-globe"></i> View Live Design
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="case-body">
+
+    <!-- 01 OVERVIEW -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">01 — Overview</div>
+      <h2 class="cs-title">The <span>Challenge</span></h2>
+      <p class="cs-text">Nepal's trekking industry is one of the most important parts of its economy, yet the digital experience for trekkers remains fragmented and frustrating. Permits are applied for at different government offices. Route information is scattered across dozens of blogs and outdated PDF guides. Guide bookings happen over WhatsApp. There is no single trusted platform that handles everything end-to-end.</p>
+      <p class="cs-text">I designed and built <strong>HimalTrek Nepal</strong> as a self-initiated portfolio project to solve this — a comprehensive trekking platform that covers the entire journey from discovery to safe return. No existing Nepali trekking platform came close to this scope.</p>
+      <div class="challenge-grid">
+        <div class="challenge-card"><div class="challenge-icon">🗺️</div><div class="challenge-title">Fragmented Information</div><div class="challenge-text">Route details, altitude profiles, gear lists and weather data spread across dozens of unreliable sources with no authoritative single platform.</div></div>
+        <div class="challenge-card"><div class="challenge-icon">📄</div><div class="challenge-title">Manual Permit Process</div><div class="challenge-text">TIMS cards and national park entry permits require physical queuing at government offices, often taking a full day and causing trekker delays.</div></div>
+        <div class="challenge-card"><div class="challenge-icon">🏔️</div><div class="challenge-title">Safety Gaps</div><div class="challenge-text">Altitude sickness is a real danger above 3,500m. No existing platform offered daily AMS symptom monitoring or one-tap emergency SOS.</div></div>
+        <div class="challenge-card"><div class="challenge-icon">🛏️</div><div class="challenge-title">Teahouse Uncertainty</div><div class="challenge-text">Peak season (Oct–Nov, Mar–May) teahouses fill completely. Trekkers arrive exhausted at altitude to find no beds — a genuine safety risk.</div></div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 02 SCOPE -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">02 — Scope</div>
+      <h2 class="cs-title">What I <span>Built</span></h2>
+      <p class="cs-text">This is one of the most comprehensive UI/UX portfolio projects I've built. The platform covers 8 distinct pages, 24 fully populated trek routes each with complete itineraries, a multi-step permit application flow, a guide booking system, a trek planner, and a full modal system for 6 different user actions.</p>
+      <div class="stat-row">
+        <div class="stat-card"><div class="stat-val">24</div><div class="stat-lbl">Trek Routes</div></div>
+        <div class="stat-card"><div class="stat-val">8</div><div class="stat-lbl">Pages / Sections</div></div>
+        <div class="stat-card"><div class="stat-val">5</div><div class="stat-lbl">Permit Steps</div></div>
+        <div class="stat-card"><div class="stat-val">1,200+</div><div class="stat-lbl">Lines of JS</div></div>
+      </div>
+      <div class="pages-grid">
+        <div class="page-item"><div class="page-num">01</div><div><div class="page-title">Home — Route Discovery</div><div class="page-desc">Full trek grid with search, destination dropdown, date picker, difficulty filter and season strip. 24 routes rendered from a data array with dynamic cards.</div></div></div>
+        <div class="page-item"><div class="page-num">02</div><div><div class="page-title">Trek Detail Page</div><div class="page-desc">Per-trek page with tabbed itinerary, gear list, FAQ, reviews, booking widget with live price calculator, and "what's included" breakdown.</div></div></div>
+        <div class="page-item"><div class="page-num">03</div><div><div class="page-title">Permits & TIMS</div><div class="page-desc">5-step online permit application — permit type selection, personal details, trek details, payment, and digital confirmation. No queuing required.</div></div></div>
+        <div class="page-item"><div class="page-num">04</div><div><div class="page-title">Certified Guides</div><div class="page-desc">Guide directory with TAAN certification, first-aid status, languages, specialties and rating. Guide matching request form.</div></div></div>
+        <div class="page-item"><div class="page-num">05</div><div><div class="page-title">Trek Journal (Blog)</div><div class="page-desc">5 articles covering safety, route guides, gear and culture — with read time estimates and featured image cards.</div></div></div>
+        <div class="page-item"><div class="page-num">06</div><div><div class="page-title">Trek Planner</div><div class="page-desc">Personalised trek recommendation form — experience level, fitness, duration preference, budget. Returns matched routes.</div></div></div>
+        <div class="page-item"><div class="page-num">07</div><div><div class="page-title">Wishlist</div><div class="page-desc">Save treks across sessions using localStorage. Compare saved routes, see total cost estimate and book directly from the wishlist.</div></div></div>
+        <div class="page-item"><div class="page-num">08</div><div><div class="page-title">About, Careers, Contact</div><div class="page-desc">Company story, team stats, 4 open job listings with application flow, and a full contact form with 2-hour response promise.</div></div></div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 03 FEATURES -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">03 — Key Features</div>
+      <h2 class="cs-title">Platform <span>Highlights</span></h2>
+      <p class="cs-text">Beyond the core booking flow, six features set HimalTrek apart from anything currently available in the Nepali trekking market.</p>
+      <div class="features-grid">
+        <div class="feature-card"><span class="feature-icon">🗺️</span><div class="feature-title">Offline Trail Maps</div><div class="feature-text">Downloadable GPS maps work above 4,000m where signal dies. Built as a UX concept showing the app download flow.</div></div>
+        <div class="feature-card"><span class="feature-icon">📋</span><div class="feature-title">5-Step Permit Wizard</div><div class="feature-text">TIMS, national park and restricted area permits applied in one flow. Digital issue within 2 hours — no government office visit.</div></div>
+        <div class="feature-card"><span class="feature-icon">⛰️</span><div class="feature-title">AMS Altitude Checker</div><div class="feature-text">Daily symptom logging with personalised acclimatisation advice based on current altitude and trek day progress.</div></div>
+        <div class="feature-card"><span class="feature-icon">🆘</span><div class="feature-title">Emergency SOS</div><div class="feature-text">One-tap alert sends GPS coordinates to the guide, emergency contacts and Nepal Police simultaneously.</div></div>
+        <div class="feature-card"><span class="feature-icon">🛏️</span><div class="feature-title">Teahouse Pre-Booking</div><div class="feature-text">All teahouses confirmed before departure. No arriving at altitude to find no beds — a real problem in peak season.</div></div>
+        <div class="feature-card"><span class="feature-icon">❤️</span><div class="feature-title">Wishlist & Compare</div><div class="feature-text">Save treks, compare duration/price/altitude side by side, and book directly. State persisted in localStorage.</div></div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 04 DESIGN SYSTEM -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">04 — Design System</div>
+      <h2 class="cs-title">Colour & <span>Typography</span></h2>
+      <p class="cs-text">The visual language is built around trust, nature and adventure. Deep navy as the primary communicates professionalism and the night sky above the Himalayas. Gold as the accent reflects warmth, quality and the sunrise light that trekkers wake up for. Cream backgrounds give a natural, earthy feel without being cold.</p>
+      <div class="palette">
+        <div class="swatch-wrap"><div class="swatch" style="background:#1a2332;"></div><div class="swatch-name">Navy</div><div class="swatch-hex">#1a2332</div></div>
+        <div class="swatch-wrap"><div class="swatch" style="background:#243147;"></div><div class="swatch-name">Navy Light</div><div class="swatch-hex">#243147</div></div>
+        <div class="swatch-wrap"><div class="swatch" style="background:#E9B84A;"></div><div class="swatch-name">Gold</div><div class="swatch-hex">#E9B84A</div></div>
+        <div class="swatch-wrap"><div class="swatch" style="background:#f5d47a;"></div><div class="swatch-name">Gold Light</div><div class="swatch-hex">#f5d47a</div></div>
+        <div class="swatch-wrap"><div class="swatch" style="background:#f5f0eb;border:1px solid rgba(255,255,255,0.1);"></div><div class="swatch-name">Cream</div><div class="swatch-hex">#f5f0eb</div></div>
+        <div class="swatch-wrap"><div class="swatch" style="background:#3B6D11;"></div><div class="swatch-name">Green</div><div class="swatch-hex">#3B6D11</div></div>
+        <div class="swatch-wrap"><div class="swatch" style="background:#A32D2D;"></div><div class="swatch-name">Red / Alert</div><div class="swatch-hex">#A32D2D</div></div>
+      </div>
+      <div class="type-showcase">
+        <div class="type-row">
+          <div class="type-label">Display / Headings — DM Serif Display</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:30px;color:var(--text);line-height:1.15;">Trek Nepal with <em style="color:var(--gold);">confidence & care</em></div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Body / UI — DM Sans Regular</div>
+          <div style="font-size:15px;color:var(--muted);line-height:1.75;font-weight:300;">Expert-guided routes across the Himalayas. Permits, teahouse bookings, real-time weather and emergency SOS — all in one place.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Labels / Nav — DM Sans Medium</div>
+          <div style="font-size:12px;font-weight:500;color:var(--text);letter-spacing:0.02em;">Explore treks · Permits · Guides · Blog · About · Wishlist</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 05 DECISIONS -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">05 — Design Decisions</div>
+      <h2 class="cs-title">Why I Designed It <span>This Way</span></h2>
+      <p class="cs-text">Every major UX decision in HimalTrek was made with one user in mind — an international trekker (most likely European, Australian or American) arriving in Nepal for the first time, excited but nervous about permits, altitude and safety. Here are the six decisions that shaped the experience.</p>
+      <div class="pages-grid">
+        <div class="page-item"><div class="page-num page-num--gold">01</div><div><div class="page-title">Sticky search bar above the fold</div><div class="page-desc">The search — destination, dates, difficulty — is the first interaction. Making it sticky means a trekker can refine without scrolling back up. Reduces friction on the primary job-to-be-done.</div></div></div>
+        <div class="page-item"><div class="page-num page-num--gold">02</div><div><div class="page-title">Season strip as a trust builder</div><div class="page-desc">Displaying the 12-month trek season calendar immediately after the hero tells trekkers they are in the right place and shows expertise at a glance — no scrolling required.</div></div></div>
+        <div class="page-item"><div class="page-num page-num--gold">03</div><div><div class="page-title">Live price calculator in the sidebar</div><div class="page-desc">The booking widget updates the total in real time as trekker count changes. Seeing the exact cost removes the #1 reason users abandon bookings — price anxiety.</div></div></div>
+        <div class="page-item"><div class="page-num page-num--gold">04</div><div><div class="page-title">5-step permit wizard not a form</div><div class="page-desc">A 20-field permit form is overwhelming. Breaking it into 5 named steps (Permit Type → Details → Trek → Payment → Confirmed) makes each step feel small and manageable.</div></div></div>
+        <div class="page-item"><div class="page-num page-num--gold">05</div><div><div class="page-title">Emergency SOS in the nav concept</div><div class="page-desc">Safety is the biggest concern for trekkers' families and trip planners. Making SOS a first-class feature — not buried in settings — builds trust and differentiates from every competitor.</div></div></div>
+        <div class="page-item"><div class="page-num page-num--gold">06</div><div><div class="page-title">Gold on navy colour system</div><div class="page-desc">Every competitor uses green-and-white outdoor clichés. The navy-and-gold palette feels premium, trustworthy and unique — more like a luxury travel brand than a budget trekking directory.</div></div></div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 06 LEARNINGS -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">06 — Reflections</div>
+      <h2 class="cs-title">What I <span>Learned</span></h2>
+      <p class="cs-text">HimalTrek was the most ambitious self-initiated project I've taken on. Building a platform this complex from scratch taught me several things I couldn't have learned any other way.</p>
+      <ul class="learning-list">
+        <li><div class="l-num">01</div><span><strong style="color:var(--text)">Data-driven UX scales better than hardcoded layouts.</strong> All 24 treks, their itineraries, gear lists and FAQs are stored in JavaScript arrays and rendered dynamically. Adding a new trek takes 10 lines of data — no HTML changes needed.</span></li>
+        <li><div class="l-num">02</div><span><strong style="color:var(--text)">Multi-step flows need progress indicators at every step.</strong> The permit wizard originally had no visual progress bar. Testing revealed users abandoned at step 3 without it. Adding the 5-dot progress bar reduced perceived complexity immediately.</span></li>
+        <li><div class="l-num">03</div><span><strong style="color:var(--text)">Real content reveals design problems that placeholder text hides.</strong> Using actual Nepali trek names, real altitudes and accurate pricing exposed layout breaks that Lorem Ipsum would never have caught — especially in the trek cards grid.</span></li>
+        <li><div class="l-num">04</div><span><strong style="color:var(--text)">Modal systems need careful state management.</strong> Six different modals (app download, contact guide, write review, booking, sign in, plan) all sharing one root element required careful open/close logic to prevent stacking and z-index issues.</span></li>
+        <li><div class="l-num">05</div><span><strong style="color:var(--text)">Tourism UX must address fear, not just desire.</strong> Most travel platforms sell the adventure. HimalTrek's competitive edge is addressing the fear — altitude sickness, permit confusion, no teahouse beds. Leading with safety features converts anxious trekkers better than beautiful photos alone.</span></li>
+      </ul>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="next-steps fade-in">
+      <h3>If This Goes Live — Next Steps</h3>
+      <p>HimalTrek is ready to be developed into a real product. Here's the roadmap if this were taken forward as a live business.</p>
+      <div class="ns-grid">
+        <div class="ns-item"><span class="ns-icon">📱</span><div class="ns-title">Native Mobile App</div><div class="ns-text">The offline GPS maps and SOS features need a React Native app to work properly. This is the most critical next step for safety.</div></div>
+        <div class="ns-item"><span class="ns-icon">🤝</span><div class="ns-title">Guide & Teahouse Partnerships</div><div class="ns-text">Partner with 50+ TAAN-certified guides and 200+ teahouses across all major routes to make the booking backend real.</div></div>
+        <div class="ns-item"><span class="ns-icon">🏛️</span><div class="ns-title">Government API Integration</div><div class="ns-text">Connect to Nepal's tourism department to issue TIMS cards and national park permits digitally — the product's biggest value proposition.</div></div>
+      </div>
+      <a href="himaltrek-nepal/index.html" target="_blank" class="btn-view">
+        🏔️ Explore the Full Platform
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+    const btt = document.getElementById('btt');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+<script src="assets/js/cursor-trail.js"></script>
+<script src="assets/js/scramble.js"></script>
+<script src="assets/js/scroll-reveal.js"></script>
+</body>
+</html>

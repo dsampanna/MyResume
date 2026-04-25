@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Portfolio — Sampanna Raj Dhungel</title>
+<meta name="description" content="Full portfolio of Sampanna Raj Dhungel — UI/UX, branding, motion graphics, 3D animation, sound design and more.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080c10;--bg2:#0d1117;--bg3:#111820;--bg4:#161d27;
+  --teal:#0EB5A0;--cyan:#06b6d4;--blue:#2563EB;
+  --border:rgba(14,181,160,0.18);--border2:rgba(255,255,255,0.07);
+  --text:#f0f4f8;--muted:#6b7c8f;--muted2:#8a9eb0;
+  --display:'Syne',sans-serif;--body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);gap:1rem}
+.nav-logo{font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-home{font-size:0.75rem;color:var(--muted);transition:color 0.2s;letter-spacing:0.02em}
+.nav-home:hover{color:var(--text)}
+.nav-hire{font-size:0.72rem;font-weight:600;letter-spacing:0.04em;border:1px solid var(--teal);color:var(--teal);padding:0.45rem 1.1rem;transition:background 0.2s,color 0.2s;white-space:nowrap}
+.nav-hire:hover{background:var(--teal);color:var(--bg)}
+
+/* PAGE HERO */
+.port-hero{padding:4rem 2.5rem 3rem;border-bottom:1px solid var(--border2);background:var(--bg2);position:relative;overflow:hidden}
+.port-hero::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.07) 0%,transparent 70%);pointer-events:none}
+.ph-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;font-weight:600;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
+.ph-label::before{content:'';width:20px;height:1px;background:var(--teal)}
+.port-hero h1{font-family:var(--display);font-size:clamp(2.2rem,5vw,4.5rem);font-weight:800;letter-spacing:-0.04em;line-height:0.95;color:var(--text);margin-bottom:1rem}
+.port-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.port-hero-sub{font-size:0.9rem;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:2rem}
+.ph-stats{display:flex;gap:3rem;flex-wrap:wrap}
+.ph-stat-n{font-family:var(--display);font-size:1.8rem;font-weight:800;line-height:1;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ph-stat-l{font-size:0.62rem;font-weight:600;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.15rem}
+
+/* FILTER BAR */
+.filter-bar{padding:1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(13,17,23,0.97);display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;position:sticky;top:57px;z-index:90;backdrop-filter:blur(12px)}
+.pf-btn{font-family:var(--body);font-size:0.67rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border2);color:var(--muted);background:transparent;padding:0.38rem 0.85rem;cursor:none;transition:all 0.2s;white-space:nowrap}
+.pf-btn:hover,.pf-btn.active{border-color:var(--teal);color:var(--teal);background:rgba(14,181,160,0.08)}
+.filter-count{margin-left:auto;font-size:0.72rem;color:var(--muted2);white-space:nowrap}
+.filter-count strong{color:var(--teal)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+/* PORTFOLIO BODY */
+.port-body{padding:3rem 2.5rem 4rem}
+
+/* FEATURED ROW */
+.feat-section{margin-bottom:3.5rem}
+.sec-lbl{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;font-weight:600;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.5rem}
+.sec-lbl::before{content:'';width:20px;height:1px;background:var(--teal)}
+
+.feat-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:1.5rem}
+.feat-stack{display:flex;flex-direction:column;gap:1.5rem}
+
+/* CARD BASE — image on top, text below (always visible) */
+.p-card{display:block;background:var(--bg3);border:1px solid var(--border2);overflow:hidden;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;position:relative}
+.p-card:hover{border-color:rgba(14,181,160,0.35);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+
+.p-img-wrap{overflow:hidden;position:relative}
+.p-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+.p-card:hover .p-img-wrap img{transform:scale(1.05)}
+
+/* Featured badge */
+.feat-badge{position:absolute;top:0.75rem;left:0.75rem;font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:rgba(8,12,16,0.85);border:1px solid var(--border);color:var(--teal);padding:0.2rem 0.55rem;z-index:2;backdrop-filter:blur(4px)}
+
+/* Card text area — always visible below image */
+.p-info{padding:1rem 1.1rem 1.1rem;display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem}
+.p-info-left{flex:1;min-width:0}
+.p-cat{font-size:0.58rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--teal);margin-bottom:0.3rem}
+.p-title{font-family:var(--display);font-size:0.88rem;font-weight:700;color:var(--text);line-height:1.25;letter-spacing:-0.01em}
+.p-link-icon{flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border2);color:var(--muted);font-size:0.75rem;transition:background 0.2s,color 0.2s,border-color 0.2s;margin-top:2px}
+.p-card:hover .p-link-icon{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+
+/* Image heights */
+.feat-main .p-img-wrap{height:360px}
+.feat-side .p-img-wrap{height:170px}
+
+/* Case study pill on featured main */
+.p-case-link{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted2);border:1px solid var(--border2);padding:0.22rem 0.6rem;margin-top:0.5rem;transition:color 0.2s,border-color 0.2s}
+.p-case-link:hover{color:var(--teal);border-color:var(--teal)}
+
+/* ALL PROJECTS GRID — 3 columns */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.port-grid .p-card.hidden{display:none}
+.port-grid .p-img-wrap{height:210px}
+
+/* EMPTY STATE */
+.port-empty{display:none;text-align:center;padding:4rem 2rem;color:var(--muted);font-size:0.88rem;grid-column:1/-1}
+.port-empty.show{display:block}
+
+/* CUSTOM CURSOR */
+@media(pointer:fine){body{cursor:none}a,button{cursor:none}}
+.cursor-dot{position:fixed;top:0;left:0;width:4px;height:4px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:background 0.15s;will-change:transform}
+.cursor-ring{position:fixed;top:0;left:0;width:30px;height:30px;border:1.5px solid rgba(14,181,160,0.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s,background 0.2s,opacity 0.2s;will-change:transform}
+.cursor-dot.is-hover{background:var(--teal)}
+.cursor-ring.is-hover{width:44px;height:44px;border-color:var(--teal);background:rgba(14,181,160,0.08)}
+.cursor-dot.is-hidden,.cursor-ring.is-hidden{opacity:0}
+
+/* FOOTER */
+.port-footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
+.footer-left{display:flex;flex-direction:column;gap:0.2rem}
+.footer-updated{font-size:0.68rem;color:var(--muted2)}
+.footer-updated strong{color:var(--teal)}
+.f-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+.f-links a{color:var(--muted);transition:color 0.2s}
+.f-links a:hover{color:var(--teal)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.port-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){
+  .feat-grid{grid-template-columns:1fr}
+  .feat-main .p-img-wrap{height:260px}
+  .feat-side .p-img-wrap{height:180px}
+  .feat-stack{flex-direction:row}
+  .feat-stack .p-card{flex:1}
+}
+@media(max-width:768px){
+  .nav,.port-hero,.filter-bar,.port-body,.port-footer{padding-left:1.25rem;padding-right:1.25rem}
+  .port-hero{padding-top:2.5rem;padding-bottom:2rem}
+  .filter-bar{top:54px;gap:0.35rem}
+  .ph-stats{gap:1.5rem}
+  .feat-grid{grid-template-columns:1fr;gap:1rem}
+  .feat-stack{flex-direction:column}
+  .port-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .port-grid .p-img-wrap{height:165px}
+  .port-body{padding:2rem 1.25rem 3rem}
+}
+@media(max-width:480px){
+  .port-grid{grid-template-columns:1fr}
+  .port-grid .p-img-wrap{height:200px}
+}
+</style>
+</head>
+<body>
+<script>if(localStorage.getItem('theme')!=='dark')document.body.classList.add('light-mode');</script>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">SAMPANNA RAJ DHUNGEL</a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-home">← Home</a>
+    <a href="index.html#contact" class="nav-hire">Hire me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="port-hero">
+  <div class="ph-label">All Work</div>
+  <h1>46+ Projects<br>across <em>every medium</em></h1>
+  <p class="port-hero-sub">UI/UX design, branding, motion graphics, 3D animation, sound design, video production and more — built for clients in Nepal and worldwide.</p>
+  <div class="ph-stats">
+    <div><div class="ph-stat-n">46+</div><div class="ph-stat-l">Projects</div></div>
+    <div><div class="ph-stat-n">7</div><div class="ph-stat-l">Categories</div></div>
+    <div><div class="ph-stat-n">30+</div><div class="ph-stat-l">Clients</div></div>
+    <div><div class="ph-stat-n">5+</div><div class="ph-stat-l">Years</div></div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <button class="pf-btn active" data-f="all">All</button>
+  <button class="pf-btn" data-f="web">Web Design</button>
+  <button class="pf-btn" data-f="motion">Motion Graphics</button>
+  <button class="pf-btn" data-f="3d">3D Animation</button>
+  <button class="pf-btn" data-f="social">Social Media</button>
+  <button class="pf-btn" data-f="sound">Sound Design</button>
+  <button class="pf-btn" data-f="other">Other Designs</button>
+  <span class="filter-count">Showing <strong id="portCount">0</strong> projects</span>
+</div>
+
+<!-- PORTFOLIO BODY -->
+<div class="port-body">
+
+  
+  <!-- ALL PROJECTS -->
+  <div class="sec-lbl" id="allLabel">All Projects</div>
+  <div class="port-grid" id="portGrid">
+    <div class="port-empty" id="portEmpty">No projects in this category.</div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="port-footer">
+  <div class="footer-left">
+    <span>© <span id="fy"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+    <span class="footer-updated">Last updated: <strong>April 2026</strong></span>
+  </div>
+  <div class="f-links">
+    <a href="https://www.instagram.com/__sampannaad/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/dsampanna/" target="_blank">LinkedIn</a>
+    <a href="https://www.facebook.com/dsampanna" target="_blank">Facebook</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('fy').textContent = new Date().getFullYear();
+
+var ITEMS = [
+  /* 3D Animation */
+  {id:'old-man-smoking',            t:'Old Man Smoking',               c:'3D Animation',     f:'3d',    img:'3D_Animation_2_thumbnail.png'},
+  {id:'old-man-chilling',           t:'Old Man Chilling',              c:'3D Animation',     f:'3d',    img:'3D_Animation_1_thumbnail.jpg'},
+  /* Web Design */
+  {id:'himaltrek-nepal',            t:'HimalTrek Nepal',               c:'Web Design',       f:'web',   img:'himaltrek-thumbnail.jpg'},
+  {id:'indreni-nursery',            t:'Indreni Nursery Landing Page',  c:'Web Design',       f:'web',   img:'portfolio-17.jpg'},
+  {id:'griham-case-study',          t:'Griham Organic — Case Study',   c:'UI/UX Case Study', f:'web',   img:'griham-organic-thumbnail.jpg', link:'griham-case-study.html'},
+  /* Motion Graphics */
+  {id:'pepsi-logo-reveal',           t:'Pepsi Logo Reveal',             c:'Motion Graphics',  f:'motion',img:'Motion_13_thumbnail.png'},
+  {id:'city-motion',                t:'City Motion',                   c:'Motion Graphics',  f:'motion',img:'Motion_1_thumbnail.jpg'},
+  {id:'999-to-1000-subscribers',    t:'999 to 1000 Subscribers',       c:'Motion Graphics',  f:'motion',img:'Motion_2_thumbnail.jpg'},
+  {id:'instagram-username-reveal',  t:'Instagram Username Reveal',     c:'Motion Graphics',  f:'motion',img:'Motion_3_thumbnail.jpg'},
+  {id:'instagram-story',            t:'Instagram Story',               c:'Motion Graphics',  f:'motion',img:'Motion_4_thumbnail.jpg'},
+  {id:'facebook-like',              t:'Facebook Like',                 c:'Motion Graphics',  f:'motion',img:'Motion_5_thumbnail.jpg'},
+  {id:'switch-on',                  t:'Switch On',                     c:'Motion Graphics',  f:'motion',img:'Motion_6_thumbnail.jpg'},
+  {id:'timer',                      t:'Timer',                         c:'Motion Graphics',  f:'motion',img:'Motion_7_thumbnail.jpg'},
+  {id:'coming-soon',                t:'Coming Soon',                   c:'Motion Graphics',  f:'motion',img:'Motion_8_thumbnail.jpg'},
+  {id:'chatting',                   t:'Chatting',                      c:'Motion Graphics',  f:'motion',img:'Motion_9_thumbnail.jpg'},
+  {id:'intro-reveal',               t:'Intro Reveal',                  c:'Motion Graphics',  f:'motion',img:'Motion_10_thumbnail.jpg'},
+  {id:'loading',                    t:'Loading',                       c:'Motion Graphics',  f:'motion',img:'Motion_11_thumbnail.jpg'},
+  {id:'transform-with-sound-motion',t:'Transform With Sound',          c:'Motion Graphics',  f:'motion',img:'Motion_12_thumbnail.jpg'},
+  /* Social Media */
+  {id:'tihar-wishes',               t:'Tihar Wishes',                  c:'Social Media',     f:'social',img:'portfolio-8.jpg'},
+  {id:'bijaya-dashami-offer',       t:'Bijaya Dashami Offer',          c:'Social Media',     f:'social',img:'portfolio-11.jpg'},
+  {id:'bijaya-dashami-wishes',      t:'Bijaya Dashami Wishes',         c:'Social Media',     f:'social',img:'portfolio-9.jpg'},
+  {id:'bijaya-dashami-wish',        t:'Bijaya Dashami Wish',           c:'Social Media',     f:'social',img:'portfolio-4.jpg'},
+  {id:'bijaya-dashami-wish-2',      t:'Bijaya Dashami Wish 2',         c:'Social Media',     f:'social',img:'portfolio-14.jpg'},
+  {id:'kent-water-purifier',        t:'Kent Water Purifier',           c:'Social Media',     f:'social',img:'portfolio-6.jpg'},
+  {id:'kent-water-purifier-2',      t:'Kent Water Purifier 2',         c:'Social Media',     f:'social',img:'portfolio-7.jpg'},
+  {id:'admission-open',             t:'Admission Open',                c:'Social Media',     f:'social',img:'portfolio-5.jpg'},
+  {id:'abroad-study',               t:'Abroad Study',                  c:'Social Media',     f:'social',img:'portfolio-10.jpg'},
+  {id:'offer-voucher-code',         t:'Offer / Voucher Code',          c:'Social Media',     f:'social',img:'portfolio-12.jpg'},
+  {id:'tiktok-marketing-guide',     t:'TikTok Marketing Guide',        c:'Social Media',     f:'social',img:'portfolio-13.jpg'},
+  {id:'mens-collection-offer',      t:"Men's Collection Offer",        c:'Social Media',     f:'social',img:'portfolio-15.jpg'},
+  {id:'revenue-breakdown',          t:'Revenue Breakdown',             c:'Social Media',     f:'social',img:'portfolio-16.jpg'},
+  {id:'affiliation-program',        t:'Affiliation Program',           c:'Social Media',     f:'social',img:'portfolio-1.jpg'},
+  {id:'water-purifier',             t:'Water Purifier',                c:'Social Media',     f:'social',img:'portfolio-2.jpg'},
+  {id:'graphics-design-bootcamp',   t:'Graphics Design Bootcamp',      c:'Social Media',     f:'social',img:'portfolio-3.jpg'},
+  {id:'voucher-card',               t:'Voucher Card',                  c:'Social Media',     f:'social',img:'portfolio-21.jpg'},
+  /* Sound Design */
+  {id:'transform-with-sound-audio', t:'Transform With Sound',          c:'Sound Design',     f:'sound', img:'Draft_Music_Design_1_thumbnail.jpg'},
+  /* Other Designs */
+  {id:'visiting-card',              t:'Visiting Card',                 c:'Other Designs',    f:'other', img:'portfolio-18.jpg'},
+  {id:'visiting-card-2',            t:'Visiting Card 2',               c:'Other Designs',    f:'other', img:'portfolio-19.jpg'},
+  {id:'ozil-illustration',          t:'Illustration — Ozil',           c:'Other Designs',    f:'other', img:'portfolio-20.jpg'},
+  {id:'logo-sallaghari-burger',     t:'Logo — Sallaghari Burger',      c:'Other Designs',    f:'other', img:'portfolio-22.jpg'},
+  {id:'logo-araniko-fc',            t:'Logo — Araniko FC',             c:'Other Designs',    f:'other', img:'portfolio-23.png'},
+  {id:'logo-wine-hub-nepal',        t:'Logo — Wine Hub Nepal',         c:'Other Designs',    f:'other', img:'portfolio-24.jpg'},
+  {id:'hoarding-board',             t:'Hoarding Board Design',         c:'Other Designs',    f:'other', img:'portfolio-25.jpg'},
+  {id:'banner-design',              t:'Banner Design',                 c:'Other Designs',    f:'other', img:'portfolio-26.jpg'},
+  {id:'diary-cover',                t:'Diary Cover Design',            c:'Other Designs',    f:'other', img:'portfolio-27.jpg'},
+];
+
+var grid = document.getElementById('portGrid');
+var empty = document.getElementById('portEmpty');
+
+ITEMS.forEach(function(p){
+  var href = p.link ? p.link : ('project.html?id=' + p.id);
+  var el = document.createElement('a');
+  el.href = href;
+  el.className = 'p-card';
+  el.dataset.f = p.f;
+  el.innerHTML =
+    '<div class="p-img-wrap"><img src="assets/img/portfolio/' + p.img + '" alt="' + p.t + '" loading="lazy"></div>' +
+    '<div class="p-info">' +
+      '<div class="p-info-left"><div class="p-cat">' + p.c + '</div><div class="p-title">' + p.t + '</div></div>' +
+      '<span class="p-link-icon">↗</span>' +
+    '</div>';
+  grid.insertBefore(el, empty);
+});
+
+var allLabel = document.getElementById('allLabel');
+
+function applyFilter(f){
+  var gridCards = grid.querySelectorAll('.p-card:not(#portEmpty)');
+  var gv = 0;
+  gridCards.forEach(function(c){
+    var show = f==='all' || c.dataset.f===f;
+    c.classList.toggle('hidden', !show);
+    if(show) gv++;
+  });
+
+  empty.classList.toggle('show', gv === 0);
+  document.getElementById('portCount').textContent = gv;
+}
+
+document.getElementById('filterBar').addEventListener('click', function(e){
+  var btn = e.target.closest('.pf-btn');
+  if(!btn) return;
+  document.querySelectorAll('.pf-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  applyFilter(btn.dataset.f);
+});
+
+
+applyFilter('all');
+
+/* ── CUSTOM CURSOR ── */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+  var dot=document.createElement('div');dot.className='cursor-dot';
+  var ring=document.createElement('div');ring.className='cursor-ring';
+  document.body.appendChild(dot);document.body.appendChild(ring);
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';if(e.target.closest('a,button,[role="button"]')){dot.classList.add('is-hover');ring.classList.add('is-hover');}else{dot.classList.remove('is-hover');ring.classList.remove('is-hover');}});
+  (function tick(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  document.addEventListener('mouseleave',function(){dot.classList.add('is-hidden');ring.classList.add('is-hidden');});
+  document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
+})();
+</script>
+<script src="assets/js/cursor-trail.js"></script>
+<script src="assets/js/scramble.js"></script>
+<script src="assets/js/scroll-reveal.js"></script>
+</body>
+</html>
