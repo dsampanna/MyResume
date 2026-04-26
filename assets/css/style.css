@@ -73,6 +73,7 @@ a{text-decoration:none;color:inherit}
 .mi{font-family:var(--display);font-size:0.67rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);padding:0 2rem}
 .md{color:var(--teal);opacity:0.5}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-wrap:hover .marquee-track{animation-play-state:paused}
 
 /* SECTION BASE */
 section{padding:4rem 2.5rem;border-bottom:1px solid var(--border2)}
@@ -121,7 +122,7 @@ section{padding:4rem 2.5rem;border-bottom:1px solid var(--border2)}
 /* PORTFOLIO GRID */
 .portfolio-section{background:var(--bg2)}
 .port-filters{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem}
-.pf-btn{font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border2);color:var(--muted);background:transparent;padding:0.4rem 0.9rem;cursor:none;transition:all 0.2s}
+.pf-btn{font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border2);color:var(--muted);background:transparent;padding:0.4rem 0.9rem;cursor:pointer;transition:all 0.2s}
 .pf-btn:hover,.pf-btn.active{border-color:var(--teal);color:var(--teal);background:rgba(14,181,160,0.06)}
 .port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border2)}
 .port-item{background:var(--bg);overflow:hidden;position:relative;cursor:pointer;aspect-ratio:1}
@@ -308,9 +309,6 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 @keyframes pl-fill{to{width:100%}}
 
 /* BACK TO TOP */
-.btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border:1.5px solid var(--teal);background:rgba(8,12,16,0.9);color:var(--teal);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s,background 0.2s;pointer-events:none;backdrop-filter:blur(8px)}
-.btt.show{opacity:1;transform:translateY(0);pointer-events:auto}
-.btt:hover{background:var(--teal);color:var(--bg)}
 
 /* TESTIMONIALS */
 .testi-section{background:var(--bg2)}

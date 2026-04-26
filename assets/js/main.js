@@ -336,16 +336,6 @@ stage.addEventListener('wheel',function(e){
   document.querySelectorAll('.sk-fill').forEach(function(f){ obs.observe(f); });
 })();
 
-/* ── BACK TO TOP ── */
-(function(){
-  var btt = document.getElementById('btt');
-  if(!btt) return;
-  window.addEventListener('scroll', function(){
-    btt.classList.toggle('show', window.scrollY > 500);
-  }, {passive:true});
-  btt.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
-})();
-
 /* ── HERO STAT COUNTER ── */
 (function(){
   var stats = document.querySelectorAll('.hstat-n[data-count]');
@@ -357,7 +347,7 @@ stage.addEventListener('wheel',function(e){
     stats.forEach(function(el){
       var target = parseInt(el.dataset.count, 10);
       var suffix = el.dataset.suffix || '';
-      var duration = 1500;
+      var duration = 700;
       var startTime = null;
       function step(ts){
         if(!startTime) startTime = ts;
