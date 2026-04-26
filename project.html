@@ -142,9 +142,9 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
     <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
   </div>
   <div class="f-links">
-    <a href="https://www.instagram.com/__sampannaad/" target="_blank">Instagram</a>
-    <a href="https://www.linkedin.com/in/dsampanna/" target="_blank">LinkedIn</a>
-    <a href="https://www.facebook.com/dsampanna" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.linkedin.com/in/dsampanna/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://www.facebook.com/dsampanna" target="_blank" rel="noopener noreferrer">Facebook</a>
     <a href="index.html#contact">Contact</a>
   </div>
 </footer>
@@ -245,10 +245,10 @@ function render() {
     </div>` : '';
 
   const ctaLinksHTML = p.liveLink
-    ? `<a href="${p.liveLink}" target="_blank" class="cta-btn cta-btn-primary">↗ View Live Project</a>`
+    ? `<a href="${p.liveLink}" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-primary">↗ View Live Project</a>`
     : '';
   const caseStudyHTML = p.caseStudy
-    ? `<a href="${p.caseStudy}" target="_blank" class="cta-btn">→ View Case Study</a>`
+    ? `<a href="${p.caseStudy}" target="_blank" rel="noopener noreferrer" class="cta-btn">→ View Case Study</a>`
     : '';
 
   content.innerHTML = `
