@@ -343,6 +343,15 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 .cursor-dot.is-hover{background:var(--teal)}
 .cursor-ring.is-hover{width:44px;height:44px;border-color:var(--teal);background:rgba(14,181,160,0.08)}
 .cursor-dot.is-hidden,.cursor-ring.is-hidden{opacity:0}
+.cursor-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;color:var(--teal);opacity:0;transition:opacity 0.15s;pointer-events:none;white-space:nowrap;font-family:var(--mono)}
+.cursor-ring.has-label{width:52px;height:52px;border-color:var(--teal);background:rgba(14,181,160,0.1)}
+.cursor-ring.has-label .cursor-label{opacity:1}
+
+/* GRAIN OVERLAY */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+
+/* NEPAL CLOCK */
+.nepal-clock{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:0.82rem;color:var(--teal);letter-spacing:0.05em}
 
 /* ══════════════════════════════════════════════════
    RESPONSIVE — TABLET  769 – 1024 px

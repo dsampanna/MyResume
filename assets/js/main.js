@@ -14,8 +14,10 @@
 /* ── CUSTOM CURSOR ── */
 (function(){
   if(!window.matchMedia('(pointer:fine)').matches) return;
-  var dot  = document.createElement('div'); dot.className  = 'cursor-dot';
-  var ring = document.createElement('div'); ring.className = 'cursor-ring';
+  var dot   = document.createElement('div'); dot.className  = 'cursor-dot';
+  var ring  = document.createElement('div'); ring.className = 'cursor-ring';
+  var label = document.createElement('span'); label.className = 'cursor-label';
+  ring.appendChild(label);
   document.body.appendChild(dot);
   document.body.appendChild(ring);
 
@@ -24,10 +26,18 @@
   document.addEventListener('pointermove',function(e){
     mx=e.clientX; my=e.clientY;
     dot.style.left=mx+'px'; dot.style.top=my+'px';
-    if(e.target.closest('a,button,[role="button"]')){
-      dot.classList.add('is-hover'); ring.classList.add('is-hover');
+
+    var isLink = e.target.closest('a,button,[role="button"]');
+    dot.classList.toggle('is-hover', !!isLink);
+    ring.classList.toggle('is-hover', !!isLink);
+
+    /* Section-aware label */
+    var sec = e.target.closest('[data-cursor]');
+    if(sec && !isLink){
+      label.textContent = sec.dataset.cursor;
+      ring.classList.add('has-label');
     } else {
-      dot.classList.remove('is-hover'); ring.classList.remove('is-hover');
+      ring.classList.remove('has-label');
     }
   });
 
@@ -506,7 +516,23 @@ stage.addEventListener('wheel',function(e){
   if(cta) makeMagnetic(cta, 0.18);
 })();
 
-/* ── 1. NEPAL TIME CLOCK — removed ── */
+/* ── NEPAL TIME CLOCK ── */
+(function(){
+  var el = document.getElementById('nepalClock');
+  if(!el) return;
+  function update(){
+    var now = new Date();
+    /* Nepal is UTC+5:45 */
+    var utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    var nst = new Date(utc + (5 * 60 + 45) * 60000);
+    var h = nst.getHours(), m = nst.getMinutes();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    el.textContent = h + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm + ' NST';
+  }
+  update();
+  setInterval(update, 60000);
+})();
 
 /* ── 3. CURSOR TRAIL PARTICLES — handled by cursor-trail.js (included on every page) ── */
 
