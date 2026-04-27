@@ -542,6 +542,115 @@ stage.addEventListener('wheel',function(e){
   if(cta) makeMagnetic(cta, 0.18);
 })();
 
+/* ── COPY EMAIL ON CLICK ── */
+(function(){
+  function showToast(msg){
+    var t = document.createElement('div');
+    t.className = 'copy-toast';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add('show'); }); });
+    setTimeout(function(){
+      t.classList.remove('show');
+      setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); }, 350);
+    }, 2200);
+  }
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var email = this.getAttribute('href').replace('mailto:', '');
+      e.preventDefault();
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(email).then(function(){ showToast('✓ Email copied!'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = email; ta.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); showToast('✓ Email copied!'); } catch(err){}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+})();
+
+/* ── PROJECT DETAIL MODAL ── */
+(function(){
+  var overlay = document.getElementById('projModal');
+  if(!overlay) return;
+  var mImg   = document.getElementById('projModalImg');
+  var mCat   = document.getElementById('projModalCat');
+  var mTitle = document.getElementById('projModalTitle');
+  var mDesc  = document.getElementById('projModalDesc');
+  var mTags  = document.getElementById('projModalTags');
+  var mLink  = document.getElementById('projModalLink');
+
+  /* Category → tool tags mapping */
+  var catMap = {
+    'UI/UX':       ['Figma','User Research','Prototyping','Wireframing'],
+    'Web Design':  ['HTML / CSS','Responsive Design','Figma'],
+    '3D Animation':['Blender','Maya','Lighting','Rendering'],
+    'Motion':      ['After Effects','Premiere Pro','Motion Design'],
+    'Sound Design':['Adobe Audition','Cubase','Sound Mixing'],
+    'Social Media':['Photoshop','Illustrator','Content Design'],
+    'Logo Design': ['Illustrator','Branding','Identity Design'],
+    'Branding':    ['Illustrator','Brand Strategy','Typography'],
+    'Other':       ['Photoshop','Illustrator','Print Design']
+  };
+
+  function tagsFor(cat){
+    var out = [];
+    for(var k in catMap){
+      if(cat.indexOf(k) !== -1){
+        catMap[k].forEach(function(t){ if(out.indexOf(t)===-1) out.push(t); });
+      }
+    }
+    return out.slice(0, 5);
+  }
+
+  function openModal(card){
+    var img   = card.querySelector('.pc-card-img');
+    var cat   = card.querySelector('.pc-card-cat');
+    var title = card.querySelector('.pc-card-name');
+    var desc  = card.querySelector('.pc-card-desc');
+    var link  = card.querySelector('.pc-view-btn');
+    mImg.src   = img   ? img.src                    : '';
+    mImg.alt   = title ? title.textContent           : '';
+    mCat.textContent   = cat   ? cat.textContent     : '';
+    mTitle.textContent = title ? title.textContent   : '';
+    mDesc.textContent  = desc  ? desc.textContent    : '';
+    mLink.href = link  ? link.getAttribute('href')   : '#';
+    mTags.innerHTML = '';
+    tagsFor(cat ? cat.textContent : '').forEach(function(t){
+      var s = document.createElement('span');
+      s.className = 'proj-modal-tag'; s.textContent = t;
+      mTags.appendChild(s);
+    });
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* Intercept "View project →" clicks on the center carousel card */
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.pc-view-btn');
+    if(!btn) return;
+    var card = btn.closest('.pc-card');
+    if(!card || !card.classList.contains('is-center')) return;
+    e.preventDefault();
+    openModal(card);
+  });
+
+  document.getElementById('projModalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+})();
+
 /* ── SIGNATURE COLORIZE ── */
 (function(){
   var wrap = document.querySelector('.sig-wrap');
