@@ -810,7 +810,7 @@ footer{position:relative}
 /* ══════════════════════════════════════════════════
    CARD HOVER GLOW
    ══════════════════════════════════════════════════ */
-.svc-item,.blog-card,.now-card,.edu-card{position:relative;overflow:hidden}
+.svc-item,.blog-card,.now-card,.edu-card,.exp-item,.newsletter-inner,.sk-col{position:relative;overflow:hidden}
 .card-glow{
   position:absolute;inset:0;pointer-events:none;
   border-radius:inherit;opacity:0;
@@ -822,7 +822,7 @@ footer{position:relative}
    SOCIAL SIDEBAR
    ══════════════════════════════════════════════════ */
 .social-sidebar{
-  position:fixed;left:1.5rem;bottom:0;z-index:500;
+  position:fixed;right:1.5rem;bottom:0;z-index:500;
   display:flex;flex-direction:column;align-items:center;gap:1.1rem;
 }
 .social-sidebar a{

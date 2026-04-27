@@ -577,7 +577,7 @@ stage.addEventListener('wheel',function(e){
 
 /* ── CARD HOVER GLOW ── */
 (function(){
-  document.querySelectorAll('.svc-item, .blog-card, .now-card, .edu-card').forEach(function(card){
+  document.querySelectorAll('.svc-item, .blog-card, .now-card, .edu-card, .exp-item, .newsletter-inner, .sk-col').forEach(function(card){
     var glow = document.createElement('div');
     glow.className = 'card-glow';
     card.appendChild(glow);
