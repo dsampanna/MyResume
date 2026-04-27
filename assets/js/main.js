@@ -542,20 +542,6 @@ stage.addEventListener('wheel',function(e){
   if(cta) makeMagnetic(cta, 0.18);
 })();
 
-/* ── AMBIENT CURSOR GLOW ── */
-(function(){
-  if(!window.matchMedia('(pointer:fine)').matches) return;
-  var glow = document.createElement('div'); glow.className='ambient-glow';
-  document.body.appendChild(glow);
-  var gx=window.innerWidth/2, gy=window.innerHeight/2, tx=gx, ty=gy;
-  document.addEventListener('pointermove',function(e){ tx=e.clientX; ty=e.clientY; });
-  (function tick(){
-    gx+=(tx-gx)*0.05; gy+=(ty-gy)*0.05;
-    glow.style.left=gx+'px'; glow.style.top=gy+'px';
-    requestAnimationFrame(tick);
-  })();
-})();
-
 /* ── SVG SIGNATURE DRAW ── */
 (function(){
   var paths = document.querySelectorAll('.sig-path');

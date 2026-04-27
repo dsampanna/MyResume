@@ -347,9 +347,6 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 .cursor-ring.has-label{mix-blend-mode:normal;width:52px;height:52px;border:1.5px solid var(--teal);background:rgba(14,181,160,0.1)}
 .cursor-ring.has-label .cursor-label{opacity:1;color:var(--teal)}
 
-/* AMBIENT CURSOR GLOW */
-.ambient-glow{position:fixed;width:480px;height:480px;border-radius:50%;pointer-events:none;z-index:9989;background:radial-gradient(circle,rgba(14,181,160,0.08) 0%,transparent 68%);transform:translate(-50%,-50%);mix-blend-mode:screen;will-change:left,top;top:0;left:0}
-
 /* SVG SIGNATURE */
 .hero-sig{margin:0.25rem 0 1rem;line-height:0}
 .sig-svg{width:110px;height:auto;overflow:visible}
