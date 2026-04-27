@@ -305,6 +305,32 @@ stage.addEventListener('wheel',function(e){
   if(e.deltaY>0||e.deltaX>0) goTo(current+1);
   else goTo(current-1);
 },{passive:false});
+
+/* ── 3D TILT ON CENTER CARD ── */
+(function(){
+  var tilting = false;
+  stage.addEventListener('mousemove',function(e){
+    var card = track.querySelector('.pc-card.is-center');
+    if(!card) return;
+    var r = card.getBoundingClientRect();
+    var inside = e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom;
+    if(inside){
+      if(!tilting){ card.style.transition='transform 0.1s ease-out'; tilting=true; }
+      var dx = ((e.clientX-r.left)/r.width - 0.5) * 2;
+      var dy = ((e.clientY-r.top)/r.height - 0.5) * 2;
+      card.style.transform='translateX(0px) translateZ(0px) rotateY('+(dx*10)+'deg) rotateX('+(-dy*7)+'deg) scale(1.03)';
+    } else if(tilting){
+      card.style.transition='transform 0.35s ease-out';
+      card.style.transform='translateX(0px) translateZ(0px) rotateY(0deg) rotateX(0deg) scale(1)';
+      tilting=false;
+    }
+  });
+  stage.addEventListener('mouseleave',function(){
+    var card=track.querySelector('.pc-card.is-center');
+    if(card){ card.style.transition='transform 0.35s ease-out'; card.style.transform='translateX(0px) translateZ(0px) rotateY(0deg) rotateX(0deg) scale(1)'; }
+    tilting=false;
+  });
+})();
 })();
 
 /* ── ACTIVE NAV ON SCROLL ── */
@@ -514,6 +540,29 @@ stage.addEventListener('wheel',function(e){
   document.querySelectorAll('.btn-teal,.btn-outline').forEach(function(b){ makeMagnetic(b, 0.28); });
   var cta = document.querySelector('.nav-cta');
   if(cta) makeMagnetic(cta, 0.18);
+})();
+
+/* ── AMBIENT CURSOR GLOW ── */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+  var glow = document.createElement('div'); glow.className='ambient-glow';
+  document.body.appendChild(glow);
+  var gx=window.innerWidth/2, gy=window.innerHeight/2, tx=gx, ty=gy;
+  document.addEventListener('pointermove',function(e){ tx=e.clientX; ty=e.clientY; });
+  (function tick(){
+    gx+=(tx-gx)*0.05; gy+=(ty-gy)*0.05;
+    glow.style.left=gx+'px'; glow.style.top=gy+'px';
+    requestAnimationFrame(tick);
+  })();
+})();
+
+/* ── SVG SIGNATURE DRAW ── */
+(function(){
+  var paths = document.querySelectorAll('.sig-path');
+  var dots  = document.querySelectorAll('.sig-dot');
+  if(!paths.length) return;
+  function draw(){ paths.forEach(function(p){ p.classList.add('draw'); }); dots.forEach(function(d){ d.classList.add('draw'); }); }
+  setTimeout(draw, 600);
 })();
 
 /* ── NEPAL TIME CLOCK ── */

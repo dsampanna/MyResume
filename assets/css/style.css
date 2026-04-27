@@ -344,8 +344,21 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 .cursor-ring.is-hover{width:44px;height:44px}
 .cursor-dot.is-hidden,.cursor-ring.is-hidden{opacity:0}
 .cursor-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;color:var(--teal);opacity:0;transition:opacity 0.15s;pointer-events:none;white-space:nowrap;font-family:var(--mono)}
-.cursor-ring.has-label{width:52px;height:52px;border-color:var(--teal);background:rgba(14,181,160,0.1)}
-.cursor-ring.has-label .cursor-label{opacity:1}
+.cursor-ring.has-label{mix-blend-mode:normal;width:52px;height:52px;border:1.5px solid var(--teal);background:rgba(14,181,160,0.1)}
+.cursor-ring.has-label .cursor-label{opacity:1;color:var(--teal)}
+
+/* AMBIENT CURSOR GLOW */
+.ambient-glow{position:fixed;width:480px;height:480px;border-radius:50%;pointer-events:none;z-index:9989;background:radial-gradient(circle,rgba(14,181,160,0.08) 0%,transparent 68%);transform:translate(-50%,-50%);mix-blend-mode:screen;will-change:left,top;top:0;left:0}
+
+/* SVG SIGNATURE */
+.hero-sig{margin:0.25rem 0 1rem;line-height:0}
+.sig-svg{width:110px;height:auto;overflow:visible}
+.sig-path{stroke:var(--teal);fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.sig-s{stroke-width:2.2;transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1) 0.3s}
+.sig-line{stroke-width:1.3;opacity:0.65;transition:stroke-dashoffset 0.9s cubic-bezier(0.4,0,0.2,1) 1.8s}
+.sig-path.draw{stroke-dashoffset:0}
+.sig-dot{fill:var(--teal);opacity:0;transition:opacity 0.4s 2.5s}
+.sig-dot.draw{opacity:0.7}
 
 /* GRAIN OVERLAY */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
