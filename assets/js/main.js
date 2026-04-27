@@ -564,7 +564,7 @@ stage.addEventListener('wheel',function(e){
         d[i]   = 14;                                         /* teal R #0EB5A0 */
         d[i+1] = 181;                                        /* teal G */
         d[i+2] = 160;                                        /* teal B */
-        d[i+3] = (255 - lum) * d[i+3] >> 8;                 /* invert lum → alpha */
+        d[i+3] = lum * d[i+3] >> 8;                          /* white strokes → opaque, dark bg → transparent */
       }
       ctx.putImageData(id, 0, 0);
       wrap.appendChild(canvas);
