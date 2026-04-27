@@ -547,43 +547,50 @@ stage.addEventListener('wheel',function(e){
   var wrap = document.querySelector('.sig-wrap');
   if(!wrap) return;
   var img = new Image();
+  img.crossOrigin = 'anonymous';
   img.onload = function(){
     var dpr = Math.min(window.devicePixelRatio||1, 2);
     var cssW = 130;
     var cssH = Math.round(cssW * img.naturalHeight / img.naturalWidth);
     var canvas = document.createElement('canvas');
-    canvas.width  = cssW * dpr;
-    canvas.height = cssH * dpr;
+    canvas.width  = Math.max(1, cssW * dpr);
+    canvas.height = Math.max(1, cssH * dpr);
     var ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    try {
-      var id = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      var d  = id.data;
-      /* Auto-detect: sample centre pixels to find if bg is light or dark */
-      var cx = canvas.width>>1, cy = canvas.height>>1, sLum=0, sN=0;
-      for(var sy=cy-8; sy<cy+8; sy++) for(var sx=cx-8; sx<cx+8; sx++){
-        var si=(sy*canvas.width+sx)*4;
-        if(d[si+3]>10){ sLum+=(d[si]*77+d[si+1]*150+d[si+2]*29)>>8; sN++; }
+    var id = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var d  = id.data;
+    /* Sample a wide area to detect background brightness */
+    var totalLum = 0, totalN = 0;
+    var step = 4;
+    for(var sy = 0; sy < canvas.height; sy += step){
+      for(var sx = 0; sx < canvas.width; sx += step){
+        var si = (sy * canvas.width + sx) * 4;
+        totalLum += (d[si]*77 + d[si+1]*150 + d[si+2]*29) >> 8;
+        totalN++;
       }
-      var brightBg = sN>0 && sLum/sN > 128; /* true = black-on-white, false = white-on-black */
-      for(var i = 0; i < d.length; i += 4){
-        var lum = (d[i]*77 + d[i+1]*150 + d[i+2]*29) >> 8;
-        d[i]   = 14;   /* teal R #0EB5A0 */
-        d[i+1] = 181;  /* teal G */
-        d[i+2] = 160;  /* teal B */
-        d[i+3] = brightBg ? (255-lum)*d[i+3]>>8 : lum*d[i+3]>>8;
-      }
-      ctx.putImageData(id, 0, 0);
-      wrap.appendChild(canvas);
-    } catch(e) {
-      /* canvas tainted fallback */
-      var fb = document.createElement('img');
-      fb.src = img.src;
-      fb.style.cssText = 'display:block;width:130px;filter:invert(1) sepia(1) hue-rotate(138deg) saturate(5) brightness(0.52);mix-blend-mode:lighten';
-      wrap.appendChild(fb);
     }
+    /* If avg luminance > 128, strokes are dark on light bg → invert alpha */
+    var brightBg = totalN > 0 && totalLum / totalN > 128;
+    for(var i = 0; i < d.length; i += 4){
+      var lum = (d[i]*77 + d[i+1]*150 + d[i+2]*29) >> 8;
+      var alpha = brightBg ? (255 - lum) : lum;
+      d[i]   = 14;   /* teal R #0EB5A0 */
+      d[i+1] = 181;  /* teal G */
+      d[i+2] = 160;  /* teal B */
+      d[i+3] = alpha;
+    }
+    ctx.putImageData(id, 0, 0);
+    canvas.style.cssText = 'display:block;width:130px;height:auto';
+    wrap.appendChild(canvas);
   };
-  img.src = 'assets/img/signature.svg';
+  img.onerror = function(){
+    /* PNG failed — try SVG fallback with CSS filter */
+    var fb = document.createElement('img');
+    fb.src = 'assets/img/signature.svg';
+    fb.style.cssText = 'display:block;width:130px;filter:invert(67%) sepia(61%) saturate(401%) hue-rotate(130deg) brightness(0.9)';
+    wrap.appendChild(fb);
+  };
+  img.src = 'assets/img/signature.png';
 })();
 
 /* ── NEPAL TIME CLOCK ── */
