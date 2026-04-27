@@ -349,8 +349,8 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
 /* SIGNATURE */
 .hero-sig{margin:0.25rem 0 1rem;line-height:0}
-.sig-wrap{display:inline-block;background:var(--teal);isolation:isolate;mix-blend-mode:screen;clip-path:inset(0 100% 0 0);animation:sig-reveal 2s cubic-bezier(0.4,0,0.2,1) 0.6s forwards}
-.sig-img{display:block;width:130px;height:auto;filter:invert(1);mix-blend-mode:multiply}
+.sig-wrap{display:inline-block;clip-path:inset(0 100% 0 0);animation:sig-reveal 2s cubic-bezier(0.4,0,0.2,1) 0.6s forwards}
+.sig-wrap canvas{display:block;width:130px;height:auto}
 @keyframes sig-reveal{to{clip-path:inset(0 0% 0 0)}}
 
 /* GRAIN OVERLAY */
