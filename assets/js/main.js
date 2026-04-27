@@ -559,12 +559,19 @@ stage.addEventListener('wheel',function(e){
     try {
       var id = ctx.getImageData(0, 0, canvas.width, canvas.height);
       var d  = id.data;
+      /* Auto-detect: sample centre pixels to find if bg is light or dark */
+      var cx = canvas.width>>1, cy = canvas.height>>1, sLum=0, sN=0;
+      for(var sy=cy-8; sy<cy+8; sy++) for(var sx=cx-8; sx<cx+8; sx++){
+        var si=(sy*canvas.width+sx)*4;
+        if(d[si+3]>10){ sLum+=(d[si]*77+d[si+1]*150+d[si+2]*29)>>8; sN++; }
+      }
+      var brightBg = sN>0 && sLum/sN > 128; /* true = black-on-white, false = white-on-black */
       for(var i = 0; i < d.length; i += 4){
-        var lum = (d[i]*77 + d[i+1]*150 + d[i+2]*29) >> 8; /* fast luminance */
-        d[i]   = 14;                                         /* teal R #0EB5A0 */
-        d[i+1] = 181;                                        /* teal G */
-        d[i+2] = 160;                                        /* teal B */
-        d[i+3] = lum * d[i+3] >> 8;                          /* white strokes → opaque, dark bg → transparent */
+        var lum = (d[i]*77 + d[i+1]*150 + d[i+2]*29) >> 8;
+        d[i]   = 14;   /* teal R #0EB5A0 */
+        d[i+1] = 181;  /* teal G */
+        d[i+2] = 160;  /* teal B */
+        d[i+3] = brightBg ? (255-lum)*d[i+3]>>8 : lum*d[i+3]>>8;
       }
       ctx.putImageData(id, 0, 0);
       wrap.appendChild(canvas);
