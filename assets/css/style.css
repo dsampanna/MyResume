@@ -779,3 +779,75 @@ footer{position:relative}
   .f-copy{font-size:0.68rem}
   .f-links{gap:1rem}
 }
+
+/* ══════════════════════════════════════════════════
+   HERO SPOTLIGHT
+   ══════════════════════════════════════════════════ */
+.hero-spotlight{
+  position:absolute;inset:0;pointer-events:none;z-index:3;
+  opacity:0;transition:opacity 0.5s ease;
+  background:radial-gradient(640px circle at var(--sx,50%) var(--sy,50%),rgba(14,181,160,0.08) 0%,rgba(14,181,160,0.02) 35%,transparent 65%);
+}
+.hero-spotlight.on{opacity:1}
+
+/* ══════════════════════════════════════════════════
+   GRAIN OVERLAY
+   ══════════════════════════════════════════════════ */
+#grainOverlay{
+  position:fixed;inset:0;pointer-events:none;z-index:9990;
+  opacity:0.038;background-repeat:repeat;background-size:256px 256px;
+  animation:grain 0.45s steps(5) infinite;
+}
+@keyframes grain{
+  0%  {background-position:0 0}
+  20% {background-position:17% -43%}
+  40% {background-position:-31% 24%}
+  60% {background-position:38% -19%}
+  80% {background-position:-9% 41%}
+  100%{background-position:22% -12%}
+}
+
+/* ══════════════════════════════════════════════════
+   CARD HOVER GLOW
+   ══════════════════════════════════════════════════ */
+.svc-item,.blog-card,.now-card,.edu-card{position:relative;overflow:hidden}
+.card-glow{
+  position:absolute;inset:0;pointer-events:none;
+  border-radius:inherit;opacity:0;
+  mix-blend-mode:screen;
+  transition:opacity 0.3s ease;
+}
+
+/* ══════════════════════════════════════════════════
+   SOCIAL SIDEBAR
+   ══════════════════════════════════════════════════ */
+.social-sidebar{
+  position:fixed;left:1.5rem;bottom:0;z-index:500;
+  display:flex;flex-direction:column;align-items:center;gap:1.1rem;
+}
+.social-sidebar a{
+  color:var(--muted);line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:color 0.25s,transform 0.25s;
+}
+.social-sidebar a:hover{color:var(--teal);transform:translateY(-3px)}
+.social-sidebar svg{display:block}
+.social-line{
+  width:1px;height:70px;margin-top:0.25rem;
+  background:linear-gradient(to bottom,var(--muted),transparent);
+}
+@media(max-width:1200px){.social-sidebar{display:none}}
+
+/* ══════════════════════════════════════════════════
+   WORD REVEAL
+   ══════════════════════════════════════════════════ */
+.word-r{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(10px);
+  transition-property:opacity,transform;
+  transition-duration:0.5s,0.5s;
+  transition-timing-function:ease,ease;
+  transition-delay:var(--wd,0s);
+}
+.word-r.on{opacity:1;transform:translateY(0)}
