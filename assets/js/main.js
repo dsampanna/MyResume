@@ -542,15 +542,6 @@ stage.addEventListener('wheel',function(e){
   if(cta) makeMagnetic(cta, 0.18);
 })();
 
-/* ── SVG SIGNATURE DRAW ── */
-(function(){
-  var paths = document.querySelectorAll('.sig-path');
-  var dots  = document.querySelectorAll('.sig-dot');
-  if(!paths.length) return;
-  function draw(){ paths.forEach(function(p){ p.classList.add('draw'); }); dots.forEach(function(d){ d.classList.add('draw'); }); }
-  setTimeout(draw, 600);
-})();
-
 /* ── NEPAL TIME CLOCK ── */
 (function(){
   var el = document.getElementById('nepalClock');
