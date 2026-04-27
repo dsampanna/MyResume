@@ -69,7 +69,7 @@ a{text-decoration:none;color:inherit}
 
 /* MARQUEE */
 .marquee-wrap{overflow:hidden;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:0.8rem 0;background:var(--bg2)}
-.marquee-track{display:flex;white-space:nowrap;animation:mq 28s linear infinite}
+.marquee-track{    display: flex; white-space: nowrap; animation: mq 8s cubic-bezier(0.58, 0.09, 0.54, 1.09) infinite;}
 .mi{font-family:var(--display);font-size:0.67rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);padding:0 2rem}
 .md{color:var(--teal);opacity:0.5}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -349,13 +349,13 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
 /* SVG SIGNATURE */
 .hero-sig{margin:0.25rem 0 1rem;line-height:0}
-.sig-svg{width:110px;height:auto;overflow:visible}
+.sig-svg{width:190px;height:auto;overflow:visible}
 .sig-path{stroke:var(--teal);fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
-.sig-s{stroke-width:2.2;transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1) 0.3s}
-.sig-line{stroke-width:1.3;opacity:0.65;transition:stroke-dashoffset 0.9s cubic-bezier(0.4,0,0.2,1) 1.8s}
+.sig-s{transition:stroke-dashoffset 1.9s cubic-bezier(0.4,0,0.2,1) 0.3s}
+.sig-line{opacity:0.9;transition:stroke-dashoffset 0.65s cubic-bezier(0.3,0,0.2,1) 2.0s}
+.sig-lower{transition:stroke-dashoffset 1.3s cubic-bezier(0.4,0,0.2,1) 2.5s}
+.sig-sc{transition:stroke-dashoffset 1.1s cubic-bezier(0.4,0,0.2,1) 3.6s}
 .sig-path.draw{stroke-dashoffset:0}
-.sig-dot{fill:var(--teal);opacity:0;transition:opacity 0.4s 2.5s}
-.sig-dot.draw{opacity:0.7}
 
 /* GRAIN OVERLAY */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
