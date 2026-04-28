@@ -8,8 +8,8 @@ a{text-decoration:none;color:inherit}
 
 /* NAV */
 .nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
-.nav-logo{display:inline-flex;align-items:center;gap:0.55rem;font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;border:none;padding:0;background-color:transparent;text-decoration:none}
-.nav-logo-mark{display:inline-block;vertical-align:middle;height:34px;width:auto;max-width:82px;object-fit:contain;filter:brightness(0) invert(67%) sepia(61%) saturate(401%) hue-rotate(130deg) brightness(1.15);opacity:.9;margin-right:0.45rem}
+.nav-logo{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;border:none;padding:0;background-color:transparent;text-decoration:none;overflow:hidden}
+.nav-logo-mark{display:inline-block;vertical-align:middle;height:22px;width:auto;max-width:56px;object-fit:contain;object-position:left center;filter:brightness(0) invert(67%) sepia(61%) saturate(401%) hue-rotate(130deg) brightness(1.2);opacity:.88;flex-shrink:0}
 .nav-links{display:flex;gap:1.75rem;list-style:none}
 .nav-links a{font-size:0.75rem;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s}
 .nav-links a:hover{color:var(--text)}
