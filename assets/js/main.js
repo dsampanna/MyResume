@@ -225,6 +225,9 @@ if(portFilters){ portFilters.addEventListener('click', function(e){
   {title:'Banner Design',cat:'Other Designs',desc:'Versatile banner design for events or promotions — structured and clear.',img:'assets/img/portfolio/portfolio-26.jpg',bg:'#0a1a1a',link:'project.html?id=banner-design'},
   {title:'Diary Cover Design',cat:'Other Designs',desc:'Creative diary cover design — personal, tactile and beautifully composed.',img:'assets/img/portfolio/portfolio-27.jpg',bg:'#1a0a1a',link:'project.html?id=diary-cover'},
 ];
+  /* ── Shuffle on every page load ── */
+  for(var _si=projects.length-1;_si>0;_si--){var _sj=Math.floor(Math.random()*(_si+1));var _st=projects[_si];projects[_si]=projects[_sj];projects[_sj]=_st;}
+
   var current=0,isDragging=false,dragStartX=0;
   var total=projects.length;
   var track=document.getElementById('pcTrack');
