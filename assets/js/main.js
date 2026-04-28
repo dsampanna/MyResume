@@ -727,73 +727,7 @@ stage.addEventListener('wheel',function(e){
   }).observe(msg, {attributes:true, attributeFilter:['class']});
 })();
 
-/* ── COMMAND PALETTE ── */
-(function(){
-  var overlay = document.getElementById('cmdOverlay');
-  var input   = document.getElementById('cmdInput');
-  var list    = document.getElementById('cmdList');
-  if(!overlay || !input || !list) return;
-
-  var ALL = [
-    {icon:'🎨', label:'Featured Work',    sub:'scroll to carousel',  go:function(){ sec('work'); }},
-    {icon:'👤', label:'About Me',         sub:'who I am',            go:function(){ sec('about'); }},
-    {icon:'⚡', label:'Skills',           sub:'tools & expertise',   go:function(){ sec('skills'); }},
-    {icon:'💼', label:'Experience',       sub:'career history',      go:function(){ sec('experience'); }},
-    {icon:'✍️', label:'Blog',            sub:'articles',            go:function(){ sec('blog'); }},
-    {icon:'📬', label:'Contact',         sub:'get in touch',        go:function(){ sec('contact'); }},
-    {icon:'📄', label:'Download Resume', sub:'PDF download',        go:function(){ window.open('assets/files/SampannaRajDhungel_Résumé.pdf','_blank'); }},
-    {icon:'🖼️', label:'View Portfolio', sub:'all 45+ projects',    go:function(){ nav('portfolio.html'); }},
-    {icon:'🛠️', label:'Services',       sub:'what I offer',        go:function(){ nav('services.html'); }},
-  ];
-
-  function sec(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
-  function nav(url){ window.location.href = url; }
-
-  var filtered = ALL.slice(), active = 0;
-
-  function render(q){
-    q = (q||'').toLowerCase();
-    filtered = ALL.filter(function(it){
-      return !q || it.label.toLowerCase().indexOf(q)!==-1 || it.sub.toLowerCase().indexOf(q)!==-1;
-    });
-    list.innerHTML = filtered.map(function(it,i){
-      return '<li class="cmd-item'+(i===0?' active':'')+'" data-i="'+i+'">' +
-        '<span class="cmd-item-icon">'+it.icon+'</span>' +
-        '<div class="cmd-item-body"><span class="cmd-item-label">'+it.label+'</span>' +
-        '<span class="cmd-item-sub">'+it.sub+'</span></div></li>';
-    }).join('');
-    active = 0;
-  }
-
-  function setActive(n){
-    active = Math.max(0, Math.min(n, filtered.length-1));
-    list.querySelectorAll('.cmd-item').forEach(function(el,i){ el.classList.toggle('active',i===active); });
-    var el = list.querySelector('.cmd-item.active');
-    if(el) el.scrollIntoView({block:'nearest'});
-  }
-
-  function pick(){ if(filtered[active]){ close(); filtered[active].go(); } }
-
-  function open(){ overlay.classList.add('open'); input.value=''; render(''); setTimeout(function(){ input.focus(); },40); }
-  function close(){ overlay.classList.remove('open'); }
-
-  document.addEventListener('keydown', function(e){
-    if((e.ctrlKey||e.metaKey) && e.key==='k'){ e.preventDefault(); overlay.classList.contains('open') ? close() : open(); return; }
-    if(!overlay.classList.contains('open')) return;
-    if(e.key==='Escape') close();
-    else if(e.key==='ArrowDown'){ e.preventDefault(); setActive(active+1); }
-    else if(e.key==='ArrowUp'){ e.preventDefault(); setActive(active-1); }
-    else if(e.key==='Enter'){ e.preventDefault(); pick(); }
-  });
-
-  overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
-  input.addEventListener('input', function(){ render(this.value); });
-  list.addEventListener('click', function(e){
-    var li = e.target.closest('.cmd-item');
-    if(!li) return;
-    active = parseInt(li.dataset.i,10); pick();
-  });
-})();
+/* ── COMMAND PALETTE — handled by cmd-palette.js ── */
 
 /* ── COPY EMAIL ON CLICK ── */
 (function(){
