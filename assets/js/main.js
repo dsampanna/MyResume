@@ -961,24 +961,6 @@ stage.addEventListener('wheel',function(e){
   setInterval(build, 60000);
 })();
 
-/* ── READING MODE ── */
-(function(){
-  var btn = document.createElement('button');
-  btn.id = 'readingModeBtn';
-  btn.title = 'Toggle reading mode';
-  btn.setAttribute('aria-label', 'Toggle reading mode');
-  btn.textContent = '📖';
-  document.body.appendChild(btn);
-  var active = localStorage.getItem('readingMode') === '1';
-  function apply(){
-    document.body.classList.toggle('reading-mode', active);
-    btn.classList.toggle('active', active);
-    localStorage.setItem('readingMode', active ? '1' : '0');
-  }
-  apply();
-  btn.addEventListener('click', function(){ active = !active; apply(); });
-})();
-
 /* ── AMBIENT COLOR SHIFT (Nepal time-based hue) ── */
 (function(){
   function getNSTHour(){
@@ -1010,7 +992,7 @@ stage.addEventListener('wheel',function(e){
     if(days===1) return 'yesterday';
     return days+' days ago';
   }
-  function update(){ el.textContent = 'April 2026 ('+ago()+')'; }
+  function update(){ el.textContent = 'April 29, 2026 ('+ago()+')'; }
   update();
   setInterval(update, 3600000);
 })();
@@ -1048,23 +1030,6 @@ stage.addEventListener('wheel',function(e){
   });
 })();
 
-/* ── SCROLL PROGRESS PROFILE PHOTO ── */
-(function(){
-  var wrap = document.querySelector('.about-img');
-  if(!wrap) return;
-  var fill = document.createElement('div');
-  fill.className = 'about-img-fill';
-  wrap.appendChild(fill);
-  function update(){
-    var doc = document.documentElement;
-    var scrolled = doc.scrollTop || document.body.scrollTop;
-    var total = doc.scrollHeight - doc.clientHeight;
-    var pct = total > 0 ? scrolled/total*100 : 0;
-    fill.style.clipPath = 'inset('+Math.max(0,100-pct)+'% 0 0 0)';
-  }
-  window.addEventListener('scroll', update, {passive:true});
-  update();
-})();
 
 /* ── BACK TO TOP ── */
 (function(){
