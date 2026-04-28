@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 44" fill="none">
+  <!-- Main ink blob -->
+  <path d="M20 4 C26 4 33 11 33 20 C33 28 27 37 20 38 C13 37 7 28 7 20 C7 11 14 4 20 4Z" fill="#0EB5A0"/>
+  <!-- Inner highlight -->
+  <path d="M18 10 C22 10 27 15 27 20 C27 25 23 30 19 31 C21 28 23 24 23 20 C23 16 21 12 18 10Z" fill="#15CDB8" opacity="0.45"/>
+  <!-- Satellite drops -->
+  <circle cx="34" cy="11" r="2.8" fill="#0EB5A0" opacity="0.82"/>
+  <circle cx="5"  cy="27" r="2.2" fill="#0EB5A0" opacity="0.74"/>
+  <circle cx="30" cy="39" r="2.0" fill="#0EB5A0" opacity="0.70"/>
+  <circle cx="10" cy="7"  r="1.6" fill="#15CDB8" opacity="0.72"/>
+  <circle cx="36" cy="27" r="1.4" fill="#0EB5A0" opacity="0.62"/>
+  <circle cx="13" cy="41" r="1.3" fill="#0EB5A0" opacity="0.58"/>
+  <!-- Tiny micro-dots -->
+  <circle cx="2"  cy="16" r="0.9" fill="#0EB5A0" opacity="0.68"/>
+  <circle cx="38" cy="18" r="0.8" fill="#15CDB8" opacity="0.60"/>
+  <circle cx="26" cy="42" r="0.8" fill="#0EB5A0" opacity="0.50"/>
+</svg>
