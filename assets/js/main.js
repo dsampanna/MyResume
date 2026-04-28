@@ -575,9 +575,60 @@ stage.addEventListener('wheel',function(e){
   document.body.appendChild(g);
 })();
 
+/* ── SKILLS RADIAL RINGS ── */
+(function(){
+  var grid = document.querySelector('.skills-section .skills-grid');
+  if(!grid) return;
+  var R = 38, C = (2 * Math.PI * R); /* circumference = 238.76 */
+
+  /* Harvest existing data before touching DOM */
+  var cols = [];
+  grid.querySelectorAll('.sk-col').forEach(function(col){
+    var d = { title:'', skills:[] };
+    var t = col.querySelector('.sk-title');
+    if(t) d.title = t.textContent;
+    col.querySelectorAll('.sk-row').forEach(function(row){
+      var n = row.querySelector('.sk-name');
+      var p = row.querySelector('.sk-pct');
+      if(n && p) d.skills.push({ name: n.textContent, pct: parseInt(p.textContent) });
+    });
+    cols.push(d);
+  });
+
+  /* Rebuild grid with SVG rings */
+  grid.innerHTML = cols.map(function(col){
+    return '<div class="sk-col">' +
+      '<span class="sk-title">' + col.title + '</span>' +
+      col.skills.map(function(s){
+        var dash = (s.pct / 100 * C).toFixed(2);
+        return '<div class="sk-ring-item">' +
+          '<svg class="sk-ring-svg" viewBox="0 0 100 100">' +
+          '<circle class="sk-ring-track" cx="50" cy="50" r="' + R + '"/>' +
+          '<circle class="sk-ring-prog" cx="50" cy="50" r="' + R + '" data-dash="' + dash + '"/>' +
+          '<text class="sk-ring-num" x="50" y="50" transform="rotate(90,50,50)">' + s.pct + '%</text>' +
+          '</svg>' +
+          '<div class="sk-ring-label">' + s.name + '</div>' +
+          '</div>';
+      }).join('') +
+    '</div>';
+  }).join('');
+
+  /* Animate rings when scrolled into view */
+  var obs = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    grid.querySelectorAll('.sk-ring-prog').forEach(function(ring, i){
+      setTimeout(function(){
+        ring.style.strokeDasharray = ring.dataset.dash + ' ' + C.toFixed(2);
+      }, i * 80);
+    });
+    obs.disconnect();
+  }, { threshold: 0.2 });
+  obs.observe(grid);
+})();
+
 /* ── CARD HOVER GLOW ── */
 (function(){
-  document.querySelectorAll('.svc-item, .blog-card, .now-card, .edu-card, .exp-item, .newsletter-inner, .sk-col').forEach(function(card){
+  document.querySelectorAll('.svc-item, .blog-card, .now-card, .edu-card, .exp-item, .newsletter-inner').forEach(function(card){
     var glow = document.createElement('div');
     glow.className = 'card-glow';
     card.appendChild(glow);
@@ -636,6 +687,174 @@ stage.addEventListener('wheel',function(e){
     overlay.style.opacity = '1';
     overlay.style.pointerEvents = 'auto';
     setTimeout(function(){ window.location.href = href; }, 440);
+  });
+})();
+
+/* ── HERO MOUSE PARALLAX ── */
+(function(){
+  var hero = document.getElementById('hero');
+  if(!hero || !window.matchMedia('(pointer:fine)').matches) return;
+  var layers = [
+    { sel:'.hero-badge', fx:0.010, fy:0.008 },
+    { sel:'.hero-name',  fx:0.020, fy:0.014 },
+    { sel:'.hero-role',  fx:0.016, fy:0.011 },
+    { sel:'.hero-sig',   fx:0.013, fy:0.009 },
+    { sel:'.hero-desc',  fx:0.007, fy:0.005 },
+  ].map(function(l){ l.el = hero.querySelector(l.sel); return l; })
+   .filter(function(l){ return l.el; });
+
+  var cx = 0, cy = 0;
+  function update(){ cx = window.innerWidth/2; cy = window.innerHeight/2; }
+  update(); window.addEventListener('resize', update);
+
+  hero.addEventListener('mousemove', function(e){
+    var dx = e.clientX - cx, dy = e.clientY - cy;
+    layers.forEach(function(l){
+      l.el.style.transform = 'translate(' + (dx*l.fx).toFixed(2) + 'px,' + (dy*l.fy).toFixed(2) + 'px)';
+    });
+  });
+  hero.addEventListener('mouseleave', function(){
+    layers.forEach(function(l){ l.el.style.transform = ''; });
+  });
+})();
+
+/* ── SCROLL HINT ── */
+(function(){
+  var hint = document.getElementById('scrollHint');
+  if(!hint) return;
+  window.addEventListener('scroll', function(){
+    hint.classList.toggle('gone', window.scrollY > 120);
+  }, {passive:true});
+})();
+
+/* ── CONFETTI ON FORM SUBMIT ── */
+(function(){
+  var msg = document.getElementById('formMsg');
+  if(!msg) return;
+  var colors = ['#0EB5A0','#0cc9b2','#06b6d4','#ffffff','#2563EB','#a78bfa'];
+
+  function fireConfetti(){
+    var btn = document.querySelector('.form-submit');
+    var originX = 50, originY = 75;
+    if(btn){
+      var r = btn.getBoundingClientRect();
+      originX = ((r.left + r.width/2) / window.innerWidth * 100);
+      originY = (r.top / window.innerHeight * 100);
+    }
+    for(var i = 0; i < 72; i++){
+      (function(){
+        var p = document.createElement('div');
+        var sz = 4 + Math.random() * 7;
+        var circle = Math.random() > 0.4;
+        p.style.cssText = [
+          'position:fixed','z-index:99998','pointer-events:none',
+          'width:' + sz + 'px',
+          'height:' + (circle ? sz : sz * 1.7) + 'px',
+          'background:' + colors[Math.floor(Math.random() * colors.length)],
+          'border-radius:' + (circle ? '50%' : '2px'),
+          'left:' + originX + '%','top:' + originY + '%','opacity:1',
+        ].join(';');
+        document.body.appendChild(p);
+        var vx = (Math.random() - 0.5) * 280;
+        var vy = -(120 + Math.random() * 260);
+        var rot = (Math.random() - 0.5) * 700;
+        var delay = Math.random() * 180;
+        setTimeout(function(){
+          p.style.transition = 'transform 1.3s cubic-bezier(0.23,1,0.32,1), opacity 1.3s ease 0.3s';
+          p.style.transform = 'translate(' + vx + 'px,' + vy + 'px) rotate(' + rot + 'deg)';
+          setTimeout(function(){
+            p.style.opacity = '0';
+            setTimeout(function(){ if(p.parentNode) p.parentNode.removeChild(p); }, 450);
+          }, 850);
+        }, delay);
+      })();
+    }
+  }
+
+  var fired = false;
+  new MutationObserver(function(){
+    if(msg.classList.contains('success') && !fired){ fired = true; fireConfetti(); }
+    if(!msg.classList.contains('success')) fired = false;
+  }).observe(msg, {attributes:true, attributeFilter:['class']});
+})();
+
+/* ── COMMAND PALETTE ── */
+(function(){
+  var overlay = document.getElementById('cmdOverlay');
+  var input   = document.getElementById('cmdInput');
+  var list    = document.getElementById('cmdList');
+  if(!overlay || !input || !list) return;
+
+  var ALL = [
+    {icon:'🎨', label:'Featured Work',    sub:'scroll to carousel',  go:function(){ sec('work'); }},
+    {icon:'👤', label:'About Me',         sub:'who I am',            go:function(){ sec('about'); }},
+    {icon:'⚡', label:'Skills',           sub:'tools & expertise',   go:function(){ sec('skills'); }},
+    {icon:'💼', label:'Experience',       sub:'career history',      go:function(){ sec('experience'); }},
+    {icon:'✍️', label:'Blog',            sub:'articles',            go:function(){ sec('blog'); }},
+    {icon:'📬', label:'Contact',         sub:'get in touch',        go:function(){ sec('contact'); }},
+    {icon:'📄', label:'Download Resume', sub:'PDF download',        go:function(){ window.open('assets/files/SampannaRajDhungel_Résumé.pdf','_blank'); }},
+    {icon:'🖼️', label:'View Portfolio', sub:'all 45+ projects',    go:function(){ nav('portfolio.html'); }},
+    {icon:'🛠️', label:'Services',       sub:'what I offer',        go:function(){ nav('services.html'); }},
+  ];
+
+  function sec(id){ var el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+  function nav(url){ window.location.href = url; }
+
+  var filtered = ALL.slice(), active = 0;
+
+  function render(q){
+    q = (q||'').toLowerCase();
+    filtered = ALL.filter(function(it){
+      return !q || it.label.toLowerCase().indexOf(q)!==-1 || it.sub.toLowerCase().indexOf(q)!==-1;
+    });
+    list.innerHTML = filtered.map(function(it,i){
+      return '<li class="cmd-item'+(i===0?' active':'')+'" data-i="'+i+'">' +
+        '<span class="cmd-item-icon">'+it.icon+'</span>' +
+        '<div class="cmd-item-body"><span class="cmd-item-label">'+it.label+'</span>' +
+        '<span class="cmd-item-sub">'+it.sub+'</span></div></li>';
+    }).join('');
+    active = 0;
+  }
+
+  function setActive(n){
+    active = Math.max(0, Math.min(n, filtered.length-1));
+    list.querySelectorAll('.cmd-item').forEach(function(el,i){ el.classList.toggle('active',i===active); });
+    var el = list.querySelector('.cmd-item.active');
+    if(el) el.scrollIntoView({block:'nearest'});
+  }
+
+  function pick(){ if(filtered[active]){ close(); filtered[active].go(); } }
+
+  function open(){ overlay.classList.add('open'); input.value=''; render(''); setTimeout(function(){ input.focus(); },40); }
+  function close(){ overlay.classList.remove('open'); }
+
+  document.addEventListener('keydown', function(e){
+    if((e.ctrlKey||e.metaKey) && e.key==='k'){ e.preventDefault(); overlay.classList.contains('open') ? close() : open(); return; }
+    if(!overlay.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    else if(e.key==='ArrowDown'){ e.preventDefault(); setActive(active+1); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); setActive(active-1); }
+    else if(e.key==='Enter'){ e.preventDefault(); pick(); }
+  });
+
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
+  input.addEventListener('input', function(){ render(this.value); });
+  list.addEventListener('click', function(e){
+    var li = e.target.closest('.cmd-item');
+    if(!li) return;
+    active = parseInt(li.dataset.i,10); pick();
+  });
+})();
+
+/* ── EXPERIENCE TIMELINE ── */
+(function(){
+  document.querySelectorAll('.exp-section > div').forEach(function(col){
+    col.classList.add('exp-timeline-col');
+    col.querySelectorAll('.exp-item').forEach(function(item){
+      var dot = document.createElement('div');
+      dot.className = 'exp-dot';
+      item.insertBefore(dot, item.firstChild);
+    });
   });
 })();
 
