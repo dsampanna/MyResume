@@ -575,57 +575,6 @@ stage.addEventListener('wheel',function(e){
   document.body.appendChild(g);
 })();
 
-/* ── SKILLS RADIAL RINGS ── */
-(function(){
-  var grid = document.querySelector('.skills-section .skills-grid');
-  if(!grid) return;
-  var R = 38, C = (2 * Math.PI * R); /* circumference = 238.76 */
-
-  /* Harvest existing data before touching DOM */
-  var cols = [];
-  grid.querySelectorAll('.sk-col').forEach(function(col){
-    var d = { title:'', skills:[] };
-    var t = col.querySelector('.sk-title');
-    if(t) d.title = t.textContent;
-    col.querySelectorAll('.sk-row').forEach(function(row){
-      var n = row.querySelector('.sk-name');
-      var p = row.querySelector('.sk-pct');
-      if(n && p) d.skills.push({ name: n.textContent, pct: parseInt(p.textContent) });
-    });
-    cols.push(d);
-  });
-
-  /* Rebuild grid with SVG rings */
-  grid.innerHTML = cols.map(function(col){
-    return '<div class="sk-col">' +
-      '<span class="sk-title">' + col.title + '</span>' +
-      col.skills.map(function(s){
-        var dash = (s.pct / 100 * C).toFixed(2);
-        return '<div class="sk-ring-item">' +
-          '<svg class="sk-ring-svg" viewBox="0 0 100 100">' +
-          '<circle class="sk-ring-track" cx="50" cy="50" r="' + R + '"/>' +
-          '<circle class="sk-ring-prog" cx="50" cy="50" r="' + R + '" data-dash="' + dash + '"/>' +
-          '<text class="sk-ring-num" x="50" y="50" transform="rotate(90,50,50)">' + s.pct + '%</text>' +
-          '</svg>' +
-          '<div class="sk-ring-label">' + s.name + '</div>' +
-          '</div>';
-      }).join('') +
-    '</div>';
-  }).join('');
-
-  /* Animate rings when scrolled into view */
-  var obs = new IntersectionObserver(function(entries){
-    if(!entries[0].isIntersecting) return;
-    grid.querySelectorAll('.sk-ring-prog').forEach(function(ring, i){
-      setTimeout(function(){
-        ring.style.strokeDasharray = ring.dataset.dash + ' ' + C.toFixed(2);
-      }, i * 80);
-    });
-    obs.disconnect();
-  }, { threshold: 0.2 });
-  obs.observe(grid);
-})();
-
 /* ── CARD HOVER GLOW ── */
 (function(){
   document.querySelectorAll('.svc-item, .blog-card, .now-card, .edu-card, .exp-item, .newsletter-inner').forEach(function(card){
@@ -843,18 +792,6 @@ stage.addEventListener('wheel',function(e){
     var li = e.target.closest('.cmd-item');
     if(!li) return;
     active = parseInt(li.dataset.i,10); pick();
-  });
-})();
-
-/* ── EXPERIENCE TIMELINE ── */
-(function(){
-  document.querySelectorAll('.exp-section > div').forEach(function(col){
-    col.classList.add('exp-timeline-col');
-    col.querySelectorAll('.exp-item').forEach(function(item){
-      var dot = document.createElement('div');
-      dot.className = 'exp-dot';
-      item.insertBefore(dot, item.firstChild);
-    });
   });
 })();
 
