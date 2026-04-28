@@ -933,6 +933,139 @@ stage.addEventListener('wheel',function(e){
   window.setAvailability = function(key){ applyStatus(key); console.log('Status set to:', key); };
 })();
 
+/* ── HIRE ME TICKER ── */
+(function(){
+  var track = document.getElementById('tickerTrack');
+  if(!track) return;
+  function getNST(){
+    var now = new Date();
+    var nst = new Date(now.getTime() + now.getTimezoneOffset()*60000 + (5*60+45)*60000);
+    var h=nst.getHours(), m=nst.getMinutes(), ap=h>=12?'PM':'AM';
+    h=h%12||12;
+    return '🕐 '+h+':'+(m<10?'0':'')+m+' '+ap+' NST — Bhaktapur, Nepal';
+  }
+  var segments = [
+    '● Available for new projects',
+    '2 project slots open',
+    'Reply within 4 hours',
+    '7+ years · 45+ projects · 30+ clients',
+    'UI/UX · Branding · Motion · 3D',
+    'Open to remote work worldwide'
+  ];
+  function build(){
+    var all = segments.concat([getNST()]);
+    var html = all.map(function(t){ return '<span class="ticker-item">'+t+'</span><span class="ticker-sep">✦</span>'; }).join('');
+    track.innerHTML = html + html; /* duplicate for seamless loop */
+  }
+  build();
+  setInterval(build, 60000);
+})();
+
+/* ── READING MODE ── */
+(function(){
+  var btn = document.createElement('button');
+  btn.id = 'readingModeBtn';
+  btn.title = 'Toggle reading mode';
+  btn.setAttribute('aria-label', 'Toggle reading mode');
+  btn.textContent = '📖';
+  document.body.appendChild(btn);
+  var active = localStorage.getItem('readingMode') === '1';
+  function apply(){
+    document.body.classList.toggle('reading-mode', active);
+    btn.classList.toggle('active', active);
+    localStorage.setItem('readingMode', active ? '1' : '0');
+  }
+  apply();
+  btn.addEventListener('click', function(){ active = !active; apply(); });
+})();
+
+/* ── AMBIENT COLOR SHIFT (Nepal time-based hue) ── */
+(function(){
+  function getNSTHour(){
+    var now = new Date();
+    return new Date(now.getTime() + now.getTimezoneOffset()*60000 + (5*60+45)*60000).getHours();
+  }
+  function apply(){
+    var h = getNSTHour();
+    /* base hsl(173, 85%, 38%) — shift hue by time of day */
+    var hue = h>=6&&h<10 ? 180 : h>=10&&h<17 ? 173 : h>=17&&h<21 ? 165 : 185;
+    document.documentElement.style.setProperty('--teal','hsl('+hue+',82%,38%)');
+    document.documentElement.style.setProperty('--cyan','hsl('+(hue+14)+',88%,58%)');
+  }
+  apply();
+  setInterval(apply, 5*60*1000);
+})();
+
+/* ── WORK TIMER ── */
+(function(){
+  var el = document.getElementById('updateTimer');
+  if(!el) return;
+  var base = new Date('2026-04-29T00:00:00+05:45');
+  function ago(){
+    var ms = Date.now() - base.getTime();
+    var hrs = Math.floor(ms/3600000);
+    var days = Math.floor(hrs/24);
+    if(hrs < 1)  return 'just now';
+    if(hrs < 24) return hrs+'h ago';
+    if(days===1) return 'yesterday';
+    return days+' days ago';
+  }
+  function update(){ el.textContent = 'April 2026 ('+ago()+')'; }
+  update();
+  setInterval(update, 3600000);
+})();
+
+/* ── CLICK-TO-REVEAL CONTACT ── */
+(function(){
+  document.querySelectorAll('.cd').forEach(function(cd){
+    var href = cd.getAttribute('href') || '';
+    var isSecret = href.includes('mailto:') || href.includes('wa.me');
+    if(!isSecret) return;
+    /* Wrap inner text (not the label) in a span */
+    var lbl = cd.querySelector('.cd-lbl');
+    var val = document.createElement('span');
+    val.className = 'cd-val';
+    Array.from(cd.childNodes).forEach(function(node){
+      if(node !== lbl) val.appendChild(node.cloneNode(true));
+    });
+    /* Rebuild */
+    while(cd.firstChild) cd.removeChild(cd.firstChild);
+    if(lbl) cd.appendChild(lbl);
+    cd.appendChild(val);
+    /* Add hint */
+    var hint = document.createElement('span');
+    hint.className = 'cd-reveal-hint';
+    hint.textContent = 'Click to reveal';
+    cd.appendChild(hint);
+    cd.classList.add('cd-secret');
+    cd.addEventListener('click', function reveal(e){
+      if(!cd.classList.contains('cd-secret')) return;
+      e.preventDefault();
+      cd.classList.remove('cd-secret');
+      cd.removeChild(hint);
+      val.style.filter = '';
+    });
+  });
+})();
+
+/* ── SCROLL PROGRESS PROFILE PHOTO ── */
+(function(){
+  var wrap = document.querySelector('.about-img');
+  if(!wrap) return;
+  var fill = document.createElement('div');
+  fill.className = 'about-img-fill';
+  wrap.appendChild(fill);
+  function update(){
+    var doc = document.documentElement;
+    var scrolled = doc.scrollTop || document.body.scrollTop;
+    var total = doc.scrollHeight - doc.clientHeight;
+    var pct = total > 0 ? scrolled/total*100 : 0;
+    fill.style.clipPath = 'inset('+Math.max(0,100-pct)+'% 0 0 0)';
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+
 /* ── BACK TO TOP ── */
 (function(){
   var btn = document.getElementById('btt');

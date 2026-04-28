@@ -268,6 +268,28 @@
   }
   var _sitemapFiltered = SITEMAP_ITEMS.slice();
 
+  /* ── Logo easter egg — triple-click nav signature ── */
+  (function(){
+    var mark = document.querySelector('.nav-logo-mark');
+    if(!mark) return;
+    var clicks=0, timer=null;
+    mark.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      clicks++;
+      clearTimeout(timer);
+      timer = setTimeout(function(){ clicks=0; }, 700);
+      if(clicks >= 3){
+        clicks=0; clearTimeout(timer);
+        var tip = document.createElement('div');
+        tip.style.cssText='position:fixed;top:68px;left:16px;z-index:99999;background:#0d1117;border:1px solid rgba(14,181,160,0.3);border-radius:12px;padding:1rem 1.3rem;max-width:270px;font-size:0.77rem;color:#f0f4f8;line-height:1.55;box-shadow:0 12px 40px rgba(0,0,0,0.6);animation:fadeInUp 0.25s ease';
+        tip.innerHTML='<div style="color:#0EB5A0;font-weight:700;font-size:0.85rem;margin-bottom:0.4rem">🥚 Easter egg found!</div>This is my actual handwritten signature — drawn with a brush pen, scanned, and colourised to teal in real-time using canvas pixel processing.<div style="margin-top:0.55rem;font-size:0.63rem;color:#6b7c8f;letter-spacing:0.05em">CLICK ANYWHERE TO CLOSE</div>';
+        document.body.appendChild(tip);
+        var close=function(){ tip.parentNode&&tip.parentNode.removeChild(tip); document.removeEventListener('click',close); };
+        setTimeout(function(){ document.addEventListener('click',close,{once:true}); },50);
+      }
+    });
+  })();
+
   var SURPRISES = [
     'blog-brand-identity.html','blog-freelancing-nepal.html','blog-sound-design.html',
     'blog-ux-process.html','blog-pricing.html','blog-3d-animation.html',
