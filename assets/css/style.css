@@ -158,7 +158,7 @@ section{padding:4rem 2.5rem;border-bottom:1px solid var(--border2)}
 /* SKILLS */
 .skills-section{background:var(--bg)}
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border2)}
-.sk-col{padding:2rem;border-right:1px solid var(--border2)}
+.sk-col{padding:2rem;border-right:1px solid var(--border2);position:relative;overflow:hidden}
 .sk-col:last-child{border-right:none}
 .sk-title{font-size:0.65rem;font-weight:600;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;display:block}
 .sk-row{padding:0.6rem 0;border-bottom:1px solid var(--border2)}
