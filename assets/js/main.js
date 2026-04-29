@@ -1094,7 +1094,7 @@ stage.addEventListener('wheel',function(e){
    FEATURE 3 — IDLE SIGNATURE REPLAY (15 sec)
    ══════════════════════════════════════════════════ */
 (function(){
-  var IDLE = 15000;
+  var IDLE = 5000;
   var timer = null;
   function replay(){
     var wrap = document.querySelector('.sig-wrap');
