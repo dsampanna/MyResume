@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080c10"/>
+      <stop offset="100%" stop-color="#0d1a08"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD600" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FFD600" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)"/>
+
+  <!-- Subtle glow circle -->
+  <ellipse cx="520" cy="200" rx="280" ry="220" fill="url(#glow)"/>
+
+  <!-- NP badge -->
+  <rect x="60" y="60" width="42" height="24" rx="4" fill="none" stroke="rgba(255,214,0,0.35)" stroke-width="1"/>
+  <text x="81" y="76" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="700" fill="#FFD600" opacity="0.7">NP</text>
+
+  <!-- Main title — Devanagari -->
+  <text x="60" y="200" font-family="'Noto Sans Devanagari','Segoe UI',sans-serif" font-size="96" font-weight="700" fill="#FFD600" letter-spacing="-2">खाना</text>
+
+  <!-- App word -->
+  <text x="62" y="270" font-family="'Syne','Segoe UI',sans-serif" font-size="56" font-weight="800" fill="#ffffff" opacity="0.92" letter-spacing="-1">App</text>
+
+  <!-- Tagline -->
+  <text x="62" y="310" font-family="'DM Sans','Segoe UI',sans-serif" font-size="15" fill="#6b7c8f" letter-spacing="0.06em">Nepal Food Delivery — Complete Wireframe Document</text>
+
+  <!-- Divider -->
+  <line x1="62" y1="334" x2="380" y2="334" stroke="rgba(255,214,0,0.18)" stroke-width="1"/>
+
+  <!-- Stats row -->
+  <text x="62" y="360" font-family="'DM Sans','Segoe UI',sans-serif" font-size="12" fill="#6b7c8f">30+ Screens · 4 Apps · Bilingual · eSewa · Khalti · FonePay</text>
+  <text x="62" y="378" font-family="'DM Sans','Segoe UI',sans-serif" font-size="11" fill="#4a5a6a">Kathmandu, Nepal · April 2026</text>
+
+  <!-- Phone mockup outline -->
+  <rect x="520" y="60" width="200" height="380" rx="24" fill="none" stroke="rgba(255,214,0,0.15)" stroke-width="1.5"/>
+  <rect x="534" y="74" width="172" height="352" rx="16" fill="#0d1117"/>
+  <!-- Screen header yellow bar -->
+  <rect x="534" y="74" width="172" height="52" rx="16" fill="#FFD600" opacity="0.9"/>
+  <rect x="534" y="100" width="172" height="26" fill="#FFD600" opacity="0.9"/>
+  <text x="620" y="106" text-anchor="middle" font-family="'Noto Sans Devanagari','Segoe UI',sans-serif" font-size="13" font-weight="700" fill="#000">खाना App</text>
+
+  <!-- App pills inside phone -->
+  <!-- Customer App pill -->
+  <rect x="554" y="142" width="100" height="22" rx="11" fill="#FFD600"/>
+  <text x="604" y="157" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" font-weight="700" fill="#000">Customer App</text>
+  <!-- Seller App pill -->
+  <rect x="554" y="172" width="100" height="22" rx="11" fill="#4ade80"/>
+  <text x="604" y="187" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" font-weight="700" fill="#000">Seller App</text>
+  <!-- Rider App pill -->
+  <rect x="554" y="202" width="100" height="22" rx="11" fill="#60a5fa"/>
+  <text x="604" y="217" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" font-weight="700" fill="#000">Rider App</text>
+  <!-- Admin pill -->
+  <rect x="554" y="232" width="100" height="22" rx="11" fill="#f87171"/>
+  <text x="604" y="247" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" font-weight="700" fill="#fff">Admin Dashboard</text>
+
+  <!-- Mini wireframe lines in phone -->
+  <rect x="554" y="274" width="134" height="8" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="554" y="288" width="100" height="6" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="554" y="302" width="120" height="6" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="554" y="320" width="134" height="32" rx="6" fill="rgba(255,214,0,0.12)" stroke="rgba(255,214,0,0.2)" stroke-width="1"/>
+  <text x="621" y="340" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" fill="rgba(255,214,0,0.6)">Place Order · Rs 700</text>
+  <rect x="554" y="362" width="134" height="28" rx="14" fill="#FFD600" opacity="0.8"/>
+  <text x="621" y="381" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" font-weight="700" fill="#000">Order Now →</text>
+
+  <!-- Bottom notch simulation -->
+  <rect x="590" y="426" width="60" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+
+  <!-- Category tag -->
+  <rect x="60" y="418" width="96" height="22" rx="3" fill="none" stroke="rgba(14,181,160,0.35)" stroke-width="1"/>
+  <text x="108" y="433" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="10" font-weight="700" fill="#0eb5a0" letter-spacing="0.1em">UI/UX · MOBILE</text>
+</svg>

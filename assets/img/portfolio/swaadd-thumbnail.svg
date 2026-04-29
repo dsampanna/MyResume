@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B1A12"/>
+      <stop offset="100%" stop-color="#B5281C"/>
+    </linearGradient>
+    <linearGradient id="wavefade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="phoneClip">
+      <rect x="520" y="52" width="200" height="390" rx="24"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)"/>
+
+  <!-- Mountain wave decorations (right side) -->
+  <path d="M580,0 L800,0 L800,500 L500,500 Q600,380 700,260 Q780,180 750,80 Z" fill="rgba(255,255,255,0.04)"/>
+  <path d="M650,0 L800,0 L800,500 L620,500 Q700,360 780,220 Z" fill="rgba(255,255,255,0.03)"/>
+
+  <!-- Triangle motifs (left column — like Swaadd branding) -->
+  <polygon points="30,60 58,60 44,38" fill="#D4870A" opacity="0.85"/>
+  <polygon points="30,100 58,100 44,78" fill="#2D8653" opacity="0.85"/>
+  <polygon points="30,140 58,140 44,118" fill="#8B1A12" opacity="0.7"/>
+  <polygon points="30,180 58,180 44,158" fill="#C0392B" opacity="0.6"/>
+  <polygon points="30,220 58,220 44,198" fill="#2271B1" opacity="0.85"/>
+
+  <!-- App icon circle -->
+  <circle cx="110" cy="120" r="38" fill="rgba(253,246,237,0.12)" stroke="rgba(253,246,237,0.2)" stroke-width="1.5"/>
+  <circle cx="110" cy="120" r="26" fill="rgba(253,246,237,0.15)"/>
+  <text x="110" y="128" text-anchor="middle" font-size="22">🍽️</text>
+
+  <!-- Main title -->
+  <text x="68" y="210" font-family="'Syne','Segoe UI',sans-serif" font-size="82" font-weight="800" fill="#FDF6ED" letter-spacing="-2" opacity="0.97">Swaadd</text>
+
+  <!-- Devanagari subtitle -->
+  <text x="72" y="255" font-family="'Noto Sans Devanagari','Segoe UI',sans-serif" font-size="26" font-weight="600" fill="#D4870A" letter-spacing="2">स्वाद</text>
+
+  <!-- Tagline -->
+  <text x="72" y="292" font-family="'DM Sans','Segoe UI',sans-serif" font-size="14" fill="rgba(253,246,237,0.65)" letter-spacing="0.05em">Taste of Nepal, Delivered</text>
+
+  <!-- Divider -->
+  <line x1="72" y1="314" x2="380" y2="314" stroke="rgba(212,135,10,0.35)" stroke-width="1"/>
+
+  <!-- Badge — Hi-Fidelity -->
+  <rect x="72" y="328" width="116" height="22" rx="11" fill="rgba(212,135,10,0.2)" stroke="rgba(212,135,10,0.5)" stroke-width="1"/>
+  <text x="130" y="343" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" font-weight="700" fill="#D4870A" letter-spacing="0.08em">HI-FIDELITY DESIGN</text>
+
+  <!-- Stats line -->
+  <text x="72" y="380" font-family="'DM Sans','Segoe UI',sans-serif" font-size="12" fill="rgba(253,246,237,0.5)">4 Apps · 8 Screens · Design Handoff · Figma</text>
+  <text x="72" y="398" font-family="'DM Sans','Segoe UI',sans-serif" font-size="11" fill="rgba(253,246,237,0.35)">Kathmandu, Nepal · April 2026</text>
+
+  <!-- Color swatches -->
+  <circle cx="72" cy="430" r="8" fill="#B5281C" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <circle cx="90" cy="430" r="8" fill="#D4870A" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <circle cx="108" cy="430" r="8" fill="#2D8653" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <circle cx="126" cy="430" r="8" fill="#2271B1" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <circle cx="144" cy="430" r="8" fill="#FDF6ED" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="160" y="435" font-family="'DM Sans','Segoe UI',sans-serif" font-size="10" fill="rgba(253,246,237,0.4)" letter-spacing="0.06em">Design Tokens</text>
+
+  <!-- Phone mockup -->
+  <rect x="520" y="52" width="200" height="390" rx="24" fill="#1A1208" stroke="rgba(253,246,237,0.12)" stroke-width="1.5"/>
+  <rect x="534" y="66" width="172" height="362" rx="14" fill="#FDF6ED" clip-path="url(#phoneClip)"/>
+
+  <!-- Phone header — red -->
+  <rect x="534" y="66" width="172" height="70" rx="0" fill="#B5281C"/>
+  <rect x="534" y="66" width="172" height="70" rx="14" fill="#B5281C"/>
+  <rect x="534" y="100" width="172" height="36" fill="#B5281C"/>
+
+  <!-- Header text -->
+  <text x="548" y="86" font-family="'Syne','Segoe UI',sans-serif" font-size="13" font-weight="800" fill="#FDF6ED">Swaadd</text>
+  <text x="548" y="100" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" fill="rgba(253,246,237,0.7)">Thamel, Kathmandu ▼</text>
+  <!-- Search bar -->
+  <rect x="548" y="108" width="142" height="20" rx="10" fill="rgba(255,255,255,0.15)"/>
+  <text x="560" y="122" font-family="'DM Sans','Segoe UI',sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Search momos, dal bhat...</text>
+
+  <!-- Promo banner -->
+  <rect x="548" y="140" width="142" height="28" rx="6" fill="#D4870A"/>
+  <text x="556" y="154" font-family="'DM Sans','Segoe UI',sans-serif" font-size="8" font-weight="700" fill="#fff">50% OFF — First Order!</text>
+  <text x="556" y="164" font-family="'DM Sans','Segoe UI',sans-serif" font-size="7" fill="rgba(255,255,255,0.8)">Code: SWAADD50</text>
+
+  <!-- Category pills -->
+  <rect x="548" y="176" width="38" height="16" rx="8" fill="#B5281C"/>
+  <text x="567" y="187" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="7" font-weight="600" fill="#fff">Momos</text>
+  <rect x="592" y="176" width="38" height="16" rx="8" fill="rgba(181,40,28,0.12)" stroke="#B5281C" stroke-width="0.8"/>
+  <text x="611" y="187" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="7" fill="#B5281C">Dal Bhat</text>
+  <rect x="636" y="176" width="38" height="16" rx="8" fill="rgba(181,40,28,0.12)" stroke="#B5281C" stroke-width="0.8"/>
+  <text x="655" y="187" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="7" fill="#B5281C">Chatai</text>
+
+  <!-- Restaurant card -->
+  <rect x="548" y="200" width="66" height="76" rx="8" fill="#fff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.08))"/>
+  <rect x="548" y="200" width="66" height="38" rx="8" fill="#B5281C" opacity="0.85"/>
+  <rect x="548" y="222" width="66" height="16" fill="#B5281C" opacity="0.85"/>
+  <text x="581" y="218" text-anchor="middle" font-size="14">🥟</text>
+  <text x="554" y="250" font-family="'DM Sans','Segoe UI',sans-serif" font-size="7" font-weight="700" fill="#1A1208">Momo Magic</text>
+  <text x="554" y="260" font-family="'DM Sans','Segoe UI',sans-serif" font-size="6" fill="#7A6A5A">⏱ 15–20 min</text>
+  <text x="554" y="270" font-family="'DM Sans','Segoe UI',sans-serif" font-size="6" fill="#D4870A">4.8 ★  ₹50</text>
+
+  <!-- Second card -->
+  <rect x="622" y="200" width="66" height="76" rx="8" fill="#fff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.08))"/>
+  <rect x="622" y="200" width="66" height="38" rx="8" fill="#2D8653" opacity="0.85"/>
+  <rect x="622" y="222" width="66" height="16" fill="#2D8653" opacity="0.85"/>
+  <text x="655" y="218" text-anchor="middle" font-size="14">🍛</text>
+  <text x="628" y="250" font-family="'DM Sans','Segoe UI',sans-serif" font-size="7" font-weight="700" fill="#1A1208">Thakali Kit.</text>
+  <text x="628" y="260" font-family="'DM Sans','Segoe UI',sans-serif" font-size="6" fill="#7A6A5A">⏱ 20–30 min</text>
+  <text x="628" y="270" font-family="'DM Sans','Segoe UI',sans-serif" font-size="6" fill="#D4870A">4.6 ★  ₹40</text>
+
+  <!-- Bottom nav -->
+  <rect x="534" y="388" width="172" height="40" rx="0" fill="#1A1208"/>
+  <rect x="534" y="388" width="172" height="40" rx="0" fill="#fff" opacity="0.96"/>
+  <text x="562" y="413" text-anchor="middle" font-size="12">🏠</text>
+  <text x="602" y="413" text-anchor="middle" font-size="12">🔍</text>
+  <text x="642" y="413" text-anchor="middle" font-size="12">📋</text>
+  <text x="682" y="413" text-anchor="middle" font-size="12">👤</text>
+  <!-- Active indicator -->
+  <rect x="553" y="425" width="18" height="2" rx="1" fill="#B5281C"/>
+
+  <!-- Home notch -->
+  <rect x="590" y="442" width="60" height="4" rx="2" fill="rgba(0,0,0,0.15)"/>
+
+  <!-- UI/UX badge -->
+  <rect x="72" y="456" width="122" height="22" rx="3" fill="none" stroke="rgba(253,246,237,0.25)" stroke-width="1"/>
+  <text x="133" y="471" text-anchor="middle" font-family="'DM Sans','Segoe UI',sans-serif" font-size="9" font-weight="700" fill="rgba(253,246,237,0.6)" letter-spacing="0.1em">UI/UX · HI-FIDELITY</text>
+</svg>
