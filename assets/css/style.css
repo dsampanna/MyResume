@@ -984,3 +984,103 @@ footer{position:relative}
   border-radius:3px;padding:0.1rem 0.3rem;margin-right:0.15rem;
   font-size:0.6rem;font-family:var(--body);color:var(--text);
 }
+
+/* ══════════════════════════════════════════════════
+   FEATURE: HERO GREETING (time-based)
+   ══════════════════════════════════════════════════ */
+.hero-greeting{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:0.5rem;
+  font-family:var(--display);opacity:0;
+}
+
+/* ══════════════════════════════════════════════════
+   FEATURE: CLICK BURST ripple
+   ══════════════════════════════════════════════════ */
+.click-burst{
+  position:fixed;pointer-events:none;z-index:99990;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(14,181,160,0.45) 0%, rgba(14,181,160,0) 70%);
+  transform:scale(0);
+  animation:click-burst-anim 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes click-burst-anim{
+  0%  {transform:scale(0);opacity:1}
+  70% {opacity:0.6}
+  100%{transform:scale(1);opacity:0}
+}
+
+/* ══════════════════════════════════════════════════
+   FEATURE: CURSOR SHAPE PER SECTION
+   ══════════════════════════════════════════════════ */
+.cursor-dot.shape-square{
+  border-radius:2px;
+  transition:background 0.3s,border-radius 0.25s,transform 0.25s;
+}
+.cursor-dot.shape-diamond{
+  border-radius:1px;
+  transform:translate(-50%,-50%) rotate(45deg) !important;
+  transition:background 0.3s,border-radius 0.25s,transform 0.25s;
+}
+
+/* ══════════════════════════════════════════════════
+   FEATURE: PAGES TURNED COUNTER
+   ══════════════════════════════════════════════════ */
+.pages-counter{
+  position:fixed;bottom:1.6rem;left:1.6rem;z-index:1000;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.1em;
+  color:var(--muted);opacity:0.4;
+  pointer-events:none;
+  transition:opacity 0.4s,color 0.4s;
+  font-family:var(--display);
+}
+.pages-counter.bump{opacity:1;color:var(--teal)}
+@media(max-width:768px){.pages-counter{display:none}}
+
+/* ══════════════════════════════════════════════════
+   FEATURE: RAGE-CLICK TOAST
+   ══════════════════════════════════════════════════ */
+.rage-toast{
+  position:fixed;bottom:5rem;left:50%;
+  transform:translateX(-50%) translateY(16px);
+  background:var(--bg2);border:1px solid rgba(14,181,160,0.3);
+  color:var(--text);font-size:0.82rem;font-weight:500;
+  padding:0.7rem 1.4rem;border-radius:10px;
+  opacity:0;pointer-events:none;z-index:99999;
+  transition:opacity 0.28s,transform 0.28s;
+  white-space:nowrap;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 0 1px rgba(14,181,160,0.1);
+}
+.rage-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ══════════════════════════════════════════════════
+   FEATURE: PROJECT COLOUR PALETTE DOTS
+   ══════════════════════════════════════════════════ */
+.palette-dots{
+  display:flex;gap:5px;
+  position:absolute;bottom:10px;right:10px;z-index:20;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.35s ease;
+}
+.pc-card.is-center .palette-dots{opacity:1}
+.palette-dot{
+  width:11px;height:11px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.4);
+  flex-shrink:0;
+}
+
+/* ══════════════════════════════════════════════════
+   FEATURE: INVISIBLE INK — footer hidden message
+   ══════════════════════════════════════════════════ */
+.ink-msg{
+  flex-basis:100%;text-align:center;order:99;
+  font-size:0.7rem;letter-spacing:0.25em;font-weight:500;
+  color:transparent;
+  text-shadow:none;
+  pointer-events:none;user-select:none;
+  transition:color 0.4s ease, text-shadow 0.4s ease;
+}
+.ink-msg.revealed{
+  color:rgba(14,181,160,0.65);
+  text-shadow:0 0 10px rgba(14,181,160,0.5),0 0 22px rgba(14,181,160,0.25);
+}

@@ -1049,3 +1049,280 @@ stage.addEventListener('wheel',function(e){
   });
 })();
 
+
+/* ══════════════════════════════════════════════════
+   FEATURE 4 — TIME-BASED GREETING
+   ══════════════════════════════════════════════════ */
+(function(){
+  var el = document.getElementById('heroGreeting');
+  if(!el) return;
+  /* Nepal Standard Time = UTC +5:45 */
+  var now = new Date();
+  var utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  var nepal = new Date(utc + 5.75 * 3600000);
+  var h = nepal.getHours();
+  var greet, icon;
+  if(h >= 5 && h < 12)       { greet = 'Good morning';   icon = '☀️';  }
+  else if(h >= 12 && h < 17) { greet = 'Good afternoon'; icon = '🌤️'; }
+  else                        { greet = 'Good evening';   icon = '🌙';  }
+  el.textContent = greet + ' ' + icon;
+  setTimeout(function(){
+    el.style.transition = 'opacity 0.9s ease';
+    el.style.opacity = '1';
+  }, 300);
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 1 — CLICK BURST (hero section)
+   ══════════════════════════════════════════════════ */
+(function(){
+  var hero = document.getElementById('hero');
+  if(!hero) return;
+  hero.addEventListener('click', function(e){
+    var size = 160;
+    var el = document.createElement('div');
+    el.className = 'click-burst';
+    el.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+(e.clientX-size/2)+'px;top:'+(e.clientY-size/2)+'px;';
+    document.body.appendChild(el);
+    setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 750);
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 3 — IDLE SIGNATURE REPLAY (15 sec)
+   ══════════════════════════════════════════════════ */
+(function(){
+  var IDLE = 15000;
+  var timer = null;
+  function replay(){
+    var wrap = document.querySelector('.sig-wrap');
+    if(!wrap) return;
+    wrap.style.animation = 'none';
+    wrap.style.clipPath   = 'inset(0 100% 0 0)';
+    /* Force reflow so the reset registers before re-applying animation */
+    void wrap.offsetWidth;
+    wrap.style.animation  = 'sig-reveal 2s cubic-bezier(0.4,0,0.2,1) 0.15s forwards';
+    /* Queue the next replay after it finishes */
+    timer = setTimeout(replay, IDLE);
+  }
+  function resetTimer(){
+    clearTimeout(timer);
+    timer = setTimeout(replay, IDLE);
+  }
+  ['mousemove','keydown','scroll','touchstart','click','pointerdown'].forEach(function(ev){
+    window.addEventListener(ev, resetTimer, {passive:true});
+  });
+  /* Start the idle clock */
+  timer = setTimeout(replay, IDLE);
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 6 — RAGE-CLICK DETECTOR
+   ══════════════════════════════════════════════════ */
+(function(){
+  var clicks = [], WIN = 1500, THRESHOLD = 5;
+  var toastActive = false;
+  function showToast(){
+    if(toastActive) return;
+    toastActive = true;
+    var t = document.createElement('div');
+    t.className = 'rage-toast';
+    t.textContent = "Easy there 😄 — can't find something? Try Ctrl+K";
+    document.body.appendChild(t);
+    setTimeout(function(){ t.classList.add('show'); }, 10);
+    setTimeout(function(){
+      t.classList.remove('show');
+      setTimeout(function(){
+        if(t.parentNode) t.parentNode.removeChild(t);
+        toastActive = false;
+      }, 350);
+    }, 3500);
+  }
+  document.addEventListener('click', function(e){
+    var now = Date.now();
+    clicks.push({t: now, x: e.clientX, y: e.clientY});
+    clicks = clicks.filter(function(c){ return now - c.t < WIN; });
+    if(clicks.length >= THRESHOLD){
+      var first = clicks[0], last = clicks[clicks.length-1];
+      var dx = last.x - first.x, dy = last.y - first.y;
+      if(Math.sqrt(dx*dx + dy*dy) < 130){
+        showToast();
+        clicks = [];
+      }
+    }
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 7 — PROJECT IMAGE COLOUR PALETTE DOTS
+   ══════════════════════════════════════════════════ */
+(function(){
+  var track = document.getElementById('pcTrack');
+  if(!track) return;
+
+  function sampleColors(img, n){
+    try {
+      var cv = document.createElement('canvas');
+      cv.width = 48; cv.height = 48;
+      var cx = cv.getContext('2d');
+      cx.drawImage(img, 0, 0, 48, 48);
+      var data = cx.getImageData(0, 0, 48, 48).data;
+      var total = 48 * 48;
+      var step = Math.floor(total / n);
+      var cols = [];
+      for(var i = 0; i < n; i++){
+        var idx = (i * step) * 4;
+        /* Skip near-black or near-white pixels */
+        var r = data[idx], g = data[idx+1], b = data[idx+2];
+        var lum = 0.299*r + 0.587*g + 0.114*b;
+        if(lum < 15 || lum > 240) { i--; step = Math.floor(total / (n * 2)); if(step < 1) step = 1; }
+        else cols.push([r, g, b]);
+        if(cols.length >= n) break;
+      }
+      return cols;
+    } catch(err){ return []; }
+  }
+
+  function attachPalette(card){
+    if(card.querySelector('.palette-dots')) return;
+    var img = card.querySelector('.pc-card-img');
+    if(!img) return;
+    var inner = card.querySelector('.pc-card-inner');
+    if(!inner) return;
+    var dotsWrap = document.createElement('div');
+    dotsWrap.className = 'palette-dots';
+
+    function draw(){
+      try {
+        var cols = sampleColors(img, 5);
+        dotsWrap.innerHTML = '';
+        cols.forEach(function(c){
+          var d = document.createElement('div');
+          d.className = 'palette-dot';
+          d.style.background = 'rgb('+c[0]+','+c[1]+','+c[2]+')';
+          d.title = 'rgb('+c[0]+','+c[1]+','+c[2]+')';
+          dotsWrap.appendChild(d);
+        });
+      } catch(err){}
+    }
+
+    inner.appendChild(dotsWrap);
+    if(img.complete && img.naturalWidth > 0) draw();
+    else img.addEventListener('load', draw);
+  }
+
+  /* Watch for cards being added (shuffle adds them on load) */
+  var observer = new MutationObserver(function(){
+    track.querySelectorAll('.pc-card').forEach(attachPalette);
+  });
+  observer.observe(track, {childList: true, subtree: true});
+  track.querySelectorAll('.pc-card').forEach(attachPalette);
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 8 — CURSOR SHAPE PER SECTION
+   ══════════════════════════════════════════════════ */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+  var dot = document.querySelector('.cursor-dot');
+  if(!dot) return;
+
+  var SHAPES = {
+    hero:       {shape:'circle',  color:'#0eb5a0'},
+    work:       {shape:'square',  color:'#50d2ff'},
+    about:      {shape:'circle',  color:'#b482ff'},
+    skills:     {shape:'diamond', color:'#ffb946'},
+    education:  {shape:'circle',  color:'#ff8c64'},
+    experience: {shape:'square',  color:'#ff7864'},
+    blog:       {shape:'circle',  color:'#50d791'},
+    services:   {shape:'diamond', color:'#ffb450'},
+    contact:    {shape:'circle',  color:'#14e1c3'}
+  };
+
+  function apply(key){
+    var s = SHAPES[key] || {shape:'circle', color:'#ffffff'};
+    dot.style.background = s.color;
+    dot.classList.remove('shape-square', 'shape-diamond');
+    if(s.shape === 'square')   dot.classList.add('shape-square');
+    if(s.shape === 'diamond')  dot.classList.add('shape-diamond');
+  }
+
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && SHAPES[e.target.id]) apply(e.target.id);
+      });
+    }, {threshold: 0.3});
+    Object.keys(SHAPES).forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) io.observe(el);
+    });
+  }
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 9 — "PAGES TURNED" COUNTER
+   ══════════════════════════════════════════════════ */
+(function(){
+  var visited = {};
+  var count = 0;
+  var counter = document.createElement('div');
+  counter.className = 'pages-counter';
+  counter.setAttribute('aria-hidden', 'true');
+  counter.textContent = '§ 0';
+  document.body.appendChild(counter);
+
+  var bumpTimer;
+  function bump(){
+    counter.textContent = '§ ' + count;
+    counter.classList.add('bump');
+    clearTimeout(bumpTimer);
+    bumpTimer = setTimeout(function(){ counter.classList.remove('bump'); }, 1400);
+  }
+
+  var sectionIds = ['hero','work','about','skills','education','experience','blog','services','contact'];
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && !visited[e.target.id]){
+          visited[e.target.id] = true;
+          count++;
+          bump();
+        }
+      });
+    }, {threshold: 0.4});
+    sectionIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) io.observe(el);
+    });
+  }
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 10 — INVISIBLE INK (footer hidden message)
+   ══════════════════════════════════════════════════ */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+  var el = document.querySelector('.ink-msg');
+  if(!el) return;
+  var RADIUS = 130;
+
+  document.addEventListener('mousemove', function(e){
+    var r   = el.getBoundingClientRect();
+    var cx  = r.left + r.width  / 2;
+    var cy  = r.top  + r.height / 2;
+    var dist = Math.sqrt(Math.pow(e.clientX - cx, 2) + Math.pow(e.clientY - cy, 2));
+    el.classList.toggle('revealed', dist < RADIUS);
+  });
+
+  document.addEventListener('mouseleave', function(){
+    el.classList.remove('revealed');
+  });
+})();
