@@ -254,13 +254,15 @@ function render() {
   const related = projects.filter((r, i) => i !== index && r.category === p.category).slice(0, 3);
 
   document.title = p.title + ' | Sampanna Raj Dhungel';
-  var ogDesc = p.description.slice(0, 160);
-  document.querySelector('meta[property="og:title"]').setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
-  document.querySelector('meta[property="og:description"]').setAttribute('content', ogDesc);
-  document.querySelector('meta[property="og:url"]').setAttribute('content', 'https://www.sampannadhungel.com.np/project.html?id=' + p.id);
-  document.querySelector('meta[name="twitter:title"]').setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
-  document.querySelector('meta[name="twitter:description"]').setAttribute('content', ogDesc);
-  document.querySelector('meta[name="description"]').setAttribute('content', ogDesc);
+  try {
+    var ogDesc = p.description.slice(0, 160);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', ogDesc);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', 'https://www.sampannadhungel.com.np/project.html?id=' + p.id);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', ogDesc);
+    document.querySelector('meta[name="description"]')?.setAttribute('content', ogDesc);
+  } catch(e) {}
 
   let mediaHTML, pdfSectionHTML = '';
   if(p.type === 'drive') {
