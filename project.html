@@ -4,9 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Project | Sampanna Raj Dhungel</title>
+<meta name="description" content="Project by Sampanna Raj Dhungel — Creative Director & Digital Media Designer based in Bhaktapur, Nepal.">
+<meta property="og:title" content="Project | Sampanna Raj Dhungel">
+<meta property="og:description" content="Project by Sampanna Raj Dhungel — Creative Director & Digital Media Designer based in Bhaktapur, Nepal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sampannadhungel.com.np/project.html">
+<meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Project | Sampanna Raj Dhungel">
+<meta name="twitter:description" content="Project by Sampanna Raj Dhungel — Creative Director & Digital Media Designer.">
+<meta name="twitter:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<link rel="canonical" href="https://www.sampannadhungel.com.np/project.html">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -239,6 +254,13 @@ function render() {
   const related = projects.filter((r, i) => i !== index && r.category === p.category).slice(0, 3);
 
   document.title = p.title + ' | Sampanna Raj Dhungel';
+  var ogDesc = p.description.slice(0, 160);
+  document.querySelector('meta[property="og:title"]').setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
+  document.querySelector('meta[property="og:description"]').setAttribute('content', ogDesc);
+  document.querySelector('meta[property="og:url"]').setAttribute('content', 'https://www.sampannadhungel.com.np/project.html?id=' + p.id);
+  document.querySelector('meta[name="twitter:title"]').setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
+  document.querySelector('meta[name="twitter:description"]').setAttribute('content', ogDesc);
+  document.querySelector('meta[name="description"]').setAttribute('content', ogDesc);
 
   let mediaHTML, pdfSectionHTML = '';
   if(p.type === 'drive') {
