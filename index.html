@@ -51,6 +51,17 @@
     <div class="preloader-bar"><div class="preloader-fill"></div></div>
   </div>
 </div>
+<script>
+/* Inline failsafe — dismisses preloader even if main.js fails to load */
+(function(){
+  function killLoader(){
+    var pl = document.getElementById('preloader');
+    if(pl) pl.classList.add('done');
+  }
+  window.addEventListener('load', function(){ setTimeout(killLoader, 300); });
+  setTimeout(killLoader, 2500);
+})();
+</script>
 <!-- BACK TO TOP -->
 <button class="btt" id="btt" aria-label="Back to top">↑</button>
 

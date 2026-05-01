@@ -7,7 +7,7 @@
   window.addEventListener('load', function(){
     setTimeout(function(){ pl.classList.add('done'); }, 300);
   });
-  setTimeout(function(){ pl.classList.add('done'); }, 3000); /* safety fallback */
+  setTimeout(function(){ pl.classList.add('done'); }, 1500); /* safety fallback */
 })();
 
 
