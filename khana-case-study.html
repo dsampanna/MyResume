@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>खाना App — UX Case Study | Sampanna Raj Dhungel</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <meta name="description" content="UX wireframe case study for खाना App — a Nepal food delivery platform covering 4 apps, 30+ screens, bilingual UI and local payment integrations. Designed by Sampanna Raj Dhungel.">
+  <meta property="og:title" content="खाना App — UX Case Study | Sampanna Raj Dhungel">
+  <meta property="og:description" content="Complete UX wireframe for a Nepal food delivery platform — 4 apps, 30+ screens, eSewa, Khalti, FonePay.">
+  <meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/portfolio/khana-app-thumbnail.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#080c10;--bg2:#0d1117;--bg3:#111827;
+      --text:#e5e7eb;--muted:#9ca3af;--muted2:#6b7280;
+      --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);
+      --teal:#0EB5A0;--teal2:#06b6d4;
+      --accent:#FFD600;--accent2:#fbbf24;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:62px;background:rgba(8,12,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2);gap:1rem;}
+    .topbar-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:var(--teal);text-decoration:none;letter-spacing:0.06em;}
+    .topbar-nav{display:flex;align-items:center;gap:0.25rem;}
+    .topbar-link{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 9px;letter-spacing:0.05em;transition:color 0.2s;}
+    .topbar-link:hover{color:var(--text);}
+    .btn-back{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border2);color:var(--muted);font-size:11px;font-weight:600;text-decoration:none;transition:all 0.25s;font-family:'Syne',sans-serif;margin-left:0.5rem;letter-spacing:0.05em;}
+    .btn-back:hover{border-color:var(--teal);color:var(--teal);}
+    @media(max-width:900px){.topbar{padding:0 1.25rem;}.topbar-link{display:none;}}
+    .case-hero{margin-top:62px;background:linear-gradient(135deg,#080c10 0%,#0d100a 55%,#0d1a08 100%);padding:80px 2.5rem 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--border2);}
+    .case-hero::before{content:'🍜';position:absolute;font-size:260px;right:-30px;top:-20px;opacity:0.025;pointer-events:none;}
+    .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+    .case-type{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;background:rgba(255,214,0,0.08);border:1px solid rgba(255,214,0,0.25);font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:1.5rem;font-family:'Syne',sans-serif;}
+    .case-title{font-family:'Noto Sans Devanagari','Syne',sans-serif;font-size:clamp(52px,8vw,96px);font-weight:700;color:var(--accent);line-height:1.0;letter-spacing:-0.03em;margin-bottom:0.25rem;}
+    .case-title-sub{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;color:var(--text);letter-spacing:-0.04em;margin-bottom:1.25rem;opacity:0.9;}
+    .case-subtitle{font-size:15px;color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:3rem;font-weight:300;}
+    .case-meta{display:flex;flex-wrap:wrap;gap:0;}
+    .case-meta-item{display:flex;flex-direction:column;gap:5px;padding-right:28px;}
+    .case-meta-label{font-size:9px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.14em;}
+    .case-meta-value{font-size:13px;font-weight:500;color:var(--text);}
+    .case-meta-divider{width:1px;background:var(--border2);align-self:stretch;margin-right:28px;}
+    @media(max-width:768px){.case-hero{padding:50px 1.25rem 40px;}.case-meta{gap:1rem;}.case-meta-divider{display:none;}}
+    .preview-section{max-width:960px;margin:0 auto;padding:56px 1.5rem;}
+    .preview-frame{background:var(--bg2);border:1px solid var(--border2);overflow:hidden;}
+    .preview-bar{background:var(--bg3);padding:11px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+    .preview-dots{display:flex;gap:6px;}
+    .preview-dot{width:11px;height:11px;border-radius:50%;}
+    .dot-red{background:#ff5f57;}.dot-yellow{background:#ffbd2e;}.dot-green{background:#28ca41;}
+    .preview-url{flex:1;background:var(--bg);border:1px solid var(--border);padding:5px 12px;font-size:11px;color:var(--muted2);font-family:monospace;}
+    .preview-content{background:#0d100a;min-height:220px;display:flex;align-items:center;justify-content:center;}
+    .preview-placeholder{text-align:center;padding:48px;}
+    .preview-placeholder-emoji{font-size:56px;margin-bottom:14px;display:block;}
+    .preview-placeholder h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;}
+    .preview-placeholder p{color:var(--muted);font-size:13px;}
+    .preview-link{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:9px 20px;background:transparent;border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:700;text-decoration:none;transition:all .25s;font-family:'Syne',sans-serif;letter-spacing:0.06em;margin:8px 4px 0;}
+    .preview-link:hover{background:var(--accent);color:#080c10;}
+    .case-body{max-width:860px;margin:0 auto;padding:0 1.5rem 80px;}
+    .cs-section{margin-bottom:72px;}
+    .cs-section-num{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:8px;}
+    .cs-section-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin-bottom:16px;line-height:1.15;}
+    .cs-section-title span{color:var(--accent);}
+    .cs-text{font-size:15px;line-height:1.85;color:var(--muted);font-weight:300;margin-bottom:14px;}
+    .cs-text strong{color:var(--text);font-weight:500;}
+    .cs-card{background:var(--bg2);border:1px solid var(--border2);border-left:3px solid var(--teal);padding:20px 22px;margin-bottom:10px;}
+    .cs-card h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .cs-card p{font-size:13px;line-height:1.75;color:var(--muted);font-weight:300;}
+    .cs-divider{height:1px;background:var(--border);margin:56px 0;}
+    .problem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px;}
+    .problem-card{background:var(--bg2);border:1px solid var(--border2);border-left:3px solid rgba(255,214,0,0.5);padding:18px 20px;}
+    .problem-card-icon{font-size:22px;margin-bottom:8px;}
+    .problem-card h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .problem-card p{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;}
+    .personas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px;}
+    .persona-card{background:var(--bg2);border:1px solid var(--border2);overflow:hidden;}
+    .persona-header{padding:18px 22px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);}
+    .persona-header-1{background:linear-gradient(135deg,rgba(255,214,0,0.12),rgba(255,214,0,0.04));}
+    .persona-header-2{background:linear-gradient(135deg,rgba(96,165,250,0.15),rgba(96,165,250,0.05));}
+    .persona-header-3{background:linear-gradient(135deg,rgba(74,222,128,0.15),rgba(74,222,128,0.05));}
+    .persona-avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--text);font-family:'Syne',sans-serif;flex-shrink:0;}
+    .persona-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--text);}
+    .persona-role{font-size:11px;color:var(--muted);margin-top:2px;}
+    .persona-body{padding:18px 22px;}
+    .persona-row{display:flex;gap:8px;margin-bottom:12px;align-items:flex-start;}
+    .persona-row-label{font-size:9px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.12em;min-width:80px;margin-top:2px;font-family:'Syne',sans-serif;}
+    .persona-row-value{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;flex:1;}
+    .persona-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+    .persona-tag{padding:3px 8px;font-size:10px;font-weight:600;background:rgba(255,214,0,0.07);color:var(--accent);border:1px solid rgba(255,214,0,0.18);}
+    .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;}
+    .insight-card{background:var(--bg2);border:1px solid var(--border2);padding:20px;text-align:center;transition:border-color 0.25s,transform 0.25s;}
+    .insight-card:hover{border-color:rgba(255,214,0,0.25);transform:translateY(-2px);}
+    .insight-icon{font-size:26px;margin-bottom:8px;display:block;}
+    .insight-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .insight-text{font-size:11px;color:var(--muted);line-height:1.65;font-weight:300;}
+    .apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px;}
+    .app-card{background:var(--bg2);border:1px solid var(--border2);padding:20px 22px;}
+    .app-card-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+    .app-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+    .app-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);}
+    .app-screens{font-size:10px;color:var(--muted2);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+    .app-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .app-list li{font-size:12px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative;}
+    .app-list li::before{content:'›';position:absolute;left:0;color:var(--accent);}
+    .decisions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px;}
+    .decision-card{background:var(--bg2);border:1px solid var(--border2);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
+    .decision-num{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:rgba(255,255,255,0.06);line-height:1;flex-shrink:0;}
+    .decision-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;}
+    .decision-text{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;}
+    .ia-table{width:100%;border-collapse:collapse;border:1px solid var(--border2);margin-top:20px;}
+    .ia-table th{background:var(--bg3);color:var(--text);padding:11px 16px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-align:left;border-bottom:1px solid var(--border2);}
+    .ia-table td{padding:10px 16px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border);line-height:1.5;vertical-align:top;}
+    .ia-table tr:last-child td{border-bottom:none;}
+    .ia-table tr:hover td{background:rgba(255,255,255,0.02);}
+    .ia-tag{display:inline-block;padding:1px 7px;font-size:10px;font-weight:600;border:1px solid;margin:1px;}
+    .tag-y{background:rgba(255,214,0,0.08);color:#FFD600;border-color:rgba(255,214,0,0.2);}
+    .tag-g{background:rgba(74,222,128,0.08);color:#4ade80;border-color:rgba(74,222,128,0.2);}
+    .tag-b{background:rgba(96,165,250,0.08);color:#60a5fa;border-color:rgba(96,165,250,0.2);}
+    .tag-r{background:rgba(248,113,113,0.08);color:#f87171;border-color:rgba(248,113,113,0.2);}
+    .learnings-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+    .learnings-list li{display:flex;gap:14px;align-items:flex-start;background:var(--bg2);border:1px solid var(--border2);padding:16px 18px;font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;}
+    .learning-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;color:var(--teal);flex-shrink:0;margin-top:2px;}
+    .next-steps{background:var(--bg2);border:1px solid var(--border2);padding:48px;text-align:center;margin-top:20px;}
+    .next-steps h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-0.03em;}
+    .next-steps p{color:var(--muted);font-size:14px;margin-bottom:28px;font-weight:300;line-height:1.7;}
+    .next-steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px;}
+    .next-step-item{background:var(--bg3);border:1px solid var(--border2);padding:20px;text-align:left;}
+    .next-step-icon{font-size:22px;margin-bottom:8px;display:block;}
+    .next-step-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:5px;}
+    .next-step-text{font-size:11px;color:var(--muted);line-height:1.6;font-weight:300;}
+    .btn-view{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;background:transparent;border:1px solid var(--accent);color:var(--accent);font-size:12px;font-weight:700;text-decoration:none;transition:all .3s;font-family:'Syne',sans-serif;letter-spacing:0.06em;margin:0 6px;}
+    .btn-view:hover{background:var(--accent);color:#080c10;}
+    footer{padding:2rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:var(--muted2);flex-wrap:wrap;gap:1rem;}
+    .footer-links{display:flex;gap:1.5rem;}
+    .footer-links a{color:var(--muted2);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--teal);}
+    .btt{position:fixed;right:1.5rem;bottom:1.5rem;z-index:999;width:40px;height:40px;background:var(--accent);color:#080c10;border:none;cursor:pointer;font-size:18px;font-weight:700;display:none;align-items:center;justify-content:center;transition:transform 0.2s;}
+    .btt:hover{transform:translateY(-3px);}
+    .btt.visible{display:flex;}
+    @media(max-width:768px){
+      .case-body{padding:0 1rem 60px;}.preview-section{padding:36px 1rem;}
+      .problem-grid{grid-template-columns:1fr;}.personas-grid{grid-template-columns:1fr;}
+      .insights-grid{grid-template-columns:repeat(2,1fr);}.decisions-grid{grid-template-columns:1fr;}
+      .apps-grid{grid-template-columns:1fr;}.next-steps-grid{grid-template-columns:1fr;}.next-steps{padding:28px 20px;}
+    }
+    @media(max-width:480px){.insights-grid{grid-template-columns:1fr;}}
+    .fade-in{opacity:0;transform:translateY(18px);animation:fadeUp 0.5s ease forwards;}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+  </style>
+</head>
+<body>
+
+  <button class="btt" id="btt" aria-label="Back to top">↑</button>
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">SAMPANNA RAJ DHUNGEL</a>
+    <div class="topbar-nav">
+      <a href="index.html#about" class="topbar-link">About</a>
+      <a href="portfolio.html" class="topbar-link">Portfolio</a>
+      <a href="blog.html" class="topbar-link">Blog</a>
+      <a href="index.html#contact" class="topbar-link">Contact</a>
+      <a href="project.html?id=khana-app" class="btn-back">← Project Page</a>
+    </div>
+  </div>
+
+  <div class="case-hero fade-in">
+    <div class="hero-inner">
+      <div class="case-type">✦ UX Wireframe Case Study</div>
+      <h1 class="case-title">खाना</h1>
+      <div class="case-title-sub">App</div>
+      <p class="case-subtitle">A complete UX wireframe document for a Nepal-focused food delivery platform — 4 apps, 30+ screens, bilingual Nepali/English, NPR pricing, and integrations for eSewa, Khalti and FonePay.</p>
+      <div class="case-meta">
+        <div class="case-meta-item"><div class="case-meta-label">Project Type</div><div class="case-meta-value">UX Wireframing</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-value">UX Designer</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Tools</div><div class="case-meta-value">Figma · User Research</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Timeline</div><div class="case-meta-value">April 2026</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Screens</div><div class="case-meta-value">30+ Screens</div></div>
+        <div class="case-meta-divider"></div>
+        <div class="case-meta-item"><div class="case-meta-label">Apps</div><div class="case-meta-value">4 (Customer · Seller · Rider · Admin)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section fade-in">
+    <div class="preview-frame">
+      <div class="preview-bar">
+        <div class="preview-dots">
+          <div class="preview-dot dot-red"></div>
+          <div class="preview-dot dot-yellow"></div>
+          <div class="preview-dot dot-green"></div>
+        </div>
+        <div class="preview-url">खाना App — Wireframe Document · Kathmandu, Nepal · April 2026</div>
+      </div>
+      <div class="preview-content">
+        <div class="preview-placeholder">
+          <span class="preview-placeholder-emoji">📋</span>
+          <h3>खाना App — Complete Wireframe Document</h3>
+          <p>30+ Screens · 4 Apps · Bilingual · eSewa · Khalti · FonePay · NPR Pricing</p>
+          <a href="project.html?id=khana-app" class="preview-link">📄 View Full Wireframe PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-body">
+
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">01 — Overview</div>
+      <h2 class="cs-section-title">The <span>Challenge</span></h2>
+      <p class="cs-text">खाना (Khana) means "food" in Nepali. The challenge was straightforward: <strong>what does a food delivery app look like when it's built for Nepal from the ground up</strong> — not adapted from an international template? Every existing Nepal food delivery app — Foodmandu, Bhojdeals, Pathao Food — was designed primarily for urban India or Southeast Asia and localised for Nepal as an afterthought.</p>
+      <p class="cs-text">Before any visual design, I needed a <strong>complete UX blueprint</strong> documenting every screen, every flow, every edge case — for all four user roles. This wireframe document is that blueprint.</p>
+      <div class="problem-grid">
+        <div class="problem-card"><div class="problem-card-icon">🏗️</div><h4>No UX Blueprint Exists</h4><p>No comprehensive, Nepal-specific UX documentation existed for a multi-role food delivery platform covering all four apps simultaneously.</p></div>
+        <div class="problem-card"><div class="problem-card-icon">🌐</div><h4>Bilingual Gap</h4><p>Nepal's population is bilingual. No existing app fully supports Devanagari + Latin across all four user roles in a consistent, designed way.</p></div>
+        <div class="problem-card"><div class="problem-card-icon">💳</div><h4>Local Payment Blindspot</h4><p>eSewa, Khalti and FonePay are Nepal's primary payment methods — yet most food delivery apps treat them as secondary integrations rather than first-class flows.</p></div>
+        <div class="problem-card"><div class="problem-card-icon">🛵</div><h4>Rider UX Neglected</h4><p>Rider apps in Nepal are universally poor — slow accept flows, no earnings visibility, and no document verification built into onboarding.</p></div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">02 — User Research</div>
+      <h2 class="cs-section-title">Three <span>Personas</span></h2>
+      <p class="cs-text">I defined three primary personas representing the key human roles in the खाना ecosystem — customer, restaurant owner, and delivery rider. Each has fundamentally different goals, frustrations and contexts of use.</p>
+      <div class="personas-grid">
+        <div class="persona-card">
+          <div class="persona-header persona-header-1">
+            <div class="persona-avatar">PS</div>
+            <div><div class="persona-name">Priya Shrestha</div><div class="persona-role">22 · College Student · Kirtipur, Kathmandu</div></div>
+          </div>
+          <div class="persona-body">
+            <div class="persona-row"><div class="persona-row-label">Goals</div><div class="persona-row-value">Order food quickly between classes. Track delivery in real time. Use Khalti to pay without leaving the app.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Frustrations</div><div class="persona-row-value">Apps that switch to browser for payment. No Nepali language option. Unclear delivery ETAs.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Context</div><div class="persona-row-value">Orders 4-5 times per week. Primarily on mobile. Recommends food to friends via screenshot.</div></div>
+            <div class="persona-tags"><span class="persona-tag">Khalti user</span><span class="persona-tag">Bilingual</span><span class="persona-tag">Mobile-only</span><span class="persona-tag">Social sharer</span></div>
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-header persona-header-2">
+            <div class="persona-avatar">BT</div>
+            <div><div class="persona-name">Bikash Tamang</div><div class="persona-role">32 · Delivery Rider · Koteshwor, Kathmandu</div></div>
+          </div>
+          <div class="persona-body">
+            <div class="persona-row"><div class="persona-row-label">Goals</div><div class="persona-row-value">Accept orders quickly. Know his earnings at the end of each day. Complete document verification without visiting an office.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Frustrations</div><div class="persona-row-value">Accept timers that are too short to read. No earnings history. Having to submit documents in person.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Context</div><div class="persona-row-value">Works 8-10 hours daily. Checks earnings after every delivery. Uses older Android phone with small screen.</div></div>
+            <div class="persona-tags"><span class="persona-tag">Android user</span><span class="persona-tag">Earnings-focused</span><span class="persona-tag">Small screen</span><span class="persona-tag">Full-time rider</span></div>
+          </div>
+        </div>
+        <div class="persona-card" style="grid-column:1/-1;">
+          <div class="persona-header persona-header-3">
+            <div class="persona-avatar">RP</div>
+            <div><div class="persona-name">Ram Prasad Khadka</div><div class="persona-role">45 · Restaurant Owner · New Road, Kathmandu</div></div>
+          </div>
+          <div class="persona-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;">
+            <div>
+              <div class="persona-row"><div class="persona-row-label">Goals</div><div class="persona-row-value">See incoming orders as they arrive. Accept or reject with confidence. Check weekly revenue without calling anyone.</div></div>
+              <div class="persona-row"><div class="persona-row-label">Frustrations</div><div class="persona-row-value">Missing orders because the notification was silent. No way to temporarily pause orders during rush hour.</div></div>
+            </div>
+            <div>
+              <div class="persona-row"><div class="persona-row-label">Context</div><div class="persona-row-value">Manages 3 staff. Uses a shared tablet at the counter. Checks revenue once a week on Fridays.</div></div>
+              <div class="persona-tags"><span class="persona-tag">Tablet user</span><span class="persona-tag">Revenue-focused</span><span class="persona-tag">Needs simplicity</span><span class="persona-tag">Shared device</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">03 — UX Principles</div>
+      <h2 class="cs-section-title">What Shaped <span>Every Screen</span></h2>
+      <div class="insights-grid">
+        <div class="insight-card"><span class="insight-icon">🗺️</span><div class="insight-title">Map Every Flow First</div><div class="insight-text">No screen was designed until the full user journey for that role was mapped end-to-end. Structure before pixels.</div></div>
+        <div class="insight-card"><span class="insight-icon">🌐</span><div class="insight-title">Bilingual Everywhere</div><div class="insight-text">Every label, button, and screen name has a Nepali Devanagari equivalent. Not a translation — a first-class version.</div></div>
+        <div class="insight-card"><span class="insight-icon">💳</span><div class="insight-title">Payment as Primary Flow</div><div class="insight-text">eSewa, Khalti and FonePay are treated as primary checkout paths — not alternatives buried after a credit card form.</div></div>
+        <div class="insight-card"><span class="insight-icon">⏱️</span><div class="insight-title">Time-Critical UX</div><div class="insight-text">Rider accept/decline and seller order management are high-pressure moments. Designed for speed and clarity above all.</div></div>
+        <div class="insight-card"><span class="insight-icon">📱</span><div class="insight-title">Android-First Reality</div><div class="insight-text">Nepal's smartphone market is predominantly Android. Wireframes are designed for 360px width and older hardware.</div></div>
+        <div class="insight-card"><span class="insight-icon">🔌</span><div class="insight-title">Offline-Aware Design</div><div class="insight-text">Intermittent connectivity is reality in Nepal. Every screen accounts for loading, empty, and error states explicitly.</div></div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">04 — Information Architecture</div>
+      <h2 class="cs-section-title">30+ Screens, <span>4 Apps</span></h2>
+      <p class="cs-text">The wireframe document covers the complete information architecture of all four applications. Each screen is categorised by app and flow stage.</p>
+      <table class="ia-table">
+        <thead>
+          <tr><th>App</th><th>Flow</th><th>Key Screens</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="ia-tag tag-y">Customer</span></td>
+            <td>Onboarding</td>
+            <td>Splash · Language select · Phone / eSewa login · OTP · Permissions</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-y">Customer</span></td>
+            <td>Discovery</td>
+            <td>Home feed · Category browse · Restaurant detail · Menu · Search</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-y">Customer</span></td>
+            <td>Transaction</td>
+            <td>Cart · Address · Payment (eSewa / Khalti / FonePay / COD) · Order confirmation</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-y">Customer</span></td>
+            <td>Post-order</td>
+            <td>Live tracking with map · Delivery confirmation · Rating & review</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-g">Seller</span></td>
+            <td>Registration</td>
+            <td>4-step restaurant onboarding · Document upload · Menu builder · Bank details</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-g">Seller</span></td>
+            <td>Operations</td>
+            <td>Live order queue · Accept / reject · Order detail · Pause orders toggle</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-g">Seller</span></td>
+            <td>Analytics</td>
+            <td>Daily revenue · Weekly chart · Menu performance · Customer reviews</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-b">Rider</span></td>
+            <td>Onboarding</td>
+            <td>Document verification (licence, citizenship) · Bike registration · Approval status</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-b">Rider</span></td>
+            <td>Operations</td>
+            <td>Online / offline toggle · 15s accept timer · Pickup → en route → delivered flow</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-b">Rider</span></td>
+            <td>Earnings</td>
+            <td>Today's earnings · Trip history · Weekly summary · Withdrawal</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-r">Admin</span></td>
+            <td>Dashboard</td>
+            <td>Platform analytics · Revenue · Orders · Active riders · Restaurant map</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-r">Admin</span></td>
+            <td>Management</td>
+            <td>Restaurant approvals · Rider verification · Order monitor · Dispute resolution</td>
+          </tr>
+          <tr>
+            <td><span class="ia-tag tag-r">Admin</span></td>
+            <td>Finance</td>
+            <td>Payout processing · Commission reports · Payment gateway reconciliation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">05 — Key UX Decisions</div>
+      <h2 class="cs-section-title">Why I Designed It <span>This Way</span></h2>
+      <div class="decisions-grid">
+        <div class="decision-card"><div class="decision-num">01</div><div><div class="decision-title">15-Second Rider Timer</div><div class="decision-text">After studying Pathao's timer UX, 15 seconds was chosen: long enough for a rider to read the pickup location and distance, short enough to maintain platform delivery SLAs without degrading customer experience.</div></div></div>
+        <div class="decision-card"><div class="decision-num">02</div><div><div class="decision-title">4-Step Seller Registration</div><div class="decision-text">Breaking restaurant onboarding into 4 explicit steps (Basic Info → Menu → Documents → Bank Details) reduces abandonment. Each step feels completable. Users can save and return between steps.</div></div></div>
+        <div class="decision-card"><div class="decision-num">03</div><div><div class="decision-title">Language at First Launch</div><div class="decision-text">Language selection is the first screen — not a setting buried in a profile menu. For an app named खाना, Nepali must be available from the first tap, not discovered later.</div></div></div>
+        <div class="decision-card"><div class="decision-num">04</div><div><div class="decision-title">COD as a First-Class Option</div><div class="decision-text">Cash on Delivery is still the dominant payment method for food in Kathmandu. It sits alongside eSewa and Khalti — not below them. Removing the hierarchy removes the friction.</div></div></div>
+        <div class="decision-card"><div class="decision-num">05</div><div><div class="decision-title">Pause Orders Toggle for Sellers</div><div class="decision-text">During lunch and dinner rushes, restaurants get overwhelmed. A one-tap "Pause Orders" toggle — inspired by Grab Food's seller app — lets sellers manage capacity without going offline entirely.</div></div></div>
+        <div class="decision-card"><div class="decision-num">06</div><div><div class="decision-title">In-App Document Upload for Riders</div><div class="decision-text">Requiring riders to visit a physical office for document verification was the single biggest barrier to rider supply in Nepal. Full in-app photo upload at onboarding removes that barrier entirely.</div></div></div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <div class="cs-section fade-in">
+      <div class="cs-section-num">06 — Reflections</div>
+      <h2 class="cs-section-title">What I <span>Learned</span></h2>
+      <ul class="learnings-list">
+        <li><div class="learning-num">01</div><span><strong style="color:var(--text)">Wireframes are the hardest part of the design process</strong> — hi-fi visuals take skill, but UX architecture takes decisions. Every screen in this document required a choice about hierarchy, flow and user priority.</span></li>
+        <li><div class="learning-num">02</div><span><strong style="color:var(--text)">Designing for multiple roles simultaneously reveals conflicts</strong> — what's optimal for a seller (slower order confirmation for accuracy) directly conflicts with what's optimal for a customer (fast confirmation). Wireframes are where these conflicts surface and get resolved.</span></li>
+        <li><div class="learning-num">03</div><span><strong style="color:var(--text)">Nepal's payment ecosystem is richer than most designers assume</strong> — eSewa, Khalti, FonePay and IME Pay all have distinct user bases and transaction limits. Getting payment UX right requires researching each one specifically.</span></li>
+        <li><div class="learning-num">04</div><span><strong style="color:var(--text)">Wireframe documentation is a communication tool</strong> — this document exists not just for design but for developers, stakeholders and investors. Clarity and completeness matter as much as UX quality.</span></li>
+        <li><div class="learning-num">05</div><span><strong style="color:var(--text)">This project directly informed the Swaadd hi-fi design</strong> — the wireframe's structure, flow decisions and IA became the foundation for the hi-fi Swaadd screens. Wireframes first, pixels later — always.</span></li>
+      </ul>
+    </div>
+
+    <div class="next-steps fade-in">
+      <h3>What Comes Next</h3>
+      <p>The UX blueprint is complete. Here's what would follow moving from wireframe to live product.</p>
+      <div class="next-steps-grid">
+        <div class="next-step-item"><span class="next-step-icon">🎨</span><div class="next-step-title">Hi-Fidelity Design</div><div class="next-step-text">Apply a visual design system to these wireframes — colour, typography, imagery, motion. See the Swaadd case study for what that looks like.</div></div>
+        <div class="next-step-item"><span class="next-step-icon">🧪</span><div class="next-step-title">Usability Testing</div><div class="next-step-text">Test the wireframes with real users across all three primary personas — 5 participants per role, moderated sessions in Kathmandu.</div></div>
+        <div class="next-step-item"><span class="next-step-icon">💻</span><div class="next-step-title">Development</div><div class="next-step-text">React Native for mobile apps (single codebase for iOS + Android), Node.js backend, eSewa/Khalti SDK integration.</div></div>
+      </div>
+      <a href="project.html?id=khana-app" class="btn-view">📄 View Full Wireframe PDF</a>
+      <a href="swaadd-case-study.html" class="btn-view" style="border-color:var(--teal);color:var(--teal);" onmouseover="this.style.background='var(--teal)';this.style.color='#080c10'" onmouseout="this.style.background='';this.style.color='var(--teal)'">→ See the Hi-Fi Design (Swaadd)</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Sampanna Raj Dhungel</span>
+    <div class="footer-links">
+      <a href="portfolio.html">← All Projects</a>
+      <a href="swaadd-case-study.html">See also: Swaadd →</a>
+      <a href="index.html#contact">Hire Me</a>
+    </div>
+  </footer>
+
+  <script>
+    var btt = document.getElementById('btt');
+    window.addEventListener('scroll', function(){ btt.classList.toggle('visible', window.scrollY > 400); });
+    btt.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  </script>
+</body>
+</html>
