@@ -1322,3 +1322,176 @@ stage.addEventListener('wheel',function(e){
     el.classList.remove('revealed');
   });
 })();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 11 — KONAMI CODE EASTER EGG
+   ↑ ↑ ↓ ↓ ← → ← → B A
+   ══════════════════════════════════════════════════ */
+(function(){
+  var CODE = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  var pos = 0;
+
+  /* Inject styles */
+  var s = document.createElement('style');
+  s.textContent = [
+    '.konami-overlay{position:fixed;inset:0;z-index:999999;background:rgba(8,12,16,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s}',
+    '.konami-overlay.show{opacity:1;pointer-events:auto}',
+    '.konami-inner{text-align:center;padding:2rem;max-width:520px}',
+    '.konami-code{font-family:monospace;font-size:0.7rem;color:rgba(14,181,160,0.5);letter-spacing:0.2em;margin-bottom:1.5rem;text-transform:uppercase}',
+    '.konami-emoji{font-size:4rem;margin-bottom:1rem;display:block;animation:konamiBob 1.2s ease-in-out infinite}',
+    '@keyframes konamiBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}',
+    '.konami-title{font-family:\'Syne\',sans-serif;font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;color:#f0f4f8;letter-spacing:-0.03em;margin-bottom:0.75rem}',
+    '.konami-sub{font-size:0.9rem;color:#6b7c8f;line-height:1.7;margin-bottom:2rem;font-weight:300}',
+    '.konami-close{font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(14,181,160,0.35);color:#0EB5A0;background:none;padding:0.6rem 1.5rem;cursor:pointer;transition:background 0.2s,color 0.2s;font-family:\'Syne\',sans-serif}',
+    '.konami-close:hover{background:#0EB5A0;color:#080c10}',
+    '.konami-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}',
+  ].join('');
+  document.head.appendChild(s);
+
+  /* Build overlay */
+  var overlay = document.createElement('div');
+  overlay.className = 'konami-overlay';
+  overlay.innerHTML = [
+    '<div class="konami-stars" id="konamiStars"></div>',
+    '<div class="konami-inner">',
+      '<div class="konami-code">↑ ↑ ↓ ↓ ← → ← → B A — Unlocked</div>',
+      '<span class="konami-emoji">🎮</span>',
+      '<div class="konami-title">You found the easter egg.</div>',
+      '<p class="konami-sub">Not many people bother to type the Konami code on a portfolio site.<br>That makes you either a developer, a designer, or dangerously curious.<br><strong style="color:#f0f4f8">I\'d hire any of those.</strong></p>',
+      '<button class="konami-close" id="konamiClose">← Back to portfolio</button>',
+    '</div>',
+  ].join('');
+  document.body.appendChild(overlay);
+
+  /* Starfield */
+  var starsEl = document.getElementById('konamiStars');
+  for(var si = 0; si < 60; si++){
+    var star = document.createElement('div');
+    var size = Math.random() * 3 + 1;
+    star.style.cssText = 'position:absolute;border-radius:50%;background:#0EB5A0;width:'+size+'px;height:'+size+'px;'
+      +'left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;'
+      +'opacity:'+(Math.random()*0.4+0.1)+';'
+      +'animation:twinkle '+(2+Math.random()*3)+'s '+(Math.random()*2)+'s infinite alternate';
+    starsEl.appendChild(star);
+  }
+
+  document.getElementById('konamiClose').addEventListener('click', function(){
+    overlay.classList.remove('show');
+    pos = 0;
+  });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay){ overlay.classList.remove('show'); pos = 0; } });
+
+  document.addEventListener('keydown', function(e){
+    if(overlay.classList.contains('show') && e.key === 'Escape'){ overlay.classList.remove('show'); pos = 0; return; }
+    if(e.key === CODE[pos]){ pos++; } else { pos = (e.key === CODE[0]) ? 1 : 0; }
+    if(pos === CODE.length){ overlay.classList.add('show'); pos = 0; }
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 12 — TAB TITLE TAUNT
+   Changes title when user switches away
+   ══════════════════════════════════════════════════ */
+(function(){
+  var original = document.title;
+  var taunts = [
+    '👋 Miss me already?',
+    '🎨 Still designing here…',
+    '✦ Come back!',
+    '📐 Work in progress…',
+  ];
+  var ti = 0;
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){
+      document.title = taunts[ti % taunts.length];
+      ti++;
+    } else {
+      document.title = original;
+    }
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 13 — COPY TOAST
+   Custom message when user copies text from page
+   ══════════════════════════════════════════════════ */
+(function(){
+  var s = document.createElement('style');
+  s.textContent = '.copy-toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(12px);background:#0d1117;border:1px solid rgba(14,181,160,0.35);color:#f0f4f8;font-size:0.72rem;font-weight:600;letter-spacing:0.06em;padding:0.55rem 1.25rem;z-index:99997;opacity:0;transition:opacity 0.25s,transform 0.25s;pointer-events:none;white-space:nowrap;font-family:\'DM Sans\',sans-serif}.copy-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}';
+  document.head.appendChild(s);
+
+  var toast = document.createElement('div');
+  toast.className = 'copy-toast';
+  document.body.appendChild(toast);
+
+  var hideTimer;
+  var msgs = [
+    '✦ Copied — don\'t forget to credit me 😄',
+    '📋 Got it — inspiration shared responsibly?',
+    '✦ Copied — ideas spread, credit sticks.',
+    '📐 Copied — use it well!',
+  ];
+  var mi = 0;
+
+  document.addEventListener('copy', function(){
+    clearTimeout(hideTimer);
+    toast.textContent = msgs[mi % msgs.length];
+    mi++;
+    toast.classList.add('show');
+    hideTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2800);
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 14 — CUSTOM RIGHT-CLICK CONTEXT MENU
+   ══════════════════════════════════════════════════ */
+(function(){
+  var s = document.createElement('style');
+  s.textContent = [
+    '.ctx-menu{position:fixed;z-index:999998;background:#0d1117;border:1px solid rgba(14,181,160,0.2);min-width:200px;padding:0.35rem 0;opacity:0;transform:scale(0.95);transform-origin:top left;transition:opacity 0.15s,transform 0.15s;pointer-events:none;box-shadow:0 12px 40px rgba(0,0,0,0.5)}',
+    '.ctx-menu.open{opacity:1;transform:scale(1);pointer-events:auto}',
+    '.ctx-header{padding:0.45rem 1rem 0.35rem;font-size:0.6rem;font-weight:700;color:rgba(14,181,160,0.6);letter-spacing:0.12em;text-transform:uppercase;font-family:\'Syne\',sans-serif;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:0.25rem}',
+    '.ctx-item{display:flex;align-items:center;gap:0.65rem;padding:0.45rem 1rem;font-size:0.78rem;color:#9ca3af;cursor:pointer;transition:background 0.12s,color 0.12s;text-decoration:none;font-family:\'DM Sans\',sans-serif}',
+    '.ctx-item:hover{background:rgba(14,181,160,0.08);color:#f0f4f8}',
+    '.ctx-icon{font-size:0.9rem;width:1.1rem;text-align:center;flex-shrink:0}',
+    '.ctx-sep{height:1px;background:rgba(255,255,255,0.06);margin:0.25rem 0}',
+  ].join('');
+  document.head.appendChild(s);
+
+  var menu = document.createElement('div');
+  menu.className = 'ctx-menu';
+  menu.innerHTML = [
+    '<div class="ctx-header">Sampanna Raj Dhungel</div>',
+    '<a class="ctx-item" href="index.html#contact"><span class="ctx-icon">✉</span>Hire me</a>',
+    '<a class="ctx-item" href="portfolio.html"><span class="ctx-icon">◼</span>View portfolio</a>',
+    '<a class="ctx-item" href="assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download><span class="ctx-icon">↓</span>Download résumé</a>',
+    '<div class="ctx-sep"></div>',
+    '<a class="ctx-item" href="https://www.linkedin.com/in/dsampanna/" target="_blank" rel="noopener"><span class="ctx-icon">in</span>LinkedIn</a>',
+    '<a class="ctx-item" href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener"><span class="ctx-icon">ig</span>Instagram</a>',
+    '<div class="ctx-sep"></div>',
+    '<div class="ctx-item" id="ctxClose"><span class="ctx-icon">✕</span>Close menu</div>',
+  ].join('');
+  document.body.appendChild(menu);
+
+  function show(x, y){
+    menu.style.left = Math.min(x, window.innerWidth - 210) + 'px';
+    menu.style.top  = Math.min(y, window.innerHeight - menu.offsetHeight - 10) + 'px';
+    menu.classList.add('open');
+  }
+  function hide(){ menu.classList.remove('open'); }
+
+  document.addEventListener('contextmenu', function(e){
+    e.preventDefault();
+    show(e.clientX, e.clientY);
+  });
+  document.addEventListener('click', function(e){
+    if(!menu.contains(e.target)) hide();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hide(); });
+  document.getElementById('ctxClose').addEventListener('click', hide);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', hide); });
+})();
