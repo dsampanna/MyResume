@@ -1189,6 +1189,8 @@ stage.addEventListener('wheel',function(e){
     if(card.querySelector('.palette-dots')) return;
     var img = card.querySelector('.pc-card-img');
     if(!img) return;
+    /* Skip SVGs — canvas getImageData is unreliable on SVG sources */
+    if(img.src && img.src.toLowerCase().indexOf('.svg') !== -1) return;
     var inner = card.querySelector('.pc-card-inner');
     if(!inner) return;
     var dotsWrap = document.createElement('div');
@@ -1213,11 +1215,7 @@ stage.addEventListener('wheel',function(e){
     else img.addEventListener('load', draw);
   }
 
-  /* Watch for cards being added (shuffle adds them on load) */
-  var observer = new MutationObserver(function(){
-    track.querySelectorAll('.pc-card').forEach(attachPalette);
-  });
-  observer.observe(track, {childList: true, subtree: true});
+  /* Run once after cards are built — no MutationObserver needed */
   track.querySelectorAll('.pc-card').forEach(attachPalette);
 })();
 
