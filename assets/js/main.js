@@ -1174,16 +1174,12 @@ stage.addEventListener('wheel',function(e){
       cx.drawImage(img, 0, 0, 48, 48);
       var data = cx.getImageData(0, 0, 48, 48).data;
       var total = 48 * 48;
-      var step = Math.floor(total / n);
       var cols = [];
-      for(var i = 0; i < n; i++){
-        var idx = (i * step) * 4;
-        /* Skip near-black or near-white pixels */
+      /* Linear scan — no i-- retry to prevent infinite loops on dark/bright images */
+      for(var idx = 0; idx < data.length && cols.length < n; idx += 4){
         var r = data[idx], g = data[idx+1], b = data[idx+2];
         var lum = 0.299*r + 0.587*g + 0.114*b;
-        if(lum < 15 || lum > 240) { i--; step = Math.floor(total / (n * 2)); if(step < 1) step = 1; }
-        else cols.push([r, g, b]);
-        if(cols.length >= n) break;
+        if(lum >= 15 && lum <= 240) cols.push([r, g, b]);
       }
       return cols;
     } catch(err){ return []; }
