@@ -96,10 +96,17 @@ a{text-decoration:none;color:inherit}
 .more-card-title{font-size:0.85rem;font-weight:700;color:var(--text);font-family:var(--display);line-height:1.4}
 
 /* FOOTER */
-footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
-.f-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(14,181,160,0.4),transparent)}
+.f-copy{font-size:0.73rem}
+.f-updated{font-size:0.68rem;color:var(--muted2)}
+.f-links{display:flex;gap:1.75rem;flex-wrap:wrap;align-items:center}
 .f-links a{color:var(--muted);transition:color 0.2s}
 .f-links a:hover{color:var(--teal)}
+.f-resume{border:1px solid rgba(14,181,160,0.35);padding:0.3rem 0.75rem;color:var(--teal)!important;font-weight:600;font-size:0.7rem;letter-spacing:0.04em;transition:background 0.2s!important}
+.f-resume:hover{background:rgba(14,181,160,0.12)!important}
+.f-links-sep{width:1px;height:14px;background:var(--border2)}
+.ink-msg{width:100%;text-align:center;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em;padding-top:0.5rem;opacity:0.6}
 
 /* BACK TO TOP */
 .btt{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:40px;height:40px;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;visibility:hidden;transition:all 0.3s;cursor:pointer;border:none}
@@ -128,6 +135,12 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
   footer{padding:1.25rem}
 }
 </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa--Ow_sosIwgdTQjoqMuHA1.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
@@ -234,15 +247,64 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
   <div class="pull-quote">"Design is not just what it looks like and feels like. Design is how it works." — Steve Jobs</div>
 
+  <h2>Color & Typography — The Foundation of Every System</h2>
+
+  <p>These two elements account for more than 80% of the visual impression a brand makes — and they're the most mishandled by amateur designers.</p>
+
+  <h3>Color</h3>
+  <p>I never choose brand colors based on aesthetics alone. Color carries psychological weight. <strong>Deep green</strong> communicates trust, nature and health — right for Griham Organic's artisan food brand. <strong>Warm red</strong> signals appetite, energy and urgency — exactly why I used it for Swaadd's food delivery app. <strong>Cool blues and teals</strong> suggest professionalism and calm — suitable for finance, tech and healthcare brands.</p>
+
+  <p>My palette process: I start with one hero color that captures the brand's core emotion, then build a supporting palette of 2–3 colors that complement it. I always check contrast ratios against WCAG AA standards, because a beautiful palette that fails accessibility is a liability, not an asset. I also test every color combination in both print (CMYK) and screen (RGB) to avoid nasty surprises.</p>
+
+  <h3>Typography</h3>
+  <p>Two typefaces. Maximum three. That's the rule. A display font for headlines — something with personality — and a highly readable body font for everything else. I almost always pair a geometric or humanist sans-serif with a secondary serif or display face for contrast. Fonts I return to regularly: <strong>Syne</strong> for bold, modern display; <strong>DM Sans</strong> for clean, approachable body copy; <strong>Playfair Display</strong> when a brand needs traditional warmth. For Nepali-English bilingual brands, <strong>Noto Sans Devanagari</strong> is essential — it renders Devanagari script at the same weight and optical size as most Latin fonts.</p>
+
+  <h2>The Brand Brief — 10 Questions I Ask Every Client</h2>
+
+  <p>No brief, no project. I've learned this the hard way. Before a single pixel is moved, I need to understand the business through a structured conversation. Here are the ten questions I ask every client:</p>
+
+  <ol>
+    <li><strong>Describe your business in one sentence.</strong> If they can't, we have a positioning problem to solve first.</li>
+    <li><strong>Who is your ideal customer?</strong> Age, location, income, values, what they care about.</li>
+    <li><strong>What three words should people associate with your brand?</strong> Reliable. Bold. Playful. Pick three, stick to them.</li>
+    <li><strong>Who are your main competitors?</strong> What do you like and dislike about how they present themselves?</li>
+    <li><strong>What brands do you admire — outside your industry?</strong> This reveals taste and aspiration far better than industry references.</li>
+    <li><strong>Where will this brand appear?</strong> Online only? Physical packaging? Storefronts? Vehicles? Each medium has different design requirements.</li>
+    <li><strong>What's the one thing you want people to feel when they first see your brand?</strong></li>
+    <li><strong>What is your business doing in five years?</strong> A brand should scale — it shouldn't need a redesign every two years.</li>
+    <li><strong>Are there any colors, styles or visual references you absolutely do not want?</strong> Understanding the "no" is as important as the "yes."</li>
+    <li><strong>What is your deadline and budget?</strong> Always last, but always asked.</li>
+  </ol>
+
+  <p>The answers to these questions become the brand brief — a document I share back with the client before any design begins. Getting their sign-off on the brief means we're aligned on direction before any creative work starts. This single step eliminates 90% of revision cycles.</p>
+
   <h2>Working with Clients in Nepal</h2>
 
-  <p>One thing I've learned from doing brand identity work in Nepal specifically — many clients here are experiencing professional branding for the first time. This means education is a big part of my job. I spend time helping clients understand why certain decisions matter, what makes a strong brand and how to protect and use their identity correctly.</p>
+  <p>One thing I've learned from doing brand identity work in Nepal specifically: many clients here are experiencing professional branding for the first time. A restaurant owner in Bhaktapur, an NGO in Lalitpur, a tech startup in Thamel — they often arrive with a vague sense of "I need a logo" but haven't thought about brand positioning, tone of voice or visual consistency. <strong>Education is a large part of my job.</strong></p>
 
-  <p>This isn't a burden — it's actually one of the most rewarding parts of the work. Watching a small business owner see their brand come to life for the first time and understand its potential is genuinely one of the best feelings in this industry.</p>
+  <p>I've worked on brand identities for food businesses, education institutes, travel companies and tech startups across Nepal. A few things I've noticed: Nepali consumers respond strongly to trust signals — established brands, local references, and human faces. Color preferences lean warm. And bilingual presentation (Nepali + English) is increasingly expected, especially for consumer brands trying to reach both urban and semi-urban audiences.</p>
+
+  <p>For international clients — and I've worked with clients in the US, UK, Australia and the Gulf — the process is identical but the briefing requires more cultural context in the other direction. I make sure my work is globally readable while never losing specificity. Generic is the enemy of great branding everywhere.</p>
+
+  <p>Watching a small business owner in Bhaktapur see their brand come to life for the first time — a brand that finally looks as professional as their product deserves — remains one of the most genuinely satisfying moments of this work.</p>
+
+  <h2>Protecting Your Brand — The Practical Stuff</h2>
+
+  <p>A brand identity you can't protect is a liability. A few practical points I always cover with clients:</p>
+
+  <ul>
+    <li><strong>Register your business name</strong> with the relevant authority before finalizing brand assets. Changing a name post-launch is painful and expensive.</li>
+    <li><strong>Own your files.</strong> Always ask for the master source files (AI, EPS, Figma). Never be dependent on a designer for basic asset changes.</li>
+    <li><strong>Document your brand guidelines</strong> and share them with anyone who will ever apply the brand — printers, social media managers, web developers.</li>
+    <li><strong>Be consistent.</strong> A brand that looks different across its website, its Facebook page and its business card is not a brand — it's visual noise.</li>
+    <li><strong>Audit annually.</strong> Markets change. Audiences evolve. A brand that felt fresh in 2020 might need a refinement by 2025 — not a full redesign, just a tune-up.</li>
+  </ul>
 
   <h2>Ready to Build Your Brand?</h2>
 
-  <p>If you're a startup or established business looking to build or refresh your brand identity, I'd love to talk. Whether you're based in Nepal or anywhere else in the world — I work remotely and bring the same level of care and strategy to every project.</p>
+  <p>If you're a startup or established business looking to build or refresh your brand identity, I'd love to talk. Whether you're based in Nepal or anywhere else in the world — I work remotely and bring the same level of strategic care to every project, regardless of size.</p>
+
+  <p>Brand identity projects typically take 3–6 weeks from brief to final delivery, depending on scope. Get in touch and we'll figure out what's right for you.</p>
 
   <div class="author-box">
     <div class="author-avatar">SR</div>
@@ -263,22 +325,35 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
         <div class="more-card-tag">Sound Design</div>
         <div class="more-card-title">Sound Design for Video — A Beginner's Guide</div>
       </a>
+      <a href="blog-ux-process.html" class="more-card">
+        <div class="more-card-tag">UX Design</div>
+        <div class="more-card-title">My UX Design Process — From Research to Final Handoff</div>
+      </a>
+      <a href="blog-pricing.html" class="more-card">
+        <div class="more-card-tag">Business</div>
+        <div class="more-card-title">How I Price My Design Work — The Honest Guide</div>
+      </a>
+      <a href="blog-3d-animation.html" class="more-card">
+        <div class="more-card-tag">3D & Motion</div>
+        <div class="more-card-title">Getting Started with 3D Animation — Tools, Workflow &amp; Advice</div>
+      </a>
     </div>
   </div>
 
 </div>
 
 <footer>
-  <div style="display:flex;flex-direction:column;gap:0.2rem">
-    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
-    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
-  </div>
+  <span class="f-copy">© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+  <span class="f-updated">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
   <div class="f-links">
+    <a href="assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download class="f-resume">Resume ↓</a>
+    <span class="f-links-sep"></span>
     <a href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="https://www.linkedin.com/in/dsampanna/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://www.facebook.com/dsampanna" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="https://x.com/dsampanna" target="_blank" rel="noopener noreferrer">X</a>
   </div>
+  <div class="ink-msg" aria-hidden="true">✦ Made with intention · Fueled by curiosity ✦</div>
 </footer>
 <button class="btt" id="btt">↑</button>
 <script>
@@ -301,6 +376,7 @@ document.getElementById('btt').addEventListener('click',function(){window.scroll
   document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
 })();
 </script>
+<script src="assets/js/shared.js"></script>
 <script src="assets/js/cursor-trail.js"></script>
 <script src="assets/js/scramble.js"></script>
 <script src="assets/js/scroll-reveal.js"></script>

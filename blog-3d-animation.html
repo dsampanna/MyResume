@@ -81,10 +81,17 @@ a{text-decoration:none;color:inherit}
 .more-card:hover{border-color:rgba(14,181,160,0.35);transform:translateY(-2px)}
 .more-card-tag{font-size:0.58rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem}
 .more-card-title{font-size:0.85rem;font-weight:700;color:var(--text);font-family:var(--display);line-height:1.4}
-footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
-.f-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(14,181,160,0.4),transparent)}
+.f-copy{font-size:0.73rem}
+.f-updated{font-size:0.68rem;color:var(--muted2)}
+.f-links{display:flex;gap:1.75rem;flex-wrap:wrap;align-items:center}
 .f-links a{color:var(--muted);transition:color 0.2s}
 .f-links a:hover{color:var(--teal)}
+.f-resume{border:1px solid rgba(14,181,160,0.35);padding:0.3rem 0.75rem;color:var(--teal)!important;font-weight:600;font-size:0.7rem;letter-spacing:0.04em;transition:background 0.2s!important}
+.f-resume:hover{background:rgba(14,181,160,0.12)!important}
+.f-links-sep{width:1px;height:14px;background:var(--border2)}
+.ink-msg{width:100%;text-align:center;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em;padding-top:0.5rem;opacity:0.6}
 .btt{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:40px;height:40px;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;visibility:hidden;transition:all 0.3s;cursor:pointer;border:none}
 .btt.show{opacity:1;visibility:visible}
 .btt:hover{background:var(--cyan)}
@@ -99,6 +106,12 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){.article-hero{padding:3rem 1.25rem 2.5rem}.article-body{padding:2.5rem 1.25rem 4rem}.more-grid{grid-template-columns:1fr}.author-box{flex-direction:column}.step-card{flex-direction:column;gap:0.75rem}.tools-grid{grid-template-columns:1fr 1fr}footer{padding:1.25rem}}
 </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa--Ow_sosIwgdTQjoqMuHA1.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
@@ -235,15 +248,67 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
   <div class="tip-box"><strong>💡 Most important tip:</strong> Study real-world movement obsessively. Film yourself walking, a cloth blowing in wind, water pouring into a glass. 3D animation is the art of convincing an audience that something digital is real — and you can only do that if you deeply understand how real things actually move.</div>
 
+  <h2>Render Times — The Honest Reality</h2>
+
+  <p>Render time is the part of 3D that surprises clients and beginners most. Nothing happens instantly in photorealistic 3D — you're asking a computer to simulate light physics for thousands of frames. Here's a rough guide to what you can expect based on scene complexity:</p>
+
+  <ul>
+    <li><strong>Simple motion graphics / stylised 3D</strong> (Eevee renderer, minimal geometry): 5–30 seconds per frame. A 150-frame (5 second) sequence: 15 min – 1.5 hrs.</li>
+    <li><strong>Product animation</strong> (photorealistic surface, HDRI lighting, Cycles renderer): 3–15 minutes per frame. A 10-second sequence at 30fps: 15–75 hours of rendering.</li>
+    <li><strong>Complex character animation</strong> (fur, subsurface scattering, volumetric effects): 20–90+ minutes per frame. Feature film frames can take hours each.</li>
+    <li><strong>Architectural visualisation</strong> (interior scenes with global illumination): 30 minutes – 4 hours per frame depending on glass, reflections and sample count.</li>
+  </ul>
+
+  <p>This is why I always discuss render time during scoping. A client who expects a photorealistic 30-second product animation in 3 days needs to understand that their laptop can physically not render it in time. The options are: use cloud rendering (AWS, Google Cloud, or dedicated services like RebusFarm or GarageFarm), reduce quality settings, or extend the timeline.</p>
+
+  <h2>Hardware — What You Actually Need</h2>
+
+  <p>Hardware is a constant conversation in 3D work, especially in Nepal where importing professional equipment is expensive. Here's what I've learned about what actually matters:</p>
+
+  <h3>CPU</h3>
+  <p>For CPU rendering (Cycles, Arnold): more cores = faster renders. An AMD Ryzen 9 7900X or Intel i9-13900K gives solid results. My current machine uses a Ryzen 7 5800X — not top tier but very capable for my project types. For GPU rendering, the CPU becomes less critical — you mainly need it not to bottleneck the GPU.</p>
+
+  <h3>GPU</h3>
+  <p>GPU rendering (Cycles with CUDA/OptiX on NVIDIA, or Metal on Apple Silicon) is typically 3–10× faster than CPU for equivalent hardware investment. An NVIDIA RTX 3080 or 4080 renders dramatically faster than even high-end CPUs. VRAM matters — 12GB+ for complex scenes with high-res textures. For 3D work in Nepal, the GPU is the most impactful upgrade you can make.</p>
+
+  <h3>RAM</h3>
+  <p>32GB is comfortable for most 3D projects. 64GB for complex simulations, high-poly character scenes or large architectural projects. RAM is relatively inexpensive — don't skimp here. Running out of RAM mid-render causes crashes and lost time.</p>
+
+  <h3>Storage</h3>
+  <p>NVMe SSD for your OS and active projects. Render outputs eat disk space fast — a 30-second EXR sequence at 4K can be 20–40GB. Keep at least 1TB of fast storage available for active projects plus a separate drive for archives. Power outages in Nepal are real — an UPS is not optional for render machines.</p>
+
+  <div class="tip-box"><strong>💡 Nepal-specific note:</strong> Load shedding and voltage fluctuations can damage hardware and corrupt renders mid-frame. A good UPS (at least 1500VA) with voltage regulation is essential for any serious 3D work here. I've lost hours of rendered frames to unexpected power cuts — now my machine runs on UPS without exception.</div>
+
+  <h2>3D Animation in Nepal's Market</h2>
+
+  <p>The 3D animation and motion graphics market in Nepal is genuinely nascent — which means both challenge and opportunity. Most local businesses haven't yet budgeted for or experienced professional 3D work. But pockets of real demand exist and are growing.</p>
+
+  <p><strong>Tourism and hospitality</strong> is the strongest sector. International travel companies, heritage tourism operators, and hotel groups occasionally commission 3D walkthroughs, architectural visualisations and promotional animations. The challenge: these clients often compare prices to Indian or international studios. The opportunity: you can offer fast turnaround, direct communication, and Nepal-specific cultural authenticity that foreign studios can't match.</p>
+
+  <p><strong>Product and brand animation</strong> is growing with the rise of e-commerce in Nepal. FMCG brands, electronics retailers, and cosmetics companies increasingly want product showcase animations for digital ads. These are some of the most financially accessible 3D projects — simpler scenes, shorter durations, clear deliverables.</p>
+
+  <p><strong>NGO and development sector</strong> occasionally commissions animated explainer content — health campaigns, government public awareness videos, educational content. These clients often have international funding and realistic budgets for quality work.</p>
+
+  <p>My honest assessment: building a 3D animation business focused exclusively on the Nepal local market is challenging right now. The better strategy is treating 3D as a high-value skill for international clients while using it selectively for premium local projects — which is what I do.</p>
+
   <h2>How Long Does a 3D Animation Project Take?</h2>
 
   <p>It depends enormously on complexity. A simple 15-second product animation can be done in 3–5 days. A 30-second character animation with lip sync and complex environments can take 3–6 weeks. Render time alone for a photorealistic scene can be 2–8 hours per frame.</p>
 
-  <p>This is why clear scope and realistic timelines matter so much on 3D projects. I always build in buffer time for technical problems — because they will happen.</p>
+  <p>This is why clear scope and realistic timelines matter so much on 3D projects. I always build in buffer time for technical problems — because they will happen. A good rule of thumb: whatever render time you estimate, double it. Unexpected iterations, re-renders for small lighting adjustments, and hardware issues are the norm, not the exception.</p>
 
   <h2>What I'm Still Learning</h2>
 
-  <p>Photorealistic rendering, advanced VFX compositing and character rigging for film-quality animation are areas I'm actively deepening. 3D is a craft with no ceiling — there is always something more complex, more realistic, more expressive to chase. That's what makes it endlessly fascinating.</p>
+  <p>3D is a craft with no ceiling. After years of working in it, I'm still actively deepening several areas:</p>
+
+  <ul>
+    <li><strong>Photorealistic rendering and lookdev</strong> — The gap between "looks okay" and "looks real" in 3D is enormous, and closing it is a continuous study in how light, material, and environment actually behave. I'm currently working through VFX lighting courses from CGMA and studying breakdowns from studios like ILM and Framestore.</li>
+    <li><strong>Advanced character rigging</strong> — Facial rigs, corrective shapes, muscle simulation. Film-quality character rigs are some of the most technical work in 3D and I want to be able to build them at that standard.</li>
+    <li><strong>Simulation</strong> — Cloth, fluid, rigid body destruction. Blender's simulation tools (Mantaflow for fluids, Cloth Sim) are powerful but require deep understanding of the underlying physics to produce believable results.</li>
+    <li><strong>Real-time 3D</strong> — Unreal Engine 5 for architectural visualisation and interactive experiences. Real-time rendering is transforming how 3D content is produced and delivered — Lumen and Nanite have genuinely changed what's possible in real time.</li>
+  </ul>
+
+  <p>What I've learned from years in 3D: the most important skill is not mastery of any one tool. It's developing an eye — for movement, light, texture, weight. The software changes. The eye is what you carry everywhere.</p>
 
   <div class="author-box">
     <div class="author-avatar">SR</div>
@@ -265,12 +330,16 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
         <div class="more-card-title">My UI/UX Design Process — From Brief to Final Prototype</div>
       </a>
       <a href="blog-pricing.html" class="more-card">
-        <div class="more-card-tag">Freelancing</div>
+        <div class="more-card-tag">Business</div>
         <div class="more-card-title">How I Price My Freelance Design Projects</div>
       </a>
       <a href="blog-brand-identity.html" class="more-card">
         <div class="more-card-tag">Branding</div>
-        <div class="more-card-title">Building a Brand Identity from Scratch</div>
+        <div class="more-card-title">Building a Brand Identity from Scratch — A Designer's Complete Guide</div>
+      </a>
+      <a href="blog-freelancing-nepal.html" class="more-card">
+        <div class="more-card-tag">Freelancing</div>
+        <div class="more-card-title">Freelancing as a Designer in Nepal — The Real Story</div>
       </a>
     </div>
   </div>
@@ -278,16 +347,17 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 </div>
 
 <footer>
-  <div style="display:flex;flex-direction:column;gap:0.2rem">
-    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
-    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
-  </div>
+  <span class="f-copy">© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+  <span class="f-updated">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
   <div class="f-links">
+    <a href="assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download class="f-resume">Resume ↓</a>
+    <span class="f-links-sep"></span>
     <a href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="https://www.linkedin.com/in/dsampanna/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://www.facebook.com/dsampanna" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="https://x.com/dsampanna" target="_blank" rel="noopener noreferrer">X</a>
   </div>
+  <div class="ink-msg" aria-hidden="true">✦ Made with intention · Fueled by curiosity ✦</div>
 </footer>
 <button class="btt" id="btt">↑</button>
 <script>
@@ -309,6 +379,7 @@ document.getElementById('btt').addEventListener('click',function(){window.scroll
   document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
 })();
 </script>
+<script src="assets/js/shared.js"></script>
 <script src="assets/js/cursor-trail.js"></script>
 <script src="assets/js/scramble.js"></script>
 <script src="assets/js/scroll-reveal.js"></script>

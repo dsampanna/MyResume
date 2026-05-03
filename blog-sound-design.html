@@ -88,6 +88,17 @@ a{text-decoration:none;color:inherit}
 .level-paid{background:rgba(37,99,235,0.1);color:#60a5fa;border:1px solid rgba(37,99,235,0.2)}
 .tool-desc{font-size:0.82rem;color:var(--muted);line-height:1.65}
 
+/* STEP CARDS */
+.step-card{background:var(--bg3);border:1px solid var(--border2);padding:1.5rem;margin-bottom:1rem;display:flex;gap:1.25rem;align-items:flex-start;transition:border-color 0.2s}
+.step-card:hover{border-color:rgba(14,181,160,0.3)}
+.step-num{font-family:var(--display);font-size:2rem;font-weight:800;color:rgba(14,181,160,0.25);line-height:1;flex-shrink:0;width:44px}
+.step-title{font-family:var(--display);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
+.step-text{font-size:0.84rem;color:var(--muted);line-height:1.7}
+
+/* HIGHLIGHT BOX */
+.highlight-box{background:rgba(14,181,160,0.05);border:1px solid var(--border);padding:1.25rem 1.5rem;margin:1.5rem 0}
+.highlight-box p{margin-bottom:0;color:var(--muted2)}
+
 /* AUTHOR BOX */
 .author-box{background:var(--bg3);border:1px solid var(--border);padding:2rem;display:flex;gap:1.25rem;align-items:center;margin-top:3.5rem}
 .author-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1rem;font-weight:800;color:var(--bg);flex-shrink:0}
@@ -106,10 +117,17 @@ a{text-decoration:none;color:inherit}
 .more-card-title{font-size:0.85rem;font-weight:700;color:var(--text);font-family:var(--display);line-height:1.4}
 
 /* FOOTER */
-footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
-.f-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(14,181,160,0.4),transparent)}
+.f-copy{font-size:0.73rem}
+.f-updated{font-size:0.68rem;color:var(--muted2)}
+.f-links{display:flex;gap:1.75rem;flex-wrap:wrap;align-items:center}
 .f-links a{color:var(--muted);transition:color 0.2s}
 .f-links a:hover{color:var(--teal)}
+.f-resume{border:1px solid rgba(14,181,160,0.35);padding:0.3rem 0.75rem;color:var(--teal)!important;font-weight:600;font-size:0.7rem;letter-spacing:0.04em;transition:background 0.2s!important}
+.f-resume:hover{background:rgba(14,181,160,0.12)!important}
+.f-links-sep{width:1px;height:14px;background:var(--border2)}
+.ink-msg{width:100%;text-align:center;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em;padding-top:0.5rem;opacity:0.6}
 
 /* BACK TO TOP */
 .btt{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:40px;height:40px;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;visibility:hidden;transition:all 0.3s;cursor:pointer;border:none}
@@ -138,6 +156,12 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
   footer{padding:1.25rem}
 }
 </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa--Ow_sosIwgdTQjoqMuHA1.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
@@ -246,6 +270,82 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
     <li><strong>Zapsplat</strong> — Free account gives access to thousands of professional sound effects.</li>
   </ul>
 
+  <h2>Mixing Levels — The Numbers That Matter</h2>
+
+  <p>Most beginners have no idea what their audio should actually measure. They go by feel — which leads to videos that are too quiet on speakers, or painfully loud on mobile. Professional mixing uses loudness targets. Here's what to aim for:</p>
+
+  <ul>
+    <li><strong>Dialogue/voiceover:</strong> Peaks should sit around <strong>–6 dB</strong>, average (LUFS) around –18 to –20 LUFS. This gives you headroom and keeps speech clear.</li>
+    <li><strong>Music bed under dialogue:</strong> Should sit roughly <strong>–20 to –25 dB below dialogue</strong>. If you can't understand every word clearly with music playing, the music is too loud.</li>
+    <li><strong>Sound effects:</strong> Vary by type. Subtle UI sounds: –20 to –30 dB. Impactful hits: can peak at –6 to –3 dB for emphasis.</li>
+    <li><strong>Final mix output for YouTube/social media:</strong> Aim for <strong>–14 LUFS integrated</strong> — YouTube's standard. Premiere Pro and DaVinci Resolve both have loudness meters to check this before export.</li>
+    <li><strong>For broadcast/TV:</strong> –23 LUFS (EBU R128) or –24 LUFS (ATSC A/85 for the US). Check client requirements.</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p><strong>Quick check:</strong> Export your video, play it next to a professional YouTube video from a brand you admire. If yours sounds quieter, tinnier, or more compressed, your mix needs work. Use your ears to compare — loudness meters tell you numbers, but your ears tell you truth.</p>
+  </div>
+
+  <h2>Basic EQ — Shaping Your Audio</h2>
+
+  <p>EQ (equaliser) lets you boost or cut specific frequency ranges in your audio. You don't need to be a mastering engineer — you need to know a few key moves that fix the most common problems.</p>
+
+  <div class="step-card">
+    <div class="step-num">🔇</div>
+    <div>
+      <div class="step-title">High-pass filter everything that isn't bass</div>
+      <div class="step-text">On voiceover and sound effects, apply a high-pass filter cutting everything below 80–120 Hz. This removes low-end rumble, room resonance and mic handling noise that muddies your mix. On music tracks, cut below 40–60 Hz unless it's bass-heavy music where you need those lows.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">🎤</div>
+    <div>
+      <div class="step-title">Fix muddy dialogue at 200–400 Hz</div>
+      <div class="step-text">If voiceover sounds "boxy" or unclear, try a slight cut (–2 to –4 dB) somewhere between 200–400 Hz. This frequency range is where muddiness lives. A small cut here can dramatically improve speech clarity without the voice sounding thin.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">✨</div>
+    <div>
+      <div class="step-title">Add presence and air to dialogue</div>
+      <div class="step-text">A gentle boost (+1 to +3 dB) around 3–5 kHz adds presence and cuts through the mix. A high shelf boost (+1 to +2 dB) around 10–15 kHz adds "air" — that sense of brightness and openness that makes professional voice recordings sound polished. Be subtle — too much and you'll get harsh sibilance (exaggerated "s" sounds).</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">🎵</div>
+    <div>
+      <div class="step-title">Duck music during dialogue automatically</div>
+      <div class="step-text">In Premiere Pro, use the "Auto Ducking" feature in the Essential Audio panel — select your music clip, set dialogue as the reference track, and Premiere will automatically lower the music when someone is speaking. In Audition, use keyframe automation. This single trick makes your mixes sound ten times more professional.</div>
+    </div>
+  </div>
+
+  <h2>A Practical Audio Layering Workflow</h2>
+
+  <p>Here's the exact sequence I follow when adding sound to any video project. This works whether you're in Premiere Pro, Resolve, or After Effects.</p>
+
+  <ol>
+    <li><strong>Lock picture first.</strong> Never start mixing until the video edit is locked. Adjusting audio timing after picture changes is painful and wastes time.</li>
+    <li><strong>Import and organise your audio files</strong> into labelled bins: Music, SFX, VO/Dialogue, Ambience.</li>
+    <li><strong>Place voiceover/dialogue first</strong> on its own track. This is the king layer — everything else works around it.</li>
+    <li><strong>Add music bed.</strong> Choose a track that fits the energy, then lower it to where it feels supportive but invisible under dialogue.</li>
+    <li><strong>Add ambient sound.</strong> Even a quiet room tone adds realism. For motion graphics, subtle electronic hum or atmospheric texture works well.</li>
+    <li><strong>Add SFX for key visual moments.</strong> Go frame by frame and add a sound for each significant animation: text appearing, transitions, reveals, impacts.</li>
+    <li><strong>Apply EQ and dynamics</strong> to each track individually, then to the master bus.</li>
+    <li><strong>Check your loudness levels</strong> with a LUFS meter and adjust the master output.</li>
+    <li><strong>Export and review on multiple devices</strong> — laptop speakers, phone, earphones, monitor speakers. Your mix should hold up across all of them.</li>
+  </ol>
+
+  <h2>Sound Design in Nepal's Video Market</h2>
+
+  <p>Most video production work I see in Nepal — brand videos, NGO documentary content, restaurant promos, tourism reels — suffers from the same audio problems: thin dialogue, music that's too loud, and zero sound design beyond background music. This is a gap that represents a real opportunity for any designer willing to invest in audio skills.</p>
+
+  <p>Nepal's tourism sector in particular produces enormous amounts of video content — trekking companies, travel agencies, heritage tourism operators. These clients need videos that make international audiences feel the atmosphere of the Himalayan landscape. Great audio — the sounds of wind on Annapurna, prayer bells in Bhaktapur's Durbar Square, the rhythm of Newari music under a cultural montage — elevates that content dramatically and commands higher rates.</p>
+
+  <p>For local brand videos (restaurants, retail, events), clean voiceover mixing and subtle SFX add a polish that most local production houses don't bother with. If you can reliably deliver that, you become the go-to for clients who want to look premium.</p>
+
   <h2>The Most Important Principle — Less is More</h2>
 
   <p>The beginner's instinct is to add more sound — more effects, louder music, more layers. The professional instinct is to subtract. <strong>Every sound in your mix should earn its place.</strong> If removing a sound makes the piece feel the same or better, remove it.</p>
@@ -262,7 +362,9 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
   <p>Like all creative skills, sound design improves with practice and attention. Start actively listening to the audio design in commercials, films and videos you watch — not just the music but the sound effects, the room tones, the way audio transitions between scenes. This kind of critical listening is how your ear develops.</p>
 
-  <p>Sound is a skill worth investing in seriously. In a world where most designers ignore it entirely, even basic competence in audio will make your work stand out significantly.</p>
+  <p>Start with <strong>Earworm</strong> and <strong>Practitioner's Ear</strong> — YouTube channels dedicated to audio analysis of film sound. Watch how professionals break down the audio design in major productions. Every video you watch professionally becomes an opportunity to study sound craft.</p>
+
+  <p>Sound is a skill worth investing in seriously. In a world where most designers ignore it entirely, even basic competence in audio will make your work stand out significantly. Clients notice — even when they can't articulate why one video "feels better" than another. The answer is almost always the audio.</p>
 
   <div class="author-box">
     <div class="author-avatar">SR</div>
@@ -283,22 +385,35 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
         <div class="more-card-tag">Freelancing</div>
         <div class="more-card-title">Freelancing as a Designer in Nepal — The Real Story</div>
       </a>
+      <a href="blog-ux-process.html" class="more-card">
+        <div class="more-card-tag">UX Design</div>
+        <div class="more-card-title">My UX Design Process — From Research to Final Handoff</div>
+      </a>
+      <a href="blog-pricing.html" class="more-card">
+        <div class="more-card-tag">Business</div>
+        <div class="more-card-title">How I Price My Design Work — The Honest Guide</div>
+      </a>
+      <a href="blog-3d-animation.html" class="more-card">
+        <div class="more-card-tag">3D & Motion</div>
+        <div class="more-card-title">Getting Started with 3D Animation — Tools, Workflow &amp; Advice</div>
+      </a>
     </div>
   </div>
 
 </div>
 
 <footer>
-  <div style="display:flex;flex-direction:column;gap:0.2rem">
-    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
-    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
-  </div>
+  <span class="f-copy">© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+  <span class="f-updated">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
   <div class="f-links">
+    <a href="assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download class="f-resume">Resume ↓</a>
+    <span class="f-links-sep"></span>
     <a href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="https://www.linkedin.com/in/dsampanna/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://www.facebook.com/dsampanna" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="https://x.com/dsampanna" target="_blank" rel="noopener noreferrer">X</a>
   </div>
+  <div class="ink-msg" aria-hidden="true">✦ Made with intention · Fueled by curiosity ✦</div>
 </footer>
 <button class="btt" id="btt">↑</button>
 <script>
@@ -321,6 +436,7 @@ document.getElementById('btt').addEventListener('click',function(){window.scroll
   document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
 })();
 </script>
+<script src="assets/js/shared.js"></script>
 <script src="assets/js/cursor-trail.js"></script>
 <script src="assets/js/scramble.js"></script>
 <script src="assets/js/scroll-reveal.js"></script>

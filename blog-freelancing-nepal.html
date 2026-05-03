@@ -117,10 +117,17 @@ a{text-decoration:none;color:inherit}
 .more-card-title{font-size:0.85rem;font-weight:700;color:var(--text);font-family:var(--display);line-height:1.4}
 
 /* FOOTER */
-footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
-.f-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(14,181,160,0.4),transparent)}
+.f-copy{font-size:0.73rem}
+.f-updated{font-size:0.68rem;color:var(--muted2)}
+.f-links{display:flex;gap:1.75rem;flex-wrap:wrap;align-items:center}
 .f-links a{color:var(--muted);transition:color 0.2s}
 .f-links a:hover{color:var(--teal)}
+.f-resume{border:1px solid rgba(14,181,160,0.35);padding:0.3rem 0.75rem;color:var(--teal)!important;font-weight:600;font-size:0.7rem;letter-spacing:0.04em;transition:background 0.2s!important}
+.f-resume:hover{background:rgba(14,181,160,0.12)!important}
+.f-links-sep{width:1px;height:14px;background:var(--border2)}
+.ink-msg{width:100%;text-align:center;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em;padding-top:0.5rem;opacity:0.6}
 
 /* BACK TO TOP */
 .btt{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:40px;height:40px;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;visibility:hidden;transition:all 0.3s;cursor:pointer;border:none}
@@ -149,6 +156,12 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
   footer{padding:1.25rem}
 }
 </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa--Ow_sosIwgdTQjoqMuHA1.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
@@ -201,6 +214,96 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
     <p>Working with international clients from Nepal has its own friction — payment platforms, time zone management, communication styles and contracts. But it's absolutely worth working through. International clients generally pay more, respect your time better and are more familiar with professional design processes. Getting your first international client changes your perspective on what's possible.</p>
 
+    <h2>Platform Strategy — Fiverr vs Upwork vs Direct</h2>
+
+    <p>This is something I wish someone had laid out clearly for me early on. The three main paths have very different realities for a designer based in Nepal.</p>
+
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Fiverr — Fast start, low ceiling</div>
+        <div class="step-text">Fiverr is the easiest place to get your first international client. The platform drives traffic to you once your gig ranks. The problem: it's a race to the bottom on price, buyers expect overnight turnarounds, and the 20% platform fee cuts hard. I used Fiverr to build early reviews and case studies, then moved clients off-platform. <strong>Best for:</strong> getting your first 10 reviews and international portfolio samples.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Upwork — Slower start, higher quality</div>
+        <div class="step-text">Upwork clients have budgets and are accustomed to paying professional rates. The barrier is getting those first 3–5 contracts — the platform heavily favours established profiles. Write proposals that address the client's specific problem (not generic templates), keep your hourly rate competitive at first (I started at $15/hr, now at $35+), and focus on long-term contracts over one-off jobs. <strong>Best for:</strong> building ongoing client relationships and higher-value work.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Direct — Highest return, hardest to build</div>
+        <div class="step-text">Direct clients — people who find you through your portfolio website, LinkedIn, or referrals — have no platform taking a cut and no algorithm controlling your visibility. Every local business, NGO, tourism company or startup I've worked with directly came through either referrals or my portfolio site. The effort is front-loaded (building the portfolio, showing up consistently) but the returns compound. <strong>Best for:</strong> sustainable income and total creative control.</div>
+      </div>
+    </div>
+
+    <p>My recommendation: use Fiverr in year one to build reviews, build an Upwork profile in year two, and prioritise direct client acquisition from year three onward. All three can run in parallel — just don't let Fiverr become your entire business.</p>
+
+    <h2>Getting Paid — The Nepal Reality</h2>
+
+    <p>Receiving international payments is one of the genuine friction points of freelancing from Nepal. Here's what I've learned the hard way.</p>
+
+    <h3>For International Clients</h3>
+    <ul>
+      <li><strong>Payoneer</strong> is the most reliable option for Nepal. Widely accepted by Fiverr and Upwork, and you can link it to your Nepali bank account (NIC Asia, Global IME and Laxmi Sunrise work well). Withdrawals typically arrive within 2–3 business days.</li>
+      <li><strong>Wise (formerly TransferWise)</strong> works for receiving USD from clients but check your bank's support — not all Nepali banks accept Wise transfers smoothly.</li>
+      <li><strong>Western Union</strong> is an option for occasional one-off payments from clients who aren't tech-comfortable — though fees are higher on both ends.</li>
+      <li><strong>Crypto (USDT/USDC)</strong> — some freelancers use this for speed. Legal grey area in Nepal — understand the rules before going this route.</li>
+      <li>Nepal Rastra Bank requires income from abroad to be converted to NPR within 30 days (for amounts above $1,000). Keep records of all international payments for your annual tax filing.</li>
+    </ul>
+
+    <h3>For Local Clients</h3>
+    <ul>
+      <li><strong>eSewa and Khalti</strong> are the fastest for smaller payments and project installments — instant, zero fee between accounts.</li>
+      <li><strong>Bank transfer (NCHL / Connect IPS)</strong> is best for larger invoices — clients in formal sectors (NGOs, corporates) often prefer this for their own accounting.</li>
+      <li>Always send a proper invoice — even for local clients. It protects you legally and signals professionalism. I use a simple PDF template with my PAN number, service description, amount, and due date.</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p><strong>Tax note:</strong> Register your PAN if you're earning freelance income regularly. You're required to file an annual income tax return in Nepal. Freelance income above NPR 500,000/year attracts income tax. Talk to a local tax consultant — the compliance is manageable and legitimises your business for larger clients.</p>
+    </div>
+
+    <h2>Landing International Clients — The Actual Strategy</h2>
+
+    <p>The question I get asked most by other Nepali designers: <em>"How do I get international clients?"</em> Here is what has actually worked for me, in order of effectiveness.</p>
+
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Your portfolio site must do the heavy lifting</div>
+        <div class="step-text">International clients Google for designers. If you're not findable, you don't exist. Your portfolio site needs real case studies (not just finished images), written in English, with clear context about the problem you solved. This site you're reading right now is the single biggest driver of my international inquiries. Show your process, not just your output.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">LinkedIn is underutilised by Nepali designers</div>
+        <div class="step-text">Most Nepali designers are on Instagram. International clients are on LinkedIn. Post your case studies there (adapted into LinkedIn posts — 3–5 images with a short caption about the problem and solution). Connect with founders, marketing managers, and startup CEOs in your niche. Don't pitch immediately — build presence first. I've had three international clients initiate contact through LinkedIn after seeing my posts.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Niche beats generalist every time</div>
+        <div class="step-text">When I started calling myself a UI/UX and motion designer for hospitality and food brands, my inquiry quality improved dramatically. Niching feels like limiting yourself — it's actually the opposite. A restaurant owner searching for a designer responds to someone who has done restaurant branding before. "I design for everyone" signals nothing. "I design for food and hospitality brands" signals expertise.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">One happy client becomes five</div>
+        <div class="step-text">After every project, I send a short note thanking the client and asking: "Do you know any other businesses who might benefit from design work?" Around 30% of the time, I get a referral. International clients in particular tend to have international networks — one client in the UK referred two of their contacts in Germany and Australia. Referrals arrive pre-sold on your work.</div>
+      </div>
+    </div>
+
     <h2>What Has Actually Worked For Me</h2>
 
     <ul>
@@ -215,6 +318,16 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
     <p>Let me be honest about the financial reality. Freelancing in Nepal can provide a very good income — but it takes time to build. The first year is almost always difficult. The second is better. By the third year, if you've been consistent and strategic, you can earn significantly more than most salaried design jobs in Kathmandu.</p>
 
+    <p>Rough income benchmarks from my experience and conversations with other Nepali freelancers:</p>
+
+    <ul>
+      <li><strong>Year 1 (local only):</strong> NPR 20,000–60,000/month if you're actively hustling</li>
+      <li><strong>Year 2–3 (mixed local + international):</strong> NPR 80,000–200,000/month is realistic with 2–4 regular clients</li>
+      <li><strong>Year 4+ (established, direct clients):</strong> NPR 200,000–500,000+/month if you've built reputation, niched down, and secured retainer clients</li>
+    </ul>
+
+    <p>These aren't guaranteed — they reflect what's possible with consistent effort, skill investment and smart positioning. The ceiling is genuinely high. A single UI/UX project for an international client can pay more than a month of local social media design work.</p>
+
     <div class="highlight-box">
       <p><strong>A rough framework that works for me:</strong> Price your services based on the value delivered to the client, not the hours you spend. A logo that helps a business attract customers for the next 5 years is worth far more than the 20 hours it took to design.</p>
     </div>
@@ -223,16 +336,20 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 
     <ul>
       <li>Build your portfolio before you need clients — work on self-initiated projects, do passion projects, design for fictional brands if you have to</li>
-      <li>Get your first 3-5 clients through your personal network — friends, family, local businesses you know — then use those as case studies</li>
+      <li>Get your first 3–5 clients through your personal network — friends, family, local businesses you know — then use those as case studies</li>
       <li>Learn to write about your work in English — this opens the international market dramatically</li>
       <li>Always have a contract, always take a deposit — protect yourself from the start</li>
       <li>Don't compete on price — compete on quality, process and communication</li>
       <li>Invest in your tools — a good laptop, legitimate software, fast internet — these are not luxuries, they are the cost of doing business professionally</li>
+      <li>Set up Payoneer early — even before you have international clients. Getting verified takes time and you don't want to be scrambling when your first payment arrives</li>
+      <li>Register your PAN and keep income records from day one — future clients, bank loans and even visa applications benefit from documented income history</li>
     </ul>
 
     <h2>Where Nepal's Design Industry Is Heading</h2>
 
     <p>I'm genuinely optimistic about the future. More Nepali businesses are investing in professional design. More young designers are building serious skills. The remote work era has opened global opportunities that simply didn't exist before. And Nepali designers — when they build proper portfolios and communication skills — are absolutely competitive in international markets.</p>
+
+    <p>Nepal has real advantages that international clients value: strong cultural storytelling, experience designing for developing markets, fluency in both South Asian and global visual languages, and rates that are fair without being exploitatively cheap. That's a real positioning strength — use it.</p>
 
     <p>The opportunity is real. The work is hard. But it's worth it.</p>
 
@@ -255,22 +372,35 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
           <div class="more-card-tag">Sound Design</div>
           <div class="more-card-title">Sound Design for Video — A Beginner's Guide</div>
         </a>
+        <a href="blog-ux-process.html" class="more-card">
+          <div class="more-card-tag">UX Design</div>
+          <div class="more-card-title">My UX Design Process — From Research to Final Handoff</div>
+        </a>
+        <a href="blog-pricing.html" class="more-card">
+          <div class="more-card-tag">Business</div>
+          <div class="more-card-title">How I Price My Design Work — The Honest Guide</div>
+        </a>
+        <a href="blog-3d-animation.html" class="more-card">
+          <div class="more-card-tag">3D & Motion</div>
+          <div class="more-card-title">Getting Started with 3D Animation — Tools, Workflow &amp; Advice</div>
+        </a>
       </div>
     </div>
 
   </div>
 
 <footer>
-  <div style="display:flex;flex-direction:column;gap:0.2rem">
-    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
-    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
-  </div>
+  <span class="f-copy">© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+  <span class="f-updated">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
   <div class="f-links">
+    <a href="assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download class="f-resume">Resume ↓</a>
+    <span class="f-links-sep"></span>
     <a href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener noreferrer">Instagram</a>
     <a href="https://www.linkedin.com/in/dsampanna/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://www.facebook.com/dsampanna" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="https://x.com/dsampanna" target="_blank" rel="noopener noreferrer">X</a>
   </div>
+  <div class="ink-msg" aria-hidden="true">✦ Made with intention · Fueled by curiosity ✦</div>
 </footer>
 <button class="btt" id="btt">↑</button>
 <script>
@@ -293,6 +423,7 @@ document.getElementById('btt').addEventListener('click',function(){window.scroll
   document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
 })();
 </script>
+<script src="assets/js/shared.js"></script>
 <script src="assets/js/cursor-trail.js"></script>
 <script src="assets/js/scramble.js"></script>
 <script src="assets/js/scroll-reveal.js"></script>

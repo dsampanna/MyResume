@@ -9,8 +9,6 @@
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <meta name="description" content="A full UI/UX case study for HimalTrek Nepal — a trekking platform with 24 routes, permit management, booking flow, guides directory and emergency SOS. Designed by Sampanna Raj Dhungel.">
   <link rel="canonical" href="https://www.sampannadhungel.com.np/himaltrek-case-study.html">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <style>
@@ -111,6 +109,37 @@
     .feature-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;}
     .feature-text{font-size:11px;color:var(--muted);line-height:1.65;font-weight:300;}
 
+    /* ── PERSONAS ── */
+    .personas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px;}
+    .persona-card{background:var(--bg2);border:1px solid var(--border2);overflow:hidden;}
+    .persona-header{padding:18px 22px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);}
+    .persona-header-1{background:linear-gradient(135deg,rgba(26,35,50,0.9),rgba(36,49,71,0.6));}
+    .persona-header-2{background:linear-gradient(135deg,rgba(233,184,74,0.1),rgba(245,212,122,0.05));}
+    .persona-avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--text);font-family:'Syne',sans-serif;flex-shrink:0;}
+    .persona-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--text);}
+    .persona-role{font-size:11px;color:var(--muted);margin-top:2px;}
+    .persona-body{padding:18px 22px;}
+    .persona-row{display:flex;gap:8px;margin-bottom:12px;align-items:flex-start;}
+    .persona-row-label{font-size:9px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;min-width:80px;margin-top:2px;font-family:'Syne',sans-serif;}
+    .persona-row-value{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;flex:1;}
+    .persona-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+    .persona-tag{padding:3px 8px;font-size:10px;font-weight:600;background:rgba(233,184,74,0.07);color:var(--gold);border:1px solid rgba(233,184,74,0.14);}
+
+    /* ── USER JOURNEY ── */
+    .journey-table{width:100%;border-collapse:collapse;border:1px solid var(--border2);margin-top:20px;font-size:12px;}
+    .journey-table th{background:var(--bg3);color:var(--gold);padding:10px 14px;font-family:'Syne',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;text-align:left;border-bottom:1px solid var(--border2);border-right:1px solid var(--border);}
+    .journey-table th:last-child{border-right:none;}
+    .journey-table td{padding:12px 14px;color:var(--muted);border-bottom:1px solid var(--border);border-right:1px solid var(--border);vertical-align:top;line-height:1.6;}
+    .journey-table td:last-child{border-right:none;}
+    .journey-table tr:last-child td{border-bottom:none;}
+    .journey-stage{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--text);}
+    .emotion-good{color:#4ade80;font-weight:600;}
+    .emotion-bad{color:#f87171;font-weight:600;}
+    .emotion-mid{color:#fbbf24;font-weight:600;}
+    .cs-card{background:var(--bg2);border:1px solid var(--border2);border-left:3px solid var(--teal);padding:20px 22px;margin-top:16px;}
+    .cs-card h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .cs-card p{font-size:13px;line-height:1.75;color:var(--muted);font-weight:300;}
+
     /* ── PALETTE ── */
     .palette{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
     .swatch-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;}
@@ -142,10 +171,17 @@
     .btn-view:hover{background:var(--gold);color:var(--navy);}
 
     /* ── FOOTER ── */
-    footer{padding:2rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:var(--muted2);flex-wrap:wrap;gap:1rem;}
-    .footer-links{display:flex;gap:1.5rem;}
-    .footer-links a{color:var(--muted2);text-decoration:none;transition:color 0.2s;}
-    .footer-links a:hover{color:var(--teal);}
+    footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(--bg);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:1rem;position:relative}
+    footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(14,181,160,0.4),transparent)}
+    .f-copy{font-size:0.73rem}
+    .f-updated{font-size:0.68rem;color:var(--muted2)}
+    .f-links{display:flex;gap:1.75rem;flex-wrap:wrap;align-items:center}
+    .f-links a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .f-links a:hover{color:var(--teal)}
+    .f-resume{border:1px solid rgba(14,181,160,0.35);padding:0.3rem 0.75rem;color:var(--teal)!important;font-weight:600;font-size:0.7rem;letter-spacing:0.04em;transition:background 0.2s!important}
+    .f-resume:hover{background:rgba(14,181,160,0.12)!important}
+    .f-links-sep{width:1px;height:14px;background:var(--border2)}
+    .ink-msg{width:100%;text-align:center;font-size:0.65rem;color:var(--muted2);letter-spacing:0.1em;padding-top:0.5rem;opacity:0.6}
 
     /* ── BACK TO TOP ── */
     .btt{position:fixed;right:1.5rem;bottom:1.5rem;z-index:999;width:40px;height:40px;background:var(--teal);color:#080c10;border:none;cursor:pointer;font-size:18px;font-weight:700;display:none;align-items:center;justify-content:center;transition:transform 0.2s;}
@@ -158,12 +194,19 @@
       .challenge-grid{grid-template-columns:1fr;}.stat-row{grid-template-columns:repeat(2,1fr);}
       .pages-grid{grid-template-columns:1fr;}.features-grid{grid-template-columns:repeat(2,1fr);}
       .ns-grid{grid-template-columns:1fr;}.next-steps{padding:28px 20px;}
+      .personas-grid{grid-template-columns:1fr;}.journey-table{font-size:11px;}
     }
     @media(max-width:480px){.features-grid{grid-template-columns:1fr;}}
 
     .fade-in{opacity:0;transform:translateY(18px);animation:fadeUp 0.5s ease forwards;}
     @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
   </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa--Ow_sosIwgdTQjoqMuHA1.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 
@@ -301,9 +344,70 @@
 
     <div class="cs-divider"></div>
 
-    <!-- 04 DESIGN SYSTEM -->
+    <!-- 04 USER PERSONAS -->
     <div class="cs-section fade-in">
-      <div class="cs-num">04 — Design System</div>
+      <div class="cs-num">04 — User Research</div>
+      <h2 class="cs-title">Who I Was <span>Designing For</span></h2>
+      <p class="cs-text">HimalTrek's primary audience is international trekkers — predominantly from Europe, North America, and Australia — planning their first or second trek in Nepal. I defined two personas based on research into the trekking tourism market: a first-time international trekker navigating an unfamiliar system, and an experienced adventure traveller with higher expectations for the digital product.</p>
+      <div class="personas-grid">
+        <div class="persona-card">
+          <div class="persona-header persona-header-1">
+            <div class="persona-avatar">SW</div>
+            <div><div class="persona-name">Sophie Weber</div><div class="persona-role">27 · First-Time Trekker · Munich, Germany</div></div>
+          </div>
+          <div class="persona-body">
+            <div class="persona-row"><div class="persona-row-label">Goals</div><div class="persona-row-value">Complete the Annapurna Base Camp trek safely. Handle permits without going to a government office. Feel confident she has everything organised before she arrives.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Frustrations</div><div class="persona-row-value">Overwhelmed by contradictory permit information across 8 different blogs. Scared of altitude sickness. Can't find a trustworthy guide booking platform.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Behaviour</div><div class="persona-row-value">Does weeks of research before booking. Reads reviews obsessively. Values clear safety information over adventure marketing. Books guides through recommendations.</div></div>
+            <div class="persona-tags"><span class="persona-tag">Safety-first</span><span class="persona-tag">Research-heavy</span><span class="persona-tag">Mobile booker</span><span class="persona-tag">Trust-driven</span></div>
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-header persona-header-2">
+            <div class="persona-avatar">MK</div>
+            <div><div class="persona-name">Marcus Kim</div><div class="persona-role">34 · Experienced Trekker · Sydney, Australia</div></div>
+          </div>
+          <div class="persona-body">
+            <div class="persona-row"><div class="persona-row-label">Goals</div><div class="persona-row-value">Plan Everest Base Camp expedition with minimal friction. Compare routes, book teahouses in advance for peak season, and track his trek digitally.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Frustrations</div><div class="persona-row-value">No platform aggregates permits, teahouses and guides in one place. Peak season teahouse availability is impossible to plan. No app works offline above 4,000m.</div></div>
+            <div class="persona-row"><div class="persona-row-label">Behaviour</div><div class="persona-row-value">Compares platforms before committing. Values route data depth — altitude profiles, day-by-day itineraries, real gear lists. Prefers digital over phone-call bookings.</div></div>
+            <div class="persona-tags"><span class="persona-tag">Data-driven</span><span class="persona-tag">Experienced</span><span class="persona-tag">Efficiency-focused</span><span class="persona-tag">Premium buyer</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 04B USER JOURNEY -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">04b — User Journey</div>
+      <h2 class="cs-title">Sophie's Journey Through <span>HimalTrek</span></h2>
+      <p class="cs-text">Mapping Sophie's experience from initial Google search to departure day revealed the five moments where trekking platforms typically lose users — and where HimalTrek's design intervenes.</p>
+      <table class="journey-table">
+        <thead>
+          <tr><th>Stage</th><th>Action</th><th>Thought</th><th>Emotion</th><th>HimalTrek Response</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="journey-stage">Discovery</td><td>Googles "Annapurna trek permit 2026"</td><td>"There are so many different answers — which is correct?"</td><td class="emotion-bad">Confused</td><td>SEO-optimised permit guide page ranks as authoritative source; no conflicting information</td></tr>
+          <tr><td class="journey-stage">Landing</td><td>Arrives at homepage, sees search bar and stats</td><td>"12,400 trekkers and 4.9 stars — these people know what they're doing"</td><td class="emotion-good">Reassured</td><td>Season strip, social proof stats and safety features visible above fold without scrolling</td></tr>
+          <tr><td class="journey-stage">Route Selection</td><td>Filters routes by difficulty level</td><td>"I need something for a beginner — how hard is each trek really?"</td><td class="emotion-mid">Uncertain</td><td>Difficulty filter + honest difficulty labels (1–5 scale with plain English descriptions); season strip shows best months</td></tr>
+          <tr><td class="journey-stage">Permit Research</td><td>Tries to understand what permits she needs</td><td>"Do I need TIMS and ACAP? Which office? How long does it take?"</td><td class="emotion-bad">Overwhelmed</td><td>5-step permit wizard handles all permit types in one flow; no government office visit needed</td></tr>
+          <tr><td class="journey-stage">Booking Decision</td><td>Checks guide profiles and reviews</td><td>"Is this guide first-aid certified? Has he done this route before?"</td><td class="emotion-mid">Hesitant</td><td>Guide cards show TAAN certification, first-aid status, languages, route specialties and verified reviews</td></tr>
+          <tr><td class="journey-stage">Departure</td><td>Downloads app for offline use</td><td>"What if I have no signal above 4,000m? Can I still see the route?"</td><td class="emotion-good">Confident</td><td>Offline GPS maps, AMS symptom logger and emergency SOS built into app — clearly shown in app download flow</td></tr>
+        </tbody>
+      </table>
+      <div class="cs-card">
+        <h4>Five Critical Drop-Off Points — All Addressed</h4>
+        <p>The journey map identified five points where users abandon competing platforms: <strong style="color:var(--text)">(1)</strong> Confusing permit information → authoritative permit page. <strong style="color:var(--text)">(2)</strong> No trust signals above fold → stats + safety features immediately visible. <strong style="color:var(--text)">(3)</strong> Difficulty filtering missing → five-level filter system. <strong style="color:var(--text)">(4)</strong> Permit complexity → 5-step wizard. <strong style="color:var(--text)">(5)</strong> No offline fallback → downloadable GPS maps with offline capability.</p>
+      </div>
+    </div>
+
+    <div class="cs-divider"></div>
+
+    <!-- 05 DESIGN SYSTEM -->
+    <div class="cs-section fade-in">
+      <div class="cs-num">05 — Design System</div>
       <h2 class="cs-title">Colour & <span>Typography</span></h2>
       <p class="cs-text">The visual language is built around trust, nature and adventure. Deep navy as the primary communicates professionalism and the night sky above the Himalayas. Gold as the accent reflects warmth, quality and the sunrise light that trekkers wake up for. Cream backgrounds give a natural, earthy feel without being cold.</p>
       <div class="palette">
@@ -333,9 +437,9 @@
 
     <div class="cs-divider"></div>
 
-    <!-- 05 DECISIONS -->
+    <!-- 06 DECISIONS -->
     <div class="cs-section fade-in">
-      <div class="cs-num">05 — Design Decisions</div>
+      <div class="cs-num">06 — Design Decisions</div>
       <h2 class="cs-title">Why I Designed It <span>This Way</span></h2>
       <p class="cs-text">Every major UX decision in HimalTrek was made with one user in mind — an international trekker (most likely European, Australian or American) arriving in Nepal for the first time, excited but nervous about permits, altitude and safety. Here are the six decisions that shaped the experience.</p>
       <div class="pages-grid">
@@ -350,9 +454,9 @@
 
     <div class="cs-divider"></div>
 
-    <!-- 06 LEARNINGS -->
+    <!-- 07 LEARNINGS -->
     <div class="cs-section fade-in">
-      <div class="cs-num">06 — Reflections</div>
+      <div class="cs-num">07 — Reflections</div>
       <h2 class="cs-title">What I <span>Learned</span></h2>
       <p class="cs-text">HimalTrek was the most ambitious self-initiated project I've taken on. Building a platform this complex from scratch taught me several things I couldn't have learned any other way.</p>
       <ul class="learning-list">
@@ -381,13 +485,17 @@
   </div>
 
   <footer>
-    <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
+    <span class="f-copy">© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+    <span class="f-updated">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
+    <div class="f-links">
+      <a href="assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download class="f-resume">Resume ↓</a>
+      <span class="f-links-sep"></span>
+      <a href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.linkedin.com/in/dsampanna/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.facebook.com/dsampanna" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://x.com/dsampanna" target="_blank" rel="noopener noreferrer">X</a>
     </div>
+    <div class="ink-msg" aria-hidden="true">✦ Made with intention · Fueled by curiosity ✦</div>
   </footer>
 
   <script>
@@ -398,6 +506,7 @@
     });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
+<script src="assets/js/shared.js"></script>
 <script src="assets/js/cursor-trail.js"></script>
 <script src="assets/js/scramble.js"></script>
 <script src="assets/js/scroll-reveal.js"></script>
