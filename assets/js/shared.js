@@ -53,7 +53,7 @@ window.__sharedLoaded = true;
 (function(){
   var s = document.createElement('style');
   s.textContent = [
-    '@keyframes pageIn{from{opacity:0;transform:translateY(5px)}to{opacity:1}}',
+    '@keyframes pageIn{from{opacity:0}to{opacity:1}}',
     'body{animation:pageIn 0.3s ease both}',
     'body.page-out{opacity:0!important;transform:translateY(-4px)!important;transition:opacity 0.22s ease,transform 0.22s ease!important}',
   ].join('');
