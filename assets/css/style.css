@@ -28,7 +28,7 @@ a{text-decoration:none;color:inherit}
 }
 
 /* HIRE ME MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(8,12,16,0.88);z-index:999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:1rem;visibility:hidden;opacity:0;pointer-events:none;transition:opacity 0.18s ease,visibility 0.18s ease}
+.modal-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(8,12,16,0.88);z-index:999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:1rem;visibility:hidden;opacity:0;pointer-events:none;transition:opacity 0.18s ease,visibility 0.18s ease}
 .modal-overlay.open{visibility:visible;opacity:1;pointer-events:auto}
 .modal-box{background:var(--bg2);border:1px solid var(--border2);max-width:460px;width:100%;padding:2.5rem;position:relative}
 .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;line-height:1;transition:color 0.2s}
@@ -703,7 +703,7 @@ footer{position:relative}
    PROJECT DETAIL MODAL
    ══════════════════════════════════════════════════ */
 .proj-modal-overlay{
-  position:fixed;inset:0;z-index:8000;
+  position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:8000;
   background:rgba(0,0,0,0.82);
   backdrop-filter:blur(10px);
   display:flex;align-items:center;justify-content:center;
