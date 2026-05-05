@@ -306,6 +306,17 @@ window.__sharedLoaded = true;
     {keys:['Hover cards'],desc:'<strong>Colour dots</strong> — each card samples its own palette'},
     {keys:['Section shift'],desc:'<strong>Cursor shape</strong> — ring changes label per section'},
     {keys:['DevTools'],desc:'<strong>Console message</strong> — open DevTools to say hi'},
+    {section:'New Features'},
+    {keys:['F'],desc:'<strong>Focus mode</strong> — spotlight the current section, dim everything else'},
+    {keys:['T'],desc:'<strong>Font switcher</strong> — cycle through 4 curated type pairings'},
+    {keys:['1','–','8'],desc:'<strong>Keyboard piano</strong> — play musical notes (sound designer approved)'},
+    {keys:['R'],desc:'<strong>Recruiter mode</strong> — slide-in CV panel with full experience & contact'},
+    {keys:['S'],desc:'<strong>Session stats</strong> — time on page, scroll depth, sections visited'},
+    {keys:['credits'],desc:'<strong>Credits roll</strong> — type the word to see movie-style credits'},
+    {keys:['3× logo'],desc:'<strong>Triple-click logo</strong> — reveals a secret nav item'},
+    {keys:['Hover clock'],desc:'<strong>Nepal clock</strong> — hold 2s to see your local time alongside'},
+    {keys:['15s idle'],desc:'<strong>Generative art</strong> — Lissajous curve draws from your last cursor position'},
+    {keys:['Season'],desc:'<strong>Weather effects</strong> — petals (spring) · rain (monsoon) · snow (winter)'},
   ];
 
   var rows = shortcuts.map(function(item){
@@ -723,4 +734,385 @@ window.__sharedLoaded = true;
     console.log('%cPS: Press  ?  on the site to see all hidden interactions.', D);
     console.log('%cPPS: You\'re on clue 0 of 3. The trail starts in the page source.', D);
   },800);
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 27 — SEASON EFFECTS (Nepal calendar)
+   spring Mar–May · monsoon Jun–Aug · winter Dec–Feb
+   ══════════════════════════════════════════════════ */
+(function(){
+  var m=new Date().getMonth();
+  var season=(m>=2&&m<=4)?'spring':(m>=5&&m<=7)?'monsoon':(m>=11||m<=1)?'winter':null;
+  if(!season) return;
+  var cv=document.createElement('canvas');
+  cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:2';
+  document.body.appendChild(cv);
+  var ctx=cv.getContext('2d');
+  function resize(){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
+  resize(); window.addEventListener('resize',resize);
+  var COUNT=season==='monsoon'?140:65, particles=[];
+  function newP(init){
+    var p={x:Math.random()*window.innerWidth,y:init?Math.random()*window.innerHeight:-20};
+    if(season==='monsoon'){ p.vx=-1.5+Math.random()*0.5; p.vy=10+Math.random()*8; p.len=8+Math.random()*10; p.a=0.2+Math.random()*0.3; }
+    else if(season==='winter'){ p.vx=-0.3+Math.random()*0.6; p.vy=0.6+Math.random()*1.4; p.r=2+Math.random()*3; p.a=0.45+Math.random()*0.4; p.w=Math.random()*Math.PI*2; }
+    else{ p.vx=-0.4+Math.random()*0.8; p.vy=0.5+Math.random()*1.2; p.r=3+Math.random()*5; p.a=0.5+Math.random()*0.35; p.rot=Math.random()*Math.PI*2; p.rv=(Math.random()-0.5)*0.04; var c=[{r:255,g:183,b:197},{r:255,g:200,b:215},{r:255,g:160,b:180}]; p.col=c[Math.floor(Math.random()*c.length)]; }
+    return p;
+  }
+  for(var i=0;i<COUNT;i++) particles.push(newP(true));
+  (function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    particles.forEach(function(p,i){
+      if(season==='monsoon'){
+        ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x+p.vx*0.8,p.y+p.len);
+        ctx.strokeStyle='rgba(160,210,255,'+p.a+')'; ctx.lineWidth=1; ctx.stroke();
+        p.x+=p.vx; p.y+=p.vy;
+      } else if(season==='winter'){
+        p.w+=0.018; p.x+=Math.sin(p.w)*0.5+p.vx; p.y+=p.vy;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(220,238,255,'+p.a+')'; ctx.fill();
+      } else {
+        p.rot+=p.rv; p.x+=p.vx+Math.sin(p.rot)*0.3; p.y+=p.vy;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+        ctx.beginPath(); ctx.ellipse(0,0,p.r,p.r/2.2,0,0,Math.PI*2);
+        ctx.fillStyle='rgba('+p.col.r+','+p.col.g+','+p.col.b+','+p.a+')'; ctx.fill(); ctx.restore();
+      }
+      if(p.y>cv.height+30||p.x<-30||p.x>cv.width+30) particles[i]=newP(false);
+    });
+    requestAnimationFrame(draw);
+  })();
+  setTimeout(function(){
+    var msg=season==='spring'?'🌸 Spring in Nepal — blossom petals':season==='monsoon'?'🌧 Monsoon season in Nepal — enjoy the rain':'❄ Winter in Bhaktapur — it\'s cold out there';
+    window.__gToast&&window.__gToast(msg,3500);
+  },3500);
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 28 — IDLE GENERATIVE ART (15 s idle)
+   ══════════════════════════════════════════════════ */
+(function(){
+  var IDLE=15000,timer,cv,ctx,animId,on=false,t=0;
+  var lx=window.innerWidth/2,ly=window.innerHeight/2;
+  function makeCV(){
+    if(cv) return;
+    cv=document.createElement('canvas');
+    cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:3;opacity:0;transition:opacity 1.2s';
+    document.body.appendChild(cv); ctx=cv.getContext('2d');
+    function r(){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
+    r(); window.addEventListener('resize',r);
+  }
+  function start(){
+    if(on) return; on=true; t=0; makeCV();
+    cv.style.opacity='0.55'; ctx.clearRect(0,0,cv.width,cv.height);
+    var a=3,b=2,d=Math.PI/4,sc=Math.min(cv.width,cv.height)*0.28;
+    (function frame(){
+      if(!on) return; t+=0.008;
+      var x=lx+sc*Math.sin(a*t+d),y=ly+sc*Math.sin(b*t);
+      if(t<0.015){ ctx.beginPath(); ctx.moveTo(x,y); }
+      ctx.lineTo(x,y);
+      ctx.strokeStyle='hsla('+(t*15%360)+',65%,68%,0.04)'; ctx.lineWidth=1.5; ctx.stroke();
+      if(t<80) animId=requestAnimationFrame(frame);
+    })();
+  }
+  function stop(){
+    if(!on) return; on=false; cancelAnimationFrame(animId);
+    if(cv){ cv.style.opacity='0'; setTimeout(function(){ if(ctx) ctx.clearRect(0,0,cv.width,cv.height); },1200); }
+  }
+  function reset(){ clearTimeout(timer); if(on) stop(); timer=setTimeout(start,IDLE); }
+  document.addEventListener('mousemove',function(e){ lx=e.clientX; ly=e.clientY; reset(); });
+  document.addEventListener('keydown',reset); document.addEventListener('click',reset);
+  document.addEventListener('scroll',reset,{passive:true}); reset();
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 29 — FOCUS MODE  [ F ]
+   ══════════════════════════════════════════════════ */
+(function(){
+  var active=false,obs,current=null;
+  var s=document.createElement('style');
+  s.textContent=
+    'body.fm section,body.fm .hero,body.fm footer{opacity:0.07;filter:blur(1.5px);transition:opacity 0.4s,filter 0.4s}'+
+    'body.fm .fm-on{opacity:1!important;filter:none!important}'+
+    '#fm-badge{position:fixed;top:4.5rem;left:50%;transform:translateX(-50%);background:#0d1117;border:1px solid rgba(14,181,160,0.4);color:#0EB5A0;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;padding:4px 16px;z-index:99993;pointer-events:none;font-family:\'Syne\',sans-serif;text-transform:uppercase;opacity:0;transition:opacity 0.3s;white-space:nowrap}'+
+    '#fm-badge.show{opacity:1}';
+  document.head.appendChild(s);
+  var badge=document.createElement('div'); badge.id='fm-badge'; badge.textContent='◎ Focus Mode  ·  F to exit';
+  document.body.appendChild(badge);
+  document.addEventListener('keydown',function(e){
+    if((e.key!=='f'&&e.key!=='F')||e.ctrlKey||e.metaKey) return;
+    var tag=document.activeElement.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||document.activeElement.isContentEditable) return;
+    active=!active; document.body.classList.toggle('fm',active); badge.classList.toggle('show',active);
+    if(active){
+      var els=document.querySelectorAll('section,.hero');
+      obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(ent){
+          if(ent.isIntersecting&&ent.intersectionRatio>=0.25){
+            if(current) current.classList.remove('fm-on');
+            current=ent.target; current.classList.add('fm-on');
+          }
+        });
+      },{threshold:0.25});
+      els.forEach(function(el){ obs.observe(el); });
+      window.__gToast&&window.__gToast('◎ Focus mode ON — scroll to spotlight each section');
+    } else {
+      if(obs) obs.disconnect();
+      document.querySelectorAll('.fm-on').forEach(function(el){ el.classList.remove('fm-on'); });
+      window.__gToast&&window.__gToast('◎ Focus mode OFF');
+    }
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 30 — FONT SWITCHER  [ T ]
+   ══════════════════════════════════════════════════ */
+(function(){
+  var pairs=[
+    {d:"'Syne',sans-serif",b:"'DM Sans',sans-serif",lbl:'Syne / DM Sans',loaded:true},
+    {d:"'Playfair Display',serif",b:"'Inter',sans-serif",lbl:'Playfair Display / Inter',src:'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500&display=swap'},
+    {d:"'Space Grotesk',sans-serif",b:"'Outfit',sans-serif",lbl:'Space Grotesk / Outfit',src:'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Outfit:wght@300;400;500&display=swap'},
+    {d:"'Bebas Neue',cursive",b:"'JetBrains Mono',monospace",lbl:'Bebas Neue / JetBrains Mono',src:'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&display=swap'},
+  ];
+  var fi=0;
+  document.addEventListener('keydown',function(e){
+    if((e.key!=='t'&&e.key!=='T')||e.ctrlKey||e.metaKey) return;
+    var tag=document.activeElement.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||document.activeElement.isContentEditable) return;
+    fi=(fi+1)%pairs.length; var p=pairs[fi];
+    if(!p.loaded&&p.src){ var l=document.createElement('link'); l.rel='stylesheet'; l.href=p.src; document.head.appendChild(l); p.loaded=true; }
+    document.documentElement.style.setProperty('--display',p.d);
+    document.documentElement.style.setProperty('--body',p.b);
+    window.__gToast&&window.__gToast('Aa '+p.lbl+(fi===0?' (default)':''));
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 31 — KEYBOARD PIANO  [ 1 – 8 ]
+   ══════════════════════════════════════════════════ */
+(function(){
+  var FREQS=[261.63,293.66,329.63,349.23,392.00,440.00,493.88,523.25];
+  var NAMES=['C','D','E','F','G','A','B','C♪'];
+  var actx=null;
+  function getCtx(){ return actx||(actx=new(window.AudioContext||window.webkitAudioContext)()); }
+  function playNote(freq,idx){
+    var c=getCtx(),osc=c.createOscillator(),gain=c.createGain();
+    osc.connect(gain); gain.connect(c.destination);
+    osc.frequency.value=freq; osc.type='sine';
+    gain.gain.setValueAtTime(0.22,c.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+1.1);
+    osc.start(); osc.stop(c.currentTime+1.1);
+    var k=document.getElementById('pk'+idx);
+    if(k){ k.classList.add('pka'); setTimeout(function(){ k.classList.remove('pka'); },280); }
+  }
+  var s=document.createElement('style');
+  s.textContent=
+    '#pkwrap{position:fixed;bottom:9.5rem;left:50%;transform:translateX(-50%);z-index:99993;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;pointer-events:none;transition:opacity 0.3s}'+
+    '#pkwrap.show{opacity:1;pointer-events:auto}'+
+    '#pklbl{font-size:0.58rem;font-weight:700;color:rgba(14,181,160,0.65);letter-spacing:0.14em;font-family:\'Syne\',sans-serif;text-transform:uppercase}'+
+    '#pkkeys{display:flex;gap:3px}'+
+    '.pkk{width:38px;height:64px;background:#111820;border:1px solid rgba(14,181,160,0.18);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:7px;gap:2px;cursor:pointer;transition:background 0.1s,border-color 0.1s;border-radius:0 0 4px 4px}'+
+    '.pkk.pka,.pkk:hover{background:rgba(14,181,160,0.2);border-color:#0EB5A0}'+
+    '.pkn{font-size:0.55rem;font-weight:700;color:#0EB5A0;font-family:\'Syne\',sans-serif}'+
+    '.pki{font-size:0.45rem;color:#6b7c8f;font-family:monospace}';
+  document.head.appendChild(s);
+  var wrap=document.createElement('div'); wrap.id='pkwrap';
+  wrap.innerHTML='<div id="pklbl">🎹 Keys 1–8 · click or press again to hide</div><div id="pkkeys">'+NAMES.map(function(n,i){ return '<div class="pkk" id="pk'+(i+1)+'"><div class="pkn">'+n+'</div><div class="pki">'+(i+1)+'</div></div>'; }).join('')+'</div>';
+  document.body.appendChild(wrap);
+  var hideT;
+  function bump(){ clearTimeout(hideT); wrap.classList.add('show'); hideT=setTimeout(function(){ wrap.classList.remove('show'); },8000); }
+  document.addEventListener('keydown',function(e){
+    var n=parseInt(e.key);
+    if(n>=1&&n<=8&&!e.ctrlKey&&!e.metaKey){ var tag=document.activeElement.tagName; if(tag==='INPUT'||tag==='TEXTAREA') return; bump(); playNote(FREQS[n-1],n); }
+  });
+  wrap.addEventListener('click',function(e){ var k=e.target.closest('.pkk'); if(!k) return; var n=parseInt(k.id.replace('pk','')); if(n>=1&&n<=8){ bump(); playNote(FREQS[n-1],n); } });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 32 — RECRUITER MODE  [ R ]
+   Slide-in panel with CV summary
+   ══════════════════════════════════════════════════ */
+(function(){
+  var open=false,panel;
+  var s=document.createElement('style');
+  s.textContent=
+    '#rec-panel{position:fixed;top:0;right:0;height:100vh;width:340px;max-width:92vw;background:#0d1117;border-left:1px solid rgba(14,181,160,0.2);z-index:99996;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;padding:2rem 1.75rem 2rem;display:flex;flex-direction:column;gap:1.1rem}'+
+    '#rec-panel.open{transform:translateX(0)}'+
+    '.rp-x{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#6b7c8f;font-size:1.1rem;cursor:pointer;transition:color 0.2s;line-height:1}.rp-x:hover{color:#f0f4f8}'+
+    '.rp-tag{font-size:0.58rem;font-weight:700;color:#0EB5A0;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:0.4rem}.rp-tag::before{content:\'\';width:14px;height:1px;background:#0EB5A0}'+
+    '.rp-name{font-family:\'Syne\',sans-serif;font-size:1.3rem;font-weight:800;color:#f0f4f8;letter-spacing:-0.02em;line-height:1.1;margin-top:0.15rem}'+
+    '.rp-title{font-size:0.72rem;color:#0EB5A0;font-weight:500;letter-spacing:0.03em}'+
+    '.rp-sep{height:1px;background:rgba(255,255,255,0.07)}'+
+    '.rp-h{font-size:0.55rem;font-weight:700;color:rgba(14,181,160,0.55);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.55rem;font-family:\'Syne\',sans-serif}'+
+    '.rp-chips{display:flex;flex-wrap:wrap;gap:0.35rem}'+
+    '.rp-chip{font-size:0.62rem;color:#9ca3af;border:1px solid rgba(255,255,255,0.09);padding:2px 8px}'+
+    '.rp-job{margin-bottom:0.7rem}.rp-job-role{font-size:0.76rem;font-weight:600;color:#f0f4f8}.rp-job-org{font-size:0.65rem;color:#0EB5A0}.rp-job-date{font-size:0.58rem;color:#6b7c8f}'+
+    '.rp-links a{display:block;font-size:0.7rem;color:#9ca3af;padding:0.28rem 0;text-decoration:none;transition:color 0.2s}.rp-links a:hover{color:#0EB5A0}'+
+    '.rp-dl{display:block;text-align:center;background:#0EB5A0;color:#080c10;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;padding:0.6rem;text-decoration:none;font-family:\'Syne\',sans-serif;text-transform:uppercase;transition:background 0.2s;margin-top:0.25rem}.rp-dl:hover{background:#0cc9b2}';
+  document.head.appendChild(s);
+  panel=document.createElement('div'); panel.id='rec-panel';
+  panel.innerHTML=
+    '<button class="rp-x" id="rpX">✕</button>'+
+    '<div><div class="rp-tag">Recruiter View</div><div class="rp-name">Sampanna Raj Dhungel</div><div class="rp-title">Creative Director & Digital Media Designer</div></div>'+
+    '<div class="rp-sep"></div>'+
+    '<div><div class="rp-h">Core Skills</div><div class="rp-chips">'+['UI/UX Design','Brand Identity','Motion Graphics','3D Animation','Video Production','Sound Design','Art Direction','Figma / XD','Illustrator','After Effects','Blender','HTML/CSS/JS'].map(function(x){ return '<span class="rp-chip">'+x+'</span>'; }).join('')+'</div></div>'+
+    '<div class="rp-sep"></div>'+
+    '<div><div class="rp-h">Experience</div>'+
+    '<div class="rp-job"><div class="rp-job-role">Marketing & Creative Director</div><div class="rp-job-org">Joon Nepal · Bhaktapur</div><div class="rp-job-date">Jan 2024 – Feb 2025</div></div>'+
+    '<div class="rp-job"><div class="rp-job-role">UI/UX Designer (Freelance)</div><div class="rp-job-org">Tangible Tech Studio · Kathmandu</div><div class="rp-job-date">May – Dec 2023</div></div>'+
+    '<div class="rp-job"><div class="rp-job-role">Video Editor / Graphics Designer</div><div class="rp-job-org">Explorer Nepal · Kathmandu</div><div class="rp-job-date">Oct 2022 – Feb 2023</div></div>'+
+    '<div class="rp-job"><div class="rp-job-role">Animator</div><div class="rp-job-org">Innovate Tech · Kathmandu</div><div class="rp-job-date">Mar – Jul 2022</div></div></div>'+
+    '<div class="rp-sep"></div>'+
+    '<div><div class="rp-h">Education</div><div class="rp-job"><div class="rp-job-role">BSc (Hons) Multimedia Technologies</div><div class="rp-job-org">Islington College — London Met</div><div class="rp-job-date">Mar 2020 – Sep 2023</div></div></div>'+
+    '<div class="rp-sep"></div>'+
+    '<div class="rp-links"><div class="rp-h">Contact</div><a href="mailto:sampannadhungel@gmail.com">✉ sampannadhungel@gmail.com</a><a href="https://wa.me/9779861487026" target="_blank">💬 +977 9861487026</a><a href="https://linkedin.com/in/dsampanna" target="_blank">🔗 linkedin.com/in/dsampanna</a></div>'+
+    '<a href="assets/files/SampannaRajDhungel_R%C3%A9sum%C3%A9.pdf" download class="rp-dl">⬇ Download Resume PDF</a>';
+  document.body.appendChild(panel);
+  document.getElementById('rpX').addEventListener('click',function(){ open=false; panel.classList.remove('open'); });
+  document.addEventListener('keydown',function(e){
+    if((e.key!=='r'&&e.key!=='R')||e.ctrlKey||e.metaKey) return;
+    var tag=document.activeElement.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||document.activeElement.isContentEditable) return;
+    open=!open; panel.classList.toggle('open',open);
+    window.__gToast&&window.__gToast(open?'📋 Recruiter mode — press R or ✕ to close':'📋 Recruiter mode closed');
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&open){ open=false; panel.classList.remove('open'); } });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 33 — SESSION STATS  [ S ]
+   ══════════════════════════════════════════════════ */
+(function(){
+  var t0=Date.now(),maxScroll=0,hits=new Set(),fired=0,sOpen=false,sEl;
+  window.addEventListener('scroll',function(){ var d=Math.min(100,Math.round((window.scrollY+window.innerHeight)/Math.max(document.body.scrollHeight,1)*100)); if(d>maxScroll) maxScroll=d; },{passive:true});
+  var obs2=new IntersectionObserver(function(e){ e.forEach(function(x){ if(x.isIntersecting) hits.add(x.target.id||x.target.className.split(' ')[0]); }); },{threshold:0.3});
+  document.querySelectorAll('section[id],.hero').forEach(function(el){ obs2.observe(el); });
+  var _orig=window.__gToast;
+  window.__gToast=function(m,d){ fired++; if(_orig) _orig(m,d); };
+  var s=document.createElement('style');
+  s.textContent=
+    '#sp{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.95);background:#0d1117;border:1px solid rgba(14,181,160,0.22);min-width:270px;padding:1.75rem 2rem;z-index:99997;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;backdrop-filter:blur(16px)}'+
+    '#sp.open{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}'+
+    '.sp-ttl{font-family:\'Syne\',sans-serif;font-size:0.7rem;font-weight:800;color:#0EB5A0;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.2rem}'+
+    '.sp-row{display:flex;justify-content:space-between;align-items:center;padding:0.48rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}.sp-row:last-child{border:none}'+
+    '.sp-l{font-size:0.68rem;color:#6b7c8f}.sp-v{font-size:0.82rem;font-weight:700;color:#f0f4f8;font-family:\'Syne\',sans-serif}.sp-v.hi{color:#0EB5A0}'+
+    '.sp-x2{position:absolute;top:0.75rem;right:0.9rem;background:none;border:none;color:#6b7c8f;font-size:1rem;cursor:pointer;transition:color 0.2s}.sp-x2:hover{color:#f0f4f8}';
+  document.head.appendChild(s);
+  sEl=document.createElement('div'); sEl.id='sp';
+  sEl.innerHTML='<button class="sp-x2" id="spX">✕</button><div class="sp-ttl">📊 Session Stats</div><div id="sp-rows"></div>';
+  document.body.appendChild(sEl);
+  document.getElementById('spX').addEventListener('click',function(){ sOpen=false; sEl.classList.remove('open'); });
+  function fmtT(ms){ var s=Math.floor(ms/1000),m=Math.floor(s/60); return m>0?m+'m '+Math.floor(s%60)+'s':s+'s'; }
+  function update(){
+    var rows=[{l:'Time on page',v:fmtT(Date.now()-t0),hi:true},{l:'Scroll depth',v:maxScroll+'%',hi:maxScroll>70},{l:'Sections visited',v:hits.size,hi:hits.size>4},{l:'Interactions fired',v:fired,hi:fired>3}];
+    document.getElementById('sp-rows').innerHTML=rows.map(function(r){ return '<div class="sp-row"><span class="sp-l">'+r.l+'</span><span class="sp-v'+(r.hi?' hi':'')+'">'+(typeof r.v==='number'?r.v:r.v)+'</span></div>'; }).join('');
+  }
+  document.addEventListener('keydown',function(e){
+    if((e.key!=='s'&&e.key!=='S')||e.ctrlKey||e.metaKey) return;
+    var tag=document.activeElement.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||document.activeElement.isContentEditable) return;
+    sOpen=!sOpen; update(); sEl.classList.toggle('open',sOpen);
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&sOpen){ sOpen=false; sEl.classList.remove('open'); } });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 34 — TRIPLE-CLICK LOGO → SECRET NAV
+   ══════════════════════════════════════════════════ */
+(function(){
+  var clicks=0,timer;
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.nav-logo')) return;
+    clicks++; clearTimeout(timer); timer=setTimeout(function(){ clicks=0; },500);
+    if(clicks>=3){
+      clicks=0;
+      var ex=document.getElementById('secret-nav-li');
+      if(ex){ ex.remove(); return; }
+      var li=document.createElement('li'); li.id='secret-nav-li';
+      var a=document.createElement('a'); a.href='secret.html'; a.textContent='★ Found it';
+      a.style.cssText='color:#a78bfa!important;font-style:italic'; li.appendChild(a);
+      var nl=document.querySelector('.nav-links');
+      if(nl){ nl.appendChild(li); window.__gToast&&window.__gToast('★ Secret nav item revealed — check the menu!'); }
+    }
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 35 — TYPE "credits" FOR ROLL
+   ══════════════════════════════════════════════════ */
+(function(){
+  var SEQ='credits',pos=0;
+  document.addEventListener('keydown',function(e){
+    var tag=document.activeElement.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||document.activeElement.isContentEditable){ pos=0; return; }
+    if(e.key.toLowerCase()===SEQ[pos]) pos++; else pos=(e.key.toLowerCase()===SEQ[0]?1:0);
+    if(pos===SEQ.length){ pos=0; roll(); }
+  });
+  function roll(){
+    if(document.getElementById('cred-ov')) return;
+    var s=document.createElement('style');
+    s.textContent=
+      '#cred-ov{position:fixed;inset:0;background:#080c10;z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0;transition:opacity 0.6s;cursor:pointer}'+
+      '#cred-ov.show{opacity:1}'+
+      '#cred-inner{width:100%;text-align:center;animation:credRoll 30s linear both;padding:100vh 2rem;max-width:560px}'+
+      '@keyframes credRoll{0%{transform:translateY(60vh)}100%{transform:translateY(-100%)}}'+
+      '.cr-big{font-family:\'Syne\',sans-serif;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:800;background:linear-gradient(135deg,#0EB5A0,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.4rem}'+
+      '.cr-sub{font-size:0.72rem;color:#6b7c8f;margin-bottom:4rem;letter-spacing:0.06em}'+
+      '.cr-sec{font-size:0.55rem;font-weight:700;color:rgba(14,181,160,0.5);letter-spacing:0.2em;text-transform:uppercase;margin:3rem 0 0.8rem;font-family:\'Syne\',sans-serif}'+
+      '.cr-item{font-size:0.88rem;color:#9ca3af;margin:0.4rem 0;line-height:1.6}'+
+      '.cr-item strong{color:#f0f4f8;font-weight:500}'+
+      '.cr-end{margin-top:4rem;font-size:0.7rem;color:#6b7c8f;letter-spacing:0.06em;line-height:2}'+
+      '#cred-esc{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.6rem;color:rgba(255,255,255,0.25);letter-spacing:0.1em;font-family:\'DM Sans\',sans-serif;z-index:1000000;pointer-events:none}';
+    document.head.appendChild(s);
+    var ov=document.createElement('div'); ov.id='cred-ov';
+    ov.innerHTML='<div id="cred-inner">'+
+      '<div class="cr-big">Sampanna Raj Dhungel</div><div class="cr-sub">Portfolio · '+new Date().getFullYear()+'</div>'+
+      '<div class="cr-sec">Design & Direction</div><div class="cr-item"><strong>Concept, Design & Code</strong><br>Sampanna Raj Dhungel · Bhaktapur, Nepal</div>'+
+      '<div class="cr-sec">Typography</div><div class="cr-item"><strong>Syne</strong> — headings & display<br><strong>DM Sans</strong> — body & UI</div>'+
+      '<div class="cr-sec">Tools</div><div class="cr-item">Figma · Adobe Illustrator · VS Code<br>After Effects · Blender · DaVinci Resolve<br>Adobe Audition · Cubase</div>'+
+      '<div class="cr-sec">APIs & Services</div><div class="cr-item"><strong>Formspree</strong> — contact form<br><strong>Last.fm</strong> — now playing badge<br><strong>Sunrise-Sunset.org</strong> — golden hour<br><strong>Plausible</strong> — privacy analytics</div>'+
+      '<div class="cr-sec">Fonts from</div><div class="cr-item">Google Fonts</div>'+
+      '<div class="cr-sec">Special Thanks</div><div class="cr-item">The clients who trusted the process.<br>The designers who share their work openly.<br>Every recruiter who scrolled past the fold.</div>'+
+      '<div class="cr-sec">Coffee Consumed</div><div class="cr-item"><strong>≈ 1,460 cups</strong> and counting ☕</div>'+
+      '<div class="cr-end">Made with intention<br>Fueled by curiosity<br>✦</div></div>'+
+      '<div id="cred-esc">Esc or click to exit</div>';
+    document.body.appendChild(ov);
+    requestAnimationFrame(function(){ ov.classList.add('show'); });
+    function close(){ ov.classList.remove('show'); setTimeout(function(){ ov.remove(); },600); document.removeEventListener('keydown',onKey); }
+    function onKey(e){ if(e.key==='Escape') close(); }
+    document.addEventListener('keydown',onKey); ov.addEventListener('click',close);
+  }
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 36 — NEPAL CLOCK → YOUR LOCAL TIME
+   Hover the Nepal clock for 2 s to reveal
+   ══════════════════════════════════════════════════ */
+(function(){
+  var clockEl=document.getElementById('nepalClock');
+  if(!clockEl) return;
+  var s=document.createElement('style');
+  s.textContent=
+    '#clk-tip{position:fixed;background:#0d1117;border:1px solid rgba(14,181,160,0.32);padding:0.45rem 0.9rem;z-index:99990;pointer-events:none;opacity:0;transition:opacity 0.25s,transform 0.25s;transform:translateY(4px)}'+
+    '#clk-tip.show{opacity:1;transform:translateY(0)}'+
+    '#clk-tip .ct-l{font-size:0.55rem;color:#6b7c8f;letter-spacing:0.06em;margin-bottom:2px}'+
+    '#clk-tip .ct-v{font-size:0.78rem;font-weight:700;color:#0EB5A0;font-family:\'Syne\',sans-serif;white-space:nowrap}';
+  document.head.appendChild(s);
+  var tip=document.createElement('div'); tip.id='clk-tip';
+  tip.innerHTML='<div class="ct-l">Your local time</div><div class="ct-v" id="ctv">—</div>';
+  document.body.appendChild(tip);
+  var hT,iv;
+  function pos(){ var r=clockEl.getBoundingClientRect(); tip.style.left=r.left+'px'; tip.style.top=(r.top-54)+'px'; }
+  function show(){ pos(); document.getElementById('ctv').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',timeZoneName:'short'}); tip.classList.add('show'); iv=setInterval(function(){ pos(); document.getElementById('ctv').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',timeZoneName:'short'}); },1000); }
+  function hide(){ clearTimeout(hT); clearInterval(iv); tip.classList.remove('show'); }
+  clockEl.addEventListener('mouseenter',function(){ hT=setTimeout(show,1800); });
+  clockEl.addEventListener('mouseleave',hide);
 })()

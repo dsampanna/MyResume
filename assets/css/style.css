@@ -1076,12 +1076,13 @@ footer{position:relative}
    FEATURE: INVISIBLE INK — footer hidden message
    ══════════════════════════════════════════════════ */
 .ink-msg{
-  flex-basis:100%;text-align:center;order:99;
+  flex-basis:100%;order:99;
   font-size:0.7rem;letter-spacing:0.25em;font-weight:500;
-  color:transparent;
-  text-shadow:none;
+  color:transparent;text-shadow:none;
   pointer-events:none;user-select:none;
-  transition:color 0.4s ease, text-shadow 0.4s ease;
+  transition:color 0.4s ease,text-shadow 0.4s ease;
+  /* Counteract the asymmetric right padding so text truly centres on page */
+  padding-left:190px;text-align:center;
 }
 .ink-msg.revealed{
   color:rgba(14,181,160,0.65);
