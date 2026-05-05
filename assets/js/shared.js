@@ -824,13 +824,11 @@ window.__sharedLoaded = true;
       tc.drawImage(img,0,0);
       var d=tc.getImageData(0,0,tmp.width,tmp.height),px=d.data;
       for(var i=0;i<px.length;i+=4){
-        var br=px[i]*0.299+px[i+1]*0.587+px[i+2]*0.114;
-        if(br<210){
-          px[i]=14; px[i+1]=181; px[i+2]=160;
-          px[i+3]=Math.round((1-br/210)*220+35);
-        } else {
-          px[i+3]=0;
-        }
+        var a=px[i+3];
+        if(a<15){ px[i+3]=0; continue; } /* transparent bg → keep transparent */
+        /* Stroke pixel (any colour) → teal, preserve anti-alias alpha */
+        px[i]=14; px[i+1]=181; px[i+2]=160;
+        px[i+3]=Math.min(255,Math.round(a*0.95+12));
       }
       tc.putImageData(d,0,0);
       sigCanvas=tmp; sigLoaded=true;
