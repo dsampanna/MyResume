@@ -738,87 +738,148 @@ window.__sharedLoaded = true;
 
 
 /* ══════════════════════════════════════════════════
-   FEATURE 27 — SEASON EFFECTS (Nepal calendar)
-   spring Mar–May · monsoon Jun–Aug · winter Dec–Feb
+   FEATURE 27 — SEASON EFFECTS (live Bhaktapur weather)
+   🌸 petals · 🌧 rain · ❄ snow  via wttr.in
    ══════════════════════════════════════════════════ */
 (function(){
-  var m=new Date().getMonth();
-  var season=(m>=2&&m<=4)?'spring':(m>=5&&m<=7)?'monsoon':(m>=11||m<=1)?'winter':null;
-  if(!season) return;
-  var cv=document.createElement('canvas');
-  cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:2';
-  document.body.appendChild(cv);
-  var ctx=cv.getContext('2d');
-  function resize(){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
-  resize(); window.addEventListener('resize',resize);
-  var COUNT=season==='monsoon'?140:65, particles=[];
-  function newP(init){
-    var p={x:Math.random()*window.innerWidth,y:init?Math.random()*window.innerHeight:-20};
-    if(season==='monsoon'){ p.vx=-1.5+Math.random()*0.5; p.vy=10+Math.random()*8; p.len=8+Math.random()*10; p.a=0.2+Math.random()*0.3; }
-    else if(season==='winter'){ p.vx=-0.3+Math.random()*0.6; p.vy=0.6+Math.random()*1.4; p.r=2+Math.random()*3; p.a=0.45+Math.random()*0.4; p.w=Math.random()*Math.PI*2; }
-    else{ p.vx=-0.4+Math.random()*0.8; p.vy=0.5+Math.random()*1.2; p.r=3+Math.random()*5; p.a=0.5+Math.random()*0.35; p.rot=Math.random()*Math.PI*2; p.rv=(Math.random()-0.5)*0.04; var c=[{r:255,g:183,b:197},{r:255,g:200,b:215},{r:255,g:160,b:180}]; p.col=c[Math.floor(Math.random()*c.length)]; }
-    return p;
+  function initParticles(season,weatherDesc){
+    var cv=document.createElement('canvas');
+    cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:2';
+    document.body.appendChild(cv);
+    var ctx=cv.getContext('2d');
+    function resize(){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
+    resize(); window.addEventListener('resize',resize);
+    var COUNT=season==='monsoon'?140:65, particles=[];
+    function newP(init){
+      var p={x:Math.random()*window.innerWidth,y:init?Math.random()*window.innerHeight:-20};
+      if(season==='monsoon'){ p.vx=-1.5+Math.random()*0.5; p.vy=10+Math.random()*8; p.len=8+Math.random()*10; p.a=0.2+Math.random()*0.3; }
+      else if(season==='winter'){ p.vx=-0.3+Math.random()*0.6; p.vy=0.6+Math.random()*1.4; p.r=2+Math.random()*3; p.a=0.45+Math.random()*0.4; p.w=Math.random()*Math.PI*2; }
+      else{ p.vx=-0.4+Math.random()*0.8; p.vy=0.5+Math.random()*1.2; p.r=3+Math.random()*5; p.a=0.5+Math.random()*0.35; p.rot=Math.random()*Math.PI*2; p.rv=(Math.random()-0.5)*0.04; var c=[{r:255,g:183,b:197},{r:255,g:200,b:215},{r:255,g:160,b:180}]; p.col=c[Math.floor(Math.random()*c.length)]; }
+      return p;
+    }
+    for(var i=0;i<COUNT;i++) particles.push(newP(true));
+    (function draw(){
+      ctx.clearRect(0,0,cv.width,cv.height);
+      particles.forEach(function(p,i){
+        if(season==='monsoon'){
+          ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x+p.vx*0.8,p.y+p.len);
+          ctx.strokeStyle='rgba(160,210,255,'+p.a+')'; ctx.lineWidth=1; ctx.stroke();
+          p.x+=p.vx; p.y+=p.vy;
+        } else if(season==='winter'){
+          p.w+=0.018; p.x+=Math.sin(p.w)*0.5+p.vx; p.y+=p.vy;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle='rgba(220,238,255,'+p.a+')'; ctx.fill();
+        } else {
+          p.rot+=p.rv; p.x+=p.vx+Math.sin(p.rot)*0.3; p.y+=p.vy;
+          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+          ctx.beginPath(); ctx.ellipse(0,0,p.r,p.r/2.2,0,0,Math.PI*2);
+          ctx.fillStyle='rgba('+p.col.r+','+p.col.g+','+p.col.b+','+p.a+')'; ctx.fill(); ctx.restore();
+        }
+        if(p.y>cv.height+30||p.x<-30||p.x>cv.width+30) particles[i]=newP(false);
+      });
+      requestAnimationFrame(draw);
+    })();
+    setTimeout(function(){
+      var icon=season==='spring'?'🌸':season==='monsoon'?'🌧':'❄';
+      window.__gToast&&window.__gToast(icon+' '+weatherDesc+' in Bhaktapur right now',4000);
+    },3500);
   }
-  for(var i=0;i<COUNT;i++) particles.push(newP(true));
-  (function draw(){
-    ctx.clearRect(0,0,cv.width,cv.height);
-    particles.forEach(function(p,i){
-      if(season==='monsoon'){
-        ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x+p.vx*0.8,p.y+p.len);
-        ctx.strokeStyle='rgba(160,210,255,'+p.a+')'; ctx.lineWidth=1; ctx.stroke();
-        p.x+=p.vx; p.y+=p.vy;
-      } else if(season==='winter'){
-        p.w+=0.018; p.x+=Math.sin(p.w)*0.5+p.vx; p.y+=p.vy;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle='rgba(220,238,255,'+p.a+')'; ctx.fill();
-      } else {
-        p.rot+=p.rv; p.x+=p.vx+Math.sin(p.rot)*0.3; p.y+=p.vy;
-        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
-        ctx.beginPath(); ctx.ellipse(0,0,p.r,p.r/2.2,0,0,Math.PI*2);
-        ctx.fillStyle='rgba('+p.col.r+','+p.col.g+','+p.col.b+','+p.a+')'; ctx.fill(); ctx.restore();
-      }
-      if(p.y>cv.height+30||p.x<-30||p.x>cv.width+30) particles[i]=newP(false);
+  /* Fetch live weather; fall back to calendar if fetch fails */
+  fetch('https://wttr.in/Bhaktapur?format=j1')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var code=parseInt(data.current_condition[0].weatherCode);
+      var desc=data.current_condition[0].weatherDesc[0].value;
+      var snowCodes=[179,182,185,227,230,323,326,329,332,335,338,350,371,374,377];
+      var season;
+      if(snowCodes.indexOf(code)!==-1) season='winter';
+      else if(code>=176) season='monsoon';
+      else if(code<=116) season='spring';
+      if(season) initParticles(season,desc);
+    })
+    .catch(function(){
+      var m=new Date().getMonth();
+      var season=(m>=2&&m<=4)?'spring':(m>=5&&m<=7)?'monsoon':(m>=11||m<=1)?'winter':null;
+      if(season) initParticles(season,'Nepal');
     });
-    requestAnimationFrame(draw);
-  })();
-  setTimeout(function(){
-    var msg=season==='spring'?'🌸 Spring in Nepal — blossom petals':season==='monsoon'?'🌧 Monsoon season in Nepal — enjoy the rain':'❄ Winter in Bhaktapur — it\'s cold out there';
-    window.__gToast&&window.__gToast(msg,3500);
-  },3500);
 })();
 
 
 /* ══════════════════════════════════════════════════
-   FEATURE 28 — IDLE GENERATIVE ART (15 s idle)
+   FEATURE 28 — IDLE SIGNATURE ART (5 s idle)
+   Teal-tinted signature drawn from last cursor pos
    ══════════════════════════════════════════════════ */
 (function(){
-  var IDLE=15000,timer,cv,ctx,animId,on=false,t=0;
+  var IDLE=5000,timer,cv,ctx,animId,on=false;
   var lx=window.innerWidth/2,ly=window.innerHeight/2;
+  var sigCanvas=null,sigLoaded=false;
+
+  /* Pre-load /assets/img/signature.png and teal-ify dark pixels */
+  (function loadSig(){
+    var img=new Image();
+    img.onload=function(){
+      var tmp=document.createElement('canvas');
+      tmp.width=img.naturalWidth; tmp.height=img.naturalHeight;
+      var tc=tmp.getContext('2d');
+      tc.drawImage(img,0,0);
+      var d=tc.getImageData(0,0,tmp.width,tmp.height),px=d.data;
+      for(var i=0;i<px.length;i+=4){
+        var br=px[i]*0.299+px[i+1]*0.587+px[i+2]*0.114;
+        if(br<210){
+          px[i]=14; px[i+1]=181; px[i+2]=160;
+          px[i+3]=Math.round((1-br/210)*220+35);
+        } else {
+          px[i+3]=0;
+        }
+      }
+      tc.putImageData(d,0,0);
+      sigCanvas=tmp; sigLoaded=true;
+    };
+    img.src='/assets/img/signature.png';
+  })();
+
   function makeCV(){
     if(cv) return;
     cv=document.createElement('canvas');
-    cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:3;opacity:0;transition:opacity 1.2s';
+    cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:3;opacity:0;transition:opacity 0.8s';
     document.body.appendChild(cv); ctx=cv.getContext('2d');
     function r(){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
     r(); window.addEventListener('resize',r);
   }
+
   function start(){
-    if(on) return; on=true; t=0; makeCV();
-    cv.style.opacity='0.55'; ctx.clearRect(0,0,cv.width,cv.height);
-    var a=3,b=2,d=Math.PI/4,sc=Math.min(cv.width,cv.height)*0.28;
-    (function frame(){
-      if(!on) return; t+=0.008;
-      var x=lx+sc*Math.sin(a*t+d),y=ly+sc*Math.sin(b*t);
-      if(t<0.015){ ctx.beginPath(); ctx.moveTo(x,y); }
-      ctx.lineTo(x,y);
-      ctx.strokeStyle='hsla('+(t*15%360)+',65%,68%,0.04)'; ctx.lineWidth=1.5; ctx.stroke();
-      if(t<80) animId=requestAnimationFrame(frame);
+    if(on||!sigLoaded) return; on=true; makeCV();
+    ctx.clearRect(0,0,cv.width,cv.height);
+    cv.style.opacity='1';
+
+    var W=sigCanvas.width,H=sigCanvas.height;
+    var scale=Math.min(window.innerWidth*0.42/W,window.innerHeight*0.22/H,1.5);
+    var sw=W*scale,sh=H*scale;
+    var dx=Math.max(20,Math.min(cv.width-sw-20,lx-sw/2));
+    var dy=Math.max(20,Math.min(cv.height-sh-20,ly-sh/2));
+
+    var frame=0,FRAMES=50;
+    (function draw(){
+      if(!on) return;
+      ctx.clearRect(0,0,cv.width,cv.height);
+      var revealW=sw*(frame/FRAMES);
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(dx,dy-4,revealW,sh+8);
+      ctx.clip();
+      ctx.shadowBlur=28; ctx.shadowColor='rgba(14,181,160,0.5)';
+      ctx.drawImage(sigCanvas,dx,dy,sw,sh);
+      ctx.restore();
+      if(frame<FRAMES){ frame++; animId=requestAnimationFrame(draw); }
+      else{ setTimeout(function(){ if(on) stop(); },2000); }
     })();
   }
+
   function stop(){
     if(!on) return; on=false; cancelAnimationFrame(animId);
-    if(cv){ cv.style.opacity='0'; setTimeout(function(){ if(ctx) ctx.clearRect(0,0,cv.width,cv.height); },1200); }
+    if(cv){ cv.style.opacity='0'; setTimeout(function(){ if(ctx) ctx.clearRect(0,0,cv.width,cv.height); },900); }
   }
+
   function reset(){ clearTimeout(timer); if(on) stop(); timer=setTimeout(start,IDLE); }
   document.addEventListener('mousemove',function(e){ lx=e.clientX; ly=e.clientY; reset(); });
   document.addEventListener('keydown',reset); document.addEventListener('click',reset);
