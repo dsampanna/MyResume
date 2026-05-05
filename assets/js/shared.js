@@ -749,12 +749,12 @@ window.__sharedLoaded = true;
     var ctx=cv.getContext('2d');
     function resize(){ cv.width=window.innerWidth; cv.height=window.innerHeight; }
     resize(); window.addEventListener('resize',resize);
-    var COUNT=season==='monsoon'?140:65, particles=[];
+    var COUNT=season==='monsoon'?140:season==='spring'?30:55, particles=[];
     function newP(init){
       var p={x:Math.random()*window.innerWidth,y:init?Math.random()*window.innerHeight:-20};
       if(season==='monsoon'){ p.vx=-1.5+Math.random()*0.5; p.vy=10+Math.random()*8; p.len=8+Math.random()*10; p.a=0.2+Math.random()*0.3; }
       else if(season==='winter'){ p.vx=-0.3+Math.random()*0.6; p.vy=0.6+Math.random()*1.4; p.r=2+Math.random()*3; p.a=0.45+Math.random()*0.4; p.w=Math.random()*Math.PI*2; }
-      else{ p.vx=-0.4+Math.random()*0.8; p.vy=0.5+Math.random()*1.2; p.r=3+Math.random()*5; p.a=0.5+Math.random()*0.35; p.rot=Math.random()*Math.PI*2; p.rv=(Math.random()-0.5)*0.04; var c=[{r:255,g:183,b:197},{r:255,g:200,b:215},{r:255,g:160,b:180}]; p.col=c[Math.floor(Math.random()*c.length)]; }
+      else{ p.vx=-0.25+Math.random()*0.5; p.vy=0.18+Math.random()*0.37; p.r=3+Math.random()*5; p.a=0.5+Math.random()*0.35; p.rot=Math.random()*Math.PI*2; p.rv=(Math.random()-0.5)*0.025; var c=[{r:255,g:183,b:197},{r:255,g:200,b:215},{r:255,g:160,b:180}]; p.col=c[Math.floor(Math.random()*c.length)]; }
       return p;
     }
     for(var i=0;i<COUNT;i++) particles.push(newP(true));
