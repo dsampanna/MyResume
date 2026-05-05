@@ -846,7 +846,16 @@ window.__sharedLoaded = true;
     if(tag==='INPUT'||tag==='TEXTAREA'||document.activeElement.isContentEditable) return;
     active=!active; document.body.classList.toggle('fm',active); badge.classList.toggle('show',active);
     if(active){
-      var els=document.querySelectorAll('section,.hero');
+      var els=Array.from(document.querySelectorAll('section,.hero'));
+      /* Immediately highlight the most visible section */
+      var best=null,bestVis=-1;
+      els.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        var vis=Math.min(r.bottom,window.innerHeight)-Math.max(r.top,0);
+        if(vis>bestVis){ bestVis=vis; best=el; }
+      });
+      if(best){ current=best; best.classList.add('fm-on'); }
+      /* Observer keeps it updated on scroll */
       obs=new IntersectionObserver(function(entries){
         entries.forEach(function(ent){
           if(ent.isIntersecting&&ent.intersectionRatio>=0.25){
