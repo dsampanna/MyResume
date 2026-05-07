@@ -187,53 +187,53 @@ if(portFilters){ portFilters.addEventListener('click', function(e){
 /* ── 3D CAROUSEL ── */
 (function(){
  var projects=[
-  {title:'Swaadd — स्वाद',cat:'UI/UX · Hi-Fidelity Design',desc:'Hi-fi design handoff for a Nepal food delivery app — red design system, Mukta type, 4 apps.',img:'assets/img/portfolio/swaadd-thumbnail.svg',bg:'#2a0a08',link:'project.html?id=swaadd'},
-  {title:'खाना App',cat:'UI/UX · Mobile App',desc:'Complete wireframe for a Nepal food delivery platform — 4 apps, 30+ screens, bilingual.',img:'assets/img/portfolio/khana-app-thumbnail.svg',bg:'#1a1200',link:'project.html?id=khana-app'},
-  {title:'Griham Organic',cat:'UI/UX · Web Design',desc:'A seamless digital experience bringing home-grown produce to online shoppers in Nepal.',img:'assets/img/portfolio/griham-organic-thumbnail.jpg',bg:'#1a2e2b',link:'project.html?id=griham-organic'},
-  {title:'HimalTrek Nepal',cat:'Web Design · UI/UX',desc:'Full-stack trekking platform — 24 routes, permits, certified guides and booking.',img:'assets/img/portfolio/himaltrek-thumbnail.jpg',bg:'#0a1e0a',link:'project.html?id=himaltrek-nepal'},
-  {title:'Indreni Nursery',cat:'Web Design',desc:'Clean landing page design for a local nursery — fresh, green and inviting.',img:'assets/img/portfolio/portfolio-17.jpg',bg:'#0a1a0a',link:'project.html?id=indreni-nursery'},
-  {title:'Old Man Smoking',cat:'3D Animation',desc:'Character-driven 3D animation exploring texture, light, and emotional storytelling.',img:'assets/img/portfolio/3D_Animation_2_thumbnail.png',bg:'#1e1a2e',link:'project.html?id=old-man-smoking'},
-  {title:'Old Man Chilling',cat:'3D Animation',desc:'A relaxed 3D character study — mood, atmosphere and subtle motion.',img:'assets/img/portfolio/3D_Animation_1_thumbnail.jpg',bg:'#1a1a2e',link:'project.html?id=old-man-chilling'},
-  {title:'City Motion',cat:'Motion Graphics',desc:'Dynamic urban motion reel crafted in After Effects — rhythm, pace, and energy.',img:'assets/img/portfolio/Motion_1_thumbnail.jpg',bg:'#0d1a2e',link:'project.html?id=city-motion'},
-  {title:'999 to 1000 Subscribers',cat:'Motion Graphics',desc:'Celebratory motion graphic marking a milestone subscriber count.',img:'assets/img/portfolio/Motion_2_thumbnail.jpg',bg:'#1a0d2e',link:'project.html?id=999-to-1000-subscribers'},
-  {title:'Instagram Username Reveal',cat:'Motion Graphics',desc:'Stylish animated reveal for a social media username — clean and punchy.',img:'assets/img/portfolio/Motion_3_thumbnail.jpg',bg:'#2e1a0d',link:'project.html?id=instagram-username-reveal'},
-  {title:'Instagram Story',cat:'Motion Graphics',desc:'Animated Instagram story template with smooth transitions and bold type.',img:'assets/img/portfolio/Motion_4_thumbnail.jpg',bg:'#2e0d1a',link:'project.html?id=instagram-story'},
-  {title:'Facebook Like',cat:'Motion Graphics',desc:'Playful animation of the iconic Facebook like reaction.',img:'assets/img/portfolio/Motion_5_thumbnail.jpg',bg:'#0d1e2e',link:'project.html?id=facebook-like'},
-  {title:'Switch On',cat:'Motion Graphics',desc:'Satisfying switch toggle animation — crisp timing and tactile feel.',img:'assets/img/portfolio/Motion_6_thumbnail.jpg',bg:'#0a2e1a',link:'project.html?id=switch-on'},
-  {title:'Timer',cat:'Motion Graphics',desc:'Minimalist countdown timer animation with clean visual design.',img:'assets/img/portfolio/Motion_7_thumbnail.jpg',bg:'#1a2e0a',link:'project.html?id=timer'},
-  {title:'Coming Soon',cat:'Motion Graphics',desc:'Animated coming soon screen with tension-building visual pacing.',img:'assets/img/portfolio/Motion_8_thumbnail.jpg',bg:'#2e1a0a',link:'project.html?id=coming-soon'},
-  {title:'Chatting',cat:'Motion Graphics',desc:'Animated chat bubble sequence — light, conversational and fun.',img:'assets/img/portfolio/Motion_9_thumbnail.jpg',bg:'#0a1a2e',link:'project.html?id=chatting'},
-  {title:'Intro Reveal',cat:'Motion Graphics',desc:'Bold animated intro sequence for a personal or brand channel.',img:'assets/img/portfolio/Motion_10_thumbnail.jpg',bg:'#1e0a2e',link:'project.html?id=intro-reveal'},
-  {title:'Loading',cat:'Motion Graphics',desc:'Smooth loading animation loop — minimal and satisfying.',img:'assets/img/portfolio/Motion_11_thumbnail.jpg',bg:'#0a2e2e',link:'project.html?id=loading'},
-  {title:'Transform With Sound',cat:'Motion · Sound Design',desc:'A motion piece that reacts visually in sync with original sound design.',img:'assets/img/portfolio/Motion_12_thumbnail.jpg',bg:'#0a0a1a',link:'project.html?id=transform-with-sound-motion'},
-  {title:'Pepsi Logo Reveal',cat:'Motion · Branding',desc:"Branded logo reveal animation for one of the world's most recognisable marks.",img:'assets/img/portfolio/Motion_13_thumbnail.png',bg:'#001a3a',link:'project.html?id=pepsi-logo-reveal'},
-  {title:'Transform With Sound',cat:'Sound Design',desc:'Original sound design composition built to sync with motion and visual rhythm.',img:'assets/img/portfolio/Draft_Music_Design_1_thumbnail.jpg',bg:'#0a0a0a',link:'project.html?id=transform-with-sound-audio'},
-  {title:'Tihar Wishes',cat:'Social Media',desc:'Festive Tihar social media graphic — warm tones and celebratory design.',img:'assets/img/portfolio/portfolio-8.jpg',bg:'#2e1e00',link:'project.html?id=tihar-wishes'},
-  {title:'Bijaya Dashami Offer',cat:'Social Media',desc:'Promotional offer graphic for Bijaya Dashami — bold and festive.',img:'assets/img/portfolio/portfolio-11.jpg',bg:'#2e0a00',link:'project.html?id=bijaya-dashami-offer'},
-  {title:'Bijaya Dashami Wishes',cat:'Social Media',desc:'Warm festive wishes graphic for Bijaya Dashami celebrations.',img:'assets/img/portfolio/portfolio-9.jpg',bg:'#2e1000',link:'project.html?id=bijaya-dashami-wishes'},
-  {title:'Bijaya Dashami Wish',cat:'Social Media',desc:'Clean single-post wish design for the Dashami festival.',img:'assets/img/portfolio/portfolio-4.jpg',bg:'#1e0a00',link:'project.html?id=bijaya-dashami-wish'},
-  {title:'Bijaya Dashami Wish 2',cat:'Social Media',desc:'Alternative festive wish design variant with different layout and feel.',img:'assets/img/portfolio/portfolio-14.jpg',bg:'#2e0e00',link:'project.html?id=bijaya-dashami-wish-2'},
-  {title:'Kent Water Purifier',cat:'Social Media',desc:'Product promotional graphic for Kent Water Purifier — clean and minimal.',img:'assets/img/portfolio/portfolio-6.jpg',bg:'#001a2e',link:'project.html?id=kent-water-purifier'},
-  {title:'Kent Water Purifier 2',cat:'Social Media',desc:'Second variant promotional design for Kent Water Purifier campaign.',img:'assets/img/portfolio/portfolio-7.jpg',bg:'#00102e',link:'project.html?id=kent-water-purifier-2'},
-  {title:'Admission Open',cat:'Social Media',desc:'Eye-catching admission announcement graphic for an educational institution.',img:'assets/img/portfolio/portfolio-5.jpg',bg:'#0a002e',link:'project.html?id=admission-open'},
-  {title:'Abroad Study',cat:'Social Media',desc:'Aspirational study abroad promotional graphic with bold visual hierarchy.',img:'assets/img/portfolio/portfolio-10.jpg',bg:'#001e2e',link:'project.html?id=abroad-study'},
-  {title:'Offer / Voucher Code',cat:'Social Media',desc:'Promotional voucher and offer graphic — structured, clear and action-driven.',img:'assets/img/portfolio/portfolio-12.jpg',bg:'#1a2e00',link:'project.html?id=offer-voucher-code'},
-  {title:'TikTok Marketing Guide',cat:'Social Media',desc:'Informational carousel-style graphic breaking down TikTok marketing tips.',img:'assets/img/portfolio/portfolio-13.jpg',bg:'#0a0a0a',link:'project.html?id=tiktok-marketing-guide'},
-  {title:"Men's Collection Offer",cat:'Social Media',desc:"Fashion promotional graphic for a men's clothing collection sale.",img:'assets/img/portfolio/portfolio-15.jpg',bg:'#1a1a00',link:"project.html?id=mens-collection-offer"},
-  {title:'Revenue Breakdown',cat:'Social Media',desc:'Data-driven infographic breaking down revenue figures for Kent College.',img:'assets/img/portfolio/portfolio-16.jpg',bg:'#001a1a',link:'project.html?id=revenue-breakdown'},
-  {title:'Affiliation Program',cat:'Social Media',desc:'Promotional graphic for an affiliation and referral program launch.',img:'assets/img/portfolio/portfolio-1.jpg',bg:'#1e1a00',link:'project.html?id=affiliation-program'},
-  {title:'Water Purifier',cat:'Social Media',desc:'Minimal product feature graphic highlighting water purification benefits.',img:'assets/img/portfolio/portfolio-2.jpg',bg:'#001a1e',link:'project.html?id=water-purifier'},
-  {title:'Graphics Design Bootcamp',cat:'Social Media',desc:'Event promotion graphic for a graphic design bootcamp — bold and energetic.',img:'assets/img/portfolio/portfolio-3.jpg',bg:'#1a002e',link:'project.html?id=graphics-design-bootcamp'},
-  {title:'Voucher Card',cat:'Social Media',desc:'Clean voucher card design with structured layout and brand colours.',img:'assets/img/portfolio/portfolio-21.jpg',bg:'#2e1a1a',link:'project.html?id=voucher-card'},
-  {title:'Araniko FC Identity',cat:'Logo Design · Branding',desc:'Full brand identity for Araniko FC — crest, typography, colour system and guidelines.',img:'assets/img/portfolio/portfolio-23.png',bg:'#1a1200',link:'project.html?id=logo-araniko-fc'},
-  {title:'Logo — Sallaghari Burger',cat:'Logo Design',desc:'Fun and appetising logo design for a local burger brand.',img:'assets/img/portfolio/portfolio-22.jpg',bg:'#2e0a00',link:'project.html?id=logo-sallaghari-burger'},
-  {title:'Logo — Wine Hub Nepal',cat:'Logo Design',desc:'Elegant and sophisticated logo for a premium wine retail brand in Nepal.',img:'assets/img/portfolio/portfolio-24.jpg',bg:'#1a0010',link:'project.html?id=logo-wine-hub-nepal'},
-  {title:'Visiting Card',cat:'Other Designs',desc:'Clean professional visiting card design with strong typographic layout.',img:'assets/img/portfolio/portfolio-18.jpg',bg:'#0a0a1a',link:'project.html?id=visiting-card'},
-  {title:'Visiting Card 2',cat:'Other Designs',desc:'Second visiting card variant — different style, same professional polish.',img:'assets/img/portfolio/portfolio-19.jpg',bg:'#1a0a0a',link:'project.html?id=visiting-card-2'},
-  {title:'Ozil Illustration',cat:'Other Designs',desc:'Hand-crafted digital illustration of footballer Mesut Özil — detailed and expressive.',img:'assets/img/portfolio/portfolio-20.jpg',bg:'#0a1a0a',link:'project.html?id=ozil-illustration'},
-  {title:'Hoarding Board Design',cat:'Other Designs',desc:'Large-format hoarding board design — bold, readable and impactful at scale.',img:'assets/img/portfolio/portfolio-25.jpg',bg:'#1a1a0a',link:'project.html?id=hoarding-board'},
-  {title:'Banner Design',cat:'Other Designs',desc:'Versatile banner design for events or promotions — structured and clear.',img:'assets/img/portfolio/portfolio-26.jpg',bg:'#0a1a1a',link:'project.html?id=banner-design'},
-  {title:'Diary Cover Design',cat:'Other Designs',desc:'Creative diary cover design — personal, tactile and beautifully composed.',img:'assets/img/portfolio/portfolio-27.jpg',bg:'#1a0a1a',link:'project.html?id=diary-cover'},
+  {title:'Swaadd — स्वाद',cat:'UI/UX · Hi-Fidelity Design',desc:'Hi-fi design handoff for a Nepal food delivery app — red design system, Mukta type, 4 apps.',img:'assets/img/portfolio/swaadd-thumbnail.svg',bg:'#2a0a08',link:'project.html#swaadd'},
+  {title:'खाना App',cat:'UI/UX · Mobile App',desc:'Complete wireframe for a Nepal food delivery platform — 4 apps, 30+ screens, bilingual.',img:'assets/img/portfolio/khana-app-thumbnail.svg',bg:'#1a1200',link:'project.html#khana-app'},
+  {title:'Griham Organic',cat:'UI/UX · Web Design',desc:'A seamless digital experience bringing home-grown produce to online shoppers in Nepal.',img:'assets/img/portfolio/griham-organic-thumbnail.jpg',bg:'#1a2e2b',link:'project.html#griham-organic'},
+  {title:'HimalTrek Nepal',cat:'Web Design · UI/UX',desc:'Full-stack trekking platform — 24 routes, permits, certified guides and booking.',img:'assets/img/portfolio/himaltrek-thumbnail.jpg',bg:'#0a1e0a',link:'project.html#himaltrek-nepal'},
+  {title:'Indreni Nursery',cat:'Web Design',desc:'Clean landing page design for a local nursery — fresh, green and inviting.',img:'assets/img/portfolio/portfolio-17.jpg',bg:'#0a1a0a',link:'project.html#indreni-nursery'},
+  {title:'Old Man Smoking',cat:'3D Animation',desc:'Character-driven 3D animation exploring texture, light, and emotional storytelling.',img:'assets/img/portfolio/3D_Animation_2_thumbnail.png',bg:'#1e1a2e',link:'project.html#old-man-smoking'},
+  {title:'Old Man Chilling',cat:'3D Animation',desc:'A relaxed 3D character study — mood, atmosphere and subtle motion.',img:'assets/img/portfolio/3D_Animation_1_thumbnail.jpg',bg:'#1a1a2e',link:'project.html#old-man-chilling'},
+  {title:'City Motion',cat:'Motion Graphics',desc:'Dynamic urban motion reel crafted in After Effects — rhythm, pace, and energy.',img:'assets/img/portfolio/Motion_1_thumbnail.jpg',bg:'#0d1a2e',link:'project.html#city-motion'},
+  {title:'999 to 1000 Subscribers',cat:'Motion Graphics',desc:'Celebratory motion graphic marking a milestone subscriber count.',img:'assets/img/portfolio/Motion_2_thumbnail.jpg',bg:'#1a0d2e',link:'project.html#999-to-1000-subscribers'},
+  {title:'Instagram Username Reveal',cat:'Motion Graphics',desc:'Stylish animated reveal for a social media username — clean and punchy.',img:'assets/img/portfolio/Motion_3_thumbnail.jpg',bg:'#2e1a0d',link:'project.html#instagram-username-reveal'},
+  {title:'Instagram Story',cat:'Motion Graphics',desc:'Animated Instagram story template with smooth transitions and bold type.',img:'assets/img/portfolio/Motion_4_thumbnail.jpg',bg:'#2e0d1a',link:'project.html#instagram-story'},
+  {title:'Facebook Like',cat:'Motion Graphics',desc:'Playful animation of the iconic Facebook like reaction.',img:'assets/img/portfolio/Motion_5_thumbnail.jpg',bg:'#0d1e2e',link:'project.html#facebook-like'},
+  {title:'Switch On',cat:'Motion Graphics',desc:'Satisfying switch toggle animation — crisp timing and tactile feel.',img:'assets/img/portfolio/Motion_6_thumbnail.jpg',bg:'#0a2e1a',link:'project.html#switch-on'},
+  {title:'Timer',cat:'Motion Graphics',desc:'Minimalist countdown timer animation with clean visual design.',img:'assets/img/portfolio/Motion_7_thumbnail.jpg',bg:'#1a2e0a',link:'project.html#timer'},
+  {title:'Coming Soon',cat:'Motion Graphics',desc:'Animated coming soon screen with tension-building visual pacing.',img:'assets/img/portfolio/Motion_8_thumbnail.jpg',bg:'#2e1a0a',link:'project.html#coming-soon'},
+  {title:'Chatting',cat:'Motion Graphics',desc:'Animated chat bubble sequence — light, conversational and fun.',img:'assets/img/portfolio/Motion_9_thumbnail.jpg',bg:'#0a1a2e',link:'project.html#chatting'},
+  {title:'Intro Reveal',cat:'Motion Graphics',desc:'Bold animated intro sequence for a personal or brand channel.',img:'assets/img/portfolio/Motion_10_thumbnail.jpg',bg:'#1e0a2e',link:'project.html#intro-reveal'},
+  {title:'Loading',cat:'Motion Graphics',desc:'Smooth loading animation loop — minimal and satisfying.',img:'assets/img/portfolio/Motion_11_thumbnail.jpg',bg:'#0a2e2e',link:'project.html#loading'},
+  {title:'Transform With Sound',cat:'Motion · Sound Design',desc:'A motion piece that reacts visually in sync with original sound design.',img:'assets/img/portfolio/Motion_12_thumbnail.jpg',bg:'#0a0a1a',link:'project.html#transform-with-sound-motion'},
+  {title:'Pepsi Logo Reveal',cat:'Motion · Branding',desc:"Branded logo reveal animation for one of the world's most recognisable marks.",img:'assets/img/portfolio/Motion_13_thumbnail.png',bg:'#001a3a',link:'project.html#pepsi-logo-reveal'},
+  {title:'Transform With Sound',cat:'Sound Design',desc:'Original sound design composition built to sync with motion and visual rhythm.',img:'assets/img/portfolio/Draft_Music_Design_1_thumbnail.jpg',bg:'#0a0a0a',link:'project.html#transform-with-sound-audio'},
+  {title:'Tihar Wishes',cat:'Social Media',desc:'Festive Tihar social media graphic — warm tones and celebratory design.',img:'assets/img/portfolio/portfolio-8.jpg',bg:'#2e1e00',link:'project.html#tihar-wishes'},
+  {title:'Bijaya Dashami Offer',cat:'Social Media',desc:'Promotional offer graphic for Bijaya Dashami — bold and festive.',img:'assets/img/portfolio/portfolio-11.jpg',bg:'#2e0a00',link:'project.html#bijaya-dashami-offer'},
+  {title:'Bijaya Dashami Wishes',cat:'Social Media',desc:'Warm festive wishes graphic for Bijaya Dashami celebrations.',img:'assets/img/portfolio/portfolio-9.jpg',bg:'#2e1000',link:'project.html#bijaya-dashami-wishes'},
+  {title:'Bijaya Dashami Wish',cat:'Social Media',desc:'Clean single-post wish design for the Dashami festival.',img:'assets/img/portfolio/portfolio-4.jpg',bg:'#1e0a00',link:'project.html#bijaya-dashami-wish'},
+  {title:'Bijaya Dashami Wish 2',cat:'Social Media',desc:'Alternative festive wish design variant with different layout and feel.',img:'assets/img/portfolio/portfolio-14.jpg',bg:'#2e0e00',link:'project.html#bijaya-dashami-wish-2'},
+  {title:'Kent Water Purifier',cat:'Social Media',desc:'Product promotional graphic for Kent Water Purifier — clean and minimal.',img:'assets/img/portfolio/portfolio-6.jpg',bg:'#001a2e',link:'project.html#kent-water-purifier'},
+  {title:'Kent Water Purifier 2',cat:'Social Media',desc:'Second variant promotional design for Kent Water Purifier campaign.',img:'assets/img/portfolio/portfolio-7.jpg',bg:'#00102e',link:'project.html#kent-water-purifier-2'},
+  {title:'Admission Open',cat:'Social Media',desc:'Eye-catching admission announcement graphic for an educational institution.',img:'assets/img/portfolio/portfolio-5.jpg',bg:'#0a002e',link:'project.html#admission-open'},
+  {title:'Abroad Study',cat:'Social Media',desc:'Aspirational study abroad promotional graphic with bold visual hierarchy.',img:'assets/img/portfolio/portfolio-10.jpg',bg:'#001e2e',link:'project.html#abroad-study'},
+  {title:'Offer / Voucher Code',cat:'Social Media',desc:'Promotional voucher and offer graphic — structured, clear and action-driven.',img:'assets/img/portfolio/portfolio-12.jpg',bg:'#1a2e00',link:'project.html#offer-voucher-code'},
+  {title:'TikTok Marketing Guide',cat:'Social Media',desc:'Informational carousel-style graphic breaking down TikTok marketing tips.',img:'assets/img/portfolio/portfolio-13.jpg',bg:'#0a0a0a',link:'project.html#tiktok-marketing-guide'},
+  {title:"Men's Collection Offer",cat:'Social Media',desc:"Fashion promotional graphic for a men's clothing collection sale.",img:'assets/img/portfolio/portfolio-15.jpg',bg:'#1a1a00',link:"project.html#mens-collection-offer"},
+  {title:'Revenue Breakdown',cat:'Social Media',desc:'Data-driven infographic breaking down revenue figures for Kent College.',img:'assets/img/portfolio/portfolio-16.jpg',bg:'#001a1a',link:'project.html#revenue-breakdown'},
+  {title:'Affiliation Program',cat:'Social Media',desc:'Promotional graphic for an affiliation and referral program launch.',img:'assets/img/portfolio/portfolio-1.jpg',bg:'#1e1a00',link:'project.html#affiliation-program'},
+  {title:'Water Purifier',cat:'Social Media',desc:'Minimal product feature graphic highlighting water purification benefits.',img:'assets/img/portfolio/portfolio-2.jpg',bg:'#001a1e',link:'project.html#water-purifier'},
+  {title:'Graphics Design Bootcamp',cat:'Social Media',desc:'Event promotion graphic for a graphic design bootcamp — bold and energetic.',img:'assets/img/portfolio/portfolio-3.jpg',bg:'#1a002e',link:'project.html#graphics-design-bootcamp'},
+  {title:'Voucher Card',cat:'Social Media',desc:'Clean voucher card design with structured layout and brand colours.',img:'assets/img/portfolio/portfolio-21.jpg',bg:'#2e1a1a',link:'project.html#voucher-card'},
+  {title:'Araniko FC Identity',cat:'Logo Design · Branding',desc:'Full brand identity for Araniko FC — crest, typography, colour system and guidelines.',img:'assets/img/portfolio/portfolio-23.png',bg:'#1a1200',link:'project.html#logo-araniko-fc'},
+  {title:'Logo — Sallaghari Burger',cat:'Logo Design',desc:'Fun and appetising logo design for a local burger brand.',img:'assets/img/portfolio/portfolio-22.jpg',bg:'#2e0a00',link:'project.html#logo-sallaghari-burger'},
+  {title:'Logo — Wine Hub Nepal',cat:'Logo Design',desc:'Elegant and sophisticated logo for a premium wine retail brand in Nepal.',img:'assets/img/portfolio/portfolio-24.jpg',bg:'#1a0010',link:'project.html#logo-wine-hub-nepal'},
+  {title:'Visiting Card',cat:'Other Designs',desc:'Clean professional visiting card design with strong typographic layout.',img:'assets/img/portfolio/portfolio-18.jpg',bg:'#0a0a1a',link:'project.html#visiting-card'},
+  {title:'Visiting Card 2',cat:'Other Designs',desc:'Second visiting card variant — different style, same professional polish.',img:'assets/img/portfolio/portfolio-19.jpg',bg:'#1a0a0a',link:'project.html#visiting-card-2'},
+  {title:'Ozil Illustration',cat:'Other Designs',desc:'Hand-crafted digital illustration of footballer Mesut Özil — detailed and expressive.',img:'assets/img/portfolio/portfolio-20.jpg',bg:'#0a1a0a',link:'project.html#ozil-illustration'},
+  {title:'Hoarding Board Design',cat:'Other Designs',desc:'Large-format hoarding board design — bold, readable and impactful at scale.',img:'assets/img/portfolio/portfolio-25.jpg',bg:'#1a1a0a',link:'project.html#hoarding-board'},
+  {title:'Banner Design',cat:'Other Designs',desc:'Versatile banner design for events or promotions — structured and clear.',img:'assets/img/portfolio/portfolio-26.jpg',bg:'#0a1a1a',link:'project.html#banner-design'},
+  {title:'Diary Cover Design',cat:'Other Designs',desc:'Creative diary cover design — personal, tactile and beautifully composed.',img:'assets/img/portfolio/portfolio-27.jpg',bg:'#1a0a1a',link:'project.html#diary-cover'},
 ];
   /* ── Shuffle on every page load ── */
   for(var _si=projects.length-1;_si>0;_si--){var _sj=Math.floor(Math.random()*(_si+1));var _st=projects[_si];projects[_si]=projects[_sj];projects[_sj]=_st;}
@@ -1321,6 +1321,78 @@ stage.addEventListener('wheel',function(e){
    FEATURES 11-17 · BTT · Page transitions
    → moved to assets/js/shared.js (loaded on all pages)
    ══════════════════════════════════════════════════ */
+
+
+/* ── ACTIVE NAV LINK ── */
+(function(){
+  var sectionIds = ['work','about','skills','education','experience','testimonials','blog','services','contact'];
+  /* "Background" dropdown toggle covers skills/education/experience */
+  var bgToggle = document.querySelector('.nav-dropdown-toggle');
+  var bgSections = ['skills','education','experience'];
+  var linkMap = {};
+  sectionIds.forEach(function(id){
+    var a = document.querySelector('.nav-links a[href="#'+id+'"]');
+    if(a) linkMap[id] = a;
+  });
+  if(!('IntersectionObserver' in window)) return;
+  var bgActive = {};
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var id = e.target.id;
+      if(linkMap[id]) linkMap[id].classList.toggle('nav-active', e.isIntersecting);
+      if(bgSections.indexOf(id) !== -1){
+        bgActive[id] = e.isIntersecting;
+        var anyBg = bgSections.some(function(s){ return bgActive[s]; });
+        if(bgToggle) bgToggle.classList.toggle('nav-active', anyBg);
+      }
+    });
+  }, {threshold: 0.3});
+  sectionIds.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) io.observe(el);
+  });
+})();
+
+
+/* ── BLOG READ-TIME BAR ── */
+(function(){
+  document.querySelectorAll('.blog-card').forEach(function(card){
+    var readEl = card.querySelector('.blog-read');
+    var bar = document.createElement('div');
+    bar.className = 'blog-readbar';
+    if(readEl){
+      var mins = parseInt(readEl.textContent, 10) || 5;
+      var pct = Math.min(Math.round(mins / 12 * 100), 85);
+      bar.style.setProperty('--w', pct + '%');
+    }
+    card.appendChild(bar);
+  });
+})();
+
+
+
+
+/* ── STICKY CONTACT CTA ── */
+(function(){
+  var cta = document.getElementById('stickyCta');
+  var closeBtn = document.getElementById('stickyCtaClose');
+  if(!cta || !closeBtn) return;
+  if(sessionStorage.getItem('ctaDismissed')) return;
+  var shown = false;
+  window.addEventListener('scroll', function(){
+    var past = window.scrollY > 700;
+    if(past !== shown){
+      shown = past;
+      cta.classList.toggle('show', shown);
+      cta.setAttribute('aria-hidden', shown ? 'false' : 'true');
+    }
+  }, {passive:true});
+  closeBtn.addEventListener('click', function(){
+    cta.classList.remove('show');
+    sessionStorage.setItem('ctaDismissed','1');
+    shown = false;
+  });
+})();
 
 
 /* ── THEME TOGGLE (dark / light / neon) ── */

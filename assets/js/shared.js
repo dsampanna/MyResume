@@ -81,14 +81,14 @@ window.__sharedLoaded = true;
     var s = document.createElement('style');
     s.id = 'bttStyle';
     s.textContent = [
-      '#btt{position:fixed;bottom:5.8rem;right:4rem;width:40px;height:40px;',
-      'background:#0EB5A0;color:#080c10;border:none;font-size:1.1rem;font-weight:700;',
+      '#btt{position:fixed;bottom:5.8rem;right:4rem;width:44px;height:44px;',
+      'background:rgba(13,17,23,0.92);color:#0EB5A0;border:none;font-size:1rem;font-weight:700;',
       'cursor:pointer;z-index:99996;opacity:0;transform:translateY(12px);',
-      'transition:opacity 0.3s,transform 0.3s,background 0.2s;pointer-events:none;',
-      'display:flex;align-items:center;justify-content:center}',
+      'transition:opacity 0.3s,transform 0.3s,color 0.2s;pointer-events:none;',
+      'display:flex;align-items:center;justify-content:center;padding:0;position:fixed}',
       '#btt.visible{opacity:1;transform:translateY(0);pointer-events:auto}',
-      '#btt:hover{background:#0cc9b2}',
-      '@media(max-width:480px){#btt{bottom:5.5rem;right:3rem;width:36px;height:36px;font-size:1rem}}',
+      '#btt:hover{color:#0cc9b2;background:transparent}',
+      '@media(max-width:480px){#btt{bottom:5.5rem;right:3rem;width:44px;height:44px}}',
     ].join('');
     document.head.appendChild(s);
   }
@@ -101,8 +101,17 @@ window.__sharedLoaded = true;
     btn.innerHTML = '↑';
     document.body.appendChild(btn);
   }
+  var arc = document.getElementById('bttArc');
+  var circumference = 119.4;
   window.addEventListener('scroll', function(){
     btn.classList.toggle('visible', window.scrollY > 400);
+    if(arc){
+      var h = document.documentElement;
+      var scrolled = h.scrollTop || document.body.scrollTop;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = total > 0 ? scrolled / total : 0;
+      arc.style.strokeDashoffset = (circumference * (1 - pct)).toFixed(2);
+    }
   }, {passive:true});
   btn.addEventListener('click', function(){
     window.scrollTo({top:0, behavior:'smooth'});
@@ -484,7 +493,7 @@ window.__sharedLoaded = true;
           if(lastY<wTop+120 && window.scrollY>wTop+60){
             cooldown=true;
             setTimeout(function(){ cooldown=false; }, 10000);
-            window.__gToast('⚡ You just scrolled past 3 months of work in 0.3 seconds.', 3800);
+            window.__gToast('⚡ You just scrolled past years of work in 0.3 seconds.', 3800);
           }
         }
       }

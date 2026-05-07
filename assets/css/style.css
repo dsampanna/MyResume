@@ -1077,13 +1077,12 @@ footer{position:relative}
    FEATURE: INVISIBLE INK — footer hidden message
    ══════════════════════════════════════════════════ */
 .ink-msg{
-  flex-basis:100%;order:99;
+  position:absolute;bottom:1.6rem;left:0;right:0;
   font-size:0.7rem;letter-spacing:0.25em;font-weight:500;
   color:transparent;text-shadow:none;
   pointer-events:none;user-select:none;
   transition:color 0.4s ease,text-shadow 0.4s ease;
-  /* Counteract the asymmetric right padding so text truly centres on page */
-  padding-left:190px;text-align:center;
+  text-align:center;
 }
 .ink-msg.revealed{
   color:rgba(14,181,160,0.65);
@@ -1187,3 +1186,47 @@ html{scroll-snap-type:y proximity}
   .sk-fill{transition:none !important}
   body::before{display:none}
 }
+
+/* ══════════════════════════════════════════════════
+   BTT PROGRESS RING
+   ══════════════════════════════════════════════════ */
+.btt-ring-svg{position:absolute;inset:0;width:100%;height:100%}
+.btt-arrow{position:relative;z-index:1;font-size:1rem;font-weight:700;line-height:1}
+
+/* ══════════════════════════════════════════════════
+   BLOG READ-TIME BAR
+   ══════════════════════════════════════════════════ */
+.blog-readbar{height:2px;background:var(--border2);position:relative;margin-top:auto;flex-shrink:0}
+.blog-readbar::after{content:'';position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--teal),var(--cyan));width:var(--w,40%);transition:width 0.6s cubic-bezier(0.25,0,0.1,1)}
+.blog-card:hover .blog-readbar::after{width:100% !important}
+
+
+/* ══════════════════════════════════════════════════
+   TESTIMONIALS
+   ══════════════════════════════════════════════════ */
+.testi-section{background:var(--bg)}
+.sec-heading{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:2.5rem;line-height:1.15}
+.sec-heading em{font-style:normal;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2)}
+.testi-card{background:var(--bg2);padding:2rem;display:flex;flex-direction:column;gap:1.25rem;transition:background 0.2s}
+.testi-card:hover{background:var(--bg3)}
+.testi-stars{color:var(--teal);font-size:0.85rem;letter-spacing:0.1em}
+.testi-quote{font-size:0.88rem;color:var(--muted);line-height:1.75;flex:1;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:0.85rem;border-top:1px solid var(--border2);padding-top:1.25rem}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));color:var(--bg);font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:0.02em}
+.testi-name{font-family:var(--display);font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:0.1rem}
+.testi-role{font-size:0.68rem;color:var(--muted);letter-spacing:0.02em}
+@media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════════════════
+   STICKY CONTACT CTA
+   ══════════════════════════════════════════════════ */
+.sticky-cta{position:fixed;bottom:-80px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:1rem;background:var(--bg2);border:1px solid var(--border2);border-radius:999px;padding:0.65rem 1rem 0.65rem 1.25rem;z-index:99990;box-shadow:0 8px 32px rgba(0,0,0,0.5);transition:bottom 0.45s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap}
+.sticky-cta.show{bottom:2rem}
+.sticky-cta-pulse{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+.sticky-cta-text{font-size:0.78rem;color:var(--text)}
+.sticky-cta-btn{font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--teal);color:var(--bg);padding:0.4rem 1rem;border-radius:999px;transition:background 0.2s}
+.sticky-cta-btn:hover{background:var(--cyan);color:var(--bg)}
+.sticky-cta-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.8rem;line-height:1;padding:0.2rem 0.4rem;transition:color 0.2s}
+.sticky-cta-close:hover{color:var(--text)}
+@media(max-width:600px){.sticky-cta-text{display:none}.sticky-cta{gap:0.6rem}}

@@ -240,8 +240,8 @@
     {icon:'📝', label:'Blog · UX Process',   sub:'blog-ux-process.html',       go:function(){ nav('blog-ux-process.html'); }},
     {icon:'📝', label:'Blog · Pricing',      sub:'blog-pricing.html',          go:function(){ nav('blog-pricing.html'); }},
     {icon:'📝', label:'Blog · 3D Animation', sub:'blog-3d-animation.html',     go:function(){ nav('blog-3d-animation.html'); }},
-    {icon:'🌿', label:'Case Study · Griham', sub:'project.html?id=griham-organic', go:function(){ nav('project.html?id=griham-organic'); }},
-    {icon:'🏔️', label:'Case Study · Himaltrek',sub:'project.html?id=himaltrek-nepal',go:function(){ nav('project.html?id=himaltrek-nepal'); }},
+    {icon:'🌿', label:'Case Study · Griham', sub:'project.html#griham-organic', go:function(){ nav('project.html#griham-organic'); }},
+    {icon:'🏔️', label:'Case Study · Himaltrek',sub:'project.html#himaltrek-nepal',go:function(){ nav('project.html#himaltrek-nepal'); }},
   ];
 
   function openSitemap(){
@@ -293,9 +293,9 @@
   var SURPRISES = [
     'blog-brand-identity.html','blog-freelancing-nepal.html','blog-sound-design.html',
     'blog-ux-process.html','blog-pricing.html','blog-3d-animation.html',
-    'project.html?id=griham-organic','project.html?id=himaltrek-nepal',
-    'project.html?id=old-man-smoking','project.html?id=city-motion',
-    'project.html?id=pepsi-logo-reveal','project.html?id=araniko-fc',
+    'project.html#griham-organic','project.html#himaltrek-nepal',
+    'project.html#old-man-smoking','project.html#city-motion',
+    'project.html#pepsi-logo-reveal','project.html#logo-araniko-fc',
   ];
 
   /* ── Items ── */
@@ -336,19 +336,64 @@
 
   var filtered = ALL.slice(), active = 0;
 
+  /* ── Recent commands ── */
+  function getRecent(){
+    try{ return JSON.parse(localStorage.getItem('cmd_recent')||'[]'); }catch(e){ return []; }
+  }
+  function addRecent(label){
+    var r = getRecent().filter(function(l){ return l !== label; });
+    r.unshift(label);
+    try{ localStorage.setItem('cmd_recent', JSON.stringify(r.slice(0,3))); }catch(e){}
+  }
+
+  /* ── Fuzzy match (subsequence) ── */
+  function fuzzyMatch(q, s){
+    q = q.toLowerCase(); s = s.toLowerCase();
+    var qi = 0;
+    for(var i = 0; i < s.length && qi < q.length; i++){
+      if(s[i] === q[qi]) qi++;
+    }
+    return qi === q.length;
+  }
+
+  function renderItem(it, i, isActive){
+    return '<li class="cmd-item'+(isActive?' active':'')+'" data-i="'+i+'">' +
+      '<span class="cmd-item-icon">'+it.icon+'</span>' +
+      '<div class="cmd-item-body"><span class="cmd-item-label">'+it.label+'</span>' +
+      '<span class="cmd-item-sub">'+it.sub+'</span></div></li>';
+  }
+
   function render(q){
     if(_inSitemap){ renderSitemap(); return; }
     input.placeholder = 'Jump to section or action…';
-    q = (q||'').toLowerCase();
-    filtered = ALL.filter(function(it){
-      return !q || it.label.toLowerCase().indexOf(q)!==-1 || it.sub.toLowerCase().indexOf(q)!==-1;
-    });
-    list.innerHTML = filtered.map(function(it,i){
-      return '<li class="cmd-item'+(i===0?' active':'')+'" data-i="'+i+'">' +
-        '<span class="cmd-item-icon">'+it.icon+'</span>' +
-        '<div class="cmd-item-body"><span class="cmd-item-label">'+it.label+'</span>' +
-        '<span class="cmd-item-sub">'+it.sub+'</span></div></li>';
-    }).join('');
+    q = (q||'').trim().toLowerCase();
+
+    if(!q){
+      /* Show recent commands at top, then all */
+      var recents = getRecent();
+      var recentItems = recents.map(function(label){
+        return ALL.find(function(it){ return it.label === label; });
+      }).filter(Boolean);
+      filtered = ALL.slice();
+      var html = '';
+      if(recentItems.length){
+        html += '<li style="padding:0.3rem 0.9rem;font-size:0.6rem;font-weight:700;color:#6b7c8f;letter-spacing:0.1em;text-transform:uppercase">Recent</li>';
+        recentItems.forEach(function(it, i){ html += renderItem(it, ALL.indexOf(it), i===0); });
+        html += '<li style="height:1px;background:rgba(255,255,255,0.07);margin:0.3rem 0.4rem"></li>';
+      }
+      filtered = recentItems.length ? recentItems.concat(ALL.filter(function(it){ return recentItems.indexOf(it)===-1; })) : ALL;
+      filtered.forEach(function(it, i){
+        if(recentItems.indexOf(it) === -1) html += renderItem(it, i, !recentItems.length && i===0);
+      });
+      list.innerHTML = html;
+    } else {
+      filtered = ALL.filter(function(it){
+        return fuzzyMatch(q, it.label) || fuzzyMatch(q, it.sub) ||
+               it.label.toLowerCase().indexOf(q) !== -1 || it.sub.toLowerCase().indexOf(q) !== -1;
+      });
+      list.innerHTML = filtered.map(function(it,i){ return renderItem(it, i, i===0); }).join('');
+    }
+
     active = 0;
     /* re-apply language labels if Nepali is active */
     if(_nepali){
@@ -370,7 +415,11 @@
 
   function pick(){
     var src = _inSitemap ? _sitemapFiltered : filtered;
-    if(src[active]){ var it=src[active]; if(!_inSitemap) close(); it.go(); }
+    if(src[active]){
+      var it = src[active];
+      if(!_inSitemap){ addRecent(it.label); close(); }
+      it.go();
+    }
   }
   function open(){ overlay.classList.add('open'); input.value=''; _inSitemap=false; render(''); setTimeout(function(){ input.focus(); },40); }
   function close(){ overlay.classList.remove('open'); _inSitemap=false; input.placeholder='Jump to section or action…'; }

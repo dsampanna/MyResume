@@ -284,7 +284,7 @@ var grid = document.getElementById('portGrid');
 var empty = document.getElementById('portEmpty');
 
 ITEMS.forEach(function(p){
-  var href = p.link ? p.link : ('project.html?id=' + p.id);
+  var href = p.link ? p.link : ('project.html#' + p.id);
   var el = document.createElement('a');
   el.href = href;
   el.className = 'p-card';

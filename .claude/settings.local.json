@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh pr *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer",
+      "mcp__Claude_in_Chrome__resize_window",
+      "Bash(Get-ChildItem -Path \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(npx --version)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx serve *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(Get-Content -Path \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\")",
+      "Bash(Measure-Object -Line)",
+      "PowerShell($file = \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\"; \\(Get-Content -Path $file | Measure-Object -Line\\).Lines)",
+      "PowerShell($file = \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\"; $content = Get-Content -Path $file -Raw; $lines = $content -split \"`n\"; $lineNum = 0; foreach \\($line in $lines\\) { $lineNum++; if \\($line -match \"\\\\.btt{|\\\\.blog-card{|\\\\.blog-read\"\\) { Write-Host \"$lineNum`: $line\" } })",
+      "PowerShell($file = \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\"; $content = Get-Content -Path $file -Raw; $lines = $content -split \"`n\"; Write-Host \"Total lines: $\\($lines.Count\\)\"; $lines | Select-Object -Last 60 | ForEach-Object { $i = $lines.IndexOf\\($_\\) + 1; Write-Host \"$i`: $_\" })"
+    ]
+  }
+}

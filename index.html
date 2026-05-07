@@ -78,7 +78,13 @@
 })();
 </script>
 <!-- BACK TO TOP -->
-<button class="btt" id="btt" aria-label="Back to top">↑</button>
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg class="btt-ring-svg" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+    <circle cx="22" cy="22" r="19" stroke="rgba(255,255,255,0.1)" stroke-width="2.5"/>
+    <circle id="bttArc" cx="22" cy="22" r="19" stroke="#0EB5A0" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" transform="rotate(-90 22 22)"/>
+  </svg>
+  <span class="btt-arrow">↑</span>
+</button>
 
 <!-- SOCIAL SIDEBAR -->
 <aside class="social-sidebar" aria-label="Social links">
@@ -397,6 +403,47 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="testi-section" data-reveal id="testimonials">
+  <div class="sec-label">Testimonials</div>
+  <h2 class="sec-heading">What clients <em>say</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Sampanna completely transformed our brand identity. His attention to detail and creative vision exceeded every expectation — the new visual system is exactly what we needed."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SB</div>
+        <div class="testi-info">
+          <div class="testi-name">Sujan Basnet</div>
+          <div class="testi-role">Chief Operating Officer / Co-owner · Joon Nepal</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Excellent graphics work — professional, creative, and exactly on-brief. Sampanna understood our vision immediately and delivered results that exceeded what we asked for."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">PK</div>
+        <div class="testi-info">
+          <div class="testi-name">Pradeep Kumar Acharya</div>
+          <div class="testi-role">Owner · P K Acharya and Associates</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"The work delivered for Himal Trek was outstanding — visually compelling, on-brand, and completed with great professionalism. We couldn't have asked for better."</p>
+      <div class="testi-author">
+        <div class="testi-avatar testi-avatar-anon">✦</div>
+        <div class="testi-info">
+          <div class="testi-name">Himal Trek</div>
+          <div class="testi-role">Owner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BLOG -->
 <section class="blog-section" data-reveal id="blog" data-cursor="READ">
   <div class="sec-label">Blog</div>
@@ -553,6 +600,13 @@
   <div class="ink-msg" aria-hidden="true">✦ Made with intention · Fueled by curiosity ✦</div>
 </footer>
   <audio id="ambientAudio" loop preload="none"></audio>
+  <!-- STICKY CTA -->
+  <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <span class="sticky-cta-pulse"></span>
+    <span class="sticky-cta-text">Open to new projects</span>
+    <a href="#contact" class="sticky-cta-btn">Let's talk →</a>
+    <button class="sticky-cta-close" id="stickyCtaClose" aria-label="Dismiss">✕</button>
+  </div>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/shared.js"></script>
   <script src="assets/js/cursor-trail.js"></script>

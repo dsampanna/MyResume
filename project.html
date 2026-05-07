@@ -240,7 +240,7 @@ const projects = [
 ];
 
 function render() {
-  const id = new URLSearchParams(window.location.search).get('id');
+  const id = window.location.hash.slice(1) || new URLSearchParams(window.location.search).get('id');
   const index = projects.findIndex(p => p.id === id);
   const content = document.getElementById('page-content');
 
@@ -297,7 +297,7 @@ function render() {
       <div class="related-heading">More <span>${p.category}</span> projects</div>
       <div class="related-grid">
         ${related.map(r => `
-          <a href="project.html?id=${r.id}" class="related-card">
+          <a href="#${r.id}" class="related-card">
             <img src="${r.image}" alt="${r.title}" loading="lazy">
             <div class="related-card-info">
               <div class="related-card-cat">${r.category}</div>
@@ -346,8 +346,8 @@ function render() {
         <div class="info-card">
           <div class="info-card-title">Navigate Projects</div>
           <div class="proj-nav">
-            <a href="${prev ? 'project.html?id=' + prev.id : '#'}" class="proj-nav-btn ${!prev ? 'disabled' : ''}">← Prev</a>
-            <a href="${next ? 'project.html?id=' + next.id : '#'}" class="proj-nav-btn ${!next ? 'disabled' : ''}">Next →</a>
+            <a href="${prev ? '#' + prev.id : '#'}" class="proj-nav-btn ${!prev ? 'disabled' : ''}">← Prev</a>
+            <a href="${next ? '#' + next.id : '#'}" class="proj-nav-btn ${!next ? 'disabled' : ''}">Next →</a>
           </div>
         </div>
         ${(ctaLinksHTML || caseStudyHTML) ? `
@@ -368,6 +368,7 @@ function render() {
 }
 
 render();
+window.addEventListener('hashchange', function(){ render(); window.scrollTo(0,0); });
 
 (function(){
   if(!window.matchMedia('(pointer:fine)').matches)return;
