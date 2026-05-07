@@ -957,7 +957,6 @@ stage.addEventListener('wheel',function(e){
   }
   var segments = [
     '● Available for new projects',
-    '2 project slots open',
     'Reply within 4 hours',
     '7+ years · 45+ projects · 30+ clients',
     'UI/UX · Branding · Motion · 3D',
