@@ -747,11 +747,11 @@ window.__sharedLoaded = true;
 
 
 /* ══════════════════════════════════════════════════
-   FEATURE 27 — SEASON EFFECTS (live Bhaktapur weather)
+   FEATURE 27 — SEASON EFFECTS (viewer's live weather)
    🌸 petals · 🌧 rain · ❄ snow  via wttr.in
    ══════════════════════════════════════════════════ */
 (function(){
-  function initParticles(season,weatherDesc){
+  function initParticles(season,weatherDesc,city){
     var cv=document.createElement('canvas');
     cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:2';
     document.body.appendChild(cv);
@@ -790,27 +790,61 @@ window.__sharedLoaded = true;
     })();
     setTimeout(function(){
       var icon=season==='spring'?'🌸':season==='monsoon'?'🌧':'❄';
-      window.__gToast&&window.__gToast(icon+' '+weatherDesc+' in Bhaktapur right now',4000);
+      var label=city?weatherDesc+' in '+city:weatherDesc;
+      window.__gToast&&window.__gToast(icon+' '+label+' right now',4000);
     },3500);
   }
-  /* Fetch live weather; fall back to calendar if fetch fails */
-  fetch('https://wttr.in/Bhaktapur?format=j1')
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      var code=parseInt(data.current_condition[0].weatherCode);
-      var desc=data.current_condition[0].weatherDesc[0].value;
-      var snowCodes=[179,182,185,227,230,323,326,329,332,335,338,350,371,374,377];
-      var season;
-      if(snowCodes.indexOf(code)!==-1) season='winter';
-      else if(code>=176) season='monsoon';
-      else if(code<=116) season='spring';
-      if(season) initParticles(season,desc);
-    })
-    .catch(function(){
-      var m=new Date().getMonth();
-      var season=(m>=2&&m<=4)?'spring':(m>=5&&m<=7)?'monsoon':(m>=11||m<=1)?'winter':null;
-      if(season) initParticles(season,'Nepal');
-    });
+
+  function parseAndInit(data, city){
+    var code=parseInt(data.current_condition[0].weatherCode);
+    var desc=data.current_condition[0].weatherDesc[0].value;
+    var snowCodes=[179,182,185,227,230,323,326,329,332,335,338,350,371,374,377];
+    var season;
+    if(snowCodes.indexOf(code)!==-1) season='winter';
+    else if(code>=176) season='monsoon';
+    else if(code<=116) season='spring';
+    if(season) initParticles(season,desc,city);
+  }
+
+  function calendarFallback(){
+    var m=new Date().getMonth();
+    var season=(m>=2&&m<=4)?'spring':(m>=5&&m<=7)?'monsoon':(m>=11||m<=1)?'winter':null;
+    if(season) initParticles(season,'','your location');
+  }
+
+  function fetchByCoords(lat,lon){
+    fetch('https://wttr.in/'+lat+','+lon+'?format=j1')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        /* nearest_area from wttr gives a city name */
+        var area=data.nearest_area&&data.nearest_area[0];
+        var city=area?(area.areaName[0].value+(area.country[0].value?', '+area.country[0].value:'')):null;
+        parseAndInit(data, city);
+      })
+      .catch(calendarFallback);
+  }
+
+  function fetchByIP(){
+    /* ip-api gives lat/lon without requiring user permission */
+    fetch('https://ip-api.com/json/?fields=lat,lon,city,country')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(d.lat) fetchByCoords(d.lat.toFixed(4), d.lon.toFixed(4));
+        else calendarFallback();
+      })
+      .catch(calendarFallback);
+  }
+
+  /* Try precise GPS first; silently fall back to IP geolocation */
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      function(pos){ fetchByCoords(pos.coords.latitude.toFixed(4), pos.coords.longitude.toFixed(4)); },
+      function(){ fetchByIP(); },
+      {timeout:4000, maximumAge:600000}
+    );
+  } else {
+    fetchByIP();
+  }
 })();
 
 
