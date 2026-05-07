@@ -1,6 +1,7 @@
 /* Cursor Trail — Design words drift and fade from the cursor position */
 (function(){
   if(!window.matchMedia('(pointer:fine)').matches) return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
 
   var WORDS = [
     'type','grid','space','rhythm','form',

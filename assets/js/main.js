@@ -397,13 +397,14 @@ stage.addEventListener('wheel',function(e){
       var target = parseInt(el.dataset.count, 10);
       var suffix = el.dataset.suffix || '';
       var duration = 700;
+      var floor = Math.floor(target * 0.6);
       var startTime = null;
       function step(ts){
         if(!startTime) startTime = ts;
         var elapsed = ts - startTime;
         var progress = Math.min(elapsed / duration, 1);
         var eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(eased * target) + suffix;
+        el.textContent = Math.floor(floor + eased * (target - floor)) + suffix;
         if(progress < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
@@ -1320,3 +1321,104 @@ stage.addEventListener('wheel',function(e){
    FEATURES 11-17 · BTT · Page transitions
    → moved to assets/js/shared.js (loaded on all pages)
    ══════════════════════════════════════════════════ */
+
+
+/* ── THEME TOGGLE (dark / light / neon) ── */
+(function(){
+  var btn = document.getElementById('themeToggle');
+  if(!btn) return;
+  var THEMES = ['dark','light','neon'];
+  var ICONS  = {'dark':'◐','light':'☀','neon':'⚡'};
+  var LABELS = {'dark':'Dark theme','light':'Light theme','neon':'Neon theme'};
+  var current = localStorage.getItem('theme') || 'dark';
+
+  function apply(t){
+    document.documentElement.removeAttribute('data-theme');
+    if(t !== 'dark') document.documentElement.setAttribute('data-theme', t);
+    btn.textContent = ICONS[t];
+    btn.title = LABELS[t];
+    localStorage.setItem('theme', t);
+    current = t;
+  }
+
+  apply(current);
+
+  btn.addEventListener('click', function(){
+    var idx = (THEMES.indexOf(current) + 1) % THEMES.length;
+    apply(THEMES[idx]);
+  });
+})();
+
+
+/* ── TILT-ON-HOVER ── */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var MAX = 8;
+  document.querySelectorAll('.blog-card,.svc-item,.now-card,.edu-card,.exp-item').forEach(function(card){
+    card.style.transition = 'transform 0.12s ease, box-shadow 0.12s ease';
+    card.addEventListener('mousemove', function(e){
+      var r  = card.getBoundingClientRect();
+      var rx = ((e.clientY - r.top)  / r.height - 0.5) * -MAX * 2;
+      var ry = ((e.clientX - r.left) / r.width  - 0.5) *  MAX * 2;
+      card.style.transform = 'perspective(600px) rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg) scale(1.02)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = '';
+    });
+  });
+})();
+
+
+/* ── AMBIENT SOUND TOGGLE ── */
+(function(){
+  var btn   = document.getElementById('soundToggle');
+  var audio = document.getElementById('ambientAudio');
+  if(!btn || !audio) return;
+
+  /* Synthesise a subtle ambient tone with Web Audio API (no external file needed) */
+  var ctx, gainNode, playing = false;
+
+  function buildAudio(){
+    if(ctx) return;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    gainNode = ctx.createGain();
+    gainNode.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gainNode.connect(ctx.destination);
+
+    /* Three detuned oscillators for a lush pad */
+    [[174.6, 0], [174.6, 4], [261.6, -3]].forEach(function(pair){
+      var osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = pair[0];
+      osc.detune.value    = pair[1];
+      osc.connect(gainNode);
+      osc.start();
+    });
+  }
+
+  function startSound(){
+    buildAudio();
+    ctx.resume();
+    gainNode.gain.cancelScheduledValues(ctx.currentTime);
+    gainNode.gain.setTargetAtTime(0.06, ctx.currentTime, 1.5);
+    playing = true;
+    btn.textContent = '♫';
+    btn.title = 'Sound on';
+    btn.classList.add('sound-on');
+  }
+
+  function stopSound(){
+    if(!ctx) return;
+    gainNode.gain.cancelScheduledValues(ctx.currentTime);
+    gainNode.gain.setTargetAtTime(0.0001, ctx.currentTime, 0.8);
+    playing = false;
+    btn.textContent = '♪';
+    btn.title = 'Ambient sound';
+    btn.classList.remove('sound-on');
+  }
+
+  btn.addEventListener('click', function(){
+    if(playing) stopSound(); else startSound();
+  });
+})();
