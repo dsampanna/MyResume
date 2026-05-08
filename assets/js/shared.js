@@ -6,6 +6,84 @@
 if(window.__sharedLoaded) { throw new Error('shared.js already loaded'); }
 window.__sharedLoaded = true;
 
+/* ══════════════════════════════════════════════════
+   FEATURE 28b — SMOOTH PAGE TRANSITIONS
+   Fade-out on navigate, fade-in on load
+   ══════════════════════════════════════════════════ */
+(function(){
+  var s=document.createElement('style');
+  s.textContent='#pt-veil{position:fixed;inset:0;background:#0d1117;opacity:0;pointer-events:none;z-index:99990;transition:opacity 0.28s ease}.pt-leaving #pt-veil{opacity:1;pointer-events:all}';
+  document.head.appendChild(s);
+  var veil=document.createElement('div'); veil.id='pt-veil';
+  document.body.appendChild(veil);
+  /* Fade in on arrival */
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ document.body.classList.remove('pt-leaving'); }); });
+  /* Intercept same-origin link clicks */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a');
+    if(!a||!a.href||a.target==='_blank'||a.getAttribute('href').startsWith('#')||a.getAttribute('href').startsWith('mailto')||a.getAttribute('href').startsWith('tel')) return;
+    try{ var u=new URL(a.href); if(u.origin!==location.origin) return; } catch(x){ return; }
+    e.preventDefault();
+    var dest=a.href;
+    document.body.classList.add('pt-leaving');
+    setTimeout(function(){ location.href=dest; },280);
+  });
+})();
+
+/* ══════════════════════════════════════════════════
+   FEATURE 28c — BLOG READING PROGRESS BAR
+   Thin teal bar at top, grows as you scroll through article
+   ══════════════════════════════════════════════════ */
+(function(){
+  if(!/blog-/.test(location.pathname)&&!/blog-/.test(location.href)) return;
+  var s=document.createElement('style');
+  s.textContent='#rdprog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#0EB5A0,#0cc9b2);z-index:99995;transition:width 0.1s linear;pointer-events:none}';
+  document.head.appendChild(s);
+  var bar=document.createElement('div'); bar.id='rdprog';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll',function(){
+    var el=document.documentElement;
+    var pct=(el.scrollTop/(el.scrollHeight-el.clientHeight))*100;
+    bar.style.width=Math.min(pct,100)+'%';
+  },{passive:true});
+})();
+
+/* ══════════════════════════════════════════════════
+   FEATURE 28d — KONAMI CODE EASTER EGG
+   ↑↑↓↓←→←→BA → confetti burst + secret message
+   ══════════════════════════════════════════════════ */
+(function(){
+  var SEQ=[38,38,40,40,37,39,37,39,66,65], pos=0;
+  document.addEventListener('keydown',function(e){
+    if(e.keyCode===SEQ[pos]){ pos++; } else { pos=0; if(e.keyCode===SEQ[0]) pos=1; }
+    if(pos<SEQ.length) return;
+    pos=0;
+    /* Message */
+    var msg=document.createElement('div');
+    msg.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999999;background:#0d1117;border:1px solid #0EB5A0;padding:2rem 3rem;text-align:center;font-family:var(--display,monospace);pointer-events:none;box-shadow:0 0 60px rgba(14,181,160,0.3)';
+    msg.innerHTML='<div style="font-size:2rem;margin-bottom:0.5rem">🎮</div><div style="font-size:1.1rem;font-weight:700;color:#0EB5A0;letter-spacing:0.05em">You found the easter egg.</div><div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:0.4rem">Thanks for exploring every corner.</div>';
+    document.body.appendChild(msg);
+    /* Confetti */
+    for(var i=0;i<80;i++){
+      (function(){
+        var c=document.createElement('div');
+        var hue=Math.random()>0.5?Math.round(Math.random()*40+160):Math.round(Math.random()*360);
+        c.style.cssText='position:fixed;width:'+(4+Math.random()*6)+'px;height:'+(4+Math.random()*6)+'px;background:hsl('+hue+',80%,60%);border-radius:'+Math.round(Math.random()*50)+'%;top:50%;left:50%;z-index:999998;pointer-events:none;transition:none';
+        document.body.appendChild(c);
+        var angle=Math.random()*Math.PI*2, dist=80+Math.random()*300, dur=600+Math.random()*800;
+        var tx=Math.cos(angle)*dist, ty=Math.sin(angle)*dist;
+        requestAnimationFrame(function(){
+          c.style.transition='transform '+dur+'ms cubic-bezier(.2,.8,.4,1),opacity '+dur+'ms';
+          c.style.transform='translate('+tx+'px,'+ty+'px) rotate('+Math.random()*720+'deg)';
+          c.style.opacity='0';
+        });
+        setTimeout(function(){ c.remove(); },dur+100);
+      })();
+    }
+    setTimeout(function(){ msg.style.transition='opacity 0.5s'; msg.style.opacity='0'; setTimeout(function(){ msg.remove(); },500); },3000);
+  });
+})();
+
 
 /* ── UNIVERSAL CUSTOM CURSOR ──
    Runs on every page. If main.js or inline code already created

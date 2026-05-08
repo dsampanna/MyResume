@@ -189,6 +189,7 @@ if(portFilters){ portFilters.addEventListener('click', function(e){
  var projects=[
   {title:'Swaadd — स्वाद',cat:'UI/UX · Hi-Fidelity Design',desc:'Hi-fi design handoff for a Nepal food delivery app — red design system, Mukta type, 4 apps.',img:'assets/img/portfolio/swaadd-thumbnail.svg',bg:'#2a0a08',link:'project.html#swaadd'},
   {title:'खाना App',cat:'UI/UX · Mobile App',desc:'Complete wireframe for a Nepal food delivery platform — 4 apps, 30+ screens, bilingual.',img:'assets/img/portfolio/khana-app-thumbnail.svg',bg:'#1a1200',link:'project.html#khana-app'},
+  {title:'Sughosh Dhungel — Advocate',cat:'Web Design · Client Work',desc:'Professional portfolio for a Nepali advocate — dark navy, gold accents, animated sections and contact backend.',img:'assets/img/portfolio/sughosh-dhungel-thumbnail.jpg',bg:'#0a0d1a',link:'project.html#sughosh-dhungel'},
   {title:'Griham Organic',cat:'UI/UX · Web Design',desc:'A seamless digital experience bringing home-grown produce to online shoppers in Nepal.',img:'assets/img/portfolio/griham-organic-thumbnail.jpg',bg:'#1a2e2b',link:'project.html#griham-organic'},
   {title:'HimalTrek Nepal',cat:'Web Design · UI/UX',desc:'Full-stack trekking platform — 24 routes, permits, certified guides and booking.',img:'assets/img/portfolio/himaltrek-thumbnail.jpg',bg:'#0a1e0a',link:'project.html#himaltrek-nepal'},
   {title:'Indreni Nursery',cat:'Web Design',desc:'Clean landing page design for a local nursery — fresh, green and inviting.',img:'assets/img/portfolio/portfolio-17.jpg',bg:'#0a1a0a',link:'project.html#indreni-nursery'},
@@ -1491,5 +1492,29 @@ stage.addEventListener('wheel',function(e){
 
   btn.addEventListener('click', function(){
     if(playing) stopSound(); else startSound();
+  });
+})();
+
+/* ── COPY EMAIL BUTTON ── */
+(function(){
+  var btn = document.getElementById('copyEmailBtn');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    navigator.clipboard.writeText('sampannadhungel@gmail.com').then(function(){
+      btn.textContent = '✓';
+      btn.classList.add('copied');
+      window.__gToast && window.__gToast('📋 Email copied!', 2500);
+      setTimeout(function(){ btn.textContent = '⎘'; btn.classList.remove('copied'); }, 2000);
+    });
+  });
+})();
+
+/* ── ⌘K NAV BUTTON ── */
+(function(){
+  var btn = document.getElementById('cmdPaletteBtn');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var evt = new KeyboardEvent('keydown', {key:'k', metaKey:true, ctrlKey:true, bubbles:true});
+    document.dispatchEvent(evt);
   });
 })();

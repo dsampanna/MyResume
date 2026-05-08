@@ -19,7 +19,10 @@
       "Bash(Measure-Object -Line)",
       "PowerShell($file = \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\"; \\(Get-Content -Path $file | Measure-Object -Line\\).Lines)",
       "PowerShell($file = \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\"; $content = Get-Content -Path $file -Raw; $lines = $content -split \"`n\"; $lineNum = 0; foreach \\($line in $lines\\) { $lineNum++; if \\($line -match \"\\\\.btt{|\\\\.blog-card{|\\\\.blog-read\"\\) { Write-Host \"$lineNum`: $line\" } })",
-      "PowerShell($file = \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\"; $content = Get-Content -Path $file -Raw; $lines = $content -split \"`n\"; Write-Host \"Total lines: $\\($lines.Count\\)\"; $lines | Select-Object -Last 60 | ForEach-Object { $i = $lines.IndexOf\\($_\\) + 1; Write-Host \"$i`: $_\" })"
+      "PowerShell($file = \"G:\\\\11\\\\MyResume\\\\.claude\\\\worktrees\\\\naughty-easley-47e31e\\\\assets\\\\css\\\\style.css\"; $content = Get-Content -Path $file -Raw; $lines = $content -split \"`n\"; Write-Host \"Total lines: $\\($lines.Count\\)\"; $lines | Select-Object -Last 60 | ForEach-Object { $i = $lines.IndexOf\\($_\\) + 1; Write-Host \"$i`: $_\" })",
+      "Bash(ls ~/.claude/projects/ | head -20)",
+      "Bash(awk '{print $2}')",
+      "Bash(git commit *)"
     ]
   }
 }

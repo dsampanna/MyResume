@@ -1230,3 +1230,17 @@ html{scroll-snap-type:y proximity}
 .sticky-cta-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.8rem;line-height:1;padding:0.2rem 0.4rem;transition:color 0.2s}
 .sticky-cta-close:hover{color:var(--text)}
 @media(max-width:600px){.sticky-cta-text{display:none}.sticky-cta{gap:0.6rem}}
+
+/* ══ ⌘K NAV HINT ══ */
+.nav-cmd-hint{display:inline-flex;align-items:center;background:none;border:1px solid var(--border2);color:var(--muted);border-radius:4px;cursor:pointer;padding:0.2rem 0.45rem;transition:border-color 0.2s,color 0.2s;margin-right:0.5rem}
+.nav-cmd-hint:hover{border-color:var(--teal);color:var(--teal)}
+.nav-cmd-hint kbd{font-size:0.7rem;font-family:inherit;letter-spacing:0.02em;pointer-events:none}
+@media(max-width:768px){.nav-cmd-hint{display:none}}
+
+/* ══ COPY EMAIL ══ */
+.cd-copy-wrap{display:flex;align-items:center;gap:0.6rem;padding:0.65rem 0}
+.cd-email-val{color:var(--text);font-size:0.82rem;text-decoration:none;border-bottom:1px solid var(--border2);transition:color 0.2s}
+.cd-email-val:hover{color:var(--teal)}
+.cd-copy-btn{background:none;border:1px solid var(--border2);color:var(--muted);cursor:pointer;font-size:0.9rem;line-height:1;padding:0.2rem 0.5rem;border-radius:4px;transition:border-color 0.2s,color 0.2s,background 0.2s;flex-shrink:0}
+.cd-copy-btn:hover{border-color:var(--teal);color:var(--teal)}
+.cd-copy-btn.copied{border-color:var(--teal);color:var(--teal);background:rgba(14,181,160,0.1)}
