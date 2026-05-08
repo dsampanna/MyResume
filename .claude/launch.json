@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "-l", "3700", "--config", "serve.json", "."],
       "port": 3700
+    },
+    {
+      "name": "lawyer",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "3702", "G:\\11\\lawyer-website"],
+      "port": 3702
     }
   ]
 }
