@@ -46,9 +46,15 @@ img{display:block;max-width:100%}
 .proj-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.08) 0%,transparent 70%);pointer-events:none}
 .proj-cat-badge{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border);padding:0.3rem 0.8rem;margin-bottom:1.25rem;background:rgba(14,181,160,0.06)}
 .proj-title{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;line-height:1;color:var(--text);margin-bottom:1.25rem}
-.proj-meta{display:flex;flex-wrap:wrap;gap:2rem;font-size:0.8rem;color:var(--muted)}
+.proj-meta{display:flex;flex-wrap:wrap;gap:2rem;font-size:0.8rem;color:var(--muted);align-items:center}
 .proj-meta-item{display:flex;align-items:center;gap:0.4rem}
 .proj-meta-dot{width:4px;height:4px;border-radius:50%;background:var(--teal)}
+/* SHARE + VIEW COUNT */
+.share-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;font-weight:600;letter-spacing:0.04em;color:var(--teal);border:1px solid var(--border);background:transparent;cursor:pointer;padding:0.35rem 0.85rem;transition:background 0.2s,color 0.2s;margin-left:auto}
+.share-btn:hover{background:rgba(14,181,160,0.1)}
+.share-btn.copied{color:#4ade80;border-color:rgba(74,222,128,0.3)}
+.view-count{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.75rem;color:var(--muted);margin-left:0.5rem}
+.view-count-num{color:var(--teal);font-weight:600}
 @media(max-width:768px){.proj-hero{padding:2.5rem 1.25rem 2rem}}
 
 /* BODY */
@@ -263,11 +269,14 @@ function render() {
   document.title = p.title + ' | Sampanna Raj Dhungel';
   try {
     var ogDesc = p.description.slice(0, 160);
+    var ogImg = p.image ? 'https://www.sampannadhungel.com.np/' + p.image : 'https://www.sampannadhungel.com.np/assets/img/og-cover.jpg';
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', ogDesc);
-    document.querySelector('meta[property="og:url"]')?.setAttribute('content', 'https://www.sampannadhungel.com.np/project.html?id=' + p.id);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', 'https://www.sampannadhungel.com.np/project.html#' + p.id);
+    document.querySelector('meta[property="og:image"]')?.setAttribute('content', ogImg);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', ogDesc);
+    document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', ogImg);
     document.querySelector('meta[name="description"]')?.setAttribute('content', ogDesc);
   } catch(e) {}
 
@@ -323,6 +332,8 @@ function render() {
         <div class="proj-meta-item"><span class="proj-meta-dot"></span>${p.year}</div>
         <div class="proj-meta-item"><span class="proj-meta-dot"></span>${p.tools.join(', ')}</div>
         <div class="proj-meta-item"><span class="proj-meta-dot"></span>${index + 1} of ${projects.length}</div>
+        <span class="view-count" id="viewCount" style="display:none">👁 <span class="view-count-num" id="viewCountNum">—</span> views</span>
+        <button class="share-btn" id="shareBtn" onclick="shareProject()">⎘ Share</button>
       </div>
     </div>
     ${pdfSectionHTML}
@@ -369,7 +380,33 @@ function render() {
 }
 
 render();
-window.addEventListener('hashchange', function(){ render(); window.scrollTo(0,0); });
+window.addEventListener('hashchange', function(){ render(); window.scrollTo(0,0); trackView(); });
+
+function shareProject() {
+  var url = window.location.href;
+  var btn = document.getElementById('shareBtn');
+  if (navigator.share) {
+    navigator.share({ title: document.title, url: url }).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(url).then(function() {
+      if (btn) { btn.textContent = '✓ Copied!'; btn.classList.add('copied'); setTimeout(function(){ btn.textContent = '⎘ Share'; btn.classList.remove('copied'); }, 2000); }
+    }).catch(function() {
+      prompt('Copy this link:', url);
+    });
+  }
+}
+
+function trackView() {
+  var id = window.location.hash.slice(1) || new URLSearchParams(window.location.search).get('id');
+  if (!id) return;
+  var el = document.getElementById('viewCountNum');
+  var wrap = document.getElementById('viewCount');
+  fetch('https://api.countapi.xyz/hit/sampannadhungel.com.np/' + id)
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if (d && d.value && el && wrap) { el.textContent = d.value; wrap.style.display = 'inline-flex'; } })
+    .catch(function(){});
+}
+trackView();
 
 (function(){
   if(!window.matchMedia('(pointer:fine)').matches)return;

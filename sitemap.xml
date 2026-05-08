@@ -107,17 +107,24 @@
   </url>
 
   <url>
-    <loc>https://www.sampannadhungel.com.np/project.html?id=swaadd</loc>
+    <loc>https://www.sampannadhungel.com.np/project.html#swaadd</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.sampannadhungel.com.np/project.html?id=khana-app</loc>
+    <loc>https://www.sampannadhungel.com.np/project.html#khana-app</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.sampannadhungel.com.np/now.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
