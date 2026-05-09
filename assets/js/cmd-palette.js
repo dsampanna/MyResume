@@ -242,6 +242,11 @@
     {icon:'📝', label:'Blog · 3D Animation', sub:'blog-3d-animation.html',     go:function(){ nav('blog-3d-animation.html'); }},
     {icon:'🌿', label:'Case Study · Griham', sub:'project.html#griham-organic', go:function(){ nav('project.html#griham-organic'); }},
     {icon:'🏔️', label:'Case Study · Himaltrek',sub:'project.html#himaltrek-nepal',go:function(){ nav('project.html#himaltrek-nepal'); }},
+    {icon:'📍', label:'Now',               sub:'what I\'m doing right now',   go:function(){ nav('now.html'); }},
+    {icon:'🛠️', label:'Uses',             sub:'my tools & setup',            go:function(){ nav('uses.html'); }},
+    {icon:'✍️', label:'Guestbook',        sub:'leave a note',                go:function(){ nav('guestbook.html'); }},
+    {icon:'⚙️', label:'Colophon',         sub:'how this site was built',     go:function(){ nav('colophon.html'); }},
+    {icon:'📡', label:'RSS Feed',         sub:'subscribe to blog updates',   go:function(){ nav('feed.xml'); }},
   ];
 
   function openSitemap(){
@@ -311,6 +316,9 @@
     {icon:'🏠', label:'Home',            sub:'back to index',             go:function(){ nav('index.html'); }},
     {icon:'🖼️', label:'View Portfolio', sub:'all 45+ projects',          go:function(){ nav('portfolio.html'); }},
     {icon:'🛠️', label:'Services',       sub:'what I offer',              go:function(){ nav('services.html'); }},
+    {icon:'📍', label:'Now',            sub:'what I\'m doing right now', go:function(){ nav('now.html'); }},
+    {icon:'🔧', label:'Uses',           sub:'my tools & setup',          go:function(){ nav('uses.html'); }},
+    {icon:'✍️', label:'Guestbook',     sub:'leave a note',              go:function(){ nav('guestbook.html'); }},
     /* ── Actions ── */
     {icon:'📋', label:'Copy email',      sub:'sampannadhungel@gmail.com', go:function(){ copyText('sampannadhungel@gmail.com','✓ Email copied!'); }},
     {icon:'💬', label:'Open WhatsApp',   sub:'quick response guaranteed', go:function(){ window.open('https://wa.me/9779861487026','_blank'); }},
@@ -329,7 +337,7 @@
     {icon:'📅', label:'Schedule a call',    sub:'WhatsApp with meeting request',      go:function(){ window.open('https://wa.me/9779861487026?text=Hi%20Sampanna!%20I%27d%20like%20to%20schedule%20a%20call%20to%20discuss%20a%20project.%20When%20are%20you%20available%3F','_blank'); }},
     {icon:'🗺️', label:'Sitemap',           sub:'browse all pages',                   go:function(){ openSitemap(); }},
     {icon:'📊', label:'Portfolio stats',    sub:'projects · clients · years',         go:function(){ toast('📊 45+ projects · 30+ clients · 7+ yrs'); }},
-    {icon:'🕐', label:'Last updated',       sub:'when this portfolio was refreshed',  go:function(){ toast('🕐 Last updated: April 2026'); }},
+    {icon:'🕐', label:'Last updated',       sub:'when this portfolio was refreshed',  go:function(){ toast('🕐 Last updated: May 2026'); }},
     {icon:'🖋️', label:'Sign the page',     sub:'teal signature appears bottom-right',go:function(){ signPage(); }},
     {icon:'🎬', label:'Reel mode',          sub:'auto-advance carousel every 2.5s',   go:function(){ toggleReel(); }},
   ];
