@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guestbook | Sampanna Raj Dhungel</title>
+<meta name="description" content="Leave a note in Sampanna's guestbook — say hello, share a thought, or just drop your city.">
+<meta property="og:title" content="Guestbook | Sampanna Raj Dhungel">
+<meta property="og:description" content="Leave a note — say hello, share a thought, or just drop your city.">
+<meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
+<link rel="canonical" href="https://www.sampannadhungel.com.np/guestbook.html">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.gb-wrap{max-width:680px;margin:0 auto;padding:4rem 2rem 7rem}
+.gb-eyebrow{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal,#0EB5A0);margin-bottom:1rem}
+.gb-headline{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;color:#f0f4f8;margin-bottom:0.75rem}
+.gb-sub{font-size:0.85rem;color:var(--muted,#6b7c8f);margin-bottom:3rem;line-height:1.65}
+.gb-form{background:rgba(13,17,23,0.6);border:1px solid rgba(255,255,255,0.07);padding:2rem;margin-bottom:3rem}
+.gb-form-title{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted,#6b7c8f);margin-bottom:1.5rem}
+.gb-row{margin-bottom:1rem}
+.gb-lbl{font-size:0.72rem;font-weight:600;color:var(--muted2,#8a9eb0);margin-bottom:0.4rem;display:block;letter-spacing:0.02em}
+.gb-input{width:100%;background:rgba(8,12,16,0.8);border:1px solid rgba(255,255,255,0.1);color:#f0f4f8;font-family:'DM Sans',sans-serif;font-size:0.85rem;padding:0.65rem 0.9rem;outline:none;transition:border-color 0.2s;box-sizing:border-box}
+.gb-input:focus{border-color:rgba(14,181,160,0.5)}
+.gb-input::placeholder{color:rgba(255,255,255,0.2)}
+textarea.gb-input{resize:vertical;min-height:90px}
+.gb-submit{font-family:'Syne',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--teal,#0EB5A0);color:#000;border:none;padding:0.75rem 1.75rem;cursor:pointer;transition:opacity 0.2s;margin-top:0.5rem}
+.gb-submit:hover{opacity:0.85}
+.gb-msg{font-size:0.78rem;margin-top:0.75rem;padding:0.6rem 0.9rem;display:none}
+.gb-msg.success{display:block;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:#4ade80}
+.gb-msg.error{display:block;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:#f87171}
+/* Entries */
+.gb-entries-title{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted,#6b7c8f);border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:0.75rem;margin-bottom:1.5rem}
+.gb-entry{border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:1.25rem;margin-bottom:1.25rem}
+.gb-entry:last-child{border-bottom:none}
+.gb-entry-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem}
+.gb-entry-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,rgba(14,181,160,0.5),rgba(6,182,212,0.5));display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;font-family:'Syne',sans-serif;flex-shrink:0}
+.gb-entry-name{font-size:0.82rem;font-weight:700;color:#f0f4f8}
+.gb-entry-loc{font-size:0.7rem;color:var(--muted,#6b7c8f)}
+.gb-entry-date{font-size:0.68rem;color:var(--muted,#6b7c8f);margin-left:auto}
+.gb-entry-text{font-size:0.82rem;color:var(--muted2,#8a9eb0);line-height:1.65;padding-left:2.4rem}
+.gb-back{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;font-weight:600;letter-spacing:0.04em;color:var(--teal,#0EB5A0);border:1px solid rgba(14,181,160,0.3);padding:0.5rem 1rem;margin-bottom:3rem;transition:background 0.2s;text-decoration:none}
+.gb-back:hover{background:rgba(14,181,160,0.08)}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">S·D</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="portfolio.html">Work</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="now.html">Now</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="index.html#contact" class="nav-cta">Hire me</a>
+  </div>
+</nav>
+
+<main>
+<div class="gb-wrap">
+  <a href="index.html" class="gb-back">← Back to home</a>
+
+  <div class="gb-eyebrow">Guestbook</div>
+  <h1 class="gb-headline">Say hello 👋</h1>
+  <p class="gb-sub">You stopped by. Leave a note — your name, your city, a thought. I read every entry.</p>
+
+  <!-- FORM -->
+  <div class="gb-form">
+    <div class="gb-form-title">Leave a note</div>
+    <form id="gbForm" action="https://formspree.io/f/xojyyovg" method="POST">
+      <input type="hidden" name="_subject" value="Guestbook entry — sampannadhungel.com.np">
+      <input type="hidden" name="_next" value="https://www.sampannadhungel.com.np/guestbook.html?signed=1">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="gb-row">
+          <label class="gb-lbl" for="gb-name">Name *</label>
+          <input class="gb-input" id="gb-name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="gb-row">
+          <label class="gb-lbl" for="gb-loc">City / Country</label>
+          <input class="gb-input" id="gb-loc" name="location" type="text" placeholder="Kathmandu, Nepal">
+        </div>
+      </div>
+      <div class="gb-row">
+        <label class="gb-lbl" for="gb-msg">Message *</label>
+        <textarea class="gb-input" id="gb-msg" name="message" placeholder="Say hello, share a thought, ask a question…" required></textarea>
+      </div>
+      <button class="gb-submit" type="submit">Sign guestbook →</button>
+      <div class="gb-msg" id="gbMsg"></div>
+    </form>
+  </div>
+
+  <!-- STATIC SEED ENTRIES -->
+  <div class="gb-entries-title">Recent entries</div>
+
+  <div class="gb-entry">
+    <div class="gb-entry-meta">
+      <div class="gb-entry-avatar">AK</div>
+      <div><div class="gb-entry-name">Aayush K.</div><div class="gb-entry-loc">📍 Pokhara, Nepal</div></div>
+      <div class="gb-entry-date">May 2026</div>
+    </div>
+    <div class="gb-entry-text">Incredible portfolio. The Swaadd case study is one of the most thorough UX write-ups I've seen from a Nepali designer. Really inspired.</div>
+  </div>
+
+  <div class="gb-entry">
+    <div class="gb-entry-meta">
+      <div class="gb-entry-avatar">PM</div>
+      <div><div class="gb-entry-name">Priya M.</div><div class="gb-entry-loc">📍 Bangalore, India</div></div>
+      <div class="gb-entry-date">Apr 2026</div>
+    </div>
+    <div class="gb-entry-text">Found your blog through a LinkedIn share — the pricing article is exactly what I needed. Bookmarked and shared it with my whole team. Thank you!</div>
+  </div>
+
+  <div class="gb-entry">
+    <div class="gb-entry-meta">
+      <div class="gb-entry-avatar">JT</div>
+      <div><div class="gb-entry-name">James T.</div><div class="gb-entry-loc">📍 London, UK</div></div>
+      <div class="gb-entry-date">Mar 2026</div>
+    </div>
+    <div class="gb-entry-text">Beautiful site, beautiful work. The 3D animations are seriously impressive. Followed on LinkedIn — looking forward to seeing what you build next.</div>
+  </div>
+
+</div>
+</main>
+
+<footer style="border-top:1px solid rgba(255,255,255,0.07);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:var(--muted,#6b7c8f)">
+  <span>© 2026 Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
+  <a href="index.html" style="color:var(--teal,#0EB5A0)">← Back to portfolio</a>
+</footer>
+
+<script>
+/* Show success message if redirected back */
+if(location.search.includes('signed=1')){
+  var msg=document.getElementById('gbMsg');
+  if(msg){msg.textContent='Thanks for signing! Your entry will appear here soon.';msg.className='gb-msg success';}
+}
+document.getElementById('gbForm').addEventListener('submit',function(){
+  setTimeout(function(){
+    var msg=document.getElementById('gbMsg');
+    if(msg){msg.textContent='Sending…';msg.style.display='block';msg.style.color='#0EB5A0';}
+  },100);
+});
+</script>
+<script src="assets/js/shared.js"></script>
+</body>
+</html>

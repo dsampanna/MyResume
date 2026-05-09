@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sampanna Raj Dhungel — Design Blog</title>
+    <link>https://www.sampannadhungel.com.np/blog.html</link>
+    <description>Articles on branding, UI/UX, freelancing, motion graphics and design from Bhaktapur, Nepal.</description>
+    <language>en-us</language>
+    <managingEditor>sampannadhungel@gmail.com (Sampanna Raj Dhungel)</managingEditor>
+    <webMaster>sampannadhungel@gmail.com (Sampanna Raj Dhungel)</webMaster>
+    <lastBuildDate>Thu, 30 Apr 2026 00:00:00 +0545</lastBuildDate>
+    <atom:link href="https://www.sampannadhungel.com.np/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://www.sampannadhungel.com.np/assets/img/og-cover.jpg</url>
+      <title>Sampanna Raj Dhungel — Design Blog</title>
+      <link>https://www.sampannadhungel.com.np/blog.html</link>
+    </image>
+
+    <item>
+      <title>Building a Brand Identity from Scratch — A Designer's Complete Guide</title>
+      <link>https://www.sampannadhungel.com.np/blog-brand-identity.html</link>
+      <guid isPermaLink="true">https://www.sampannadhungel.com.np/blog-brand-identity.html</guid>
+      <pubDate>Wed, 30 Apr 2026 09:00:00 +0545</pubDate>
+      <category>Branding</category>
+      <description>Brand identity is more than a logo. Here's exactly how I approach building one from zero — from the first client conversation to final delivery.</description>
+    </item>
+
+    <item>
+      <title>My UI/UX Design Process — From Brief to Final Prototype</title>
+      <link>https://www.sampannadhungel.com.np/blog-ux-process.html</link>
+      <guid isPermaLink="true">https://www.sampannadhungel.com.np/blog-ux-process.html</guid>
+      <pubDate>Tue, 22 Apr 2026 09:00:00 +0545</pubDate>
+      <category>UI/UX</category>
+      <description>A behind-the-scenes look at how I take a client brief and turn it into a polished, user-tested digital product — every step, every tool.</description>
+    </item>
+
+    <item>
+      <title>How to Price Your Design Work — A Guide for Nepali Freelancers</title>
+      <link>https://www.sampannadhungel.com.np/blog-pricing.html</link>
+      <guid isPermaLink="true">https://www.sampannadhungel.com.np/blog-pricing.html</guid>
+      <pubDate>Mon, 15 Apr 2026 09:00:00 +0545</pubDate>
+      <category>Freelancing</category>
+      <description>Stop undercharging. A frank guide to pricing design services in Nepal — how to set rates, talk money with clients, and get paid what you're worth.</description>
+    </item>
+
+    <item>
+      <title>Getting Started with 3D Animation — Tools, Workflow &amp; Advice</title>
+      <link>https://www.sampannadhungel.com.np/blog-3d-animation.html</link>
+      <guid isPermaLink="true">https://www.sampannadhungel.com.np/blog-3d-animation.html</guid>
+      <pubDate>Sat, 05 Apr 2026 09:00:00 +0545</pubDate>
+      <category>3D &amp; Motion</category>
+      <description>How I went from zero 3D experience to producing client-ready animation — the tools, the workflow, and the honest truth about the learning curve.</description>
+    </item>
+
+    <item>
+      <title>Freelancing as a Designer in Nepal — The Real Story</title>
+      <link>https://www.sampannadhungel.com.np/blog-freelancing-nepal.html</link>
+      <guid isPermaLink="true">https://www.sampannadhungel.com.np/blog-freelancing-nepal.html</guid>
+      <pubDate>Mon, 28 Mar 2026 09:00:00 +0545</pubDate>
+      <category>Freelancing</category>
+      <description>What it's actually like trying to build a freelance design career in Nepal after 5 years of doing it.</description>
+    </item>
+
+    <item>
+      <title>Sound Design for Video — A Beginner's Guide</title>
+      <link>https://www.sampannadhungel.com.np/blog-sound-design.html</link>
+      <guid isPermaLink="true">https://www.sampannadhungel.com.np/blog-sound-design.html</guid>
+      <pubDate>Mon, 18 Mar 2026 09:00:00 +0545</pubDate>
+      <category>Sound Design</category>
+      <description>Most designers ignore sound completely. Here's how to get started with sound design even with no music background.</description>
+    </item>
+
+  </channel>
+</rss>

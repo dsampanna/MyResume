@@ -50,6 +50,10 @@ img{display:block;max-width:100%}
 .filter-bar{padding:1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(13,17,23,0.97);display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;position:sticky;top:57px;z-index:90;backdrop-filter:blur(12px)}
 .pf-btn{font-family:var(--body);font-size:0.67rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border2);color:var(--muted);background:transparent;padding:0.38rem 0.85rem;cursor:none;transition:all 0.2s;white-space:nowrap}
 .pf-btn:hover,.pf-btn.active{border-color:var(--teal);color:var(--teal);background:rgba(14,181,160,0.08)}
+.tool-filter-bar{padding:0.6rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(10,13,18,0.98);display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;position:sticky;top:calc(57px + 49px);z-index:89;backdrop-filter:blur(12px)}
+.tool-filter-label{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-right:0.25rem;white-space:nowrap}
+.tf-btn{font-family:var(--body);font-size:0.62rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.08);color:var(--muted);background:transparent;padding:0.28rem 0.7rem;cursor:pointer;transition:all 0.2s;white-space:nowrap;border-radius:999px}
+.tf-btn:hover,.tf-btn.active{border-color:rgba(6,182,212,0.5);color:var(--cyan);background:rgba(6,182,212,0.07)}
 .filter-count{margin-left:auto;font-size:0.72rem;color:var(--muted2);white-space:nowrap}
 .filter-count strong{color:var(--teal)}
 :focus-visible{outline:2px solid var(--teal);outline-offset:3px}
@@ -191,6 +195,16 @@ img{display:block;max-width:100%}
   <button class="pf-btn" data-f="other">Other Designs</button>
   <span class="filter-count">Showing <strong id="portCount">—</strong> projects</span>
 </div>
+<div class="tool-filter-bar" id="toolFilterBar">
+  <span class="tool-filter-label">By tool:</span>
+  <button class="tf-btn active" data-t="all">All tools</button>
+  <button class="tf-btn" data-t="figma">Figma</button>
+  <button class="tf-btn" data-t="blender">Blender</button>
+  <button class="tf-btn" data-t="ae">After Effects</button>
+  <button class="tf-btn" data-t="html">HTML / CSS</button>
+  <button class="tf-btn" data-t="ps">Photoshop</button>
+  <button class="tf-btn" data-t="ai">Illustrator</button>
+</div>
 
 <!-- PORTFOLIO BODY -->
 <div class="port-body">
@@ -226,55 +240,55 @@ document.getElementById('fy').textContent = new Date().getFullYear();
 
 var ITEMS = [
   /* 3D Animation */
-  {id:'old-man-smoking',            t:'Old Man Smoking',               c:'3D Animation',     f:'3d',    img:'3D_Animation_2_thumbnail.png'},
-  {id:'old-man-chilling',           t:'Old Man Chilling',              c:'3D Animation',     f:'3d',    img:'3D_Animation_1_thumbnail.jpg'},
+  {id:'old-man-smoking',            t:'Old Man Smoking',               c:'3D Animation',     f:'3d',    img:'3D_Animation_2_thumbnail.png',  tools:['blender']},
+  {id:'old-man-chilling',           t:'Old Man Chilling',              c:'3D Animation',     f:'3d',    img:'3D_Animation_1_thumbnail.jpg',  tools:['blender']},
   /* Web Design / UI/UX */
-  {id:'swaadd',                     t:'Swaadd — स्वाद · Taste of Nepal', c:'UI/UX · Mobile',  f:'mobile', img:'swaadd-thumbnail.svg'},
-  {id:'khana-app',                  t:'खाना App — Nepal Food Delivery', c:'UI/UX · Mobile',  f:'mobile', img:'khana-app-thumbnail.svg'},
-  {id:'sughosh-dhungel',             t:'Sughosh Dhungel — Advocate',    c:'Web Design',       f:'web',   img:'sughosh-dhungel-thumbnail.jpg'},
-  {id:'griham-organic',              t:'Griham Organic',                c:'Web Design',       f:'web',   img:'griham-organic-thumbnail.jpg'},
-  {id:'himaltrek-nepal',            t:'HimalTrek Nepal',               c:'Web Design',       f:'web',   img:'himaltrek-thumbnail.jpg'},
-  {id:'indreni-nursery',            t:'Indreni Nursery Landing Page',  c:'Web Design',       f:'web',   img:'portfolio-17.jpg'},
-  {id:'griham-case-study',          t:'Griham Organic — Case Study',   c:'UI/UX Case Study', f:'web',   img:'griham-organic-thumbnail.jpg', link:'griham-case-study.html'},
+  {id:'swaadd',                     t:'Swaadd — स्वाद · Taste of Nepal', c:'UI/UX · Mobile',  f:'mobile', img:'swaadd-thumbnail.svg',        tools:['figma']},
+  {id:'khana-app',                  t:'खाना App — Nepal Food Delivery', c:'UI/UX · Mobile',  f:'mobile', img:'khana-app-thumbnail.svg',      tools:['figma']},
+  {id:'sughosh-dhungel',             t:'Sughosh Dhungel — Advocate',    c:'Web Design',       f:'web',   img:'sughosh-dhungel-thumbnail.jpg', tools:['html']},
+  {id:'griham-organic',              t:'Griham Organic',                c:'Web Design',       f:'web',   img:'griham-organic-thumbnail.jpg',  tools:['figma','html']},
+  {id:'himaltrek-nepal',            t:'HimalTrek Nepal',               c:'Web Design',       f:'web',   img:'himaltrek-thumbnail.jpg',       tools:['figma','html']},
+  {id:'indreni-nursery',            t:'Indreni Nursery Landing Page',  c:'Web Design',       f:'web',   img:'portfolio-17.jpg',              tools:['html']},
+  {id:'griham-case-study',          t:'Griham Organic — Case Study',   c:'UI/UX Case Study', f:'web',   img:'griham-organic-thumbnail.jpg',  tools:['figma'], link:'griham-case-study.html'},
   /* Motion Graphics */
-  {id:'pepsi-logo-reveal',           t:'Pepsi Logo Reveal',             c:'Motion Graphics',  f:'motion',img:'Motion_13_thumbnail.png'},
-  {id:'city-motion',                t:'City Motion',                   c:'Motion Graphics',  f:'motion',img:'Motion_1_thumbnail.jpg'},
-  {id:'999-to-1000-subscribers',    t:'999 to 1000 Subscribers',       c:'Motion Graphics',  f:'motion',img:'Motion_2_thumbnail.jpg'},
-  {id:'instagram-username-reveal',  t:'Instagram Username Reveal',     c:'Motion Graphics',  f:'motion',img:'Motion_3_thumbnail.jpg'},
-  {id:'instagram-story',            t:'Instagram Story',               c:'Motion Graphics',  f:'motion',img:'Motion_4_thumbnail.jpg'},
-  {id:'facebook-like',              t:'Facebook Like',                 c:'Motion Graphics',  f:'motion',img:'Motion_5_thumbnail.jpg'},
-  {id:'switch-on',                  t:'Switch On',                     c:'Motion Graphics',  f:'motion',img:'Motion_6_thumbnail.jpg'},
-  {id:'timer',                      t:'Timer',                         c:'Motion Graphics',  f:'motion',img:'Motion_7_thumbnail.jpg'},
-  {id:'coming-soon',                t:'Coming Soon',                   c:'Motion Graphics',  f:'motion',img:'Motion_8_thumbnail.jpg'},
-  {id:'chatting',                   t:'Chatting',                      c:'Motion Graphics',  f:'motion',img:'Motion_9_thumbnail.jpg'},
-  {id:'intro-reveal',               t:'Intro Reveal',                  c:'Motion Graphics',  f:'motion',img:'Motion_10_thumbnail.jpg'},
-  {id:'loading',                    t:'Loading',                       c:'Motion Graphics',  f:'motion',img:'Motion_11_thumbnail.jpg'},
-  {id:'transform-with-sound-motion',t:'Transform With Sound',          c:'Motion Graphics',  f:'motion',img:'Motion_12_thumbnail.jpg'},
+  {id:'pepsi-logo-reveal',           t:'Pepsi Logo Reveal',             c:'Motion Graphics',  f:'motion',img:'Motion_13_thumbnail.png',              tools:['ae']},
+  {id:'city-motion',                t:'City Motion',                   c:'Motion Graphics',  f:'motion',img:'Motion_1_thumbnail.jpg',               tools:['ae']},
+  {id:'999-to-1000-subscribers',    t:'999 to 1000 Subscribers',       c:'Motion Graphics',  f:'motion',img:'Motion_2_thumbnail.jpg',               tools:['ae']},
+  {id:'instagram-username-reveal',  t:'Instagram Username Reveal',     c:'Motion Graphics',  f:'motion',img:'Motion_3_thumbnail.jpg',               tools:['ae']},
+  {id:'instagram-story',            t:'Instagram Story',               c:'Motion Graphics',  f:'motion',img:'Motion_4_thumbnail.jpg',               tools:['ae']},
+  {id:'facebook-like',              t:'Facebook Like',                 c:'Motion Graphics',  f:'motion',img:'Motion_5_thumbnail.jpg',               tools:['ae']},
+  {id:'switch-on',                  t:'Switch On',                     c:'Motion Graphics',  f:'motion',img:'Motion_6_thumbnail.jpg',               tools:['ae']},
+  {id:'timer',                      t:'Timer',                         c:'Motion Graphics',  f:'motion',img:'Motion_7_thumbnail.jpg',               tools:['ae']},
+  {id:'coming-soon',                t:'Coming Soon',                   c:'Motion Graphics',  f:'motion',img:'Motion_8_thumbnail.jpg',               tools:['ae']},
+  {id:'chatting',                   t:'Chatting',                      c:'Motion Graphics',  f:'motion',img:'Motion_9_thumbnail.jpg',               tools:['ae']},
+  {id:'intro-reveal',               t:'Intro Reveal',                  c:'Motion Graphics',  f:'motion',img:'Motion_10_thumbnail.jpg',              tools:['ae']},
+  {id:'loading',                    t:'Loading',                       c:'Motion Graphics',  f:'motion',img:'Motion_11_thumbnail.jpg',              tools:['ae']},
+  {id:'transform-with-sound-motion',t:'Transform With Sound',          c:'Motion Graphics',  f:'motion',img:'Motion_12_thumbnail.jpg',              tools:['ae']},
   /* Social Media */
-  {id:'tihar-wishes',               t:'Tihar Wishes',                  c:'Social Media',     f:'social',img:'portfolio-8.jpg'},
-  {id:'bijaya-dashami-offer',       t:'Bijaya Dashami Offer',          c:'Social Media',     f:'social',img:'portfolio-11.jpg'},
-  {id:'bijaya-dashami-wishes',      t:'Bijaya Dashami Wishes',         c:'Social Media',     f:'social',img:'portfolio-9.jpg'},
-  {id:'bijaya-dashami-wish',        t:'Bijaya Dashami Wish',           c:'Social Media',     f:'social',img:'portfolio-4.jpg'},
-  {id:'bijaya-dashami-wish-2',      t:'Bijaya Dashami Wish 2',         c:'Social Media',     f:'social',img:'portfolio-14.jpg'},
-  {id:'kent-water-purifier',        t:'Kent Water Purifier',           c:'Social Media',     f:'social',img:'portfolio-6.jpg'},
-  {id:'kent-water-purifier-2',      t:'Kent Water Purifier 2',         c:'Social Media',     f:'social',img:'portfolio-7.jpg'},
-  {id:'admission-open',             t:'Admission Open',                c:'Social Media',     f:'social',img:'portfolio-5.jpg'},
-  {id:'abroad-study',               t:'Abroad Study',                  c:'Social Media',     f:'social',img:'portfolio-10.jpg'},
-  {id:'offer-voucher-code',         t:'Offer / Voucher Code',          c:'Social Media',     f:'social',img:'portfolio-12.jpg'},
-  {id:'tiktok-marketing-guide',     t:'TikTok Marketing Guide',        c:'Social Media',     f:'social',img:'portfolio-13.jpg'},
-  {id:'mens-collection-offer',      t:"Men's Collection Offer",        c:'Social Media',     f:'social',img:'portfolio-15.jpg'},
-  {id:'revenue-breakdown',          t:'Revenue Breakdown',             c:'Social Media',     f:'social',img:'portfolio-16.jpg'},
-  {id:'affiliation-program',        t:'Affiliation Program',           c:'Social Media',     f:'social',img:'portfolio-1.jpg'},
-  {id:'water-purifier',             t:'Water Purifier',                c:'Social Media',     f:'social',img:'portfolio-2.jpg'},
-  {id:'graphics-design-bootcamp',   t:'Graphics Design Bootcamp',      c:'Social Media',     f:'social',img:'portfolio-3.jpg'},
-  {id:'voucher-card',               t:'Voucher Card',                  c:'Social Media',     f:'social',img:'portfolio-21.jpg'},
+  {id:'tihar-wishes',               t:'Tihar Wishes',                  c:'Social Media',     f:'social',img:'portfolio-8.jpg',                      tools:['ps','ai']},
+  {id:'bijaya-dashami-offer',       t:'Bijaya Dashami Offer',          c:'Social Media',     f:'social',img:'portfolio-11.jpg',                     tools:['ps']},
+  {id:'bijaya-dashami-wishes',      t:'Bijaya Dashami Wishes',         c:'Social Media',     f:'social',img:'portfolio-9.jpg',                      tools:['ps']},
+  {id:'bijaya-dashami-wish',        t:'Bijaya Dashami Wish',           c:'Social Media',     f:'social',img:'portfolio-4.jpg',                      tools:['ps']},
+  {id:'bijaya-dashami-wish-2',      t:'Bijaya Dashami Wish 2',         c:'Social Media',     f:'social',img:'portfolio-14.jpg',                     tools:['ps']},
+  {id:'kent-water-purifier',        t:'Kent Water Purifier',           c:'Social Media',     f:'social',img:'portfolio-6.jpg',                      tools:['ps']},
+  {id:'kent-water-purifier-2',      t:'Kent Water Purifier 2',         c:'Social Media',     f:'social',img:'portfolio-7.jpg',                      tools:['ps']},
+  {id:'admission-open',             t:'Admission Open',                c:'Social Media',     f:'social',img:'portfolio-5.jpg',                      tools:['ps']},
+  {id:'abroad-study',               t:'Abroad Study',                  c:'Social Media',     f:'social',img:'portfolio-10.jpg',                     tools:['ps']},
+  {id:'offer-voucher-code',         t:'Offer / Voucher Code',          c:'Social Media',     f:'social',img:'portfolio-12.jpg',                     tools:['ps']},
+  {id:'tiktok-marketing-guide',     t:'TikTok Marketing Guide',        c:'Social Media',     f:'social',img:'portfolio-13.jpg',                     tools:['ps']},
+  {id:'mens-collection-offer',      t:"Men's Collection Offer",        c:'Social Media',     f:'social',img:'portfolio-15.jpg',                     tools:['ps']},
+  {id:'revenue-breakdown',          t:'Revenue Breakdown',             c:'Social Media',     f:'social',img:'portfolio-16.jpg',                     tools:['ps']},
+  {id:'affiliation-program',        t:'Affiliation Program',           c:'Social Media',     f:'social',img:'portfolio-1.jpg',                      tools:['ps']},
+  {id:'water-purifier',             t:'Water Purifier',                c:'Social Media',     f:'social',img:'portfolio-2.jpg',                      tools:['ps']},
+  {id:'graphics-design-bootcamp',   t:'Graphics Design Bootcamp',      c:'Social Media',     f:'social',img:'portfolio-3.jpg',                      tools:['ps']},
+  {id:'voucher-card',               t:'Voucher Card',                  c:'Social Media',     f:'social',img:'portfolio-21.jpg',                     tools:['ps']},
   /* Sound Design */
-  {id:'transform-with-sound-audio', t:'Transform With Sound',          c:'Sound Design',     f:'sound', img:'Draft_Music_Design_1_thumbnail.jpg'},
+  {id:'transform-with-sound-audio', t:'Transform With Sound',          c:'Sound Design',     f:'sound', img:'Draft_Music_Design_1_thumbnail.jpg',    tools:['ae']},
   /* Other Designs */
-  {id:'visiting-card',              t:'Visiting Card',                 c:'Other Designs',    f:'other', img:'portfolio-18.jpg'},
-  {id:'visiting-card-2',            t:'Visiting Card 2',               c:'Other Designs',    f:'other', img:'portfolio-19.jpg'},
-  {id:'ozil-illustration',          t:'Illustration — Ozil',           c:'Other Designs',    f:'other', img:'portfolio-20.jpg'},
-  {id:'logo-sallaghari-burger',     t:'Logo — Sallaghari Burger',      c:'Other Designs',    f:'other', img:'portfolio-22.jpg'},
+  {id:'visiting-card',              t:'Visiting Card',                 c:'Other Designs',    f:'other', img:'portfolio-18.jpg',                      tools:['ps','ai']},
+  {id:'visiting-card-2',            t:'Visiting Card 2',               c:'Other Designs',    f:'other', img:'portfolio-19.jpg',                      tools:['ps','ai']},
+  {id:'ozil-illustration',          t:'Illustration — Ozil',           c:'Other Designs',    f:'other', img:'portfolio-20.jpg',                      tools:['ps','ai']},
+  {id:'logo-sallaghari-burger',     t:'Logo — Sallaghari Burger',      c:'Other Designs',    f:'other', img:'portfolio-22.jpg',                      tools:['ai']},
   {id:'logo-araniko-fc',            t:'Logo — Araniko FC',             c:'Other Designs',    f:'other', img:'portfolio-23.png'},
   {id:'logo-wine-hub-nepal',        t:'Logo — Wine Hub Nepal',         c:'Other Designs',    f:'other', img:'portfolio-24.jpg'},
   {id:'hoarding-board',             t:'Hoarding Board Design',         c:'Other Designs',    f:'other', img:'portfolio-25.jpg'},
@@ -285,12 +299,16 @@ var ITEMS = [
 var grid = document.getElementById('portGrid');
 var empty = document.getElementById('portEmpty');
 
+var activeCat = 'all';
+var activeTool = 'all';
+
 ITEMS.forEach(function(p){
   var href = p.link ? p.link : ('project.html#' + p.id);
   var el = document.createElement('a');
   el.href = href;
   el.className = 'p-card';
   el.dataset.f = p.f;
+  el.dataset.tools = (p.tools || []).join(',');
   el.innerHTML =
     '<div class="p-img-wrap"><img src="assets/img/portfolio/' + p.img + '" alt="' + p.t + '" loading="lazy"></div>' +
     '<div class="p-info">' +
@@ -302,15 +320,18 @@ ITEMS.forEach(function(p){
 
 var allLabel = document.getElementById('allLabel');
 
-function applyFilter(f){
+function applyFilter(cat, tool){
+  if(cat !== undefined) activeCat = cat;
+  if(tool !== undefined) activeTool = tool;
   var gridCards = grid.querySelectorAll('.p-card:not(#portEmpty)');
   var gv = 0;
   gridCards.forEach(function(c){
-    var show = f==='all' || c.dataset.f===f;
+    var catOk = activeCat==='all' || c.dataset.f===activeCat;
+    var toolOk = activeTool==='all' || (c.dataset.tools||'').split(',').indexOf(activeTool) > -1;
+    var show = catOk && toolOk;
     c.classList.toggle('hidden', !show);
     if(show) gv++;
   });
-
   empty.classList.toggle('show', gv === 0);
   document.getElementById('portCount').textContent = gv;
 }
@@ -320,11 +341,18 @@ document.getElementById('filterBar').addEventListener('click', function(e){
   if(!btn) return;
   document.querySelectorAll('.pf-btn').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
-  applyFilter(btn.dataset.f);
+  applyFilter(btn.dataset.f, undefined);
 });
 
+document.getElementById('toolFilterBar').addEventListener('click', function(e){
+  var btn = e.target.closest('.tf-btn');
+  if(!btn) return;
+  document.querySelectorAll('.tf-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  applyFilter(undefined, btn.dataset.t);
+});
 
-applyFilter('all');
+applyFilter('all', 'all');
 
 /* ── CUSTOM CURSOR ── */
 (function(){

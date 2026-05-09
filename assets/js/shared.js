@@ -1304,4 +1304,178 @@ window.__sharedLoaded = true;
   function hide(){ clearTimeout(hT); clearInterval(iv); tip.classList.remove('show'); }
   clockEl.addEventListener('mouseenter',function(){ hT=setTimeout(show,1800); });
   clockEl.addEventListener('mouseleave',hide);
-})()
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 41 — CASE STUDY PROGRESS TRACKER
+   Sticky top bar showing which section you're in
+   Activates on pages with .cs-section elements
+   ══════════════════════════════════════════════════ */
+(function(){
+  var sections = Array.from(document.querySelectorAll('.cs-section'));
+  if(sections.length < 2) return;
+  var labels = sections.map(function(s){
+    var num = s.querySelector('.cs-section-num');
+    return num ? num.textContent.split('—')[0].trim() : '';
+  });
+  var st=document.createElement('style');
+  st.textContent=
+    '#cs-tracker{position:fixed;top:0;left:0;right:0;z-index:9998;background:rgba(8,12,16,0.96);border-bottom:1px solid rgba(14,181,160,0.2);backdrop-filter:blur(12px);padding:0.45rem 1.5rem;display:flex;align-items:center;gap:0;overflow-x:auto;transition:transform 0.3s;scrollbar-width:none}'+
+    '#cs-tracker::-webkit-scrollbar{display:none}'+
+    '#cs-tracker.hidden{transform:translateY(-100%)}'+
+    '.cs-step{display:flex;align-items:center;gap:0;flex-shrink:0}'+
+    '.cs-step-num{font-size:0.58rem;font-weight:700;letter-spacing:0.08em;color:#6b7c8f;padding:0.3rem 0.7rem;transition:color 0.2s;white-space:nowrap;cursor:pointer}'+
+    '.cs-step-num:hover{color:#0EB5A0}'+
+    '.cs-step.active .cs-step-num{color:#0EB5A0}'+
+    '.cs-step-sep{width:20px;height:1px;background:rgba(255,255,255,0.12);flex-shrink:0}'+
+    '.cs-progress-line{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#0EB5A0,#06b6d4);z-index:9999;width:0%;transition:width 0.15s}';
+  document.head.appendChild(st);
+  /* Progress line */
+  var line=document.createElement('div'); line.className='cs-progress-line'; document.body.appendChild(line);
+  var bar=document.createElement('div'); bar.id='cs-tracker';
+  labels.forEach(function(lbl,i){
+    var step=document.createElement('div'); step.className='cs-step'; step.dataset.i=i;
+    var num=document.createElement('span'); num.className='cs-step-num'; num.textContent=lbl;
+    num.addEventListener('click',function(){ sections[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    step.appendChild(num);
+    if(i<labels.length-1){ var sep=document.createElement('span'); sep.className='cs-step-sep'; step.appendChild(sep); }
+    bar.appendChild(step);
+  });
+  document.body.insertBefore(bar, document.body.firstChild);
+  /* Push body down */
+  document.body.style.paddingTop = (bar.offsetHeight+2)+'px';
+  var lastY=0;
+  window.addEventListener('scroll',function(){
+    var scrollY=window.scrollY;
+    /* Show/hide on scroll direction */
+    bar.classList.toggle('hidden', scrollY>lastY && scrollY>120);
+    lastY=scrollY;
+    /* Progress line */
+    var pct=scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+    line.style.width=Math.min(100,pct)+'%';
+    /* Active section */
+    var active=0;
+    sections.forEach(function(s,i){ if(s.offsetTop-150<=scrollY) active=i; });
+    bar.querySelectorAll('.cs-step').forEach(function(st,i){ st.classList.toggle('active',i===active); });
+  },{passive:true});
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 37 — SCROLL-TO-TOP BUTTON
+   Appears after 400 px scroll; smooth scrolls back
+   ══════════════════════════════════════════════════ */
+(function(){
+  var s=document.createElement('style');
+  s.textContent='#stt{position:fixed;bottom:2rem;right:2rem;width:40px;height:40px;background:rgba(13,17,23,0.92);border:1px solid rgba(14,181,160,0.35);color:#0EB5A0;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9000;opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.3s,background 0.2s;transform:translateY(8px);border-radius:2px}#stt.show{opacity:1;pointer-events:all;transform:translateY(0)}#stt:hover{background:rgba(14,181,160,0.15)}@media(max-width:600px){#stt{bottom:1.25rem;right:1.25rem;width:36px;height:36px}}';
+  document.head.appendChild(s);
+  var btn=document.createElement('button'); btn.id='stt'; btn.innerHTML='↑'; btn.setAttribute('aria-label','Back to top'); btn.title='Back to top';
+  document.body.appendChild(btn);
+  window.addEventListener('scroll',function(){ btn.classList.toggle('show', window.scrollY > 400); },{passive:true});
+  btn.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 38 — AUTO READ TIME on blog posts
+   Counts words in .blog-body or article, shows
+   dynamic read time next to the existing span
+   ══════════════════════════════════════════════════ */
+(function(){
+  if(!/blog-/.test(location.pathname) && !/blog-/.test(location.href)) return;
+  var body = document.querySelector('.blog-body, .post-body, .article-body, article');
+  if(!body) return;
+  var words = body.innerText.trim().split(/\s+/).length;
+  var mins = Math.max(1, Math.round(words / 220));
+  var spans = document.querySelectorAll('.blog-read, .post-read');
+  spans.forEach(function(el){ el.textContent = mins + ' min read'; });
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 39 — TABLE OF CONTENTS
+   Auto-generated from h2/h3 inside .blog-body
+   Injected into #toc-target if present, or
+   prepended to .blog-body as a floating card
+   ══════════════════════════════════════════════════ */
+(function(){
+  if(!/blog-/.test(location.pathname) && !/blog-/.test(location.href)) return;
+  var body = document.querySelector('.blog-body, .post-body');
+  if(!body) return;
+  var headings = Array.from(body.querySelectorAll('h2,h3'));
+  if(headings.length < 3) return;
+  /* Ensure each heading has an id */
+  headings.forEach(function(h,i){
+    if(!h.id) h.id = 'toc-h-' + i;
+  });
+  var s=document.createElement('style');
+  s.textContent=
+    '.toc-card{background:rgba(13,17,23,0.8);border:1px solid rgba(14,181,160,0.18);padding:1.25rem 1.5rem;margin-bottom:2rem;border-radius:0}'+
+    '.toc-title{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#0EB5A0;margin-bottom:0.85rem}'+
+    '.toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.35rem}'+
+    '.toc-item a{font-size:0.78rem;color:#8a9eb0;transition:color 0.2s;display:block}'+
+    '.toc-item a:hover,.toc-item.active a{color:#0EB5A0}'+
+    '.toc-item.h3 a{padding-left:1rem;font-size:0.73rem}';
+  document.head.appendChild(s);
+  var ul = document.createElement('ul'); ul.className='toc-list';
+  headings.forEach(function(h){
+    var li=document.createElement('li'); li.className='toc-item'+(h.tagName==='H3'?' h3':'');
+    li.innerHTML='<a href="#'+h.id+'">'+h.textContent+'</a>'; ul.appendChild(li);
+  });
+  var card=document.createElement('div'); card.className='toc-card';
+  card.innerHTML='<div class="toc-title">In this article</div>';
+  card.appendChild(ul);
+  var target = document.getElementById('toc-target') || body;
+  if(document.getElementById('toc-target')){ target.appendChild(card); }
+  else { body.insertBefore(card, body.firstChild); }
+  /* Active highlight on scroll */
+  window.addEventListener('scroll',function(){
+    var scrollY=window.scrollY+120;
+    headings.forEach(function(h,i){
+      var next=headings[i+1];
+      var inView = h.offsetTop <= scrollY && (!next || next.offsetTop > scrollY);
+      ul.querySelectorAll('.toc-item')[i].classList.toggle('active',inView);
+    });
+  },{passive:true});
+})();
+
+
+/* ══════════════════════════════════════════════════
+   FEATURE 40 — BLOG POST EMOJI REACTIONS
+   Adds 👏 ❤️ 🤯 reaction buttons at the end of
+   each blog post via .blog-reactions placeholder
+   ══════════════════════════════════════════════════ */
+(function(){
+  var wrap = document.getElementById('blogReactions');
+  if(!wrap) return;
+  var slug = location.pathname.split('/').pop().replace('.html','') || 'blog-post';
+  var emojis = ['👏','❤️','🤯','💡'];
+  var labels = ['Clap','Love','Mind blown','Useful'];
+  var s=document.createElement('style');
+  s.textContent=
+    '.react-row{display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.75rem}'+
+    '.react-btn{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:0.45rem 1rem;cursor:pointer;font-size:0.78rem;color:#8a9eb0;transition:background 0.2s,border-color 0.2s,color 0.2s;border-radius:999px}'+
+    '.react-btn:hover{background:rgba(14,181,160,0.1);border-color:rgba(14,181,160,0.35);color:#0EB5A0}'+
+    '.react-btn.reacted{background:rgba(14,181,160,0.12);border-color:rgba(14,181,160,0.4);color:#0EB5A0}'+
+    '.react-count{font-weight:700}'+
+    '.react-lbl{font-size:0.65rem;letter-spacing:0.04em}';
+  document.head.appendChild(s);
+  var title=document.createElement('div'); title.style.cssText='font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b7c8f;margin-bottom:0.5rem'; title.textContent='Was this helpful?';
+  wrap.appendChild(title);
+  var row=document.createElement('div'); row.className='react-row'; wrap.appendChild(row);
+  var stored = JSON.parse(localStorage.getItem('reactions-'+slug)||'{}');
+  emojis.forEach(function(em,i){
+    var key=slug+'-'+i;
+    var btn=document.createElement('button'); btn.className='react-btn'+(stored[i]?' reacted':''); btn.setAttribute('aria-label',labels[i]);
+    btn.innerHTML='<span>'+em+'</span><span class="react-count" id="rc-'+i+'">—</span><span class="react-lbl">'+labels[i]+'</span>';
+    fetch('https://api.countapi.xyz/get/sampannadhungel.com.np/'+key).then(function(r){return r.json();}).then(function(d){ var el=document.getElementById('rc-'+i); if(el&&d.value!=null) el.textContent=d.value; }).catch(function(){});
+    btn.addEventListener('click',function(){
+      if(stored[i]) return;
+      stored[i]=true; localStorage.setItem('reactions-'+slug, JSON.stringify(stored));
+      btn.classList.add('reacted');
+      fetch('https://api.countapi.xyz/hit/sampannadhungel.com.np/'+key).then(function(r){return r.json();}).then(function(d){ var el=document.getElementById('rc-'+i); if(el&&d.value!=null) el.textContent=d.value; }).catch(function(){});
+    });
+    row.appendChild(btn);
+  });
+})();
