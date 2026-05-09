@@ -1,0 +1,41 @@
+{
+  "name": "Sampanna Raj Dhungel — Creative Director",
+  "short_name": "Sampanna",
+  "description": "Creative Director & Digital Media Designer based in Bhaktapur, Nepal. UI/UX, branding, motion graphics, video production and animation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080c10",
+  "theme_color": "#0EB5A0",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "assets/img/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "url": "/portfolio.html",
+      "description": "View all projects"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog.html",
+      "description": "Read design articles"
+    },
+    {
+      "name": "Contact",
+      "url": "/index.html#contact",
+      "description": "Get in touch"
+    }
+  ]
+}

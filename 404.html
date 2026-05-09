@@ -1,109 +1,75 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>404 — Page Not Found | Sampanna Raj Dhungel</title>
+<meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#080c10;--bg2:#0d1117;--teal:#0EB5A0;--cyan:#06b6d4;--border:rgba(14,181,160,0.15);--border2:rgba(255,255,255,0.07);--text:#f0f4f8;--muted:#6b7c8f;--display:'Syne',sans-serif;--body:'DM Sans',sans-serif}
+:root{--bg:#080c10;--teal:#0EB5A0;--cyan:#06b6d4;--text:#f0f4f8;--muted:#6b7c8f;--border2:rgba(255,255,255,0.07)}
 html,body{height:100%}
-body{font-family:var(--body);background:var(--bg);color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;overflow:hidden;text-align:center;padding:2rem}
-
-/* STARS */
-.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
-.star{position:absolute;border-radius:50%;background:var(--teal);animation:twinkle 3s infinite alternate}
-@keyframes twinkle{0%{opacity:0.1;transform:scale(1)}100%{opacity:0.6;transform:scale(1.5)}}
-
-.wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:0}
-
-.error-code{font-family:var(--display);font-size:clamp(7rem,20vw,14rem);font-weight:800;line-height:1;letter-spacing:-0.06em;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 3s ease-in-out infinite alternate}
-@keyframes glow{0%{opacity:0.8}100%{opacity:1}}
-
-.float-icon{font-size:3rem;margin:0.5rem 0 1.5rem;animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-
-h2{font-family:var(--display);font-size:clamp(1.2rem,3vw,1.8rem);font-weight:800;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.75rem}
-
-p{font-size:0.88rem;color:var(--muted);max-width:400px;line-height:1.75;margin-bottom:2.5rem}
-
-.btn-group{display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem}
-.btn-primary{font-family:var(--body);font-size:0.75rem;font-weight:600;background:var(--teal);color:var(--bg);border:none;padding:0.75rem 1.75rem;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
-.btn-primary:hover{background:#0cc9b2;transform:translateY(-1px)}
-.btn-ghost{font-family:var(--body);font-size:0.75rem;font-weight:600;background:transparent;color:var(--text);border:1px solid var(--border2);padding:0.75rem 1.75rem;letter-spacing:0.04em;text-transform:uppercase;transition:border-color 0.2s,color 0.2s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
-.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
-
-.redirect-bar{width:300px;height:2px;background:var(--border2);position:relative;overflow:hidden}
-.redirect-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--cyan));width:0%;animation:fill 15s linear forwards}
-@keyframes fill{to{width:100%}}
-.redirect-txt{font-size:0.68rem;color:var(--muted);margin-top:0.6rem;letter-spacing:0.04em}
-
-.sig{margin-top:2rem;font-size:0.68rem;color:var(--muted2,#8a9eb0)}
-.sig span{color:var(--teal)}
-
-/* CUSTOM CURSOR */
-@media(pointer:fine){body{cursor:none}a,button{cursor:none}}
-.cursor-dot{position:fixed;top:0;left:0;width:4px;height:4px;background:#fff;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:background 0.15s;will-change:transform}
-.cursor-ring{position:fixed;top:0;left:0;width:30px;height:30px;border:1.5px solid rgba(14,181,160,0.6);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s,background 0.2s,opacity 0.2s;will-change:transform}
-.cursor-dot.is-hover{background:var(--teal)}
-.cursor-ring.is-hover{width:44px;height:44px;border-color:var(--teal);background:rgba(14,181,160,0.08)}
-.cursor-dot.is-hidden,.cursor-ring.is-hidden{opacity:0}
-
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;overflow:hidden;position:relative}
+a{text-decoration:none;color:inherit}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4}
+.glow{position:fixed;top:30%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.06) 0%,transparent 70%);pointer-events:none}
+.wrap{position:relative;z-index:1;text-align:center;max-width:560px}
+.err-num{font-family:'Syne',sans-serif;font-size:clamp(6rem,20vw,12rem);font-weight:800;line-height:1;letter-spacing:-0.05em;background:linear-gradient(135deg,rgba(14,181,160,0.15),rgba(6,182,212,0.08));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;user-select:none;position:relative}
+.err-num::after{content:'404';position:absolute;inset:0;font-family:'Syne',sans-serif;font-size:inherit;font-weight:800;letter-spacing:inherit;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;clip-path:polygon(0 0,0 0,0 100%,0 100%);animation:reveal 1s cubic-bezier(0.77,0,0.18,1) 0.3s forwards}
+@keyframes reveal{to{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}}
+.err-title{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,3vw,1.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin:1.25rem 0 0.75rem}
+.err-desc{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:2.5rem;max-width:400px;margin-left:auto;margin-right:auto}
+.err-actions{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-teal{font-family:'Syne',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--teal);color:#000;padding:0.75rem 2rem;transition:opacity 0.2s,transform 0.15s;display:inline-block}
+.btn-teal:hover{opacity:0.85;transform:translateY(-1px)}
+.btn-ghost{font-size:0.78rem;font-weight:600;letter-spacing:0.04em;color:var(--muted);border:1px solid var(--border2);padding:0.75rem 1.75rem;transition:border-color 0.2s,color 0.2s;display:inline-block}
+.btn-ghost:hover{border-color:rgba(14,181,160,0.4);color:var(--text)}
+.quick-links{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center}
+.ql-label{width:100%;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.25rem}
+.ql{font-size:0.72rem;color:var(--muted);border:1px solid var(--border2);padding:0.3rem 0.75rem;transition:color 0.2s,border-color 0.2s}
+.ql:hover{color:var(--teal);border-color:rgba(14,181,160,0.35)}
+.f-nav{position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:1rem;background:rgba(13,17,23,0.9);border:1px solid var(--border2);padding:0.5rem 1.25rem;backdrop-filter:blur(12px);z-index:10}
+.f-nav-logo{font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-right:0.5rem}
+.f-nav a{font-size:0.68rem;color:var(--muted);transition:color 0.2s}
+.f-nav a:hover{color:var(--text)}
+@media(max-width:480px){.f-nav{display:none}}
 </style>
-<!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa--Ow_sosIwgdTQjoqMuHA1.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
 </head>
 <body>
 
-<div class="stars" id="stars"></div>
+<div class="glow"></div>
+
+<nav class="f-nav">
+  <span class="f-nav-logo">S·D</span>
+  <a href="index.html">Home</a>
+  <a href="portfolio.html">Work</a>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
 
 <div class="wrap">
-  <div class="error-code">404</div>
-  <div class="float-icon">🧭</div>
-  <h2>Page not found</h2>
-  <p>The page you're looking for doesn't exist or may have been moved. Let's get you back on track.</p>
-  <div class="btn-group">
-    <a href="index.html" class="btn-primary">← Back to Home</a>
-    <a href="index.html#contact" class="btn-ghost">✉ Contact Me</a>
+  <div class="err-num" aria-hidden="true">404</div>
+  <h1 class="err-title">Page not found</h1>
+  <p class="err-desc">This page doesn't exist — or was moved. It happens to the best of us.</p>
+  <div class="err-actions">
+    <a href="index.html" class="btn-teal">← Go home</a>
+    <a href="portfolio.html" class="btn-ghost">View work</a>
   </div>
-  <div class="redirect-bar"><div class="redirect-fill"></div></div>
-  <div class="redirect-txt">Redirecting to home in 15 seconds…</div>
-  <div class="sig">Crafted by <span>Sampanna Raj Dhungel</span></div>
+  <div class="quick-links">
+    <div class="ql-label">Or jump to</div>
+    <a href="portfolio.html" class="ql">Portfolio</a>
+    <a href="blog.html" class="ql">Blog</a>
+    <a href="services.html" class="ql">Services</a>
+    <a href="now.html" class="ql">Now</a>
+    <a href="uses.html" class="ql">Uses</a>
+    <a href="guestbook.html" class="ql">Guestbook</a>
+    <a href="index.html#contact" class="ql">Contact</a>
+  </div>
 </div>
 
-<script>
-const s = document.getElementById('stars');
-for(let i=0;i<100;i++){
-  const d = document.createElement('div');
-  d.className = 'star';
-  const size = Math.random()*2+1;
-  d.style.cssText = `top:${Math.random()*100}%;left:${Math.random()*100}%;width:${size}px;height:${size}px;animation-delay:${Math.random()*3}s;animation-duration:${2+Math.random()*3}s`;
-  s.appendChild(d);
-}
-setTimeout(()=>window.location.href='index.html', 15000);
-(function(){
-  if(!window.matchMedia('(pointer:fine)').matches)return;
-  var dot=document.createElement('div');dot.className='cursor-dot';
-  var ring=document.createElement('div');ring.className='cursor-ring';
-  document.body.appendChild(dot);document.body.appendChild(ring);
-  var mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';if(e.target.closest('a,button,[role="button"]')){dot.classList.add('is-hover');ring.classList.add('is-hover');}else{dot.classList.remove('is-hover');ring.classList.remove('is-hover');}});
-  (function tick(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
-  document.addEventListener('mouseleave',function(){dot.classList.add('is-hidden');ring.classList.add('is-hidden');});
-  document.addEventListener('mouseenter',function(){dot.classList.remove('is-hidden');ring.classList.remove('is-hidden');});
-})();
-</script>
-<script src="assets/js/shared.js"></script>
-<script src="assets/js/cursor-trail.js"></script>
-<script src="assets/js/scramble.js"></script>
-  <script src="assets/js/cmd-palette.js"></script>
 </body>
 </html>

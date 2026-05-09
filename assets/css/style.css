@@ -1259,3 +1259,30 @@ html{scroll-snap-type:y proximity}
 .cd-copy-btn{background:none;border:1px solid var(--border2);color:var(--muted);cursor:pointer;font-size:0.9rem;line-height:1;padding:0.2rem 0.5rem;border-radius:4px;transition:border-color 0.2s,color 0.2s,background 0.2s;flex-shrink:0}
 .cd-copy-btn:hover{border-color:var(--teal);color:var(--teal)}
 .cd-copy-btn.copied{border-color:var(--teal);color:var(--teal);background:rgba(14,181,160,0.1)}
+
+/* ═══════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════ */
+@media print {
+  *,*::before,*::after{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important}
+  :root{--bg:#fff;--text:#000;--muted:#444;--muted2:#555}
+  body{background:#fff;color:#000;font-size:12pt;line-height:1.6}
+  .nav,.sticky-cta,.cursor-dot,.cursor-ring,#stt,.hero-scroll-hint,
+  .hero-actions,.hero-sig,#pt-veil,#cs-tracker,.cs-progress-line,
+  footer .f-links,.nav-cmd-hint,#shareBtn,#viewCount,
+  .pcarousel-wrap,.pcarousel-nav,.pcarousel-footer,
+  .blog-reactions,#blogReactions,.react-row,
+  .form-submit,.newsletter-section,#contactForm,
+  .testi-section,.now-section{display:none!important}
+  a[href]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
+  a[href^="#"]::after,a[href^="mailto"]::after{content:none}
+  h1,h2,h3{page-break-after:avoid;font-family:Georgia,serif}
+  img{max-width:100%!important;page-break-inside:avoid}
+  .hero-name{font-size:28pt;color:#000}
+  .hero-role,.hero-desc{color:#333}
+  .hstat-n{color:#000}
+  .proj-title,.article-title{font-size:20pt}
+  .proj-body{display:block}
+  .sidebar{display:none}
+  @page{margin:1.5cm;size:A4}
+}
