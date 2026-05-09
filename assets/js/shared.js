@@ -701,55 +701,7 @@ window.__sharedLoaded = true;
 })();
 
 
-/* ══════════════════════════════════════════════════
-   FEATURE 24 — NOW PLAYING BADGE (Last.fm)
-   Get a free API key → https://www.last.fm/api
-   ══════════════════════════════════════════════════ */
-(function(){
-  var LASTFM_USER='dsampanna';
-  var LASTFM_KEY='85ca23ca9720d53a7ff9451100173359';
-
-  var s=document.createElement('style');
-  s.textContent=
-    '@keyframes soundBar{0%,100%{height:3px}25%{height:10px}50%{height:6px}75%{height:14px}}'+
-    '@keyframes badgeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}'+
-    '#np-badge{position:fixed;bottom:1.6rem;left:4rem;z-index:99994;display:flex;align-items:center;gap:0.55rem;background:rgba(13,17,23,0.92);border:1px solid rgba(255,255,255,0.08);padding:0.45rem 0.9rem 0.45rem 0.75rem;backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(0,0,0,0.4);animation:badgeIn 0.5s ease 2.5s both;max-width:230px;overflow:hidden;cursor:default}'+
-    '.np-bars{display:flex;align-items:flex-end;gap:2px;height:16px;flex-shrink:0}'+
-    '.np-bar{width:2px;border-radius:1px;background:#0EB5A0;animation:soundBar linear infinite}'+
-    '.np-bar:nth-child(1){animation-duration:0.75s;animation-delay:0s}'+
-    '.np-bar:nth-child(2){animation-duration:0.6s;animation-delay:0.1s}'+
-    '.np-bar:nth-child(3){animation-duration:0.9s;animation-delay:0.2s}'+
-    '.np-bar:nth-child(4){animation-duration:0.7s;animation-delay:0.05s}'+
-    '#np-badge.paused .np-bar{animation-play-state:paused;height:3px;opacity:0.4}'+
-    '.np-text{display:flex;flex-direction:column;line-height:1.25;min-width:0}'+
-    '.np-track{font-size:0.68rem;font-weight:600;color:#f0f4f8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:\'DM Sans\',sans-serif}'+
-    '.np-artist{font-size:0.58rem;color:rgba(14,181,160,0.8);letter-spacing:0.04em;font-family:\'Syne\',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'+
-    '@media(max-width:640px){#np-badge{left:1rem;bottom:1rem}}';
-  document.head.appendChild(s);
-
-  var badge=document.createElement('div'); badge.id='np-badge'; badge.className='paused';
-  badge.title='What Sampanna is listening to (Last.fm)';
-  badge.innerHTML='<div class="np-bars"><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div></div><div class="np-text"><span class="np-track">Always listening…</span><span class="np-artist">Sound Design · Music</span></div>';
-  document.body.appendChild(badge);
-
-  function setTrack(track,artist,playing){
-    badge.querySelector('.np-track').textContent=track||'—';
-    badge.querySelector('.np-artist').textContent=artist||'—';
-    badge.classList.toggle('paused',!playing);
-  }
-  function fetchNP(){
-    if(!LASTFM_KEY||!LASTFM_USER) return;
-    fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+encodeURIComponent(LASTFM_USER)+'&api_key='+LASTFM_KEY+'&format=json&limit=1')
-      .then(function(r){ return r.json(); })
-      .then(function(d){
-        var tracks=d&&d.recenttracks&&d.recenttracks.track;
-        if(!tracks||!tracks.length) return;
-        var t=Array.isArray(tracks)?tracks[0]:tracks;
-        setTrack(t.name, t.artist&&t.artist['#text'], !!(t['@attr']&&t['@attr'].nowplaying==='true'));
-      }).catch(function(){});
-  }
-  fetchNP(); setInterval(fetchNP,30000);
-})();
+/* FEATURE 24 — NOW PLAYING BADGE removed */
 
 
 /* ══════════════════════════════════════════════════
