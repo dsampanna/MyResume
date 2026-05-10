@@ -45,7 +45,7 @@ a{text-decoration:none;color:inherit}
 /* HERO */
 .hero{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:var(--bg)}
-.hero-photo{position:absolute;inset:0;background:url('../img/hero-bg.JPG') center top/cover no-repeat;opacity: 0.5;filter:grayscale(20%)}
+.hero-photo{position:absolute;inset:0;background:url('../img/hero-bg.jpg') center top/cover no-repeat;opacity: 0.5;filter:grayscale(20%)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,12,16,0.1) 0%,rgba(8,12,16,0.3) 50%,rgba(8,12,16,0.96) 100%)}
 .hero-glow{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.12) 0%,transparent 65%);pointer-events:none}
 .hero-glow2{position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.1) 0%,transparent 65%);pointer-events:none}
@@ -247,6 +247,21 @@ section{padding:4rem 2.5rem;border-bottom:1px solid var(--border2)}
 .form-msg.success{display:block;color:var(--teal);border:1px solid var(--border);background:rgba(14,181,160,0.06)}
 .form-msg.error{display:block;color:#f87171;border:1px solid rgba(248,113,113,0.2)}
 @media(max-width:768px){.contact-section{grid-template-columns:1fr;gap:2.5rem}.f-2{grid-template-columns:1fr}}
+
+/* TESTIMONIALS */
+.testi-section{background:var(--bg2);padding:4rem 2.5rem;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.testi-heading{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);margin-bottom:2.5rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px}
+.testi-card{background:var(--bg);border:1px solid var(--border2);padding:2rem 1.75rem;display:flex;flex-direction:column;gap:1.25rem;transition:border-color 0.2s,transform 0.2s}
+.testi-card:hover{border-color:rgba(14,181,160,0.3);transform:translateY(-3px)}
+.testi-quote{font-size:2rem;color:var(--teal);opacity:0.5;line-height:1;margin-bottom:-0.5rem}
+.testi-text{font-size:0.88rem;line-height:1.75;color:var(--muted2);flex:1}
+.testi-author{display:flex;align-items:center;gap:0.85rem;margin-top:0.5rem}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;flex-shrink:0;font-family:var(--display)}
+.testi-name{font-size:0.82rem;font-weight:700;color:var(--text)}
+.testi-role{font-size:0.7rem;color:var(--muted);margin-top:0.15rem}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.testi-section{padding:3rem 1.25rem}}
 
 /* CURRENTLY WORKING ON */
 .now-section{background:var(--bg)}
@@ -1244,3 +1259,30 @@ html{scroll-snap-type:y proximity}
 .cd-copy-btn{background:none;border:1px solid var(--border2);color:var(--muted);cursor:pointer;font-size:0.9rem;line-height:1;padding:0.2rem 0.5rem;border-radius:4px;transition:border-color 0.2s,color 0.2s,background 0.2s;flex-shrink:0}
 .cd-copy-btn:hover{border-color:var(--teal);color:var(--teal)}
 .cd-copy-btn.copied{border-color:var(--teal);color:var(--teal);background:rgba(14,181,160,0.1)}
+
+/* ═══════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════ */
+@media print {
+  *,*::before,*::after{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important}
+  :root{--bg:#fff;--text:#000;--muted:#444;--muted2:#555}
+  body{background:#fff;color:#000;font-size:12pt;line-height:1.6}
+  .nav,.sticky-cta,.cursor-dot,.cursor-ring,#stt,.hero-scroll-hint,
+  .hero-actions,.hero-sig,#pt-veil,#cs-tracker,.cs-progress-line,
+  footer .f-links,.nav-cmd-hint,#shareBtn,#viewCount,
+  .pcarousel-wrap,.pcarousel-nav,.pcarousel-footer,
+  .blog-reactions,#blogReactions,.react-row,
+  .form-submit,.newsletter-section,#contactForm,
+  .testi-section,.now-section{display:none!important}
+  a[href]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
+  a[href^="#"]::after,a[href^="mailto"]::after{content:none}
+  h1,h2,h3{page-break-after:avoid;font-family:Georgia,serif}
+  img{max-width:100%!important;page-break-inside:avoid}
+  .hero-name{font-size:28pt;color:#000}
+  .hero-role,.hero-desc{color:#333}
+  .hstat-n{color:#000}
+  .proj-title,.article-title{font-size:20pt}
+  .proj-body{display:block}
+  .sidebar{display:none}
+  @page{margin:1.5cm;size:A4}
+}

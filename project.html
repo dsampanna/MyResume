@@ -46,9 +46,15 @@ img{display:block;max-width:100%}
 .proj-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,0.08) 0%,transparent 70%);pointer-events:none}
 .proj-cat-badge{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;font-weight:700;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--border);padding:0.3rem 0.8rem;margin-bottom:1.25rem;background:rgba(14,181,160,0.06)}
 .proj-title{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;line-height:1;color:var(--text);margin-bottom:1.25rem}
-.proj-meta{display:flex;flex-wrap:wrap;gap:2rem;font-size:0.8rem;color:var(--muted)}
+.proj-meta{display:flex;flex-wrap:wrap;gap:2rem;font-size:0.8rem;color:var(--muted);align-items:center}
 .proj-meta-item{display:flex;align-items:center;gap:0.4rem}
 .proj-meta-dot{width:4px;height:4px;border-radius:50%;background:var(--teal)}
+/* SHARE + VIEW COUNT */
+.share-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;font-weight:600;letter-spacing:0.04em;color:var(--teal);border:1px solid var(--border);background:transparent;cursor:pointer;padding:0.35rem 0.85rem;transition:background 0.2s,color 0.2s;margin-left:auto}
+.share-btn:hover{background:rgba(14,181,160,0.1)}
+.share-btn.copied{color:#4ade80;border-color:rgba(74,222,128,0.3)}
+.view-count{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.75rem;color:var(--muted);margin-left:0.5rem}
+.view-count-num{color:var(--teal);font-weight:600}
 @media(max-width:768px){.proj-hero{padding:2.5rem 1.25rem 2rem}}
 
 /* BODY */
@@ -59,6 +65,18 @@ img{display:block;max-width:100%}
 .media-wrap{border:1px solid var(--border2);background:var(--bg3);overflow:hidden;position:relative;margin-bottom:1.5rem}
 .media-wrap img{width:100%;display:block;max-height:560px;object-fit:contain;background:var(--bg3)}
 .media-wrap iframe{width:100%;height:500px;display:block;border:none;background:#000}
+
+/* BEFORE / AFTER SLIDER */
+.ba-wrap{position:relative;overflow:hidden;user-select:none;cursor:ew-resize;margin-bottom:1.5rem;border:1px solid var(--border2)}
+.ba-after,.ba-before{position:absolute;inset:0;background:var(--bg3)}
+.ba-before img,.ba-after img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.ba-after{clip-path:inset(0 50% 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--teal);transform:translateX(-50%);cursor:ew-resize;z-index:5}
+.ba-handle::before,.ba-handle::after{content:'';position:absolute;left:50%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;background:var(--teal);top:50%;margin-top:-18px}
+.ba-handle::before{display:flex;align-items:center;justify-content:center}
+.ba-arrows{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:6;pointer-events:none;color:#fff;font-size:1rem;font-weight:700;letter-spacing:0.05em;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,0.8)}
+.ba-label{position:absolute;bottom:0.75rem;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.65rem;background:rgba(8,12,16,0.8);color:var(--text);z-index:4;border:1px solid var(--border2)}
+.ba-label-before{left:0.75rem}.ba-label-after{right:0.75rem}
 .media-badge{position:absolute;top:1rem;right:1rem;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(8,12,16,0.8);color:var(--teal);border:1px solid var(--border);padding:0.25rem 0.65rem}
 
 /* DESCRIPTION */
@@ -166,6 +184,7 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
     <li><a href="index.html#work">Work</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="index.html#about">About</a></li>
+    <li><a href="now.html">Now</a></li>
     <li><a href="index.html#contact">Contact</a></li>
     <li><a href="portfolio.html" class="nav-back">← Back to Portfolio</a></li>
   </ul>
@@ -176,7 +195,7 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
 <footer>
   <div style="display:flex;flex-direction:column;gap:0.2rem">
     <span>© <span id="footerYear"></span> Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
-    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">April 2026</strong></span>
+    <span style="font-size:0.68rem;color:var(--muted2)">Last updated: <strong style="color:var(--teal)">May 2026</strong></span>
   </div>
   <div class="f-links">
     <a href="https://www.instagram.com/__sampannaad/" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -261,13 +280,36 @@ function render() {
   const related = projects.filter((r, i) => i !== index && r.category === p.category).slice(0, 3);
 
   document.title = p.title + ' | Sampanna Raj Dhungel';
+
+  /* JSON-LD structured data per project */
+  (function(){
+    var existing = document.getElementById('proj-jsonld');
+    if(existing) existing.remove();
+    var s = document.createElement('script'); s.type='application/ld+json'; s.id='proj-jsonld';
+    s.textContent = JSON.stringify({
+      "@context":"https://schema.org","@type":"CreativeWork",
+      "name": p.title,
+      "description": p.description.slice(0,200),
+      "creator":{"@type":"Person","name":"Sampanna Raj Dhungel","url":"https://www.sampannadhungel.com.np/"},
+      "url":"https://www.sampannadhungel.com.np/project.html#"+p.id,
+      "dateCreated": p.year+"-01-01",
+      "genre": p.category,
+      "image": p.image ? "https://www.sampannadhungel.com.np/"+p.image : undefined,
+      "sameAs": p.liveLink && p.liveLink.startsWith('http') ? p.liveLink : undefined
+    });
+    document.head.appendChild(s);
+  })();
+
   try {
     var ogDesc = p.description.slice(0, 160);
+    var ogImg = p.image ? 'https://www.sampannadhungel.com.np/' + p.image : 'https://www.sampannadhungel.com.np/assets/img/og-cover.jpg';
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', ogDesc);
-    document.querySelector('meta[property="og:url"]')?.setAttribute('content', 'https://www.sampannadhungel.com.np/project.html?id=' + p.id);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', 'https://www.sampannadhungel.com.np/project.html#' + p.id);
+    document.querySelector('meta[property="og:image"]')?.setAttribute('content', ogImg);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', p.title + ' | Sampanna Raj Dhungel');
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', ogDesc);
+    document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', ogImg);
     document.querySelector('meta[name="description"]')?.setAttribute('content', ogDesc);
   } catch(e) {}
 
@@ -323,12 +365,20 @@ function render() {
         <div class="proj-meta-item"><span class="proj-meta-dot"></span>${p.year}</div>
         <div class="proj-meta-item"><span class="proj-meta-dot"></span>${p.tools.join(', ')}</div>
         <div class="proj-meta-item"><span class="proj-meta-dot"></span>${index + 1} of ${projects.length}</div>
+        <span class="view-count" id="viewCount" style="display:none">👁 <span class="view-count-num" id="viewCountNum">—</span> views</span>
+        <button class="share-btn" id="shareBtn" onclick="shareProject()">⎘ Share</button>
       </div>
     </div>
     ${pdfSectionHTML}
     <div class="proj-body">
       <div class="fade-in">
-        ${mediaHTML ? `<div class="media-wrap">${mediaHTML}</div>` : ''}
+        ${p.beforeImage ? `<div class="ba-wrap" id="baSlider" style="height:360px">
+          <div class="ba-before"><img src="${p.beforeImage}" alt="Before"></div>
+          <div class="ba-after" id="baAfter"><img src="${p.image}" alt="After"></div>
+          <div class="ba-handle" id="baHandle"><div class="ba-arrows">‹ ›</div></div>
+          <div class="ba-label ba-label-before">Before</div>
+          <div class="ba-label ba-label-after">After</div>
+        </div>` : (mediaHTML ? `<div class="media-wrap">${mediaHTML}</div>` : '')}
         <div class="proj-desc-block">
           <div class="block-label">About this project</div>
           <p>${p.description}</p>
@@ -369,7 +419,55 @@ function render() {
 }
 
 render();
-window.addEventListener('hashchange', function(){ render(); window.scrollTo(0,0); });
+window.addEventListener('hashchange', function(){ render(); window.scrollTo(0,0); trackView(); });
+
+/* Before/After slider */
+function initBASlider() {
+  var wrap = document.getElementById('baSlider');
+  if(!wrap) return;
+  var after = document.getElementById('baAfter');
+  var handle = document.getElementById('baHandle');
+  var dragging = false;
+  function setPos(x) {
+    var rect = wrap.getBoundingClientRect();
+    var pct = Math.max(5, Math.min(95, (x - rect.left) / rect.width * 100));
+    after.style.clipPath = 'inset(0 '+(100-pct)+'% 0 0)';
+    handle.style.left = pct+'%';
+  }
+  handle.addEventListener('mousedown', function(e){ dragging=true; e.preventDefault(); });
+  wrap.addEventListener('touchstart', function(e){ dragging=true; }, {passive:true});
+  document.addEventListener('mousemove', function(e){ if(dragging) setPos(e.clientX); });
+  document.addEventListener('touchmove', function(e){ if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
+  document.addEventListener('mouseup', function(){ dragging=false; });
+  document.addEventListener('touchend', function(){ dragging=false; });
+}
+initBASlider();
+
+function shareProject() {
+  var url = window.location.href;
+  var btn = document.getElementById('shareBtn');
+  if (navigator.share) {
+    navigator.share({ title: document.title, url: url }).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(url).then(function() {
+      if (btn) { btn.textContent = '✓ Copied!'; btn.classList.add('copied'); setTimeout(function(){ btn.textContent = '⎘ Share'; btn.classList.remove('copied'); }, 2000); }
+    }).catch(function() {
+      prompt('Copy this link:', url);
+    });
+  }
+}
+
+function trackView() {
+  var id = window.location.hash.slice(1) || new URLSearchParams(window.location.search).get('id');
+  if (!id) return;
+  var el = document.getElementById('viewCountNum');
+  var wrap = document.getElementById('viewCount');
+  fetch('https://api.countapi.xyz/hit/sampannadhungel.com.np/' + id)
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if (d && d.value && el && wrap) { el.textContent = d.value; wrap.style.display = 'inline-flex'; } })
+    .catch(function(){});
+}
+trackView();
 
 (function(){
   if(!window.matchMedia('(pointer:fine)').matches)return;

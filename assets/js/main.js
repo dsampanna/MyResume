@@ -993,7 +993,7 @@ stage.addEventListener('wheel',function(e){
 (function(){
   var el = document.getElementById('updateTimer');
   if(!el) return;
-  var base = new Date('2026-04-29T00:00:00+05:45');
+  var base = new Date('2026-05-09T00:00:00+05:45');
   function ago(){
     var ms = Date.now() - base.getTime();
     var hrs = Math.floor(ms/3600000);
