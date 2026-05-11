@@ -152,49 +152,7 @@ window.__sharedLoaded = true;
 })();
 
 
-/* ── BACK TO TOP (styles + button) ── */
-(function(){
-  /* Inject CSS so it works on pages that don't load style.css */
-  if(!document.getElementById('bttStyle')){
-    var s = document.createElement('style');
-    s.id = 'bttStyle';
-    s.textContent = [
-      '#btt{position:fixed;bottom:5.8rem;right:4rem;width:44px;height:44px;',
-      'background:transparent;color:#0EB5A0;border:1px solid rgba(14,181,160,0.4);border-radius:50%;font-size:1rem;font-weight:700;',
-      'cursor:pointer;z-index:99996;opacity:0;transform:translateY(12px);',
-      'transition:opacity 0.3s,transform 0.3s,color 0.2s,border-color 0.2s;pointer-events:none;',
-      'display:flex;align-items:center;justify-content:center;padding:0}',
-      '#btt.visible{opacity:1;transform:translateY(0);pointer-events:auto}',
-      '#btt:hover{color:#0cc9b2;border-color:rgba(14,181,160,0.9);background:transparent}',
-      '@media(max-width:480px){#btt{bottom:5.5rem;right:3rem;width:44px;height:44px}}',
-    ].join('');
-    document.head.appendChild(s);
-  }
-
-  var btn = document.getElementById('btt');
-  if(!btn){
-    btn = document.createElement('button');
-    btn.id = 'btt';
-    btn.setAttribute('aria-label','Back to top');
-    btn.innerHTML = '↑';
-    document.body.appendChild(btn);
-  }
-  var arc = document.getElementById('bttArc');
-  var circumference = 119.4;
-  window.addEventListener('scroll', function(){
-    btn.classList.toggle('visible', window.scrollY > 400);
-    if(arc){
-      var h = document.documentElement;
-      var scrolled = h.scrollTop || document.body.scrollTop;
-      var total = h.scrollHeight - h.clientHeight;
-      var pct = total > 0 ? scrolled / total : 0;
-      arc.style.strokeDashoffset = (circumference * (1 - pct)).toFixed(2);
-    }
-  }, {passive:true});
-  btn.addEventListener('click', function(){
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-})();
+/* ── BACK TO TOP (removed) ── */
 
 
 /* ══════════════════════════════════════════════════
