@@ -1222,8 +1222,9 @@ body::before{
 /* ══════════════════════════════════════════════════
    STICKY CONTACT CTA
    ══════════════════════════════════════════════════ */
-.sticky-cta{position:fixed;bottom:-80px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:1rem;background:var(--bg2);border:1px solid var(--border2);border-radius:999px;padding:0.65rem 1rem 0.65rem 1.25rem;z-index:99990;box-shadow:0 8px 32px rgba(0,0,0,0.5);transition:bottom 0.45s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap}
+.sticky-cta{position:fixed;bottom:-80px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:1rem;background:var(--bg2);border:1px solid var(--border2);border-radius:999px;padding:0.65rem 1rem 0.65rem 1.25rem;z-index:99990;box-shadow:0 8px 32px rgba(0,0,0,0.5);transition:bottom 0.45s cubic-bezier(0.34,1.56,0.64,1),transform 0.2s ease,box-shadow 0.2s ease;white-space:nowrap}
 .sticky-cta.show{bottom:2rem}
+.sticky-cta.show:hover{transform:translateX(-50%) translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.6)}
 .sticky-cta-pulse{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
 .sticky-cta-text{font-size:0.78rem;color:var(--text)}
 .sticky-cta-btn{font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--teal);color:var(--bg);padding:0.4rem 1rem;border-radius:999px;transition:background 0.2s}
