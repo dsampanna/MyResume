@@ -430,40 +430,7 @@ window.__sharedLoaded = true;
 })();
 
 
-/* ══════════════════════════════════════════════════
-   FEATURE 16 — HIRE ME PULSE BADGE
-   ══════════════════════════════════════════════════ */
-(function(){
-  var s = document.createElement('style');
-  s.textContent = [
-    '@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:0.5}}',
-    '@keyframes badgeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}',
-    '.hire-badge{position:fixed;bottom:1.6rem;right:4rem;z-index:99995;display:flex;align-items:center;gap:0.55rem;background:rgba(13,17,23,0.92);border:1px solid rgba(14,181,160,0.3);padding:0.5rem 1rem 0.5rem 0.75rem;cursor:pointer;backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(0,0,0,0.4);animation:badgeIn 0.5s ease 1.5s both;transition:border-color 0.2s,box-shadow 0.2s;text-decoration:none;color:inherit}',
-    '.hire-badge:hover{border-color:rgba(14,181,160,0.7);box-shadow:0 4px 32px rgba(14,181,160,0.15)}',
-    '.hire-dot-wrap{position:relative;width:10px;height:10px;flex-shrink:0}',
-    '.hire-dot{position:absolute;inset:0;border-radius:50%;background:#22c55e}',
-    '.hire-dot-ring{position:absolute;inset:-3px;border-radius:50%;background:rgba(34,197,94,0.35);animation:pulseDot 1.8s ease-in-out infinite}',
-    '.hire-badge-text{display:flex;flex-direction:column;line-height:1.2}',
-    '.hire-badge-main{font-size:0.72rem;font-weight:700;color:#f0f4f8;letter-spacing:0.01em;font-family:\'DM Sans\',sans-serif}',
-    '.hire-badge-sub{font-size:0.6rem;color:rgba(14,181,160,0.8);letter-spacing:0.04em;font-family:\'Syne\',sans-serif;text-transform:uppercase}',
-    '@media(max-width:600px){.hire-badge{bottom:1rem;right:3rem;padding:0.4rem 0.8rem 0.4rem 0.6rem}}',
-  ].join('');
-  document.head.appendChild(s);
-
-  var badge = document.createElement('a');
-  badge.className = 'hire-badge';
-  badge.href = '#contact';
-  badge.setAttribute('aria-label','Available for work — contact Sampanna');
-  badge.innerHTML = '<div class="hire-dot-wrap"><div class="hire-dot-ring"></div><div class="hire-dot"></div></div><div class="hire-badge-text"><span class="hire-badge-main">Available now</span><span class="hire-badge-sub">Open to work</span></div>';
-  document.body.appendChild(badge);
-
-  badge.addEventListener('click',function(e){
-    e.preventDefault();
-    var contact = document.getElementById('contact');
-    if(contact){ contact.scrollIntoView({behavior:'smooth',block:'start'}); }
-    else { window.location.href = 'index.html#contact'; }
-  });
-})();
+/* FEATURE 16 — HIRE ME PULSE BADGE (removed) */
 
 
 /* ══════════════════════════════════════════════════
