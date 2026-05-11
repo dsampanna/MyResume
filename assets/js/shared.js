@@ -160,12 +160,12 @@ window.__sharedLoaded = true;
     s.id = 'bttStyle';
     s.textContent = [
       '#btt{position:fixed;bottom:5.8rem;right:4rem;width:44px;height:44px;',
-      'background:transparent;color:#0EB5A0;border:none;font-size:1rem;font-weight:700;',
+      'background:transparent;color:#0EB5A0;border:1px solid rgba(14,181,160,0.4);border-radius:50%;font-size:1rem;font-weight:700;',
       'cursor:pointer;z-index:99996;opacity:0;transform:translateY(12px);',
-      'transition:opacity 0.3s,transform 0.3s,color 0.2s;pointer-events:none;',
-      'display:flex;align-items:center;justify-content:center;padding:0;position:fixed}',
+      'transition:opacity 0.3s,transform 0.3s,color 0.2s,border-color 0.2s;pointer-events:none;',
+      'display:flex;align-items:center;justify-content:center;padding:0}',
       '#btt.visible{opacity:1;transform:translateY(0);pointer-events:auto}',
-      '#btt:hover{color:#0cc9b2}',
+      '#btt:hover{color:#0cc9b2;border-color:rgba(14,181,160,0.8)}',
       '@media(max-width:480px){#btt{bottom:5.5rem;right:3rem;width:44px;height:44px}}',
     ].join('');
     document.head.appendChild(s);
