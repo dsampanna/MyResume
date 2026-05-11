@@ -430,47 +430,7 @@ window.__sharedLoaded = true;
 })();
 
 
-/* ══════════════════════════════════════════════════
-   FEATURE 16 — OPEN TO PROJECTS BANNER
-   ══════════════════════════════════════════════════ */
-(function(){
-  if(sessionStorage.getItem('otpDismissed')) return;
-  var s = document.createElement('style');
-  s.textContent = [
-    '@keyframes otpIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}',
-    '.otp-bar{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:99995;display:flex;align-items:center;gap:1rem;background:rgba(13,17,23,0.95);border:1px solid rgba(14,181,160,0.25);padding:0.65rem 0.75rem 0.65rem 1rem;backdrop-filter:blur(12px);box-shadow:0 4px 32px rgba(0,0,0,0.45);animation:otpIn 0.4s ease 1.2s both;white-space:nowrap}',
-    '.otp-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 6px rgba(34,197,94,0.6)}',
-    '.otp-label{font-size:0.78rem;color:rgba(240,244,248,0.75);font-family:\'DM Sans\',sans-serif;letter-spacing:0.01em}',
-    '.otp-cta{font-size:0.7rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;background:var(--teal,#0EB5A0);color:#000;padding:0.45rem 1rem;text-decoration:none;font-family:\'Syne\',sans-serif;transition:opacity 0.2s;flex-shrink:0}',
-    '.otp-cta:hover{opacity:0.85}',
-    '.otp-close{background:none;border:none;color:rgba(240,244,248,0.35);font-size:1rem;cursor:pointer;padding:0 0.25rem;line-height:1;transition:color 0.2s;flex-shrink:0}',
-    '.otp-close:hover{color:rgba(240,244,248,0.8)}',
-    '@media(max-width:600px){.otp-bar{left:1rem;right:1rem;transform:none;bottom:1rem}}'
-  ].join('');
-  document.head.appendChild(s);
-
-  var bar = document.createElement('div');
-  bar.className = 'otp-bar';
-  bar.setAttribute('role','banner');
-  bar.innerHTML = '<div class="otp-dot"></div><span class="otp-label">Open to new projects</span><a class="otp-cta" href="#contact">Let\'s talk →</a><button class="otp-close" aria-label="Dismiss">×</button>';
-  document.body.appendChild(bar);
-
-  bar.querySelector('.otp-close').addEventListener('click', function(){
-    bar.style.transition = 'opacity 0.3s, transform 0.3s';
-    bar.style.opacity = '0';
-    bar.style.transform = 'translateX(-50%) translateY(12px)';
-    setTimeout(function(){ bar.remove(); }, 300);
-    sessionStorage.setItem('otpDismissed','1');
-  });
-
-  bar.querySelector('.otp-cta').addEventListener('click', function(e){
-    e.preventDefault();
-    var contact = document.getElementById('contact');
-    if(contact){ contact.scrollIntoView({behavior:'smooth',block:'start'}); }
-    else { window.location.href = 'index.html#contact'; }
-    bar.querySelector('.otp-close').click();
-  });
-})();
+/* FEATURE 16 — OPEN TO PROJECTS BANNER (removed — sticky-cta in index.html handles this) */
 
 
 /* ══════════════════════════════════════════════════
