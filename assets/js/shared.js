@@ -165,7 +165,7 @@ window.__sharedLoaded = true;
       'transition:opacity 0.3s,transform 0.3s,color 0.2s,border-color 0.2s;pointer-events:none;',
       'display:flex;align-items:center;justify-content:center;padding:0}',
       '#btt.visible{opacity:1;transform:translateY(0);pointer-events:auto}',
-      '#btt:hover{color:#0cc9b2;border-color:rgba(14,181,160,0.8)}',
+      '#btt:hover{color:#0cc9b2;border-color:rgba(14,181,160,0.9);background:transparent}',
       '@media(max-width:480px){#btt{bottom:5.5rem;right:3rem;width:44px;height:44px}}',
     ].join('');
     document.head.appendChild(s);
