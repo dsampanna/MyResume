@@ -1314,19 +1314,7 @@ window.__sharedLoaded = true;
 })();
 
 
-/* ══════════════════════════════════════════════════
-   FEATURE 37 — SCROLL-TO-TOP BUTTON
-   Appears after 400 px scroll; smooth scrolls back
-   ══════════════════════════════════════════════════ */
-(function(){
-  var s=document.createElement('style');
-  s.textContent='#stt{position:fixed;bottom:2rem;right:2rem;width:40px;height:40px;background:rgba(13,17,23,0.92);border:1px solid rgba(14,181,160,0.35);color:#0EB5A0;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9000;opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.3s,background 0.2s;transform:translateY(8px);border-radius:2px}#stt.show{opacity:1;pointer-events:all;transform:translateY(0)}#stt:hover{background:rgba(14,181,160,0.15)}@media(max-width:600px){#stt{bottom:1.25rem;right:1.25rem;width:36px;height:36px}}';
-  document.head.appendChild(s);
-  var btn=document.createElement('button'); btn.id='stt'; btn.innerHTML='↑'; btn.setAttribute('aria-label','Back to top'); btn.title='Back to top';
-  document.body.appendChild(btn);
-  window.addEventListener('scroll',function(){ btn.classList.toggle('show', window.scrollY > 400); },{passive:true});
-  btn.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
-})();
+/* FEATURE 37 — SCROLL-TO-TOP BUTTON (removed) */
 
 
 /* ══════════════════════════════════════════════════
