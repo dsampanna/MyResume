@@ -1182,8 +1182,7 @@ body::before{
 /* ══════════════════════════════════════════════════
    SCROLL SNAP (proximity — non-disruptive)
    ══════════════════════════════════════════════════ */
-html{scroll-snap-type:y proximity}
-.hero,section,.pcarousel-section{scroll-snap-align:start}
+/* scroll-snap removed */
 
 /* ══════════════════════════════════════════════════
    REDUCED MOTION
@@ -1195,7 +1194,7 @@ html{scroll-snap-type:y proximity}
     transition-duration:0.01ms !important;
     scroll-behavior:auto !important;
   }
-  html{scroll-snap-type:none}
+
   .marquee-track{animation:none}
   .hero-photo{animation:none}
   .sk-fill{transition:none !important}
