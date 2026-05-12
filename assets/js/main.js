@@ -891,7 +891,7 @@ stage.addEventListener('wheel',function(e){
       d[i+3] = alpha;
     }
     ctx.putImageData(id, 0, 0);
-    canvas.style.cssText = 'display:block;width:130px;height:auto';
+    canvas.style.cssText = 'display:block';  /* width/filter controlled by .sig-wrap canvas in CSS */
     wrap.appendChild(canvas);
   };
   img.onerror = function(){
