@@ -28,11 +28,13 @@ img{display:block;max-width:100%}
 /* NAV */
 .nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);gap:1rem}
 .nav-logo{font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.nav-links{display:flex;list-style:none;gap:2rem;margin:0;padding:0;align-items:center}
+.nav-links a{font-size:0.75rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.nav-active{color:var(--teal)}
 .nav-right{display:flex;align-items:center;gap:1.5rem}
-.nav-home{font-size:0.75rem;color:var(--muted);transition:color 0.2s;letter-spacing:0.02em}
-.nav-home:hover{color:var(--text)}
 .nav-hire{font-size:0.72rem;font-weight:600;letter-spacing:0.04em;border:1px solid var(--teal);color:var(--teal);padding:0.45rem 1.1rem;transition:background 0.2s,color 0.2s;white-space:nowrap}
 .nav-hire:hover{background:var(--teal);color:var(--bg)}
+@media(max-width:768px){.nav-links{display:none}}
 
 /* PAGE HERO */
 .port-hero{padding:4rem 2.5rem 3rem;border-bottom:1px solid var(--border2);background:var(--bg2);position:relative;overflow:hidden}
@@ -164,11 +166,15 @@ img{display:block;max-width:100%}
 <!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="nav-logo"><img src="assets/img/signature.png" class="nav-logo-mark" alt="" aria-hidden="true" style="display:inline-block;vertical-align:middle;height:22px;width:auto;max-width:56px;object-fit:contain;object-position:left center;filter:sepia(1) saturate(500%) hue-rotate(128deg) brightness(0.95);opacity:1;margin-right:0.4rem">SAMPANNA RAJ DHUNGEL</a>
+  <ul class="nav-links">
+    <li><a href="portfolio.html" class="nav-active">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="now.html">Now</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
   <div class="nav-right">
-    <a href="index.html" class="nav-home">← Home</a>
-    <a href="blog.html" class="nav-home">Blog</a>
-    <a href="services.html" class="nav-home">Services</a>
-    <a href="now.html" class="nav-home">Now</a>
     <a href="index.html#contact" class="nav-hire">Hire me</a>
   </div>
 </nav>
