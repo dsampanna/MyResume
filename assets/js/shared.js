@@ -163,7 +163,7 @@ window.__sharedLoaded = true;
       'font-size:1rem;font-weight:700;cursor:pointer;z-index:99996;' +
       'opacity:0;transform:translateY(12px);pointer-events:none;' +
       'transition:opacity 0.3s,transform 0.3s,color 0.2s;' +
-      'display:flex;align-items:center;justify-content:center;padding:0;position:relative}' +
+      'display:flex;align-items:center;justify-content:center;padding:0}' +
       '#btt.visible{opacity:1;transform:translateY(0);pointer-events:auto}' +
       '#btt:hover{color:#0cc9b2;transform:translateY(-4px)}' +
       '@media(max-width:480px){#btt{bottom:5.5rem;right:1.5rem;width:40px;height:40px}}';
