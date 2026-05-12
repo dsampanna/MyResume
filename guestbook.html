@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Guestbook | Sampanna Raj Dhungel</title>
-<meta name="description" content="Leave a note in Sampanna's guestbook — say hello, share a thought, or just drop your city.">
+<meta name="description" content="Leave a note in Sampanna's guestbook â€” say hello, share a thought, or just drop your city.">
 <meta property="og:title" content="Guestbook | Sampanna Raj Dhungel">
-<meta property="og:description" content="Leave a note — say hello, share a thought, or just drop your city.">
+<meta property="og:description" content="Leave a note â€” say hello, share a thought, or just drop your city.">
 <meta property="og:image" content="https://www.sampannadhungel.com.np/assets/img/og-cover.jpg">
 <link rel="canonical" href="https://www.sampannadhungel.com.np/guestbook.html">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
@@ -50,7 +50,7 @@ textarea.gb-input{resize:vertical;min-height:90px}
 
 <nav class="nav" id="mainNav">
   <a href="index.html" class="nav-logo"><img src="assets/img/signature.png" class="nav-logo-mark" alt="" aria-hidden="true">SAMPANNA RAJ DHUNGEL</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="portfolio.html">Work</a></li>
     <li><a href="index.html#about">About</a></li>
     <li><a href="blog.html">Blog</a></li>
@@ -60,22 +60,23 @@ textarea.gb-input{resize:vertical;min-height:90px}
   </ul>
   <div class="nav-right">
     <a href="index.html#contact" class="nav-cta">Hire me</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <main>
 <div class="gb-wrap">
-  <a href="index.html" class="gb-back">← Back to home</a>
+  <a href="index.html" class="gb-back">â† Back to home</a>
 
   <div class="gb-eyebrow">Guestbook</div>
-  <h1 class="gb-headline">Say hello 👋</h1>
-  <p class="gb-sub">You stopped by. Leave a note — your name, your city, a thought. I read every entry.</p>
+  <h1 class="gb-headline">Say hello ðŸ‘‹</h1>
+  <p class="gb-sub">You stopped by. Leave a note â€” your name, your city, a thought. I read every entry.</p>
 
   <!-- FORM -->
   <div class="gb-form">
     <div class="gb-form-title">Leave a note</div>
     <form id="gbForm" action="https://formspree.io/f/xojyyovg" method="POST">
-      <input type="hidden" name="_subject" value="Guestbook entry — sampannadhungel.com.np">
+      <input type="hidden" name="_subject" value="Guestbook entry â€” sampannadhungel.com.np">
       <input type="hidden" name="_next" value="https://www.sampannadhungel.com.np/guestbook.html?signed=1">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
         <div class="gb-row">
@@ -89,9 +90,9 @@ textarea.gb-input{resize:vertical;min-height:90px}
       </div>
       <div class="gb-row">
         <label class="gb-lbl" for="gb-msg">Message *</label>
-        <textarea class="gb-input" id="gb-msg" name="message" placeholder="Say hello, share a thought, ask a question…" required></textarea>
+        <textarea class="gb-input" id="gb-msg" name="message" placeholder="Say hello, share a thought, ask a questionâ€¦" required></textarea>
       </div>
-      <button class="gb-submit" type="submit">Sign guestbook →</button>
+      <button class="gb-submit" type="submit">Sign guestbook â†’</button>
       <div class="gb-msg" id="gbMsg"></div>
     </form>
   </div>
@@ -102,7 +103,7 @@ textarea.gb-input{resize:vertical;min-height:90px}
   <div class="gb-entry">
     <div class="gb-entry-meta">
       <div class="gb-entry-avatar">AK</div>
-      <div><div class="gb-entry-name">Aayush K.</div><div class="gb-entry-loc">📍 Pokhara, Nepal</div></div>
+      <div><div class="gb-entry-name">Aayush K.</div><div class="gb-entry-loc">ðŸ“ Pokhara, Nepal</div></div>
       <div class="gb-entry-date">May 2026</div>
     </div>
     <div class="gb-entry-text">Incredible portfolio. The Swaadd case study is one of the most thorough UX write-ups I've seen from a Nepali designer. Really inspired.</div>
@@ -111,27 +112,27 @@ textarea.gb-input{resize:vertical;min-height:90px}
   <div class="gb-entry">
     <div class="gb-entry-meta">
       <div class="gb-entry-avatar">PM</div>
-      <div><div class="gb-entry-name">Priya M.</div><div class="gb-entry-loc">📍 Bangalore, India</div></div>
+      <div><div class="gb-entry-name">Priya M.</div><div class="gb-entry-loc">ðŸ“ Bangalore, India</div></div>
       <div class="gb-entry-date">Apr 2026</div>
     </div>
-    <div class="gb-entry-text">Found your blog through a LinkedIn share — the pricing article is exactly what I needed. Bookmarked and shared it with my whole team. Thank you!</div>
+    <div class="gb-entry-text">Found your blog through a LinkedIn share â€” the pricing article is exactly what I needed. Bookmarked and shared it with my whole team. Thank you!</div>
   </div>
 
   <div class="gb-entry">
     <div class="gb-entry-meta">
       <div class="gb-entry-avatar">JT</div>
-      <div><div class="gb-entry-name">James T.</div><div class="gb-entry-loc">📍 London, UK</div></div>
+      <div><div class="gb-entry-name">James T.</div><div class="gb-entry-loc">ðŸ“ London, UK</div></div>
       <div class="gb-entry-date">Mar 2026</div>
     </div>
-    <div class="gb-entry-text">Beautiful site, beautiful work. The 3D animations are seriously impressive. Followed on LinkedIn — looking forward to seeing what you build next.</div>
+    <div class="gb-entry-text">Beautiful site, beautiful work. The 3D animations are seriously impressive. Followed on LinkedIn â€” looking forward to seeing what you build next.</div>
   </div>
 
 </div>
 </main>
 
 <footer style="border-top:1px solid rgba(255,255,255,0.07);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.72rem;color:var(--muted,#6b7c8f)">
-  <span>© 2026 Sampanna Raj Dhungel · Bhaktapur, Nepal</span>
-  <a href="index.html" style="color:var(--teal,#0EB5A0)">← Back to portfolio</a>
+  <span>Â© 2026 Sampanna Raj Dhungel Â· Bhaktapur, Nepal</span>
+  <a href="index.html" style="color:var(--teal,#0EB5A0)">â† Back to portfolio</a>
 </footer>
 
 <script>
@@ -143,7 +144,7 @@ if(location.search.includes('signed=1')){
 document.getElementById('gbForm').addEventListener('submit',function(){
   setTimeout(function(){
     var msg=document.getElementById('gbMsg');
-    if(msg){msg.textContent='Sending…';msg.style.display='block';msg.style.color='#0EB5A0';}
+    if(msg){msg.textContent='Sendingâ€¦';msg.style.display='block';msg.style.color='#0EB5A0';}
   },100);
 });
 </script>

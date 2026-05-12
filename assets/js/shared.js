@@ -6,6 +6,28 @@
 if(window.__sharedLoaded) { throw new Error('shared.js already loaded'); }
 window.__sharedLoaded = true;
 
+/* ── HAMBURGER NAV (all pages except index.html which uses main.js) ── */
+(function(){
+  var ham = document.getElementById('hamburger');
+  var nl  = document.getElementById('navLinks');
+  if(!ham || !nl || ham._init) return;
+  ham._init = true;
+  function closeNav(){
+    nl.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded','false');
+  }
+  ham.addEventListener('click', function(){
+    var isOpen = nl.classList.toggle('open');
+    ham.classList.toggle('open', isOpen);
+    ham.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  nl.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeNav); });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav') && nl.classList.contains('open')) closeNav();
+  });
+})();
+
 /* ══════════════════════════════════════════════════
    FEATURE 28b — SMOOTH PAGE TRANSITIONS
    Fade-out on navigate, fade-in on load
