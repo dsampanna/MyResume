@@ -32,13 +32,15 @@ a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 
 /* NAV */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);gap:1rem}
-.nav-logo{font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:1.1rem 2.5rem;border-bottom:1px solid var(--border2);background:rgba(8,12,16,0.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.nav>.nav-logo{justify-self:start;font-family:var(--display);font-size:1rem;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-logo-mark{display:inline-block;vertical-align:middle;height:22px;width:auto;max-width:56px;object-fit:contain;object-position:left center;filter:sepia(1) saturate(500%) hue-rotate(128deg) brightness(0.95);margin-right:0.4rem}
+.nav>.nav-links{justify-self:center;display:flex;gap:1.5rem;list-style:none;align-items:center}
 .nav-links a{font-size:0.75rem;color:var(--muted);letter-spacing:0.02em;transition:color 0.2s}
-.nav-links a:hover{color:var(--text)}
-.nav-back{font-size:0.72rem;font-weight:600;letter-spacing:0.04em;border:1px solid var(--teal);color:var(--teal);padding:0.45rem 1.1rem;transition:background 0.2s,color 0.2s;white-space:nowrap}
-.nav-back:hover{background:var(--teal);color:var(--bg)}
+.nav-links a:hover,.nav-links a.nav-active{color:var(--teal)}
+.nav>.nav-right{justify-self:end;display:flex;align-items:center}
+.nav-cta{font-size:0.72rem;font-weight:500;letter-spacing:0.04em;border:1px solid var(--teal);color:var(--teal);padding:0.45rem 1.1rem;background:none;cursor:pointer;transition:background 0.2s,color 0.2s;white-space:nowrap;text-decoration:none}
+.nav-cta:hover{background:var(--teal);color:#080c10}
 @media(max-width:900px){.nav{padding:1rem 1.25rem}.nav-links{display:none}}
 
 /* HERO */
@@ -188,6 +190,9 @@ footer{padding:1.5rem 2.5rem;border-top:1px solid var(--border2);background:var(
     <li><a href="now.html">Now</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
+  <div class="nav-right">
+    <a href="index.html#contact" class="nav-cta">Hire me</a>
+  </div>
 </nav>
 
 <div id="page-content"></div>
