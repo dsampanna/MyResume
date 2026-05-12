@@ -904,6 +904,31 @@ stage.addEventListener('wheel',function(e){
   img.src = 'assets/img/signature.png';
 })();
 
+/* ── SIGNATURE 3D TILT ── */
+(function(){
+  var hero = document.querySelector('.hero-content');
+  var wrap = document.querySelector('.sig-wrap');
+  if(!hero || !wrap) return;
+  var raf, lastX = 0, lastY = 0;
+  hero.addEventListener('mousemove', function(e){
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function(){
+      var r = hero.getBoundingClientRect();
+      var cx = r.left + r.width / 2;
+      var cy = r.top + r.height / 2;
+      var dx = (e.clientX - cx) / (r.width / 2);
+      var dy = (e.clientY - cy) / (r.height / 2);
+      var rotY =  dx * 22;
+      var rotX = -dy * 14;
+      wrap.style.transform = 'rotateX('+rotX+'deg) rotateY('+rotY+'deg) translateZ(10px)';
+    });
+  });
+  hero.addEventListener('mouseleave', function(){
+    cancelAnimationFrame(raf);
+    wrap.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+  });
+})();
+
 /* ── NEPAL TIME CLOCK ── */
 (function(){
   var el = document.getElementById('nepalClock');
